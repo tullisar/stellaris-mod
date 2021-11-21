@@ -1,0 +1,4 @@
+﻿l_english:
+ tutmod_civic: "Semper Exploro"
+ tutmod_civic_desc: "This society prioritised scientific exploration over military expansion in the early space age."
+ tutmod_civic_effects: "Start with a $science$ and assigned $scientist$ instead of $OUTLINER_FLEETS$."
