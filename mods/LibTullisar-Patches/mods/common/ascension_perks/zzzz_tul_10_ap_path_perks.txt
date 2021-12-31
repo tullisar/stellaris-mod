@@ -1,0 +1,1069 @@
+######################################################################################
+# Ascension Path Ascension Perks
+######################################################################################
+#
+#
+#
+######################################################################################
+# Engineered Evolution
+# Source: Vanilla, Plentiful Perks, ESAP
+# Type: Path
+######################################################################################
+@ap_engineered_evolution_POINTS = 3
+@ap_engineered_evolution_COST_MULT = -0.25
+ap_engineered_evolution = {
+	on_enabled = {
+		add_research_option = tech_gene_seed_purification
+		if = {
+			limit = {
+				has_origin = origin_clone_army
+				OR = {
+					has_trait = trait_clone_soldier_infertile
+					has_trait = trait_clone_soldier_infertile_full_potential
+				}
+			}
+			custom_tooltip = clone_soldier_locked_genes
+		}
+		hidden_effect = {
+			country_event = {
+				id = utopia.2700
+			}
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "synthetic_empire_biological_ascension"
+			OR = {
+				AND = {
+					tul_is_mechanical_empire = no
+					tul_is_cyborg_empire = no
+				}
+				has_ascension_perk = ap_esap_bio_cyber_psi_1
+				has_ascension_perk = ap_esap_bio_cyber_psi_2_plain
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_1"
+			num_ascension_perks > 0
+		}
+		custom_tooltip = {
+			fail_text = "requires_technology_gene_tailoring"
+			has_technology = tech_gene_tailoring
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_ap_the_flesh_is_weak"
+			OR = {
+				NOT = {
+					has_ascension_perk = ap_the_flesh_is_weak
+				}
+				has_ascension_perk = ap_esap_bio_cyber_psi_1
+				has_ascension_perk = ap_esap_bio_cyber_psi_2_plain
+				AND = {
+					num_ascension_perks > 12
+					AND = {
+						has_tradition = tr_plentiful_biogenesis_finish
+						has_tradition = tr_plentiful_mutagenesis_finish
+					}
+					has_tradition = tr_plentiful_cybernetics_finish
+					has_ascension_perk = ap_the_flesh_is_weak
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_ap_mind_over_matter"
+			OR = {
+				NOT = {
+					has_ascension_perk = ap_mind_over_matter
+				}
+				has_ascension_perk = ap_esap_bio_cyber_psi_1
+				has_ascension_perk = ap_esap_bio_cyber_psi_2_plain
+				AND = {
+					num_ascension_perks > 12
+					AND = {
+						has_tradition = tr_plentiful_biogenesis_finish
+						has_tradition = tr_plentiful_mutagenesis_finish
+					}
+					AND = {
+						has_tradition = tr_plentiful_mysticism_finish
+						has_tradition = tr_plentiful_faith_finish
+					}
+					has_ascension_perk = ap_mind_over_matter
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_ap_mind_meld"
+			NOT = { has_ascension_perk = ap_mind_meld }
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_ap_life_assemblers"
+			NOT = { has_ascension_perk = ap_life_assemblers }
+		}
+	}
+	modifier = {
+		description = ap_engineered_evolution_modifier_desc
+		description_parameters = {
+			POINTS = @ap_engineered_evolution_POINTS
+			COST_MULT = @ap_engineered_evolution_COST_MULT
+		}
+		BIOLOGICAL_species_trait_points_add = @ap_engineered_evolution_POINTS
+		modify_species_cost_mult = @ap_engineered_evolution_COST_MULT
+	}
+	potential = {
+		host_has_dlc = "Utopia"
+		NOR = {
+			has_ascension_perk = ap_engineered_evolution
+			has_valid_civic = civic_machine_terminator
+		}
+	}
+	ai_weight = {
+		factor = 50
+		modifier = {
+			factor = 0.1
+			num_ascension_perks < 3
+		}
+		modifier = {
+			factor = 3
+			tul_is_hive_empire = yes
+		}
+		modifier = {
+			factor = 0
+			num_owned_planets < 10
+		}
+	}
+}
+
+######################################################################################
+# Evolutionary Mastery
+# Source: Vanilla, ESAP, Plentiful Perks
+# Type: Path
+######################################################################################
+@ap_evolutionary_mastery_POINTS = 3
+@ap_evolutionary_mastery_COST_MULT = -0.25
+ap_evolutionary_mastery = {
+	on_enabled = {
+		add_research_option = tech_genetic_resequencing
+		if = {
+			limit = {
+				has_origin = origin_clone_army
+				OR = {
+					has_trait = trait_clone_soldier_infertile
+					has_trait = trait_clone_soldier_infertile_full_potential
+				}
+			}
+			custom_tooltip = clone_soldier_locked_genes
+		}
+		hidden_effect = {
+			country_event = {
+				id = utopia.2703
+			}
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "synthetic_empire_biological_ascension"
+			OR = {
+				AND = {
+					tul_is_mechanical_empire = no
+					tul_is_cyborg_empire = no
+				}
+				esap_has_bio_cyber_psi_2 = yes
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
+		}
+		custom_tooltip = {
+			fail_text = "requires_technology_glandular_acclimation"
+			has_technology = tech_glandular_acclimation
+		}
+		custom_tooltip = {
+			fail_text = "requires_ap_engineered_evolution"
+			has_ascension_perk = ap_engineered_evolution
+		}
+		custom_tooltip = {
+			fail_text = "requires_ap_engineered_evolution"
+			has_ascension_perk = ap_engineered_evolution
+		}
+		custom_tooltip = {
+			fail_text = "ap_esap_ascension_path_t2_req_1"
+			OR = {
+				NOT = {
+					esap_has_bio_cyber_psi_1 = yes
+				}
+				esap_has_bio_cyber_psi_2 = yes
+			}
+		}
+	}
+	modifier = {
+		description = ap_evolutionary_mastery_modifier_desc
+		description_parameters = {
+			POINTS = @ap_evolutionary_mastery_POINTS
+			COST_MULT = @ap_evolutionary_mastery_COST_MULT
+		}
+		BIOLOGICAL_species_trait_points_add = @ap_evolutionary_mastery_POINTS
+		modify_species_cost_mult = @ap_evolutionary_mastery_COST_MULT
+	}
+	potential = {
+		host_has_dlc = "Utopia"
+		NOR = {
+			has_ascension_perk = ap_evolutionary_mastery
+			has_valid_civic = civic_machine_terminator
+		}
+	}
+	ai_weight = {
+		factor = 10000
+	}
+}
+
+######################################################################################
+# Artificial Procreation
+# Source: ESAP
+# Type: Path / Bio
+######################################################################################
+ap_esap_bio_bonus = {
+	on_enabled = {
+		#custom_tooltip = ap_esap_bio_bonus_tooltip
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_ap_engineered_evolution"
+			has_ascension_perk = ap_engineered_evolution
+		}
+		custom_tooltip = {
+			fail_text = "ap_esap_ascension_path_t2_req_1"
+			OR = {
+				esap_has_bio_cyber_psi_2 = yes
+				NOT = {
+					esap_has_bio_cyber_psi_1 = yes
+				}
+			}
+		}
+	}
+	modifier = {
+		pop_growth_speed = 0.2
+		planet_pops_food_upkeep_mult = -0.2
+	}
+	potential = {
+		host_has_dlc = "Utopia"
+		tul_is_machine_empire = no
+		NOT = {
+			has_ascension_perk = ap_esap_bio_bonus
+		}
+		OR = {
+			AND = {
+				tul_is_mechanical_empire = no
+				tul_is_cyborg_empire = no
+			}
+			esap_has_bio_cyber_psi_1 = yes
+		}
+		OR = {
+			NOR = {
+				has_ascension_perk = ap_mind_over_matter
+				has_ascension_perk = ap_the_flesh_is_weak
+			}
+			has_ascension_perk = ap_esap_bio_cyber_psi_1
+			has_ascension_perk = ap_esap_bio_cyber_psi_2_plain
+		}
+	}
+	ai_weight = {
+		factor = 15
+	}
+}
+
+######################################################################################
+# The Flesh is Weak
+# Source: Vanilla, ESAP, Plentiful Perks
+# Type: Path, Synth
+######################################################################################
+ap_the_flesh_is_weak = {
+	on_enabled = {
+		custom_tooltip = "flesh_is_weak_tooltip"
+		hidden_effect = {
+			country_event = {
+				id = utopia.2500
+			}
+		}
+	}
+	modifier = {
+		planet_pops_robotics_upkeep_mult = -0.1
+		planet_pop_assembly_mult = 0.1
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "synthetic_empire_synthetic_ascension"
+			tul_is_synthetic_empire = no
+		}
+		custom_tooltip = {
+			fail_text = "hive_mind_biological_ascension_only2"
+			tul_is_hive_empire = no
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_1"
+			num_ascension_perks > 0
+		}
+		custom_tooltip = {
+			fail_text = "requires_technology_droid_workers"
+			has_technology = tech_droid_workers
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_ap_engineered_evolution"
+			OR = {
+				NOT = {
+					has_ascension_perk = ap_engineered_evolution
+				}
+				has_ascension_perk = ap_esap_bio_cyber_psi_1
+				has_ascension_perk = ap_esap_bio_cyber_psi_2_plain
+				AND = {
+					num_ascension_perks > 12
+					AND = {
+						has_tradition = tr_plentiful_biogenesis_finish
+						has_tradition = tr_plentiful_mutagenesis_finish
+					}
+					has_tradition = tr_plentiful_cybernetics_finish
+					has_ascension_perk = ap_engineered_evolution
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_ap_mind_over_matter"
+			OR = {
+				NOT = {
+					has_ascension_perk = ap_mind_over_matter
+				}
+				has_ascension_perk = ap_esap_bio_cyber_psi_1
+				has_ascension_perk = ap_esap_bio_cyber_psi_2_plain
+				AND = {
+					num_ascension_perks > 12
+					has_tradition = tr_plentiful_cybernetics_finish
+					AND = {
+						has_tradition = tr_plentiful_mysticism_finish
+						has_tradition = tr_plentiful_faith_finish
+					}
+					has_ascension_perk = ap_mind_over_matter
+				}
+			}
+		}
+	}
+	potential = {
+		host_has_dlc = "Utopia"
+		tul_is_synthetic_empire = no
+		NOT = {
+			has_ascension_perk = ap_the_flesh_is_weak
+		}
+	}
+	ai_weight = {
+		factor = 50
+		modifier = {
+			factor = 0.1
+			NOR = {
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
+			}
+		}
+		modifier = {
+			factor = 0.1
+			num_ascension_perks < 3
+		}
+		modifier = {
+			factor = 0.1
+			has_origin = origin_necrophage
+		}
+		modifier = {
+			factor = 0
+			num_owned_planets < 10
+		}
+	}
+}
+
+######################################################################################
+# Synthetic Evolution
+######################################################################################
+ap_synthetic_evolution = {
+	on_enabled = {
+		custom_tooltip = "synthetic_evolution_tooltip"
+		if = {
+			limit = {
+				has_origin = origin_necrophage
+				has_trait = trait_necrophage
+			}
+			custom_tooltip = disables_necrophage_features
+		}
+		if = {
+			limit = {
+				has_origin = origin_clone_army
+				OR = {
+					has_trait = trait_clone_soldier_infertile
+					has_trait = trait_clone_soldier_infertile_full_potential
+					has_trait = trait_clone_soldier_fertile
+				}
+			}
+			custom_tooltip = disables_clone_army_origin_features
+		}
+		if = {
+			limit = {
+				OR = {
+					has_valid_civic = civic_idyllic_bloom
+					has_valid_civic = civic_hive_idyllic_bloom
+				}
+			}
+			custom_tooltip = disables_idyllic_bloom
+		}
+		hidden_effect = {
+			country_event = {
+				id = esap_ascension_paths.3
+			}
+		}
+	}
+	modifier = {
+		planet_jobs_robotic_produces_mult = 0.1
+		ROBOT_species_trait_points_add = 1
+		modify_species_cost_mult = -0.5
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "synthetic_empire_synthetic_ascension"
+			tul_is_synthetic_empire = no
+		}
+		custom_tooltip = {
+			fail_text = "hive_mind_biological_ascension_only2"
+			tul_is_hive_empire = no
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
+		}
+		custom_tooltip = {
+			fail_text = "requires_technology_synthetic_workers"
+			has_technology = tech_synthetic_workers
+		}
+		custom_tooltip = {
+			fail_text = "requires_technology_synthetic_leaders"
+			has_technology = tech_synthetic_leaders
+		}
+		custom_tooltip = {
+			fail_text = "requires_ap_the_flesh_is_weak"
+			has_ascension_perk = ap_the_flesh_is_weak
+		}
+		custom_tooltip = {
+			fail_text = "requires_finished_cybernetics_project"
+			NOT = {
+				has_special_project = FLESH_IS_WEAK_PROJECT
+			}
+		}
+		custom_tooltip = {
+			fail_text = "ap_esap_ascension_path_t2_req_1"
+			OR = {
+				NOT = {
+					esap_has_bio_cyber_psi_1 = yes
+				}
+				esap_has_bio_cyber_psi_2 = yes
+			}
+		}
+	}
+	potential = {
+		host_has_dlc = "Utopia"
+		NOT = {
+			has_ascension_perk = ap_synthetic_evolution
+		}
+		tul_is_synthetic_empire = no
+	}
+	ai_weight = {
+		factor = 100
+		modifier = {
+			factor = 0
+			has_origin = origin_necrophage
+		}
+		modifier = {
+			factor = 0
+			is_spiritualist = yes
+		}
+	}
+}
+
+######################################################################################
+# A Thought in the Circuit
+# Source: ESAP
+# Type: Path, Synth
+######################################################################################
+ap_esap_cyber_bonus = {
+	on_enabled = {
+		#custom_tooltip = ap_esap_cyber_bonus_tooltip
+	}
+	modifier = {
+		country_unity_produces_mult = 0.25
+		pop_government_ethic_attraction = 0.5
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_ap_the_flesh_is_weak"
+			has_ascension_perk = ap_the_flesh_is_weak
+		}
+		custom_tooltip = {
+			fail_text = "ap_esap_ascension_path_t2_req_1"
+			Or = {
+				esap_has_bio_cyber_psi_2 = yes
+				Not = {
+					esap_has_bio_cyber_psi_1 = yes
+				}
+			}
+		}
+	}
+	potential = {
+		host_has_dlc = "Utopia"
+		tul_is_machine_empire = no
+		NOT = {
+			has_ascension_perk = ap_esap_cyber_bonus
+		}
+		OR = {
+			NOR = {
+				has_ascension_perk = ap_mind_over_matter
+				has_ascension_perk = ap_engineered_evolution
+			}
+			has_ascension_perk = ap_esap_bio_cyber_psi_1
+			has_ascension_perk = ap_esap_bio_cyber_psi_2_plain
+		}
+	}
+	ai_weight = {
+		factor = 10
+	}
+}
+
+######################################################################################
+# Mind Over Matter
+# Source: Vanilla
+# Type: Path
+######################################################################################
+ap_mind_over_matter = {
+	modifier = {
+		country_unity_produces_mult = 0.1
+		edicts_cost_mult = -0.1
+	}
+	on_enabled = {
+		custom_tooltip = "mind_over_matter_tooltip"
+		hidden_effect = {
+			country_event = {
+				id = utopia.2600
+			}
+		}
+		add_research_option = tech_telepathy
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "synthetic_empire_psionic_ascension"
+			OR = {
+				tul_is_mechanical_empire = no
+				has_ascension_perk = ap_esap_bio_cyber_psi_1
+				has_ascension_perk = ap_esap_bio_cyber_psi_2_plain
+			}
+		}
+		custom_tooltip = {
+			fail_text = "hive_mind_biological_ascension_only1"
+			tul_is_hive_empire = no
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_1"
+			num_ascension_perks > 0
+		}
+		custom_tooltip = {
+			fail_text = "requires_technology_psionic_theory"
+			has_technology = tech_psionic_theory
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_ap_engineered_evolution"
+			OR = {
+				NOT = {
+					has_ascension_perk = ap_engineered_evolution
+				}
+				has_ascension_perk = ap_esap_bio_cyber_psi_1
+				has_ascension_perk = ap_esap_bio_cyber_psi_2_plain
+				AND = {
+					num_ascension_perks > 12
+					AND = {
+						has_tradition = tr_plentiful_biogenesis_finish
+						has_tradition = tr_plentiful_mutagenesis_finish
+					}
+					AND = {
+						has_tradition = tr_plentiful_mysticism_finish
+						has_tradition = tr_plentiful_faith_finish
+					}
+					has_ascension_perk = ap_engineered_evolution
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_ap_the_flesh_is_weak"
+			OR = {
+				NOT = {
+					has_ascension_perk = ap_the_flesh_is_weak
+				}
+				has_ascension_perk = ap_esap_bio_cyber_psi_1
+				has_ascension_perk = ap_esap_bio_cyber_psi_2_plain
+				AND = {
+					num_ascension_perks > 12
+					has_tradition = tr_plentiful_cybernetics_finish
+					AND = {
+						has_tradition = tr_plentiful_mysticism_finish
+						has_tradition = tr_plentiful_faith_finish
+					}
+					has_ascension_perk = ap_the_flesh_is_weak
+				}
+			}
+		}
+	}
+	potential = {
+		host_has_dlc = "Utopia"
+		tul_is_machine_empire = no
+		NOT = {
+			has_ascension_perk = ap_mind_over_matter
+		}
+	}
+	ai_weight = {
+		factor = 50
+		modifier = {
+			factor = 0.1
+			NOR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		modifier = {
+			factor = 0.1
+			num_ascension_perks < 3
+		}
+		modifier = {
+			factor = 10
+			has_ascension_perk = ap_become_the_crisis
+		}
+		modifier = {
+			factor = 0
+			num_owned_planets < 10
+		}
+	}
+}
+
+######################################################################################
+# Transcendence
+# Source: Vanilla
+# Type: Path
+######################################################################################
+ap_transcendence = {
+	on_enabled = {
+		custom_tooltip = "transcendence_tooltip"
+		hidden_effect = {
+			country_event = {
+				id = utopia.2650
+			}
+		}
+		add_research_option = tech_telepathy
+	}
+	modifier = {
+		intel_decryption_add = 2
+		intel_encryption_add = 2
+		add_base_country_intel = 10
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "synthetic_empire_psionic_ascension"
+			OR = {
+				tul_is_mechanical_empire = no
+				esap_has_bio_cyber_psi_1 = yes
+			}
+		}
+		custom_tooltip = {
+			fail_text = "hive_mind_biological_ascension_only1"
+			NOT = {
+				has_authority = auth_hive_mind
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
+		}
+		custom_tooltip = {
+			fail_text = "requires_ap_mind_over_matter"
+			has_ascension_perk = ap_mind_over_matter
+		}
+		custom_tooltip = {
+			fail_text = "ap_esap_ascension_path_t2_req_1"
+			Or = {
+				Not = {
+					esap_has_bio_cyber_psi_1 = yes
+				}
+				esap_has_bio_cyber_psi_2 = yes
+			}
+		}
+	}
+	potential = {
+		host_has_dlc = "Utopia"
+		tul_is_machine_empire = no
+		NOT = {
+			has_ascension_perk = ap_transcendence
+		}
+		OR = {
+			AND = {
+				tul_is_mechanical_empire = no
+				tul_is_cyborg_empire = no
+			}
+			esap_has_bio_cyber_psi_1 = yes
+		}
+	}
+	ai_weight = {
+		factor = 1000
+	}
+}
+
+######################################################################################
+# Mental Suppression
+# Source: ESAP
+# Type: Path, Psi
+######################################################################################
+ap_esap_psi_bonus = {
+	on_enabled = {
+		custom_tooltip = ap_esap_psi_bonus_tooltip
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_at_war_with = root
+					NOR = {
+						has_modifier = mod_esap_psi_1
+						has_ethic = ethic_gestalt_consciousness
+					}
+				}
+				add_modifier = {
+					modifier = "mod_esap_psi_1"
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_global_flag = flag_esap_psi_1_picked
+					}
+				}
+				set_global_flag = flag_esap_psi_1_picked
+			}
+		}
+	}
+	modifier = {
+		army_morale_damage_mult = 0.33
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "ap_mind_over_matter"
+			has_ascension_perk = ap_mind_over_matter
+		}
+		custom_tooltip = {
+			fail_text = "ap_esap_bio_cyber_psi_2_req_1"
+			OR = {
+				esap_has_bio_cyber_psi_2 = yes
+				NOT = {
+					esap_has_bio_cyber_psi_1 = yes
+				}
+			}
+		}
+	}
+	potential = {
+		host_has_dlc = "Utopia"
+		tul_is_machine_empire = no
+		NOT = {
+			has_ascension_perk = ap_esap_psi_bonus
+		}
+		OR = {
+			AND = {
+				tul_is_mechanical_empire = no
+				tul_is_cyborg_empire = no
+			}
+			esap_has_bio_cyber_psi_1 = yes
+		}
+		OR = {
+			NOR = {
+				has_ascension_perk = ap_engineered_evolution
+				has_ascension_perk = ap_the_flesh_is_weak
+			}
+			has_ascension_perk = ap_esap_bio_cyber_psi_1
+			has_ascension_perk = ap_esap_bio_cyber_psi_2_plain
+		}
+	}
+	ai_weight = {
+		factor = 15
+		modifier = {
+			factor = 0
+			esap_AI_no_passive_aggressive_perks = yes
+		}
+	}
+}
+
+######################################################################################
+# Ultimate Ascension
+# Source: ESAP
+# Type: Path, Bio, Cyber
+######################################################################################
+ap_esap_bio_cyber_psi_1 = {
+	on_enabled = {
+		custom_tooltip = ap_esap_bio_cyber_psi_1_tooltip
+		if = {
+			limit = {
+				NOT = {
+					has_technology = tech_gene_tailoring
+				}
+			}
+			add_research_option = tech_gene_tailoring
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_technology = tech_robotic_workers
+					}
+				}
+				give_technology = {
+					tech = tech_robotic_workers
+					message = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_technology = tech_droid_workers
+				}
+			}
+			add_research_option = tech_droid_workers
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_technology = tech_psionic_theory
+				}
+			}
+			add_research_option = tech_psionic_theory
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "ap_esap_bio_cyber_psi_1_req_1"
+			OR = {
+				has_ascension_perk = ap_mind_over_matter
+				has_ascension_perk = ap_the_flesh_is_weak
+				has_ascension_perk = ap_engineered_evolution
+			}
+		}
+		custom_tooltip = {
+			fail_text = "ap_esap_bio_cyber_psi_1_req_2"
+			NOR = {
+				has_ascension_perk = ap_transcendence
+				has_ascension_perk = ap_synthetic_evolution
+				has_ascension_perk = ap_evolutionary_mastery
+			}
+		}
+		custom_tooltip = {
+			fail_text = "ap_esap_bio_cyber_psi_1_req_3"
+			NOR = {
+				has_ascension_perk = ap_esap_bio_bonus
+				has_ascension_perk = ap_esap_cyber_bonus
+				has_ascension_perk = ap_esap_psi_bonus
+			}
+		}
+		custom_tooltip = {
+			fail_text = "hive_mind_biological_ascension_only2"
+			tul_is_hive_empire = no
+		}
+	}
+	modifier = {
+		modify_species_cost_mult = -0.25
+		planet_jobs_robotic_produces_mult = 0.1
+	}
+	potential = {
+		host_has_dlc = "Utopia"
+		esap_has_bio_cyber_psi_1 = no
+		tul_is_machine_empire = no
+	}
+	ai_weight = {
+		factor = 0
+	}
+}
+
+# Variant 
+ap_esap_bio_cyber_psi_1_plain = {
+	on_enabled = {
+		custom_tooltip = ap_esap_bio_cyber_psi_1_plain_tooltip
+		if = {
+			limit = {
+				NOT = {
+					has_technology = tech_gene_tailoring
+				}
+			}
+			add_research_option = tech_gene_tailoring
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_technology = tech_robotic_workers
+					}
+				}
+				give_technology = {
+					tech = tech_robotic_workers
+					message = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_technology = tech_droid_workers
+				}
+			}
+			add_research_option = tech_droid_workers
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_technology = tech_psionic_theory
+				}
+			}
+			add_research_option = tech_psionic_theory
+		}
+	}
+	potential = {
+		host_has_dlc = "Utopia"
+		esap_has_bio_cyber_psi_1 = no
+		tul_is_machine_empire = no
+		tul_is_hive_empire = no
+		OR = {
+			has_ascension_perk = ap_evolutionary_mastery
+			has_ascension_perk = ap_synthetic_evolution
+			has_ascension_perk = ap_transcendence
+			has_ascension_perk = ap_esap_bio_bonus
+			has_ascension_perk = ap_esap_cyber_bonus
+			has_ascension_perk = ap_esap_psi_bonus
+		}
+	}
+	ai_weight = {
+		factor = 0
+	}
+}
+
+######################################################################################
+# Perfect Ascension
+# Source: ESAP
+# Type: Path, Bio, Cyber
+######################################################################################
+ap_esap_bio_cyber_psi_2 = {
+	on_enabled = {
+		custom_tooltip = ap_esap_bio_cyber_psi_2_tooltip
+		if = {
+			limit = {
+				NOT = {
+					has_technology = tech_gene_expressions
+				}
+			}
+			add_research_option = tech_gene_expressions
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_technology = tech_synthetic_workers
+				}
+			}
+			add_research_option = tech_synthetic_workers
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_technology = tech_synthetic_leaders
+				}
+			}
+			add_research_option = tech_synthetic_leaders
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_3"
+			num_ascension_perks > 2
+		}
+		custom_tooltip = {
+			fail_text = "ap_esap_bio_cyber_psi_2_req_1"
+			has_ascension_perk = ap_esap_bio_cyber_psi_1
+		}
+	}
+	modifier = {
+		modify_species_cost_mult = 0.25
+		planet_jobs_robotic_produces_mult = -0.1
+	}
+	potential = {
+		host_has_dlc = "Utopia"
+		NOR = {
+			has_ascension_perk = ap_evolutionary_mastery
+			has_ascension_perk = ap_synthetic_evolution
+			has_ascension_perk = ap_transcendence
+			has_ascension_perk = ap_esap_bio_cyber_psi_2
+			has_ascension_perk = ap_esap_bio_cyber_psi_2_plain
+			tul_is_machine_empire = no
+		}
+	}
+	ai_weight = {
+		factor = 0
+	}
+}
+
+# Variant
+ap_esap_bio_cyber_psi_2_plain = {
+	on_enabled = {
+		custom_tooltip = ap_esap_bio_cyber_psi_2_plain_tooltip
+		if = {
+			limit = {
+				NOT = {
+					has_technology = tech_gene_expressions
+				}
+			}
+			add_research_option = tech_gene_expressions
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_technology = tech_synthetic_workers
+				}
+			}
+			add_research_option = tech_synthetic_workers
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_technology = tech_synthetic_leaders
+				}
+			}
+			add_research_option = tech_synthetic_leaders
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "ap_esap_bio_cyber_psi_2_req_1"
+			has_ascension_perk = ap_esap_bio_cyber_psi_1_plain
+		}
+	}
+	modifier = {
+	}
+	potential = {
+		host_has_dlc = "Utopia"
+		OR = {
+			has_ascension_perk = ap_evolutionary_mastery
+			has_ascension_perk = ap_synthetic_evolution
+			has_ascension_perk = ap_transcendence
+			has_ascension_perk = ap_esap_bio_bonus
+			has_ascension_perk = ap_esap_cyber_bonus
+			has_ascension_perk = ap_esap_psi_bonus
+		}
+		NOR = {
+			has_ascension_perk = ap_esap_bio_cyber_psi_1
+			has_ascension_perk = ap_esap_bio_cyber_psi_2_plain
+			tul_is_machine_empire = yes
+			tul_is_hive_empire = yes
+		}
+	}
+	ai_weight = {
+		factor = 0
+	}
+}

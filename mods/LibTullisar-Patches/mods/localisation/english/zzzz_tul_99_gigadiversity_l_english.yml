@@ -1,0 +1,951 @@
+﻿l_english:
+
+#########################################
+### Planet Modifiers ####################
+#########################################
+planetary_hab_imposs:0 "Planetary Habitats Impossible"
+planetary_hab_imposs_desc:0 "A megastructure has made this world unfit for habitat construction."
+ #Terraforming Modifiers
+#Molten world Habitat Conversion
+gd_molten_terraforming_identify_techtonic_hotspots:0 "Techtonic Hotspots Identified"
+gd_molten_terraforming_identify_techtonic_hotspots_desc:0 "Habitat facilities have been prepared above hotspots that can be drilled and targeted with cooling beams"
+ 
+gd_molten_terraforming_cooling_beam_facilities:0 "Cooling Beam Facilities"
+gd_molten_terraforming_cooling_beam_facilities_desc:0 "Drilling and cooling beam facilities have been fully built. The proper power grid for a large scale project is still missing"
+
+gd_molten_terraforming_solar_capture_array:0 "Solar Capture Array"
+gd_molten_terraforming_solar_capture_array_desc:0 "Satellites designed to capture solar energy have been launched. These will aid in lowering the glogal temperature"
+
+gd_molten_terraforming_reactor_grid:0 "Active Cooling Beams"
+gd_molten_terraforming_reactor_grid_desc:0 "The reactors for the drills and cooling beams are actively and slowly cooling and stabalizing this world"
+
+#Gas Giant Habitat Conversion
+gd_convert_habitable_gasgiant_floating_stabilizers:0 "Floating Stabilizer Scaffolding"
+gd_convert_habitable_gasgiant_floating_stabilizers_desc:0 "Atmospheric stabilization scaffolding that has been preparred for gravity modulators."
+
+gd_convert_habitable_gasgiant_power_nodes:0 "Magnetic Power Nodes"
+gd_convert_habitable_gasgiant_power_nodes_desc:0 "Strong points in the magnetic feild have been leveraged to generate steady amount of energy."
+
+gd_convert_habitable_gasgiant_power_relays:0 "Planetary Floating Power Relays"
+gd_convert_habitable_gasgiant_power_relays_desc:0 "Floating power nodes accross the gas giant have been relayed together accross the vast stretches of turbulent atmosphere."
+
+gd_convert_habitable_gasgiant_gravity_modulators:0 "Gravity Modulators"
+gd_convert_habitable_gasgiant_gravity_modulators_desc:0 "Gravity modulators have been installed in strategic possitions."
+
+#Barren and frozen world habitat Conversion
+
+#Barren
+gd_convert_barren_core_activation_facilities:0 "Core Activation Facilities"
+gd_convert_barren_core_activation_facilities_desc:0 "Facilities prepared for the slow process of on-planet core activation."
+#Frozen
+gd_convert_frozen_adaptive_core_activation_facilities:0 "Adaptive Core Activation Adaptive Facilities"
+gd_convert_frozen_adaptive_core_activation_facilities_desc:0 "Submergable facilities prepared for the slow process of on-planet core activation."
+
+gd_convert_barren_focused_hypercoil:0 "Focused Hypercoil Sites"
+gd_convert_barren_focused_hypercoil_desc:0 "Minaturaized magnetic hypercoils that will be used to heat the core."
+
+#Barren
+gd_convert_barren_venting_fissures:0 "Crustal Heat and Gas Venting Fissures"
+gd_convert_barren_venting_fissures_desc:0 "The crust of the planet has fissures cut deep to allow of release heat and gas."
+#Frozen
+gd_convert_frozen_crustal_repurposing_facilities:0 "Crustal Ice and Gas Repurposing Facilities"
+gd_convert_frozen_crustal_repurposing_facilities_desc:0 "Facilities build to capture melting water ice and sublimating gases. Water and gases will be repurposed into atomosphere and fuel for continued power generation."
+
+gd_convert_barren_dynamic_core_power_generators:0 "Dynamic Core Power Generators"
+gd_convert_barren_dynamic_core_power_generators_desc:0 "Habitats have been link together to supply the power demands of the core activation."
+
+#Toxic habitat Conversion
+gd_convert_toxic_phase_1:0 "Atmospheric Cleansing Pumps."
+gd_convert_toxic_phase_1_desc:0 "Pumps have been construted near each dome and at ideal locations between domes. The pumps will capture the toxic atmosphere for reprocessing."
+
+gd_convert_toxic_phase_2:0 "Atmospheric Redirection Piplines"
+gd_convert_toxic_phase_2_desc:0 "Piplines to redirect atmosphere to processing facilities. Piplines have been constructed in higher latitudes for distribution of the final atmosphere and hydrosphere. This massive undertaking has the potential circulate that atmosphere of an entire terestrial planet in a matter of years."
+
+gd_convert_toxic_phase_3:0 "Atmospheric Processing Facilities"
+gd_convert_toxic_phase_3_desc:0 "Vast processing facilities have been built along the equator. The processing facilities will take the toxic atmosphere and convert it to a breathable atmosphere and hydrosphere"
+
+gd_convert_toxic_phase_4:0 "Atmospheric Cleansing Power Plants"
+gd_convert_toxic_phase_4_desc:0 "Purifying the atmosphere of an entire world without effecting the current inhabitants requires the best power generation our current scientist have developed. All of the Habitats power has been focused on this single effort"
+
+#Hothouse habitat conversion
+gd_convert_hothouse_phase_1:0 "Atmosphere Capture and Purification Platforms"
+gd_convert_hothouse_phase_1_desc:0 "Floating platforms have been constructed that can capture and process the dense atmosphere of the Hothouse."
+
+gd_convert_hothouse_phase_2:0 "Byproduct Contaiment Facilities"
+gd_convert_hothouse_phase_2_desc:0 "Facilities have to be constructed that take in the byproducts of carbon waste that is pulled from the atmosphere."
+
+gd_convert_hothouse_phase_3:0 "Greenhouse Prevention Array"
+gd_convert_hothouse_phase_3_desc:0 "An array satellites have been installed at an orbit between the the planet and the primary radiation source. This will assist in maintaining the ecosystem and help prevent another runaway greenhouse event."
+
+gd_convert_hothouse_phase_4:0 "Floating Habitat Landing Retrofit"
+gd_convert_toxic_phase_4_desc:0 "The floating habitats have been retrofitted with landing supports and the existing antigravity systems have been designed to slowly decend."
+
+##########################################
+#Lifess Terraforming Modifiers
+##########################################
+lifeless_foggy_terrafrom:0 "Lifeless Foggy Terraforming Candidate"
+lifeless_foggy_terrafrom_desc:0 "This inhospitable world has been prepared for the radical changes of terrafoming. The habitats have been reinforced in to keep our colonist safe during the last steps of this long process. Due to the current harsh environment, this world cannot be changed in coordination with a planned ecosystem. Once the world is habitable the lifeless world may be terraformed again and a complex ecosystem will be possible."
+
+lifeless_torrid_terrafrom:0 "Lifeless Torrid Terraforming Candidate"
+lifeless_torrid_terrafrom_desc:0 "$lifeless_foggy_terrafrom_desc$"
+
+lifeless_temperate_terrafrom:0 "Lifeless Temperate Terraforming Candidate"
+lifeless_temperate_terrafrom_desc:0 "$lifeless_foggy_terrafrom_desc$"
+
+lifeless_methane_terrafrom:0 "Lifeless Methane Terraforming Candidate"
+lifeless_methane_terrafrom_desc:0 "$lifeless_foggy_terrafrom_desc"
+
+lifeless_ammonia_terrafrom:0 "Lifeless Ammonia Terraforming Candidate"
+lifeless_ammonia_terrafrom_desc:0 "$lifeless_foggy_terrafrom_desc$"
+
+lifeless_ash_terrafrom:0 "Lifeless Ash Terraforming Candidate"
+lifeless_ash_terrafrom_desc:0 "$lifeless_foggy_terrafrom_desc$"
+
+lifeless_sulfur_terrafrom:0 "Lifeless Sulfur Terraforming Candidate"
+lifeless_sulfur_terrafrom_desc:0 "$lifeless_foggy_terrafrom_desc$"
+
+lifeless_ocean_terrafrom:0 "Lifeless Ocean Terraforming Candidate"
+lifeless_ocean_terrafrom_desc:0 "$lifeless_foggy_terrafrom_desc$"
+
+lifeless_rogue_terrafrom:0 "Lifeless Rogue Terraforming Candidate"
+lifeless_rogue_terrafrom_desc:0 "$lifeless_foggy_terrafrom_desc$"
+
+habitable_gas_giant_terraform:0 "Habitable Gas Giant Terraforming Candidate"
+habitable_gas_giant_terraform_desc:0 "This gas giant has been prepared with gravity modulators, magnetic field power converters, and an planet spanning power grid. The habitats have been reinforced in to keep our colonist safe during the last steps of this long process. The last step is to activate the atmospheric stabilizers."
+
+
+##############################################################
+### Lifeless Terraforming Decisions ##########################
+##############################################################
+    
+decision_convert_to_foggy_world_0:0 "Atmospheric Purifier"
+decision_convert_to_foggy_world_0_desc:0 "Convert to a Lifeless Foggy World."
+ 
+#Molten Terraforming to Torrid World
+decision_ll_torrid_terraform:0 "Build Torrid World Terraforming Modules"
+decision_ll_torrid_terraform_desc:0 "The existing habitats will become the centers of the geolocical stabilization efforts and planetary cooling efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Torrid World"
+
+decision_convert_to_torrid_world_0:0 "Terraforming Molten: Identify Techtonic Hotspots"
+decision_convert_to_torrid_world_0_desc:0 "Identify techtonic hotspots. Then, build facilities onworld to prepar for drilling and cooling."
+
+decision_convert_to_torrid_world_1:0 "Terraforming Molten: Build Cooling Beam Facilities"
+decision_convert_to_torrid_world_1_desc:0 "Build drills and cooling beams over hotspots."
+
+decision_convert_to_torrid_world_2:0 "Terraforming Molten: Deploy Solar Capture Array"
+decision_convert_to_torrid_world_2_desc:0 "Launch a series of satellites in specialised orbits. These Satellites will absorb and reflect light away from the planet."
+
+decision_convert_to_torrid_world_3:0 "Terraforming Molten: Bring Reactors Online"
+decision_convert_to_torrid_world_3_desc:0 "Bring the reactors for the drilling and cooling beams online."
+
+decision_convert_to_torrid_world_4:0 "Terraforming Molten: Initiate Terraforming"
+decision_convert_to_torrid_world_4_desc:0 "Initate the terraforming process on this molten world. Habitats will no longer be needed once completed."
+
+#Gas Giant Terraforming
+
+decision_habitable_gg_terraform:0 "Build Gas Giant Terraforming Habitat Modules"
+decision_habitable_gg_terraform_desc:0 "The existing enclosed floating habitats will become the centers of the atmospheric stabilization efforts. Once the work is complete this gas giant will become a candidate for terrafoming to a Habitable Gas Giant"
+
+decision_convert_to_habitable_gasgiant_world_0:0 "Gas Giant Stabilizing: Build Floating Stabilizer Scaffolding"
+decision_convert_to_habitable_gasgiant_world_0_desc:0 "The existing enclosed floating habitats mean that the atmospheric stabilization will be more gradual as to not tear apart the colonies. Selected areas designed to target sections of the planet need to be prepared for the installation of gravity modulation devices."
+
+decision_convert_to_habitable_gasgiant_world_1:0 "Gas Giant Stabilizing: Build Magnetic Power Nodes"
+decision_convert_to_habitable_gasgiant_world_1_desc:0 "Strong points in the magnetic field may be leveraged to power the stabilization array."
+
+decision_convert_to_habitable_gasgiant_world_2:0 "Gas Giant Stabilizing: Build Planetary Floating Power Relays"
+decision_convert_to_habitable_gasgiant_world_2_desc:0 "Connect the floating power nodes and floating atmosphere stabilizers accross the planet using a series of floating relays."
+
+decision_convert_to_habitable_gasgiant_world_3:0 "Gas Giant Stabilizing: Install Gravity Modulators"
+decision_convert_to_habitable_gasgiant_world_3_desc:0 "Install the gravity modulators in the floating stabilizers."
+
+decision_convert_to_habitable_gasgiant_world_4:0 "Gas Giant Stabilizing: Initiate the Atmospheric Stabilizers"
+decision_convert_to_habitable_gasgiant_world_4_desc:0 "Stablize the atmosphere of a gas giant. The habitats can be converted to floating cities. There are no longer extreme storms restricting the locations of colonies."
+
+#Barren to Temperate Lifeless
+decision_ll_temperate_terraform:0 "Build Temperate World Terraforming Modules"
+decision_ll_temperate_terraform_desc:0 "The existing habitats will become the centers of the core ignition and atmospheric distribution efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Temperate World"
+
+decision_convert_barren_to_temperate_0:0 "Terraforming Barren: Build Core Activation Facilities"
+decision_convert_barren_to_temperate_0_desc:0 "Facilities in multiple location are built to prepare for the slow process of on planet core activation."
+
+decision_convert_barren_to_temperate_1:0 "Terraforming Barren: Build Focused Hypercoil Sites"
+decision_convert_barren_to_temperate_1_desc:0 "We have minaturaized the typical megascale hypercoils. A series of converging hypercoil magnetic feilds will be used to generate heat that will restore the long dead core of the planet."
+
+decision_convert_barren_to_temperate_2:0 "Terraforming Barren: Design Crustal Heat and Gas Venting"
+decision_convert_barren_to_temperate_2_desc:0 "The crust of the planet must be allowed to release heat and gas to prevent crustal liquification. The venting sections will allow the build up of essential volital gases in a new atmospheric layer. The fissures for gas venting also be the source of future plate tectonics"
+
+decision_convert_barren_to_temperate_3:0 "Terraforming Barren: Build Dynamic Core Power Generators"
+decision_convert_barren_to_temperate_3_desc:0 "The power demands accorded to the core activation are great. Varied power generators from habitats will need to be constructed in order to be successful."
+
+decision_convert_barren_to_temperate_4:0 "Terraforming Barren: Initiate Dynamic Core Activation"
+decision_convert_barren_to_temperate_4_desc:0 "Once activated the core of this world will be heated and a terraformable atmosphere will be generated from the existing crust."
+
+#Frozen to Temperate Lifeless
+
+decision_convert_frozen_to_temperate_0:0 "Terraforming Frozen: Build Core Activation Adaptive Facilities"
+decision_convert_frozen_to_temperate_0_desc:0 "Facilities in multiple location are built to prepare for the slow process of on planet core activation and crustal melt. These facilities must be designed to function a submerged while the frozen world transitions"
+
+decision_convert_frozen_to_temperate_1:0 "Terraforming Frozen: Build Focused Hypercoil Sites"
+decision_convert_frozen_to_temperate_1_desc:0 "We have minaturaized the typical megascale hypercoils. A series of converging hypercoil magnetic feilds will be used to generate heat that will restore the long dead core of the planet."
+
+decision_convert_frozen_to_temperate_2:0 "Terraforming Frozen: Build Crustal Ice and Gas Repurposing Facilities"
+decision_convert_frozen_to_temperate_2_desc:0 "The crust of this world primarily water ice and frozen gases. As the core heats the crust will melt. Water and gases will be repurposed into atomosphere and fuel for continued power generation."
+
+decision_convert_frozen_to_temperate_3:0 "Terraforming Frozen: Build Dynamic Core Power Generators"
+decision_convert_frozen_to_temperate_3_desc:0 "The power demands accorded to the core activation are great. Varied power generators from habitats will need to be constructed in order to be successful. The repurposed water and gases must be repurposed for fusion and cooling."
+
+decision_convert_frozen_to_temperate_4:0 "Terraforming Frozen: Initiate Dynamic Core Activation"
+decision_convert_frozen_to_temperate_4_desc:0 "Once activated the core of this world will be heated and a terraformable atmosphere will be generated from the frozen crust."
+
+#Toxic to Foggy Lifeless
+decision_ll_foggy_terraform_aa:0 "Build Foggy World Terraforming Modules"
+decision_ll_foggy_terraform_aa_desc:0 "The existing habitats will become the centers of the atmospheric filtering efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Foggy World"
+
+decision_ll_foggy_terraform_dci:0 "Build Foggy World Terraforming Modules"
+decision_ll_foggy_terraform_dci_desc:0 "The existing habitats will become the centers of the core ignition and atmospheric filtering efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Foggy World"
+
+decision_convert_toxic_to_foggy_0:0 "Terraforming Toxic: Build Atmospheric Cleansing Pump"
+decision_convert_toxic_to_foggy_0_desc:0 "Build pumps each dome and at ideal locations between domes. The pumps will capture the toxic atmosphere for reprocessing."
+
+decision_convert_toxic_to_foggy_1:0 "Terraforming Toxic: Build Atmospheric Redirection Piplines"
+decision_convert_toxic_to_foggy_1_desc:0 "Building piplines to redirect atmosphere to processing facilities at the equator. Piplines will be constructed in higher latitudes for distribution of the final atmosphere and hydrosphere."
+
+decision_convert_toxic_to_foggy_2:0 "Terraforming Toxic: Build Equatorial Atmospheric Processing Facilities"
+decision_convert_toxic_to_foggy_2_desc:0 "Build vast processing facilities the equator. The processing facilities will take the toxic atmosphere and convert it to a breathable atmosphere and hydrosphere."
+
+decision_convert_toxic_to_foggy_3:0 "Terraforming Toxic: Build Atmospheric Cleansing Power Plants"
+decision_convert_toxic_to_foggy_3_desc:0 "Connect the power generators of all habitats. Build power generators near the processing facilities to make for the energy needs of the project."
+
+decision_convert_toxic_to_foggy_4:0 "Terraforming Toxic: Initiate Atmospheric Cleansing"
+decision_convert_toxic_to_foggy_4_desc:0 "Once activated the pumps and processing will begin. A world wide wind storm will begin."
+
+#Hothouse to Foggy Lifeless
+
+decision_convert_hothouse_to_foggy_0:0 "Terraforming Hothouse: Build Atmosphere Capture and Purification Platforms"
+decision_convert_hothouse_to_foggy_0_desc:0 "Build floating platforms that can capture and process the dense atmosphere of the Hothouse."
+
+decision_convert_hothouse_to_foggy_1:0 "Terraforming Hothouse: Build Byproduct Contaiment Facilities"
+decision_convert_hothouse_to_foggy_1_desc:0 "Build facilities to take in the byproducts of carbon waste that are pulled from the atmosphere."
+
+decision_convert_hothouse_to_foggy_2:0 "Terraforming Hothouse: Deploy Greenhouse Prevention Array"
+decision_convert_hothouse_to_foggy_2_desc:0 "Deploy an array satellites at an orbit between the the planet and the primary radiation source. This will assist in maintaining the ecosystem and help prevent another runaway greenhouse event."
+
+decision_convert_hothouse_to_foggy_3:0 "Terraforming Hothouse: Retrofit Floating Habitats for Safe Landing"
+decision_convert_hothouse_to_foggy_3_desc:0 "Retrofit the floating habitats landing supports and adjust existing antigravity systems to slowly decend in accordance with the current atmospheric conditions."
+
+decision_convert_hothouse_to_foggy_4:0 "Terraforming Hothouse: Initiate Atmospheric Capture and Purification"
+decision_convert_hothouse_to_foggy_4_desc:0 "Once activated the platforms will begin capuring and purifying the atmosphere. A world wide wind storm will begin and atmospheric density will begin to decrease."
+
+
+#Methane
+decision_ll_methane_terraform_aa:0 "Build Methane World Terraforming Modules"
+decision_ll_methane_terraform_aa_desc:0 "The existing habitats will become the centers of the atmospheric filtering efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Methane World"
+
+decision_ll_methane_terraform_dci:0 "Build Methane World Terraforming Modules"
+decision_ll_methane_terraform_dci_desc:0 "The existing habitats will become the centers of the core ignition and atmospheric filtering efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Methane World"
+
+decision_ll_methane_terraform_gs:0 "Build Methane World Terraforming Modules"
+decision_ll_methane_terraform_gs_desc:0 "The existing habitats will become the centers of the geolocical stabilization efforts and planetary cooling efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Methane World"
+
+#Ammonia
+decision_ll_ammonia_terraform_aa:0 "Build Ammonia World Terraforming Modules"
+decision_ll_ammonia_terraform_aa_desc:0 "The existing habitats will become the centers of the atmospheric filtering efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Ammonia World"
+
+decision_ll_ammonia_terraform_dci:0 "Build Ammonia World Terraforming Modules"
+decision_ll_ammonia_terraform_dci_desc:0 "The existing habitats will become the centers of the core ignition and atmospheric filtering efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Ammonia World"
+
+decision_ll_ammonia_terraform_gs:0 "Build Ammonia World Terraforming Modules"
+decision_ll_ammonia_terraform_gs_desc:0 "The existing habitats will become the centers of the geolocical stabilization efforts and planetary cooling efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Ammonia World"
+
+#Ash
+decision_ll_ash_terraform_aa:0 "Build Ash World Terraforming Modules"
+decision_ll_ash_terraform_aa_desc:0 "The existing habitats will become the centers of the atmospheric filtering efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Ash World"
+
+decision_ll_ash_terraform_dci:0 "Build Ash World Terraforming Modules"
+decision_ll_ash_terraform_dci_desc:0 "The existing habitats will become the centers of the core ignition and atmospheric filtering efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Ash World"
+
+decision_ll_ash_terraform_gs:0 "Build Ash World Terraforming Modules"
+decision_ll_ash_terraform_gs_desc:0 "The existing habitats will become the centers of the geolocical stabilization efforts and planetary cooling efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Ash World"
+
+#Sulfur
+decision_ll_sulfur_terraform_aa:0 "Build Sulfur World Terraforming Modules"
+decision_ll_sulfur_terraform_aa_desc:0 "The existing habitats will become the centers of the atmospheric filtering efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Sulfur World"
+
+decision_ll_sulfur_terraform_dci:0 "Build Sulfur World Terraforming Modules"
+decision_ll_sulfur_terraform_dci_desc:0 "The existing habitats will become the centers of the core ignition and atmospheric filtering efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Sulfur World"
+
+decision_ll_sulfur_terraform_gs:0 "Build Sulfur World Terraforming Modules"
+decision_ll_sulfur_terraform_gs_desc:0 "The existing habitats will become the centers of the geolocical stabilization efforts and planetary cooling efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Sulfur World"
+
+#Ocean
+decision_ll_ocean_terraform_aa:0 "Build Ocean World Terraforming Modules"
+decision_ll_ocean_terraform_aa_desc:0 "The existing habitats will become the centers of the atmospheric filtering efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Ocean World"
+
+decision_ll_ocean_terraform_dci:0 "Build Ocean World Terraforming Modules"
+decision_ll_ocean_terraform_dci_desc:0 "The existing habitats will become the centers of the core ignition and atmospheric filtering efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Ocean World"
+
+decision_ll_ocean_terraform_gs:0 "Build Ocean World Terraforming Modules"
+decision_ll_ocean_terraform_gs_desc:0 "The existing habitats will become the centers of the geolocical stabilization efforts and planetary cooling efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Ocean World"
+
+#Rogue
+decision_ll_rogue_terraform_aa:0 "Build Rogue World Terraforming Modules"
+decision_ll_rogue_terraform_aa_desc:0 "The existing habitats will become the centers of the atmospheric filtering efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Rogue World"
+
+decision_ll_rogue_terraform_dci:0 "Build Rogue World Terraforming Modules"
+decision_ll_rogue_terraform_dci_desc:0 "The existing habitats will become the centers of the core ignition and atmospheric filtering efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Rogue World"
+
+decision_ll_rogue_terraform_gs:0 "Build Rogue World Terraforming Modules"
+decision_ll_rogue_terraform_gs_desc:0 "The existing habitats will become the centers of the geolocical stabilization efforts and planetary cooling efforts. Once the work is complete this world will become a candidate for terrafoming to a Lifeless Rogue World"
+
+    ###########################################################
+    ### Origins ###############################################
+    ###########################################################
+
+origin_sanctuary_interloper:0 "Sanctuary Interloper"
+origin_sanctuary_interloper_desc:0 "A rogue world has been captured by a surprising black hole. When this black hole formed, it destroyed the inner ringworld, damaged most of the outer ringworld, and killed the precursor civilization that built them. The last surviving section has new life emerging on it as it warms up in the pale light of the black hole's accretion disk."
+origin_tooltip_sanctuary_interloper_effects:0 "Start on a Rogue World orbiting a black hole.\n- Start in a system with a damaged Behemoth Ringworld around a dead star.\n- Species habitability is set to §LRogue World§!.\n- A primative species will inhabit the undamaged ring section.\n- §RThere will be no systems with guaranteed habitable worlds nearby§!."
+gd_ring_rogue_origin_NAME:0 "Sanctuary Interloper System"
+
+#################################################################################################
+######Fail Text For PD world checks
+#################################################################################################
+is_sub_glacial:0 "$TRIGGER_FAIL$Can only be built on a $pc_subglacial$"
+is_volcanic:0 "$TRIGGER_FAIL$Can only be built on a $pc_volcanic$"
+is_hydrocarbon:0 "$TRIGGER_FAIL$Can only be built on a $pc_hydrocarbon$"
+ 
+ ###############################################################################################
+ #Modifier informs that the world gives more Alloys upon being stripmined.
+ ###############################################################################################
+ 
+ ###Iron Planet
+ gd_pd_iron_planet:0 "Iron Planet"
+ gd_pd_iron_planet_desc:0 "This planet consists primarily of an iron-rich core with little or no mantle. Once the crust is strip mined the world will yield an abundance of alloys. \n\n§YAutomated Stripmine\nCrust Output:§!\n§Y+225§! £minerals£ and §Y+25§! £alloys£\nOuter Core Output:§!\n§Y+200§! £minerals£ and §Y+75§! £alloys£\nInner Core Output:§!\n§Y+200§! £minerals£ and §Y+125§! £alloys£"
+
+####################################################
+#Iron World Autostripmine events
+####################################################
+    gd_iron_planet.1.title:0 "Iron Planet Strip Mine Increased Alloy Production"
+    gd_iron_planet.1.desc:0 "The [giga_planet.GetName] $name_auto_stripmine$ has reached the next layer down. [giga_planet.GetName] is now producing more Alloys with a slight drop off in mineral production."
+    gd_iron_planet.1.a:0 "Marvelous!"
+
+###################
+# New Lifeless Planets.
+###################
+ 
+ ###Lifeless Methane
+ pc_ll_methane:0 "Lifeless Methane World"
+ pc_ll_methane_desc:0 "Rocky world with a nitrogen-methane atmosphere and this planet's variable gas is methane. With temperatures, around -180 degrees Celsius the methane hydrosphere is stable. This planet is habitable for Methane breathing lifeforms, but lacks any forms of life, either because it used to be a barren wasteland that was made habitable, or because life was forcefully removed from it."
+ trait_pc_ll_methane_preference:0 "Lifeless Methane Preference"
+ trait_pc_ll_methane_preference_desc:0 "$trait_pc_arctic_preference_desc$" 
+ mod_pc_ll_methane_habitability:0 "Lifeless Methane Habitability"
+ pc_ll_methane_habitability:0 "n/a"
+ pc_ll_methane_adj:0 "methane"
+ 
+ ###Lifeless Ammonia
+ pc_ll_ammonia:0 "Lifeless Ammonia World"
+ pc_ll_ammonia_desc:0 "Rocky world with a nitrogen-ammonia atmosphere. This planet's variable gas is ammonia. With much higher atmospheric pressure than most terrestrial planets, the ammonia hydrosphere is stable. This planet is habitable for Ammonia breathing lifeforms, but lacks any forms of life, either because it used to be a barren wasteland that was made habitable, or because life was forcefully removed from it."
+ trait_pc_ll_ammonia_preference:0 "Ammonia Preference"
+ trait_pc_ll_ammonia_preference_desc:1 "$trait_pc_arctic_preference_desc$"
+ mod_pc_ll_ammonia_habitability:1 "Ammonia Habitability"
+ pc_ll_ammonia_habitability:0 "n/a"
+ pc_ll_ammonia_adj:0 "ammonia"
+  
+ ###Lifeless Ash World
+ pc_ll_ash:0 "Lifeless Ash World"
+ pc_ll_ash_desc:0 "Rocky world with a nitrogen-carbon dioxide-sulfur dioxide atmosphere. Although this young world has cooled from its molten past it still has considerable seismic and volcanic activity. The atmosphere on this planet is toxic to most creatures. This planet is habitable for lifeforms adapted to breathing such an atmosphere, but lacks any forms of life, either because it used to be a barren wasteland that was made habitable, or because life was forcefully removed from it."
+ trait_pc_ll_ash_preference:0 "Ash Preference"
+ trait_pc_ll_ash_preference_desc:1 "$trait_pc_arctic_preference_desc$"
+ mod_pc_ll_ash_habitability:1 "Ash Habitability"
+ pc_ll_ash_habitability:0 "n/a"
+ pc_ll_ash_adj:0 "ash"
+ 
+ ###Lifeless Sulfur Planet
+ pc_ll_sulfur:0 "Lifeless Sulfur World"
+ pc_ll_sulfur_desc:0 "Rocky world with a nitrogen-sulfur atmosphere. This planet's variable gas is a mix of hydrogen sulfide and sulfur dioxide. High amounts of widely spread out volcanic activity causes the surface to be covered in thousands of sulfur hot springs. This planet is habitable for lifeforms adapted to breathing such an atmosphere, but lacks any forms of life, either because it used to be a barren wasteland that was made habitable, or because life was forcefully removed from it."
+ trait_pc_ll_sulfur_preference:0 "Lifeless Sulfur Preference"
+ trait_pc_ll_sulfur_preference_desc:0 "$trait_pc_arctic_preference_desc$" 
+ mod_pc_ll_sulfur_habitability:0 "Lifeless Sulfur Habitability"
+ pc_ll_sulfur_habitability:0 "n/a"
+ pc_ll_sulfur_adj:0 "sulfur"
+ 
+ ###Lifeless Ocean World
+ pc_ll_ocean:0 "Lifeless Ocean World"
+ pc_ll_ocean_desc:0 "A rocky world with a nitrogen-oxygen atmosphere and a significant hydrosphere. Over 90% of the world's surface is covered in oceans. This planet lacks any forms of life, either because it used to be a barren wasteland that was made habitable, or because life was forcefully removed from it."
+ trait_pc_ll_ocean_preference:0 "Lifeless Ocean Preference"
+ trait_pc_ll_ocean_preference_desc:0 "$trait_pc_arctic_preference_desc$" 
+ mod_pc_ll_ocean_habitability:0 "Lifeless Ocean Habitability"
+ pc_ll_ocean_habitability:0 "n/a"
+ pc_ll_ocean_adj:0 "oceanic"
+ 
+ ###Lifeless Rogue World
+ pc_ll_rogue:0 "Lifeless Rogue World"
+ pc_ll_rogue_desc:0 "Rocky, frozen world with a nitrogen-oxygen atmosphere. This world is an extrasolar capture, having spent eons travelling through void until it ended up in this system. Extreme levels of geothermal activity where the energy reaches the surface are potential area where life could take hold. This activity also causes a much denser atmosphere that traps in what heat this planet produces. This planet lacks any forms of life, either because it used to be a barren wasteland that was made habitable, or because life was forcefully removed from it."
+ trait_pc_ll_rogue_preference:0 "Lifeless Rogue Preference"
+ trait_pc_ll_rogue_preference_desc:0 "$trait_pc_arctic_preference_desc$" 
+ mod_pc_ll_rogue_habitability:0 "Lifeless Rogue Habitability"
+ pc_ll_rogue_habitability:0 "n/a"
+ pc_ll_rogue_adj:0 "rogue"
+ 
+ ###Lifless Tidally Locked
+ pc_ll_tidallylocked:0 "Lifless Tidally Locked World"
+ pc_ll_tidallylocked_desc:0 "A rocky world with a nitrogen-oxygen atmosphere. With the planet tidally locked to its sun, one side of the planet is in constant daylight, while the other is in constant night. A thin habitable zone exists in the twilight region. Constant sunlight and wind make for ideal food and energy generation. However, this planet lacks any forms of life, either because it used to be a barren wasteland that was made habitable, or because life was forcefully removed from it."
+ trait_pc_ll_tidallylocked_preference:0 "#Lifless Tidally Locked Preference"
+ trait_pc_ll_tidallylocked_preference_desc:0 "$trait_pc_arctic_preference_desc$" 
+ mod_pc_ll_tidallylocked_habitability:0 "#Lifless Tidally Locked Habitability"
+ pc_ll_tidallylocked_habitability:0 "n/a"
+ pc_ll_tidallylocked_adj:0 "tidally locked"
+ 
+ ###Cold Lifless Tidally Locked
+ pc_ll_tidallylocked_cold:0 "Cold Lifless Tidally Locked World"
+ pc_ll_tidallylocked_cold_desc:0 "Rocky, frozen wet world with a nitrogen-oxygen atmosphere. Tidally-locked to its parent star, the dayside side is a thawed ocean constantly bombarded by sunlight, while it's nightside consists of frozen glaciers. Strong winds and powerful currents meet at the edge of these two distinct sides. This planet lacks any forms of life, either because it used to be a barren wasteland that was made habitable, or because life was forcefully removed from it."
+ trait_pc_ll_tidallylocked_cold_preference:0 "Cold Lifless Tidally Locked Preference"
+ trait_pc_ll_tidallylocked_cold_preference_desc:0 "$trait_pc_arctic_preference_desc$" 
+ mod_pc_ll_tidallylocked_cold_habitability:0 "Cold Lifless Tidally Locked Habitability"
+ pc_ll_tidallylocked_cold_habitability:0 "n/a"
+ pc_ll_tidallylocked_cold_adj:0 "frozen"
+ 
+ ###Lifeless world modifiers
+ 
+ lifeless_methane:0 "Lifeless Methane World"
+ lifeless_methane_desc:0 "This world has a very hazy atmosphere of nitrogen-methane. Mountains of water ice and liquid methane dominate the landscape. The world is habitable for those suited for methane based life that thrives in the chilling cold of such a world. Since it lacks any natural life, food is harder to grow, but mining operations can be done without having to worry about a biosphere getting in the way."
+ 
+ lifeless_ammonia:0 "Lifeless Ammonia World"
+lifeless_ammonia_desc:0 "Rocky world with a nitrogen-ammonia atmosphere. This planet's variable gas is ammonia. With much higher atmospheric pressure than most terrestrial planets, the ammonia hydrosphere is stable. This planet is habitable for Ammonia breathing lifeforms."
+
+ lifeless_ash:0 "Lifeless Ash World"
+ lifeless_ash_desc:0 "Rocky world with a nitrogen-carbon dioxide-sulfur dioxide atmosphere. Although this young world has cooled from its molten past it still has considerable seismic and volcanic activity. The atmosphere on this planet is toxic to most creatures."
+ 
+ lifeless_sulfur:0 "Lifeless Sulfur World"
+lifeless_sulfur_desc:0 "Rocky world with a nitrogen-sulfur atmosphere. This planet's variable gas is a mix of hydrogen sulfide and sulfur dioxide. High amounts of widely spread out volcanic activity causes the surface to be covered in thousands of sulfur hot springs."
+
+ lifeless_ocean:0 "Lifeless Ocean World"
+lifeless_ocean_desc:0 "A rocky world with a nitrogen-oxygen atmosphere and a significant hydrosphere. Over 90% of the world's surface is covered in oceans."
+
+ lifeless_rogue:0 "Lifeless Rogue World"
+lifeless_rogue_desc:0 "Rocky, frozen world with a nitrogen-oxygen atmosphere. This world is an extrasolar capture, having spent eons travelling through void until it ended up in this system. Extreme levels of geothermal activity where the energy reaches the surface are potential area where life could take hold. This activity also causes a much denser atmosphere that traps in what heat this planet produces."
+
+ lifeless_tidallylocked:0 "Lifless Tidally Locked World"
+lifeless_tidallylocked_desc:0 "A rocky world with a nitrogen-oxygen atmosphere. With the planet tidally locked to its sun, one side of the planet is in constant daylight, while the other is in constant night. A thin habitable zone exists in the twilight region. Constant sunlight and wind make for ideal energy generation. However, this planet lacks any forms of life, which will hinder farming efforts."
+ 
+ lifeless_tidallylocked_cold:0 "Cold Lifless Tidally Locked World"
+lifeless_tidallylocked_cold_desc:0 "Rocky, frozen wet world with a nitrogen-oxygen atmosphere. Tidally-locked to its parent star, the dayside side is a thawed ocean constantly bombarded by sunlight, while it's nightside consists of frozen glaciers. Strong winds and powerful currents meet at the edge of these two distinct sides."
+
+######################################
+#Exotic Terraforming Megastructures
+######################################
+
+#Methane Terraforming Megastructures
+
+    ######################################################################################
+    ### Terraform Toxic to Methane #####################
+    ######################################################################################
+    #Name
+    name_terraform_toxic_to_methane:0 "Methane: Atmospheric Purifier"
+    allow_terraform_toxic_to_methane:0 "§HUnlocks Megastructure:§! $name_terraform_toxic_to_methane$"
+    desc_terraform_toxic_to_methane:0 "A megastructure capable of transforming a toxic planet into a habitable methane world."
+
+    terraform_toxic_to_methane_0:0 "$name_terraform_toxic_to_methane$ Construction Site"
+    terraform_toxic_to_methane_0_DESC:0 "The construction site for a future $name_terraform_toxic_to_methane$, housing the necessary equipment to begin constructing the megastructure. It'll eventually be able to transform a toxic planet into a habitable, albeit lifeless world."
+    terraform_toxic_to_methane_0_MEGASTRUCTURE_DETAILS:0 "$giga_list_category_kilostructure$ - $giga_list_category_terraforming$\nConverts a §YToxic World§! into a §YLifeless Methane World§!\n§LThe Atmospheric Purifier is tasked with the painstaking process of transforming a toxic atmosphere into a nitrogen-methane mixture by purging or transforming toxic compounds.§!" #gigalistentry ATMOSPHERIC PURIFIER
+
+    terraform_toxic_to_methane_1:0 "$name_terraform_toxic_to_methane$ Processing Rings"
+    terraform_toxic_to_methane_1_DESC:0 "The massive rings stretching around the toxic world house large facilities capable of chemically reprocessing a planet's atmosphere, converting once-toxic gases into a nitrogen-methane mixture."
+
+    terraform_toxic_to_methane_2:0 "$name_terraform_toxic_to_methane$ Macromanipulators"
+    terraform_toxic_to_methane_2_DESC:0 "This $name_terraform_toxic_to_methane$ has been equipped with two massive pumps, capable of manipulating a planet's atmosphere, making it more or less dense, and redistributing its constituent gasses."
+
+    terraform_toxic_to_methane_3:0 "Begin Terraforming"
+    terraform_toxic_to_methane_3_DESC:0 "Order the Atmospheric Manipulator's crew to begin transforming this planet's atmosphere and hydrosphere into something that can be inhabited by nitrogen-methane breathing lifeforms."
+
+    ######################################################################################
+    ### Terraform Barren to Methane #####################
+    ######################################################################################
+    #Name
+    name_terraform_barren_to_methane:0 "Methane: Dynamic Core Ignitor"
+    allow_terraform_barren_to_methane:0 "§HUnlocks Megastructure:§! $name_terraform_barren_to_methane$"
+    desc_terraform_barren_to_methane:0 "A large construct built around a desolate world to make it more habitable."
+
+    terraform_barren_to_methane_0:0 "$name_terraform_barren_to_methane$ Construction Site"
+    terraform_barren_to_methane_0_DESC:0 "The construction site for a future $name_terraform_barren_to_methane$. It contains the large amount of personnel and machinery necessary to construct a device capable of bringing life to a desolate world."
+    terraform_barren_to_methane_0_MEGASTRUCTURE_DETAILS:0 "$giga_list_category_kilostructure$ - $giga_list_category_terraforming$\nConverts a §YBarren World§! or §YFrozen World§! into a §YLifeless Methane World§!\n§LThis planet-circling construct re-ignites a dead planet's magnetic field and implements a methane-based hydrosphere, rendering desolate worlds more habitable for nitrogen-methane breathing lifeforms.§!" #gigalistentry DYNAMIC CORE IGNITOR
+
+    terraform_barren_to_methane_1:0 "$name_terraform_barren_to_methane$ Hypercoils"
+    terraform_barren_to_methane_1_DESC:0 "These two massive geomagnetic coils serve the purpose of remotely melting the planet's core and effectively re-activate this world's magnetic field, in order to make this planet able to hold a thick atmosphere."
+
+    terraform_barren_to_methane_2:0 "$name_terraform_barren_to_methane$"
+    terraform_barren_to_methane_2_DESC:0 "The $name_terraform_barren_to_methane$ is now equipped with a large array of atmospheric manipulation devices, which can seed a nitrogen-methane atmosphere across the surface of this world. All there is left to do now is begin the process."
+
+    terraform_barren_to_methane_3:0 "Begin Terraforming"
+    terraform_barren_to_methane_3_DESC:0 "Order the $name_terraform_barren_to_methane$'s crew to begin the large-scale process of re-activating this planet's magnetic field and subsequently implement a nitrogen-methane atmosphere and a stable methane-based hydrosphere."
+
+    terraform_barren_to_methane_2_disabled:0 "Ancient $name_terraform_barren_to_methane$"
+    terraform_barren_to_methane_2_disabled_DESC:0 "This ancient $name_terraform_barren_to_methane$ was constructed eons ago by an unknown civilization. It runs off some antique power source, and seems to be operational."
+    terraform_barren_to_methane_2_disabled_MEGASTRUCTURE_DETAILS:0 "$terraform_barren_2_disabled_DESC$"
+
+    terraform_barren_to_methane_3_restored:0 "Begin Terraforming"
+    terraform_barren_to_methane_3_restored_DESC:0 "Order this ancient megastructure to re-start the terraforming process on the planet below."
+
+    #########################################
+    ### Terraform Molten to Methane #########
+    #########################################
+    #Name
+    name_terraform_molten_to_methane:0 "Methane: Geothermal Stabilizer"
+    allow_terraform_molten_to_methane:0 "§HUnlocks Megastructure:§! $name_terraform_molten_to_methane$"
+    desc_terraform_molten_to_methane:0 "A large construct built around a desolate world to make it more habitable for methane breathing forms of life."
+
+    terraform_molten_to_methane_0:0 "$name_terraform_molten_to_methane$ Construction Site"
+    terraform_molten_to_methane_0_DESC:0 "The construction site for a future $name_terraform_molten_to_methane$ to be built around this planet, which will cool down and stabilize this world's harsh surface to make it habitable."
+    terraform_molten_to_methane_0_MEGASTRUCTURE_DETAILS:0 "$giga_list_category_kilostructure$ - $giga_list_category_terraforming$\nConverts a §YMolten World§! into a §YLifeless Methane World§!\n§LThe Geothermal Stabilizer can suture and repair a Molten World's unstable tectonics as well as introduce a nitrogen-methane atmosphere, rendering it somewhat habitable to methane breathing forms of life but lifeless.§!" #gigalistentry GEOTHERMAL STABILIZER
+
+    terraform_molten_to_methane_1:0 "$name_terraform_molten_to_methane$ Orbital Facilities"
+    terraform_molten_to_methane_1_DESC:0 "This large equatorial ring houses the necessary machinery to fuel and power the massive orbital coolers that will be used to remotely alter the Molten World's surface conditions."
+
+    terraform_molten_to_methane_2:0 "$name_terraform_molten_to_methane$"
+    terraform_molten_to_methane_2_DESC:0 "A complete $name_terraform_molten_to_methane$, equipped with a set of large orbital coolers and laser drills to cool and stabilize the planet's surface. All there is left to do now is begin the actual terraforming process."
+
+    terraform_molten_to_methane_3:0 "Begin Terraforming"
+    terraform_molten_to_methane_3_DESC:0 "Order the $name_terraform_molten_to_methane$'s crew to begin transforming this planet's molten surface and tectonic makeup into something that can be inhabited by methane breathing lifeforms."
+    
+ #Ash Terraforming Megastructures
+
+    ######################################################################################
+    ### Terraform Toxic to Ash #####################
+    ######################################################################################
+    #Name
+    name_terraform_toxic_to_ash:0 "Ash: Atmospheric Purifier"
+    allow_terraform_toxic_to_ash:0 "§HUnlocks Megastructure:§! $name_terraform_toxic_to_ash$"
+    desc_terraform_toxic_to_ash:0 "A megastructure capable of transforming a toxic planet into a habitable ash world."
+
+    terraform_toxic_to_ash_0:0 "$name_terraform_toxic_to_ash$ Construction Site"
+    terraform_toxic_to_ash_0_DESC:0 "The construction site for a future $name_terraform_toxic_to_ash$, housing the necessary equipment to begin constructing the megastructure. It'll eventually be able to transform a toxic planet into a habitable, albeit lifeless ash world."
+    terraform_toxic_to_ash_0_MEGASTRUCTURE_DETAILS:0 "$giga_list_category_kilostructure$ - $giga_list_category_terraforming$\nConverts a §YToxic World§! into a §YLifeless Ash World§!\n§LThe Atmospheric Purifier is tasked with the painstaking process of transforming a toxic atmosphere into a nitrogen-carbon dioxide-sulfur dioxide mixture by purging or transforming toxic compounds.§!" #gigalistentry ATMOSPHERIC PURIFIER
+
+    terraform_toxic_to_ash_1:0 "$name_terraform_toxic_to_ash$ Processing Rings"
+    terraform_toxic_to_ash_1_DESC:0 "The massive rings stretching around the toxic world house large facilities capable of chemically reprocessing a planet's atmosphere, converting once-toxic gases into a nitrogen-carbon dioxide-sulfur dioxide mixture."
+
+    terraform_toxic_to_ash_2:0 "$name_terraform_toxic_to_ash$ Macromanipulators"
+    terraform_toxic_to_ash_2_DESC:0 "This $name_terraform_toxic_to_ash$ has been equipped with two massive pumps, capable of manipulating a planet's atmosphere, making it more or less dense, and redistributing its constituent gasses."
+
+    terraform_toxic_to_ash_3:0 "Begin Terraforming"
+    terraform_toxic_to_ash_3_DESC:0 "Order the Atmospheric Manipulator's crew to begin transforming this planet's atmosphere and hydrosphere into something that can be inhabited by nitrogen-carbon dioxide-sulfur dioxide breathing lifeforms."
+
+    #################################################
+    ### Terraform Barren to Ash #####################
+    #################################################
+    #Name
+    name_terraform_barren_to_ash:0 "Ash: Dynamic Core Ignitor"
+    allow_terraform_barren_to_ash:0 "§HUnlocks Megastructure:§! $name_terraform_barren_to_ash$"
+    desc_terraform_barren_to_ash:0 "A large construct built around a desolate world to make it more habitable."
+
+    terraform_barren_to_ash_0:0 "$name_terraform_barren_to_ash$ Construction Site"
+    terraform_barren_to_ash_0_DESC:0 "The construction site for a future $name_terraform_barren_to_ash$. It contains the large amount of personnel and machinery necessary to construct a device capable of bringing life to a desolate world."
+    terraform_barren_to_ash_0_MEGASTRUCTURE_DETAILS:0 "$giga_list_category_kilostructure$ - $giga_list_category_terraforming$\nConverts a §YBarren World§! or §YFrozen World§! into a §YLifeless Ash World§!\n§LThis planet-circling construct re-ignites a dead planet's magnetic field and implements a hydrosphere, rendering desolate worlds more habitable for nitrogen-carbon dioxide-sulfur dioxide breathing lifeforms.§!" #gigalistentry DYNAMIC CORE IGNITOR
+
+    terraform_barren_to_ash_1:0 "$name_terraform_barren_to_ash$ Hypercoils"
+    terraform_barren_to_ash_1_DESC:0 "These two massive geomagnetic coils serve the purpose of remotely melting the planet's core and effectively re-activate this world's magnetic field, in order to make this planet able to hold a thick atmosphere."
+
+    terraform_barren_to_ash_2:0 "$name_terraform_barren_to_ash$"
+    terraform_barren_to_ash_2_DESC:0 "The $name_terraform_barren_to_ash$ is now equipped with a large array of atmospheric manipulation devices, which can seed a nitrogen-carbon dioxide-sulfur dioxide atmosphere across the surface of this world. All there is left to do now is begin the process."
+
+    terraform_barren_to_ash_3:0 "Begin Terraforming"
+    terraform_barren_to_ash_3_DESC:0 "Order the $name_terraform_barren_to_ash$'s crew to begin the large-scale process of re-activating this planet's magnetic field and subsequently implement a nitrogen-carbon dioxide-sulfur dioxide atmosphere and a stable hydrosphere."
+
+    terraform_barren_to_ash_2_disabled:0 "Ancient $name_terraform_barren_to_ash$"
+    terraform_barren_to_ash_2_disabled_DESC:0 "This ancient $name_terraform_barren_to_ash$ was constructed eons ago by an unknown civilization. It runs off some antique power source, and seems to be operational."
+    terraform_barren_to_ash_2_disabled_MEGASTRUCTURE_DETAILS:0 "$terraform_barren_2_disabled_DESC$"
+
+    terraform_barren_to_ash_3_restored:0 "Begin Terraforming"
+    terraform_barren_to_ash_3_restored_DESC:0 "Order this ancient megastructure to re-start the terraforming process on the planet below."
+
+    #########################################
+    ### Terraform Molten to Ash ####################
+    #########################################
+    #Name
+    name_terraform_molten_to_ash:0 "Ash: Geothermal Stabilizer"
+    allow_terraform_molten_to_ash:0 "§HUnlocks Megastructure:§! $name_terraform_molten_to_ash$"
+    desc_terraform_molten_to_ash:0 "A large construct built around a desolate world to make it more habitable for ash breathing forms of life."
+
+    terraform_molten_to_ash_0:0 "$name_terraform_molten_to_ash$ Construction Site"
+    terraform_molten_to_ash_0_DESC:0 "The construction site for a future $name_terraform_molten_to_ash$ to be built around this planet, which will cool down and stabilize this world's harsh surface to make it habitable."
+    terraform_molten_to_ash_0_MEGASTRUCTURE_DETAILS:0 "$giga_list_category_kilostructure$ - $giga_list_category_terraforming$\nConverts a §YMolten World§! into a §YLifeless Ash World§!\n§LThe Geothermal Stabilizer can suture and repair a Molten World's unstable tectonics as well as introduce a nitrogen-carbon dioxide-sulfur dioxide atmosphere, rendering it somewhat habitable to ash breathing forms of life but lifeless.§!" #gigalistentry GEOTHERMAL STABILIZER
+
+    terraform_molten_to_ash_1:0 "$name_terraform_molten_to_ash$ Orbital Facilities"
+    terraform_molten_to_ash_1_DESC:0 "This large equatorial ring houses the necessary machinery to fuel and power the massive orbital coolers that will be used to remotely alter the Molten World's surface conditions."
+
+    terraform_molten_to_ash_2:0 "$name_terraform_molten_to_ash$"
+    terraform_molten_to_ash_2_DESC:0 "A complete $name_terraform_molten_to_ash$, equipped with a set of large orbital coolers and laser drills to cool and stabilize the planet's surface. All there is left to do now is begin the actual terraforming process."
+
+    terraform_molten_to_ash_3:0 "Begin Terraforming"
+    terraform_molten_to_ash_3_DESC:0 "Order the $name_terraform_molten_to_ash$'s crew to begin transforming this planet's molten surface and tectonic makeup into something that can be inhabited by ash breathing forms of life."
+    
+ #Ammonia Terraforming Megastructures
+
+    ####################################################
+    ### Terraform Toxic to Ammonia #####################
+    ####################################################
+    #Name
+    name_terraform_toxic_to_ammonia:0 "Ammonia: Atmospheric Purifier"
+    allow_terraform_toxic_to_ammonia:0 "§HUnlocks Megastructure:§! $name_terraform_toxic_to_ammonia$"
+    desc_terraform_toxic_to_ammonia:0 "A megastructure capable of transforming a toxic planet into a habitable ammonia world."
+
+    terraform_toxic_to_ammonia_0:0 "$name_terraform_toxic_to_ammonia$ Construction Site"
+    terraform_toxic_to_ammonia_0_DESC:0 "The construction site for a future $name_terraform_toxic_to_ammonia$, housing the necessary equipment to begin constructing the megastructure. It'll eventually be able to transform a toxic planet into a habitable, albeit lifeless ammonia world."
+    terraform_toxic_to_ammonia_0_MEGASTRUCTURE_DETAILS:0 "$giga_list_category_kilostructure$ - $giga_list_category_terraforming$\nConverts a §YToxic World§! into a §YLifeless Ammonia World§!\n§LThe Atmospheric Purifier is tasked with the painstaking process of transforming a toxic atmosphere into a nitrogen-ammonia mixture by purging or transforming toxic compounds.§!" #gigalistentry ATMOSPHERIC PURIFIER
+
+    terraform_toxic_to_ammonia_1:0 "$name_terraform_toxic_to_ammonia$ Processing Rings"
+    terraform_toxic_to_ammonia_1_DESC:0 "The massive rings stretching around the toxic world house large facilities capable of chemically reprocessing a planet's atmosphere, converting once-toxic gases into a nitrogen-ammonia mixture."
+
+    terraform_toxic_to_ammonia_2:0 "$name_terraform_toxic_to_ammonia$ Macromanipulators"
+    terraform_toxic_to_ammonia_2_DESC:0 "This $name_terraform_toxic_to_ammonia$ has been equipped with two massive pumps, capable of manipulating a planet's atmosphere, making it more or less dense, and redistributing its constituent gasses."
+
+    terraform_toxic_to_ammonia_3:0 "Begin Terraforming"
+    terraform_toxic_to_ammonia_3_DESC:0 "Order the Atmospheric Manipulator's crew to begin transforming this planet's atmosphere and hydrosphere into something that can be inhabited by nitrogen-ammonia breathing lifeforms."
+
+    ######################################################################################
+    ### Terraform Barren to Ammonia #####################
+    ######################################################################################
+    #Name
+    name_terraform_barren_to_ammonia:0 "Ammonia: Dynamic Core Ignitor"
+    allow_terraform_barren_to_ammonia:0 "§HUnlocks Megastructure:§! $name_terraform_barren_to_ammonia$"
+    desc_terraform_barren_to_ammonia:0 "A large construct built around a desolate world to make it more habitable."
+
+    terraform_barren_to_ammonia_0:0 "$name_terraform_barren_to_ammonia$ Construction Site"
+    terraform_barren_to_ammonia_0_DESC:0 "The construction site for a future $name_terraform_barren_to_ammonia$. It contains the large amount of personnel and machinery necessary to construct a device capable of bringing life to a desolate world."
+    terraform_barren_to_ammonia_0_MEGASTRUCTURE_DETAILS:0 "$giga_list_category_kilostructure$ - $giga_list_category_terraforming$\nConverts a §YBarren World§! or §YFrozen World§! into a §YLifeless Ammonia World§!\n§LThis planet-circling construct re-ignites a dead planet's magnetic field and implements an ammonia-based hydrosphere, rendering desolate worlds more habitable for nitrogen-ammonia breathing lifeforms.§!" #gigalistentry DYNAMIC CORE IGNITOR
+
+    terraform_barren_to_ammonia_1:0 "$name_terraform_barren_to_ammonia$ Hypercoils"
+    terraform_barren_to_ammonia_1_DESC:0 "These two massive geomagnetic coils serve the purpose of remotely melting the planet's core and effectively re-activate this world's magnetic field, in order to make this planet able to hold a thick atmosphere."
+
+    terraform_barren_to_ammonia_2:0 "$name_terraform_barren_to_ammonia$"
+    terraform_barren_to_ammonia_2_DESC:0 "The $name_terraform_barren_to_ammonia$ is now equipped with a large array of atmospheric manipulation devices, which can seed a nitrogen-ammonia atmosphere across the surface of this world. All there is left to do now is begin the process."
+
+    terraform_barren_to_ammonia_3:0 "Begin Terraforming"
+    terraform_barren_to_ammonia_3_DESC:0 "Order the $name_terraform_barren_to_ammonia$'s crew to begin the large-scale process of re-activating this planet's magnetic field and subsequently implement a nitrogen-ammonia atmosphere and a stable ammonia-based hydrosphere."
+
+    terraform_barren_to_ammonia_2_disabled:0 "Ancient $name_terraform_barren_to_ammonia$"
+    terraform_barren_to_ammonia_2_disabled_DESC:0 "This ancient $name_terraform_barren_to_ammonia$ was constructed eons ago by an unknown civilization. It runs off some antique power source, and seems to be operational."
+    terraform_barren_to_ammonia_2_disabled_MEGASTRUCTURE_DETAILS:0 "$terraform_barren_2_disabled_DESC$"
+
+    terraform_barren_to_ammonia_3_restored:0 "Begin Terraforming"
+    terraform_barren_to_ammonia_3_restored_DESC:0 "Order this ancient megastructure to re-start the terraforming process on the planet below."
+
+    #########################################
+    ### Terraform Molten to Ammonia #########
+    #########################################
+    #Name
+    name_terraform_molten_to_ammonia:0 "Ammonia: Geothermal Stabilizer"
+    allow_terraform_molten_to_ammonia:0 "§HUnlocks Megastructure:§! $name_terraform_molten_to_ammonia$"
+    desc_terraform_molten_to_ammonia:0 "A large construct built around a desolate world to make it more habitable for ammonia breathing forms of life."
+
+    terraform_molten_to_ammonia_0:0 "$name_terraform_molten_to_ammonia$ Construction Site"
+    terraform_molten_to_ammonia_0_DESC:0 "The construction site for a future $name_terraform_molten_to_ammonia$ to be built around this planet, which will cool down and stabilize this world's harsh surface to make it habitable."
+    terraform_molten_to_ammonia_0_MEGASTRUCTURE_DETAILS:0 "$giga_list_category_kilostructure$ - $giga_list_category_terraforming$\nConverts a §YMolten World§! into a §YLifeless Ammonia World§!\n§LThe Geothermal Stabilizer can suture and repair a Molten World's unstable tectonics as well as introduce a nitrogen-ammonia atmosphere, rendering it somewhat habitable to ammonia breathing forms of life but lifeless.§!" #gigalistentry GEOTHERMAL STABILIZER
+
+    terraform_molten_to_ammonia_1:0 "$name_terraform_molten_to_ammonia$ Orbital Facilities"
+    terraform_molten_to_ammonia_1_DESC:0 "This large equatorial ring houses the necessary machinery to fuel and power the massive orbital coolers that will be used to remotely alter the Molten World's surface conditions."
+
+    terraform_molten_to_ammonia_2:0 "$name_terraform_molten_to_ammonia$"
+    terraform_molten_to_ammonia_2_DESC:0 "A complete $name_terraform_molten_to_ammonia$, equipped with a set of large orbital coolers and laser drills to cool and stabilize the planet's surface. All there is left to do now is begin the actual terraforming process."
+
+    terraform_molten_to_ammonia_3:0 "Begin Terraforming"
+    terraform_molten_to_ammonia_3_DESC:0 "Order the $name_terraform_molten_to_ammonia$'s crew to begin transforming this planet's molten surface and tectonic makeup into something that can be inhabited by ammonia breathing forms of life."
+    
+ #Sulfur Terraforming Megastructures
+
+    ##################################################
+    ### Terraform Toxic to Sulfur #####################
+    ###################################################
+    #Name
+    name_terraform_toxic_to_sulfur:0 "Sulfur: Atmospheric Purifier"
+    allow_terraform_toxic_to_sulfur:0 "§HUnlocks Megastructure:§! $name_terraform_toxic_to_sulfur$"
+    desc_terraform_toxic_to_sulfur:0 "A megastructure capable of transforming a toxic planet into a habitable sulfur world."
+
+    terraform_toxic_to_sulfur_0:0 "$name_terraform_toxic_to_sulfur$ Construction Site"
+    terraform_toxic_to_sulfur_0_DESC:0 "The construction site for a future $name_terraform_toxic_to_sulfur$, housing the necessary equipment to begin constructing the megastructure. It'll eventually be able to transform a toxic planet into a habitable, albeit lifeless sulfur world."
+    terraform_toxic_to_sulfur_0_MEGASTRUCTURE_DETAILS:0 "$giga_list_category_kilostructure$ - $giga_list_category_terraforming$\nConverts a §YToxic World§! into a §YLifeless Sulfur World§!\n§LThe Atmospheric Purifier is tasked with the painstaking process of transforming a toxic atmosphere into a nitrogen-sulfur mixture by purging or transforming toxic compounds.§!" #gigalistentry ATMOSPHERIC PURIFIER
+
+    terraform_toxic_to_sulfur_1:0 "$name_terraform_toxic_to_sulfur$ Processing Rings"
+    terraform_toxic_to_sulfur_1_DESC:0 "The massive rings stretching around the toxic world house large facilities capable of chemically reprocessing a planet's atmosphere, converting once-toxic gases into a nitrogen-sulfur mixture."
+
+    terraform_toxic_to_sulfur_2:0 "$name_terraform_toxic_to_sulfur$ Macromanipulators"
+    terraform_toxic_to_sulfur_2_DESC:0 "This $name_terraform_toxic_to_sulfur$ has been equipped with two massive pumps, capable of manipulating a planet's atmosphere, making it more or less dense, and redistributing its constituent gasses."
+
+    terraform_toxic_to_sulfur_3:0 "Begin Terraforming"
+    terraform_toxic_to_sulfur_3_DESC:0 "Order the Atmospheric Manipulator's crew to begin transforming this planet's atmosphere and hydrosphere into something that can be inhabited by nitrogen-sulfur breathing lifeforms."
+
+    ######################################################################################
+    ### Terraform Barren to Sulfur #####################
+    ######################################################################################
+    #Name
+    name_terraform_barren_to_sulfur:0 "Sulfur: Dynamic Core Ignitor"
+    allow_terraform_barren_to_sulfur:0 "§HUnlocks Megastructure:§! $name_terraform_barren_to_sulfur$"
+    desc_terraform_barren_to_sulfur:0 "A large construct built around a desolate world to make it more habitable."
+
+    terraform_barren_to_sulfur_0:0 "$name_terraform_barren_to_sulfur$ Construction Site"
+    terraform_barren_to_sulfur_0_DESC:0 "The construction site for a future $name_terraform_barren_to_sulfur$. It contains the large amount of personnel and machinery necessary to construct a device capable of bringing life to a desolate world."
+    terraform_barren_to_sulfur_0_MEGASTRUCTURE_DETAILS:0 "$giga_list_category_kilostructure$ - $giga_list_category_terraforming$\nConverts a §YBarren World§! or §YFrozen World§! into a §YLifeless Sulfur World§!\n§LThis planet-circling construct re-ignites a dead planet's magnetic field and implements a water/sulfic acid-based hydrosphere, rendering desolate worlds more habitable for nitrogen-sulfur breathing lifeforms.§!" #gigalistentry DYNAMIC CORE IGNITOR
+
+    terraform_barren_to_sulfur_1:0 "$name_terraform_barren_to_sulfur$ Hypercoils"
+    terraform_barren_to_sulfur_1_DESC:0 "These two massive geomagnetic coils serve the purpose of remotely melting the planet's core and effectively re-activate this world's magnetic field, in order to make this planet able to hold a thick atmosphere."
+
+    terraform_barren_to_sulfur_2:0 "$name_terraform_barren_to_sulfur$"
+    terraform_barren_to_sulfur_2_DESC:0 "The $name_terraform_barren_to_sulfur$ is now equipped with a large array of atmospheric manipulation devices, which can seed a nitrogen-sulfur atmosphere across the surface of this world. All there is left to do now is begin the process."
+
+    terraform_barren_to_sulfur_3:0 "Begin Terraforming"
+    terraform_barren_to_sulfur_3_DESC:0 "Order the $name_terraform_barren_to_sulfur$'s crew to begin the large-scale process of re-activating this planet's magnetic field and subsequently implement a nitrogen-sulfur atmosphere and a stable water/sulfuric acid-based hydrosphere."
+
+    terraform_barren_to_sulfur_2_disabled:0 "Ancient $name_terraform_barren_to_sulfur$"
+    terraform_barren_to_sulfur_2_disabled_DESC:0 "This ancient $name_terraform_barren_to_sulfur$ was constructed eons ago by an unknown civilization. It runs off some antique power source, and seems to be operational."
+    terraform_barren_to_sulfur_2_disabled_MEGASTRUCTURE_DETAILS:0 "$terraform_barren_2_disabled_DESC$"
+
+    terraform_barren_to_sulfur_3_restored:0 "Begin Terraforming"
+    terraform_barren_to_sulfur_3_restored_DESC:0 "Order this ancient megastructure to re-start the terraforming process on the planet below."
+
+    #########################################
+    ### Terraform Molten to Sulfur ##########
+    #########################################
+    #Name
+    name_terraform_molten_to_sulfur:0 "Sulfur: Geothermal Stabilizer"
+    allow_terraform_molten_to_sulfur:0 "§HUnlocks Megastructure:§! $name_terraform_molten_to_sulfur$"
+    desc_terraform_molten_to_sulfur:0 "A large construct built around a desolate world to make it more habitable for sulfur breathing forms of life."
+
+    terraform_molten_to_sulfur_0:0 "$name_terraform_molten_to_sulfur$ Construction Site"
+    terraform_molten_to_sulfur_0_DESC:0 "The construction site for a future $name_terraform_molten_to_sulfur$ to be built around this planet, which will cool down and stabilize this world's harsh surface to make it habitable."
+    terraform_molten_to_sulfur_0_MEGASTRUCTURE_DETAILS:0 "$giga_list_category_kilostructure$ - $giga_list_category_terraforming$\nConverts a §YMolten World§! into a §YLifeless Sulfur World§!\n§LThe Geothermal Stabilizer can suture and repair a Molten World's unstable tectonics as well as introduce a nitrogen-sulfur atmosphere, rendering it somewhat habitable to sulfur breathing forms of life but lifeless.§!" #gigalistentry GEOTHERMAL STABILIZER
+
+    terraform_molten_to_sulfur_1:0 "$name_terraform_molten_to_sulfur$ Orbital Facilities"
+    terraform_molten_to_sulfur_1_DESC:0 "This large equatorial ring houses the necessary machinery to fuel and power the massive orbital coolers that will be used to remotely alter the Molten World's surface conditions."
+
+    terraform_molten_to_sulfur_2:0 "$name_terraform_molten_to_sulfur$"
+    terraform_molten_to_sulfur_2_DESC:0 "A complete $name_terraform_molten_to_sulfur$, equipped with a set of large orbital coolers and laser drills to cool and stabilize the planet's surface. All there is left to do now is begin the actual terraforming process."
+
+    terraform_molten_to_sulfur_3:0 "Begin Terraforming"
+    terraform_molten_to_sulfur_3_DESC:0 "Order the $name_terraform_molten_to_sulfur$'s crew to begin transforming this planet's molten surface and tectonic makeup into something that can be inhabited by sulfur breathing forms of life."
+
+######################################
+#Rare Terraforming Megastructures
+######################################
+    
+ #Ocean Terraforming Megastructures
+ #Prepping for Aquatics
+
+    ######################################################################################
+    ### Terraform Toxic to Ocean #####################
+    ######################################################################################
+    #Name
+    name_terraform_toxic_to_ocean:0 "Ocean: Atmospheric Purifier"
+    allow_terraform_toxic_to_ocean:0 "§HUnlocks Megastructure:§! $name_terraform_toxic_to_ocean$"
+    desc_terraform_toxic_to_ocean:0 "A megastructure capable of transforming a toxic planet into a habitable ocean world."
+
+    terraform_toxic_to_ocean_0:0 "$name_terraform_toxic_to_ocean$ Construction Site"
+    terraform_toxic_to_ocean_0_DESC:0 "The construction site for a future $name_terraform_toxic_to_ocean$, housing the necessary equipment to begin constructing the megastructure. It'll eventually be able to transform a toxic planet into a habitable, albeit lifeless ocean world."
+    terraform_toxic_to_ocean_0_MEGASTRUCTURE_DETAILS:0 "$giga_list_category_kilostructure$ - $giga_list_category_terraforming$\nConverts a §YToxic World§! into a §YLifeless Ocean World§!\n§LThe Atmospheric Purifier is tasked with the painstaking process of transforming a toxic atmosphere into a nitrogen-oxygen mixture by purging or transforming toxic compounds.§!" #gigalistentry ATMOSPHERIC PURIFIER
+
+    terraform_toxic_to_ocean_1:0 "$name_terraform_toxic_to_ocean$ Processing Rings"
+    terraform_toxic_to_ocean_1_DESC:0 "The massive rings stretching around the toxic world house large facilities capable of chemically reprocessing a planet's atmosphere, converting once-toxic gases into a nitrogen-oxygen mixture."
+
+    terraform_toxic_to_ocean_2:0 "$name_terraform_toxic_to_ocean$ Macromanipulators"
+    terraform_toxic_to_ocean_2_DESC:0 "This $name_terraform_toxic_to_ocean$ has been equipped with two massive pumps, capable of manipulating a planet's atmosphere, making it more or less dense, and redistributing its constituent gasses."
+
+    terraform_toxic_to_ocean_3:0 "Begin Terraforming"
+    terraform_toxic_to_ocean_3_DESC:0 "Order the Atmospheric Manipulator's crew to begin transforming this planet's atmosphere and hydrosphere into something that can be inhabited."
+
+    ######################################################################################
+    ### Terraform Barren to Ocean #####################
+    ######################################################################################
+    #Name
+    name_terraform_barren_to_ocean:0 "Ocean: Dynamic Core Ignitor"
+    allow_terraform_barren_to_ocean:0 "§HUnlocks Megastructure:§! $name_terraform_barren_to_ocean$"
+    desc_terraform_barren_to_ocean:0 "A large construct built around a desolate world to make it more habitable."
+
+    terraform_barren_to_ocean_0:0 "$name_terraform_barren_to_ocean$ Construction Site"
+    terraform_barren_to_ocean_0_DESC:0 "The construction site for a future $name_terraform_barren_to_ocean$. It contains the large amount of personnel and machinery necessary to construct a device capable of bringing life to a desolate world."
+    terraform_barren_to_ocean_0_MEGASTRUCTURE_DETAILS:0 "$giga_list_category_kilostructure$ - $giga_list_category_terraforming$\nConverts a §YBarren World§! or §YFrozen World§! into a §YLifeless Ocean World§!\n§LThis planet-circling construct re-ignites a dead planet's magnetic field and implements an extensive hydrosphere, rendering desolate worlds more habitable.§!" #gigalistentry DYNAMIC CORE IGNITOR
+
+    terraform_barren_to_ocean_1:0 "$name_terraform_barren_to_ocean$ Hypercoils"
+    terraform_barren_to_ocean_1_DESC:0 "These two massive geomagnetic coils serve the purpose of remotely melting the planet's core and effectively re-activate this world's magnetic field, in order to make this planet able to hold a thick atmosphere."
+
+    terraform_barren_to_ocean_2:0 "$name_terraform_barren_to_ocean$"
+    terraform_barren_to_ocean_2_DESC:0 "The $name_terraform_barren_to_ocean$ is now equipped with a large array of atmospheric manipulation devices, which can seed a nitrogen-oxygen atmosphere across the surface of this world. All there is left to do now is begin the process."
+
+    terraform_barren_to_ocean_3:0 "Begin Terraforming"
+    terraform_barren_to_ocean_3_DESC:0 "Order the $name_terraform_barren_to_ocean$'s crew to begin the large-scale process of re-activating this planet's magnetic field and subsequently implement a nitrogen-oxygen atmosphere and a stable, extensive hydrosphere."
+
+    terraform_barren_to_ocean_2_disabled:0 "Ancient $name_terraform_barren_to_ocean$"
+    terraform_barren_to_ocean_2_disabled_DESC:0 "This ancient $name_terraform_barren_to_ocean$ was constructed eons ago by an unknown civilization. It runs off some antique power source, and seems to be operational."
+    terraform_barren_to_ocean_2_disabled_MEGASTRUCTURE_DETAILS:0 "$terraform_barren_2_disabled_DESC$"
+
+    terraform_barren_to_ocean_3_restored:0 "Begin Terraforming"
+    terraform_barren_to_ocean_3_restored_DESC:0 "Order this ancient megastructure to re-start the terraforming process on the planet below."
+
+    #########################################
+    ### Terraform Molten to Ocean ####################
+    #########################################
+    #Name
+    name_terraform_molten_to_ocean:0 "Ocean: Geothermal Stabilizer"
+    allow_terraform_molten_to_ocean:0 "§HUnlocks Megastructure:§! $name_terraform_molten_to_ocean$"
+    desc_terraform_molten_to_ocean:0 "A large construct built around a desolate world to make it more habitable."
+
+    terraform_molten_to_ocean_0:0 "$name_terraform_molten_to_ocean$ Construction Site"
+    terraform_molten_to_ocean_0_DESC:0 "The construction site for a future $name_terraform_molten_to_ocean$ to be built around this planet, which will cool down and stabilize this world's harsh surface to make it habitable."
+    terraform_molten_to_ocean_0_MEGASTRUCTURE_DETAILS:0 "$giga_list_category_kilostructure$ - $giga_list_category_terraforming$\nConverts a §YMolten World§! into a §YLifeless Ocean World§!\n§LThe Geothermal Stabilizer can suture and repair a Molten World's unstable tectonics as well as introduce a nitrogen-oxygen atmosphere and significant hydrosphere, rendering it somewhat habitable but lifeless.§!" #gigalistentry GEOTHERMAL STABILIZER
+
+    terraform_molten_to_ocean_1:0 "$name_terraform_molten_to_ocean$ Orbital Facilities"
+    terraform_molten_to_ocean_1_DESC:0 "This large equatorial ring houses the necessary machinery to fuel and power the massive orbital coolers that will be used to remotely alter the Molten World's surface conditions."
+
+    terraform_molten_to_ocean_2:0 "$name_terraform_molten_to_ocean$"
+    terraform_molten_to_ocean_2_DESC:0 "A complete $name_terraform_molten_to_ocean$, equipped with a set of large orbital coolers and laser drills to cool and stabilize the planet's surface. All there is left to do now is begin the actual terraforming process."
+
+    terraform_molten_to_ocean_3:0 "Begin Terraforming"
+    terraform_molten_to_ocean_3_DESC:0 "Order the $name_terraform_molten_to_ocean$'s crew to begin transforming this planet's molten surface and tectonic makeup into something that can be inhabited."
+    
+    
+ #LL Tidally-Locked/LL Tidally-Locked Cold Terraforming Megastructures
+
+    ######################################################################################
+    ### Terraform Toxic to LL Tidally-Locked/LL Tidally-Locked Cold #####################
+    ######################################################################################
+    #Name
+    name_terraform_toxic_to_tidallylocked:0 "Tidal Locking Atmospheric Purifier"
+    allow_terraform_toxic_to_tidallylocked:0 "§HUnlocks Megastructure:§! $name_terraform_toxic_to_tidallylocked$"
+    desc_terraform_toxic_to_tidallylocked:0 "A megastructure capable of transforming a toxic planet into a more habitable tidally-locked world."
+
+    terraform_toxic_to_tidallylocked_0:0 "$name_terraform_toxic_to_tidallylocked$ Construction Site"
+    terraform_toxic_to_tidallylocked_0_DESC:0 "The construction site for a future $name_terraform_toxic_to_tidallylocked$, housing the necessary equipment to begin constructing the megastructure. It'll eventually be able to transform a toxic planet into a habitable, albeit lifeless tidally-locked world."
+    terraform_toxic_to_tidallylocked_0_MEGASTRUCTURE_DETAILS:0 "$giga_list_category_kilostructure$ - $giga_list_category_terraforming$\nConverts a §YToxic World§! into a §YLifeless Tidally-Locked World§!\n§LThe Atmospheric Purifier is tasked with the painstaking process of transforming a toxic atmosphere into a nitrogen-oxygen mixture by purging or transforming toxic compounds. Also, the equipment needed to halt planetary rotation will be prepared.§!" #gigalistentry ATMOSPHERIC PURIFIER
+
+    terraform_toxic_to_tidallylocked_1:0 "$name_terraform_toxic_to_tidallylocked$ Processing Rings"
+    terraform_toxic_to_tidallylocked_1_DESC:0 "The massive rings stretching around the toxic world house large facilities capable of chemically reprocessing a planet's atmosphere, converting once-toxic gases into a nitrogen-oxygen mixture. Along the rings are magnetic, kinetic, and gravitic decelerators that are actively being used to create drag against the rotation."
+
+    terraform_toxic_to_tidallylocked_2:0 "$name_terraform_toxic_to_tidallylocked$ Macromanipulators"
+    terraform_toxic_to_tidallylocked_2_DESC:0 "This $name_terraform_toxic_to_tidallylocked$ has been equipped with two massive pumps, capable of manipulating a planet's atmosphere, making it more or less dense, and redistributing its constituent gasses."
+
+    terraform_toxic_to_tidallylocked_3:0 "Begin Terraforming"
+    terraform_toxic_to_tidallylocked_3_DESC:0 "Order the Atmospheric Manipulator's crew to begin transforming this planet's atmosphere and hydrosphere into something that can be inhabited."
+
+    ######################################################################################
+    ### Terraform Barren to LL Tidally-Locked/LL Tidally-Locked Cold #####################
+    ######################################################################################
+    #Name
+    name_terraform_barren_to_tidallylocked:0 "Tidal Locking Dynamic Core Ignitor"
+    allow_terraform_barren_to_tidallylocked:0 "§HUnlocks Megastructure:§! $name_terraform_barren_to_tidallylocked$"
+    desc_terraform_barren_to_tidallylocked:0 "A large construct built around a desolate world to make it a more habitable tidally-locked world."
+
+    terraform_barren_to_tidallylocked_0:0 "$name_terraform_barren_to_tidallylocked$ Construction Site"
+    terraform_barren_to_tidallylocked_0_DESC:0 "The construction site for a future $name_terraform_barren_to_tidallylocked$. It contains the large amount of personnel and machinery necessary to construct a device capable of bringing life to a desolate world."
+    terraform_barren_to_tidallylocked_0_MEGASTRUCTURE_DETAILS:0 "$giga_list_category_kilostructure$ - $giga_list_category_terraforming$\nConverts a §YBarren World§! or §YFrozen World§! into a §YLifeless Tidally-Locked World§!\n§LThis planet-circling construct re-ignites a dead planet's magnetic field, halts planetary rotation, and implements a hydrosphere, changing desolate worlds into a tidally-locked habitable world.§!" #gigalistentry DYNAMIC CORE IGNITOR
+
+    terraform_barren_to_tidallylocked_1:0 "$name_terraform_barren_to_tidallylocked$ Hypercoils"
+    terraform_barren_to_tidallylocked_1_DESC:0 "These two massive geomagnetic coils serve the purpose of remotely melting the planet's core and effectively re-activate this world's magnetic field, in order to make this planet able to hold a thick atmosphere. Along the coils are magnetic, kinetic, and gravitic decelerators that are actively being used to create drag against planetary rotation."
+
+    terraform_barren_to_tidallylocked_2:0 "$name_terraform_barren_to_tidallylocked$"
+    terraform_barren_to_tidallylocked_2_DESC:0 "The $name_terraform_barren_to_tidallylocked$ is now equipped with a large array of atmospheric manipulation devices, which can seed a nitrogen-oxygen atmosphere across the surface of this world. All there is left to do now is begin the process."
+
+    terraform_barren_to_tidallylocked_3:0 "Begin Terraforming"
+    terraform_barren_to_tidallylocked_3_DESC:0 "Order the $name_terraform_barren_to_tidallylocked$'s crew to begin the large-scale process of halting planetary rotation, re-activating this planet's magnetic field, and subsequently implement a nitrogen-oxygen atmosphere and a stable hydrosphere."
+
+    terraform_barren_to_tidallylocked_2_disabled:0 "Ancient $name_terraform_barren_to_tidallylocked$"
+    terraform_barren_to_tidallylocked_2_disabled_DESC:0 "This ancient $name_terraform_barren_to_tidallylocked$ was constructed eons ago by an unknown civilization. It runs off some antique power source, and seems to be operational."
+    terraform_barren_to_tidallylocked_2_disabled_MEGASTRUCTURE_DETAILS:0 "$terraform_barren_2_disabled_DESC$"
+
+    terraform_barren_to_tidallylocked_3_restored:0 "Begin Terraforming"
+    terraform_barren_to_tidallylocked_3_restored_DESC:0 "Order this ancient megastructure to re-start the terraforming process on the planet below."
+
+    #########################################
+    ### Terraform Molten to LL Tidally-Locked/LL Tidally-Locked Cold ####################
+    #########################################
+    #Name
+    name_terraform_molten_to_tidallylocked:0 "Tidal Locking Geothermal Stabilizer"
+    allow_terraform_molten_to_tidallylocked:0 "§HUnlocks Megastructure:§! $name_terraform_molten_to_tidallylocked$"
+    desc_terraform_molten_to_tidallylocked:0 "A large construct built around a desolate world to make it a more habitable tidally-locked world."
+
+    terraform_molten_to_tidallylocked_0:0 "$name_terraform_molten_to_tidallylocked$ Construction Site"
+    terraform_molten_to_tidallylocked_0_DESC:0 "The construction site for a future $name_terraform_molten_to_tidallylocked$ to be built around this planet, which will cool down and stabilize this world's harsh surface to make it habitable."
+    terraform_molten_to_tidallylocked_0_MEGASTRUCTURE_DETAILS:0 "$giga_list_category_kilostructure$ - $giga_list_category_terraforming$\nConverts a §YMolten World§! into a §YLifeless Tidally-Locked World§!\n§LThe Geothermal Stabilizer can suture and repair a Molten World's unstable tectonics, halt planetary rotation, as well as introduce a nitrogen-oxygen atmosphere, rendering it somewhat habitable but lifeless.§!" #gigalistentry GEOTHERMAL STABILIZER
+
+    terraform_molten_to_tidallylocked_1:0 "$name_terraform_molten_to_tidallylocked$ Orbital Facilities"
+    terraform_molten_to_tidallylocked_1_DESC:0 "This large equatorial ring houses the necessary machinery to fuel and power the massive orbital coolers that will be used to remotely alter the Molten World's surface conditions. Additionally, along the ring are magnetic, kinetic, and gravitic decelerators that are actively being used to create drag against planetary rotation."
+
+    terraform_molten_to_tidallylocked_2:0 "$name_terraform_molten_to_tidallylocked$"
+    terraform_molten_to_tidallylocked_2_DESC:0 "A complete $name_terraform_molten_to_tidallylocked$, equipped with a set of large orbital coolers and laser drills to cool and stabilize the planet's surface, and with the rotational decelerators in place. All there is left to do now is begin the actual terraforming process."
+
+    terraform_molten_to_tidallylocked_3:0 "Begin Terraforming"
+    terraform_molten_to_tidallylocked_3_DESC:0 "Order the $name_terraform_molten_to_tidallylocked$'s crew to start the rotational decelorators and begin transforming this planet's molten surface and tectonic makeup into a tidally-locked habitable world."
+    
+ #Rogue Terraforming Megastructures
+
+    ######################################################################################
+    ### Terraform Toxic to Rogue #####################
+    ######################################################################################
+    #Name
+    name_terraform_toxic_to_rogue:0 "Rogue: Atmospheric Purifier"
+    allow_terraform_toxic_to_rogue:0 "§HUnlocks Megastructure:§! $name_terraform_toxic_to_rogue$"
+    desc_terraform_toxic_to_rogue:0 "A megastructure capable of transforming a toxic planet into a habitable rogue world."
+
+    terraform_toxic_to_rogue_0:0 "$name_terraform_toxic_to_rogue$ Construction Site"
+    terraform_toxic_to_rogue_0_DESC:0 "The construction site for a future $name_terraform_toxic_to_rogue$, housing the necessary equipment to begin constructing the megastructure. It'll eventually be able to transform a toxic planet into a habitable, albeit lifeless rogue world."
+    terraform_toxic_to_rogue_0_MEGASTRUCTURE_DETAILS:0 "$giga_list_category_kilostructure$ - $giga_list_category_terraforming$\nConverts a §YToxic World§! into a §YLifeless Rogue World§!\n§LThe Atmospheric Purifier is tasked with the painstaking process of transforming a toxic atmosphere into a nitrogen-oxygen mixture by purging or transforming toxic compounds.§!" #gigalistentry ATMOSPHERIC PURIFIER
+
+    terraform_toxic_to_rogue_1:0 "$name_terraform_toxic_to_rogue$ Processing Rings"
+    terraform_toxic_to_rogue_1_DESC:0 "The massive rings stretching around the toxic world house large facilities capable of chemically reprocessing a planet's atmosphere, converting once-toxic gases into a nitrogen-oxygen mixture."
+
+    terraform_toxic_to_rogue_2:0 "$name_terraform_toxic_to_rogue$ Macromanipulators"
+    terraform_toxic_to_rogue_2_DESC:0 "This $name_terraform_toxic_to_rogue$ has been equipped with two massive pumps, capable of manipulating a planet's atmosphere, making it more or less dense, and redistributing its constituent gasses."
+
+    terraform_toxic_to_rogue_3:0 "Begin Terraforming"
+    terraform_toxic_to_rogue_3_DESC:0 "Order the Atmospheric Manipulator's crew to begin transforming this planet's atmosphere and hydrosphere into something that can be inhabited."
+
+    ######################################################################################
+    ### Terraform Barren to Rogue #####################
+    ######################################################################################
+    #Name
+    name_terraform_barren_to_rogue:0 "Rogue: Dynamic Core Ignitor"
+    allow_terraform_barren_to_rogue:0 "§HUnlocks Megastructure:§! $name_terraform_barren_to_rogue$"
+    desc_terraform_barren_to_rogue:0 "A large construct built around a desolate world to make it more habitable."
+
+    terraform_barren_to_rogue_0:0 "$name_terraform_barren_to_rogue$ Construction Site"
+    terraform_barren_to_rogue_0_DESC:0 "The construction site for a future $name_terraform_barren_to_rogue$. It contains the large amount of personnel and machinery necessary to construct a device capable of bringing life to a desolate world."
+    terraform_barren_to_rogue_0_MEGASTRUCTURE_DETAILS:0 "$giga_list_category_kilostructure$ - $giga_list_category_terraforming$\nConverts a §YBarren World§! or §YFrozen World§! into a §YLifeless Rogue World§!\n§LThis planet-circling construct re-ignites a dead planet's magnetic field and implements a hydrosphere, rendering desolate worlds more habitable.§!" #gigalistentry DYNAMIC CORE IGNITOR
+
+    terraform_barren_to_rogue_1:0 "$name_terraform_barren_to_rogue$ Hypercoils"
+    terraform_barren_to_rogue_1_DESC:0 "These two massive geomagnetic coils serve the purpose of remotely melting the planet's core and effectively re-activate this world's magnetic field, in order to make this planet able to hold a thick atmosphere."
+
+    terraform_barren_to_rogue_2:0 "$name_terraform_barren_to_rogue$"
+    terraform_barren_to_rogue_2_DESC:0 "The $name_terraform_barren_to_rogue$ is now equipped with a large array of atmospheric manipulation devices, which can seed a nitrogen-oxygen atmosphere across the surface of this world. All there is left to do now is begin the process."
+
+    terraform_barren_to_rogue_3:0 "Begin Terraforming"
+    terraform_barren_to_rogue_3_DESC:0 "Order the $name_terraform_barren_to_rogue$'s crew to begin the large-scale process of re-activating this planet's magnetic field and subsequently implement a nitrogen-oxygen atmosphere and a stable hydrosphere."
+
+    terraform_barren_to_rogue_2_disabled:0 "Ancient $name_terraform_barren_to_rogue$"
+    terraform_barren_to_rogue_2_disabled_DESC:0 "This ancient $name_terraform_barren_to_rogue$ was constructed eons ago by an unknown civilization. It runs off some antique power source, and seems to be operational."
+    terraform_barren_to_rogue_2_disabled_MEGASTRUCTURE_DETAILS:0 "$terraform_barren_2_disabled_DESC$"
+
+    terraform_barren_to_rogue_3_restored:0 "Begin Terraforming"
+    terraform_barren_to_rogue_3_restored_DESC:0 "Order this ancient megastructure to re-start the terraforming process on the planet below."
+
+    #########################################
+    ### Terraform Molten to Rogue ####################
+    #########################################
+    #Name
+    name_terraform_molten_to_rogue:0 "Rogue: Geothermal Stabilizer"
+    allow_terraform_molten_to_rogue:0 "§HUnlocks Megastructure:§! $name_terraform_molten_to_rogue$"
+    desc_terraform_molten_to_rogue:0 "A large construct built around a desolate world to make it more habitable."
+
+    terraform_molten_to_rogue_0:0 "$name_terraform_molten_to_rogue$ Construction Site"
+    terraform_molten_to_rogue_0_DESC:0 "The construction site for a future $name_terraform_molten_to_rogue$ to be built around this planet, which will cool down and stabilize this world's harsh surface to make it habitable."
+    terraform_molten_to_rogue_0_MEGASTRUCTURE_DETAILS:0 "$giga_list_category_kilostructure$ - $giga_list_category_terraforming$\nConverts a §YMolten World§! into a §YLifeless Rogue World§!\n§LThe Geothermal Stabilizer can suture and repair a Molten World's unstable tectonics as well as introduce a nitrogen-oxygen atmosphere and significant hydrosphere, rendering it somewhat habitable but lifeless.§!" #gigalistentry GEOTHERMAL STABILIZER
+
+    terraform_molten_to_rogue_1:0 "$name_terraform_molten_to_rogue$ Orbital Facilities"
+    terraform_molten_to_rogue_1_DESC:0 "This large equatorial ring houses the necessary machinery to fuel and power the massive orbital coolers that will be used to remotely alter the Molten World's surface conditions."
+
+    terraform_molten_to_rogue_2:0 "$name_terraform_molten_to_rogue$"
+    terraform_molten_to_rogue_2_DESC:0 "A complete $name_terraform_molten_to_rogue$, equipped with a set of large orbital coolers and laser drills to cool and stabilize the planet's surface. All there is left to do now is begin the actual terraforming process."
+
+    terraform_molten_to_rogue_3:0 "Begin Terraforming"
+    terraform_molten_to_rogue_3_DESC:0 "Order the $name_terraform_molten_to_rogue$'s crew to begin transforming this planet's molten surface and tectonic makeup into something that can be inhabited."
+    
+    #################################
+    #Njotai System
+    #################################
+    
+    ssb_njotai_system_initializer_NAME:0 "Njotai System"
+    ssb_njotai_system_initializer_DESC:0 "Start on in the Njotai System"

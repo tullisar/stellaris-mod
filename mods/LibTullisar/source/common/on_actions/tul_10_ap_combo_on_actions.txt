@@ -1,0 +1,60 @@
+######################################################################################
+# On Actions
+# Package: APC
+######################################################################################
+#
+#
+######################################################################################
+#  Action: ⭐🔔 tul_on_ap_combo_register_type
+#
+#  Source: SRD_01_00015_0
+# Purpose: Fired after the standard ascension perk types have been registered
+#  Scopes: ⭐ global
+#
+# Details: Mods that wish to add new types can add events to be run when this is fired.
+#          New types can be registered by calling ⭐💡 tul_ap_combo_register_perk_type.
+#
+######################################################################################
+tul_on_ap_combo_register_mod_type = {
+	# This only serves as an empty stub to ensure that this action exists when fired.
+}
+
+######################################################################################
+#  Action: ⭐🔔 tul_on_ap_combo_register_mod_perk_association
+#
+#  Source: SRD_01_00019_0
+# Purpose: Fired after the vanilla ascension perk type associations have been registered
+#  Scopes: ⭐ global
+#
+# Details: Mods that define new ascension perks or wish to add additional types to
+#          the vanilla ascension perks can add events to be run when this is fired.
+#          New types can be registered by calling ⭐💡 tul_ap_combo_register_type_for_perk
+#
+######################################################################################
+tul_on_ap_combo_register_mod_perk_association = {
+	# This only serves as an empty stub to ensure that this action exists when fired.
+}
+
+######################################################################################
+#  Action: ⭐🔔 on_ascension_perk_picked
+#
+#  Source: TODO
+# Purpose: TODO
+#  Scopes: TODO
+#
+#  Inputs: TODO
+#
+# Outputs: TODO
+#
+# Details: TODO
+#
+#  Limits: TODO
+#
+#   Notes: TODO
+#
+######################################################################################
+on_ascension_perk_picked = {
+	events = {
+		tul_ap_combo.001
+	}
+}

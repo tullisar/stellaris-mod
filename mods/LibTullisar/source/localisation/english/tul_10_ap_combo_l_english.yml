@@ -1,0 +1,21 @@
+﻿l_english:
+
+tul_ap_combo_type_government:0 "Government"
+tul_ap_combo_type_military:0 "Military"
+tul_ap_combo_type_diplomacy:0 "Diplomacy"
+tul_ap_combo_type_mega_engineering:0 "Mega Engineering"
+tul_ap_combo_type_research:0 "Research"
+tul_ap_combo_type_economy:0 "Economy"
+tul_ap_combo_type_espionage:0 "Espionage"
+tul_ap_combo_type_expansion:0 "Expansion"
+tul_ap_combo_type_exploration:0 "Exploration"
+
+test_loc_key_government:0 "Government"
+test_loc_key_military:0 "Military"
+test_loc_key_diplomacy:0 "Diplomacy"
+test_loc_key_mega_engineering:0 "Mega Engineering"
+test_loc_key_research:0 "Research"
+test_loc_key_economy:0 "Economy"
+test_loc_key_espionage:0 "Espionage"
+test_loc_key_expansion:0 "Expansion"
+test_loc_key_exploration:0 "Exploration"

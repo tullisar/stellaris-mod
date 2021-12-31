@@ -1,0 +1,148 @@
+######################################################################################
+# Static Modifiers Relevant to Overridden Government Ascension Perks
+#
+######################################################################################
+
+######################################################################################
+# Executive Vigor
+# Source: Vanilla, ESAP, RAA
+######################################################################################
+# Base Bonus
+mod_tul_ap_executive_vigor_base = {
+	icon = "gfx/interface/icons/ascension_perks/ap_executive_vigor.dds"
+	country_edict_cap_add = 1
+}
+
+# Combo Bonus
+mod_tul_ap_executive_vigor_combo = {
+	icon = "gfx/interface/icons/ascension_perks/ap_executive_vigor.dds"
+	edict_length_mult = 0.20
+	country_edict_cap_add = 1
+}
+
+######################################################################################
+# Efficient Executive
+# Source: RAA
+######################################################################################
+# Base Bonus
+mod_tul_ap_efficient_executive_base = {
+	country_edict_cap_add = 3
+	edict_length_mult = 1.00
+	country_government_civic_points_add = 1
+}
+
+# Combo Bonus
+mod_tul_ap_efficient_executive_combo = {
+	edicts_cost_mult = -0.25
+	country_base_influence_produces_add = 1
+}
+
+######################################################################################
+# Transcendent Learning
+# Source: Vanilla, ESAP, RAA
+######################################################################################
+# Base Bonus
+mod_tul_ap_transcendent_learning_base = {
+	leader_skill_levels = 2
+	species_leader_exp_gain = 0.50
+}
+# Combo Bonus
+mod_tul_ap_transcendent_learning_combo = {
+	species_leader_exp_gain = 0.1
+}
+
+######################################################################################
+# Limitless
+# Source: RAA
+######################################################################################
+# Base Bonus
+mod_tul_ap_limitless_base = {
+	leader_skill_levels = 2
+	species_leader_exp_gain = 2.5
+}
+
+mod_tul_ap_limitless_combo = {
+	country_leader_pool_size = 1
+}
+
+######################################################################################
+# Imperial Prerogative
+# Source: Vanilla, ESAP, RAA
+######################################################################################
+mod_tul_ap_imperial_prerogative_base = {
+	country_admin_cap_mult = 0.15
+	country_admin_cap_add = 15
+}
+
+mod_tul_ap_imperial_prerogative_base_corp = {
+	country_admin_cap_mult = 0.05
+	country_admin_cap_add = 15
+}
+
+mod_tul_ap_imperial_prerogative_combo = {
+	country_admin_cap_add = 15
+}
+
+######################################################################################
+# Enforce Prerogative
+# Source: RAA
+######################################################################################
+mod_tul_ap_enforce_prerogative_base = {
+	country_admin_cap_add = 120
+	country_admin_cap_mult = 0.30
+	planet_colony_development_speed_mult = 0.50
+	colony_start_num_pops_add = 2
+	pop_demotion_time_mult = -0.10
+}
+
+mod_tul_ap_enforce_prerogative_base_corp = {
+	country_admin_cap_add = 120	
+	planet_colony_development_speed_mult = 0.50
+	colony_start_num_pops_add = 2
+	pop_demotion_time_mult = -0.30
+}
+
+mod_tul_ap_enforce_prerogative_combo = {
+	colony_start_num_pops_add = 1
+	pop_demotion_time_mult = -0.10
+}
+
+######################################################################################
+# Beautiful Bureaucracy
+# Source: ESAP
+######################################################################################
+mod_tul_ap_beautiful_bureaucracy_base = {
+	planet_bureaucrats_consumer_goods_upkeep_mult = -0.50
+}
+
+mod_tul_ap_beautiful_bureaucracy_base_hive = {
+	planet_synapse_drones_unity_produces_add = 1
+}
+
+mod_tul_ap_beautiful_bureaucracy_base_machines = {
+	planet_bureaucrats_unity_produces_add = 1
+}
+
+mod_tul_ap_beautiful_bureaucracy_combo = {
+	planet_bureaucrats_energy_produces_add = 0.5
+}
+
+mod_tul_ap_beautiful_bureaucracy_combo_hive = {
+	planet_synapse_drones_energy_produces_add = 0.5
+}
+
+mod_tul_ap_beautiful_bureaucracy_combo_machines = {
+	planet_bureaucrats_energy_produces_add = 0.5
+}
+
+######################################################################################
+# Ascendancy of the State
+# Source: ESAP
+######################################################################################
+mod_tul_ap_ascendancy_of_the_state_base = {
+	country_government_civic_points_add = 1
+}
+
+mod_tul_ap_ascendancy_of_the_state_combo = {
+	country_base_influence_produces_add = 0.3
+}

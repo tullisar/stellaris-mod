@@ -1,0 +1,40 @@
+{
+    "markdown.preview.typographer": true,
+    "mdmath.macros": {
+
+        "\\req": "\\htmlId{SRD\\_#1\\_#2}{\\mathtt{\\color{tan}\\small\\{SRD\\_#1\\_#2\\_#3\\}}}",
+        "\\refreq": "\\href{\\#SRD\\_#1\\_#2}{\\mathtt{\\color{cyan}\\small\\{SRD\\_#1\\_#2\\_#3\\}}}",
+        "\\extrefreq": "\\href{./srd\\_#1\\_#4.html\\#SRD\\_#1\\_#2}{\\mathtt{\\color{cyan}\\small\\{SRD\\_#1\\_#2\\_#3\\}}}",
+        "\\enum": "\\mathtt{\\color{orange}#1}",
+        "\\keyref": "\\mathtt{\\color{mediumpurple}#1}",
+        "\\globalscope" : "⭐",
+        "\\countryscope" : "🌐",
+        "\\galaxyobjectscope" : "🌌",
+        "\\leaderscope" : "👑",
+        "\\planetscope" : "🪐",
+        "\\flag" : "#1🏁~#2",
+        "\\onaction" : "#1🔔~#2",
+        "\\trigger" : "#1❔~#2",
+        "\\savedtarget" : "#1🎯~#2",
+        "\\effect" : "#1💡~#2",
+        "\\event" : "#1❗~#2",
+        "\\variable" : "#1🔢~#2"
+    },
+    "mdmath.katexoptions": {
+        "trust": true
+    },
+    "mdmath.style": "./style_srd.css",
+    "mdmath.autosave": true,
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "maven.view": "hierarchical",
+    "antlr4.generation": {
+
+        "mode": "internal",
+        "language": "Java",
+        "listeners": true,
+        "visitors": true,
+        "outputDir": "${workspaceFolder}\\tools\\HelperTool\\mod-helper-tools\\target\\generated-sources\\antlr4"
+    },
+    "java.dependency.packagePresentation": "hierarchical"
+
+}

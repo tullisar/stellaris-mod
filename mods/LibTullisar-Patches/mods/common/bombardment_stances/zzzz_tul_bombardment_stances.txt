@@ -1,0 +1,50 @@
+######################################################################################
+# Raiding
+#
+# Patches:
+# - Incorporate trigger condition clean up from Ariphaos Unofficial Patch 3.2
+# - Incorporate trigger condition for Living Hosts civic from 
+#	Expanded Traits, Civics, Pops, and More.
+#
+######################################################################################
+raiding = {
+    trigger = {
+        owner = {
+            OR = {
+                has_ascension_perk = ap_nihilistic_acquisition
+                has_valid_civic = civic_barbaric_despoilers
+				has_valid_civic = civic_living_hosts
+            }
+        }
+    }
+    default = no
+    stop_when_armies_dead = no
+    abduct_pops = yes
+    planet_damage = 1
+    army_damage = 0.5
+    kill_pop_chance = {
+        base = 1
+    }
+    min_pops_to_kill_pop = 2
+    ai_weight = {
+        weight = 8
+        modifier = {
+            factor = 0
+            exists = from
+            exists = owner
+            from.owner = {
+                NOT = {
+                    is_hostile = root.owner
+                }
+            }
+        }
+        modifier = {
+            factor = 0.01
+            exists = from
+            exists = owner
+            owner = {
+                has_claim = from.solar_system
+            }
+        }
+    }
+}

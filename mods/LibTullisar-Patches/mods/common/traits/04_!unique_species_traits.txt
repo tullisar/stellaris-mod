@@ -1,0 +1,104 @@
+######################################################################################
+# Exoskeleton
+#
+# Patches:
+# - Forces the exoskeleton trait from Expanded Traits, Civics, Pops and More to 
+#   have priority in the event another mod overrides things. 
+#
+######################################################################################
+trait_exoskeleton = {
+	cost = 1
+	potential_crossbreeding_chance = 0.25
+	icon = "gfx/interface/icons/traits/trait_exoskeleton.dds"
+	allowed_archetypes = {
+		BIOLOGICAL
+	}
+	species_class = {
+		ART
+	}
+	modifier = {
+		army_health = 0.25
+		army_morale = 0.25
+		army_defense_damage_mult = 0.25
+	}
+	slave_cost = {
+		energy = 25
+	}
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 2
+			root = {
+				has_citizenship_type = {
+					country = prev
+					type = citizenship_slavery
+				}
+			}
+		}
+		modifier = {
+			factor = 4
+			exists = root.home_planet
+			root.home_planet = {
+				has_designation = col_fortress
+				is_owned_by = prev
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				is_militarist = yes
+				is_civic_militarist = yes
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_pacifist = yes
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = {
+					country = prev
+					type = citizenship_organic_trophy
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_military_service_type = {
+					country = prev
+					type = military_service_none
+				}
+			}
+		}
+	}
+}
+
+######################################################################################
+# Exoskeleton (Forgotten Queens)
+#
+# Patches:
+# - Separates the exoskeleton trait from Forgotten Queens into a separate ID. 
+#   Forgotten queens will be overridden by the Expanded Traits, Civics, Pops, and
+#   More mod with the suggested load order. This trait seems to serve an entirely
+#   separate purpose and I've decided not to merge it.
+#
+######################################################################################
+trait_queens_exoskeleton = {
+    cost = 0
+    sorting_priority = 19
+    initial = no
+    randomized = no
+    modification = no
+    modifier = {
+        planet_jobs_minerals_produces_mult = 0.1
+        planet_jobs_food_produces_mult = 0.1
+    }
+    potential_crossbreeding_chance = 1
+    icon = "gfx/interface/icons/traits/trait_exoskeleton.dds"
+    allowed_archetypes = {
+        BIOLOGICAL
+        LITHOID
+    }
+}

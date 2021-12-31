@@ -1,0 +1,37 @@
+######################################################################################
+# Ascension Perk Decisions
+######################################################################################
+
+######################################################################################
+# Distribute NZT-48
+# Source: Reworked Advanced Ascension (Limitless Perk)
+######################################################################################
+decision_nzt48 = {
+	owned_planets_only = yes
+	enactment_time = 180
+	resources = {
+		category = decisions
+		cost = {
+			energy = 3000
+			food = 3000
+		}
+	}
+	potential = {
+		owner = {
+			has_ascension_perk = eap_transcendent_learning
+			tul_is_synthetic_empire = no
+		}
+		NOT = {
+			has_modifier = decision_nzt48
+		}
+	}
+	effect = {
+		add_modifier = {
+			modifier = decision_nzt48
+			days = 36000
+		}
+	}
+	ai_weight = {
+		weight = 2
+	}
+}

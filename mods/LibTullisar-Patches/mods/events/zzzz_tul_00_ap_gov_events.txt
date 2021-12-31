@@ -1,0 +1,36 @@
+######################################################################################
+# Ascension Perks
+#
+######################################################################################
+namespace = tul_ap_combo
+country_event = {
+	id = tul_ap_combo.1
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		# if = {
+		# 	limit = {
+		# 		check_variable = {
+		# 			which = var_current_perk_calc_type
+		# 			value = 1
+		# 		}
+		# 	}
+		# 	tul_effect_remove_ap_gov_combo_bonus = yes
+		# 	tul_effect_calc_ap_gov_combo_bonus = yes
+		# 	tul_effect_apply_ap_gov_combo_bonus = yes
+		# }
+	}
+}
+
+# # Government Perks
+# namespace = tul_ap_gov
+# country_event = {
+# 	id = tul_ap_gov.1
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	immediate = {
+# 		# tul_effect_inc_ap_combo_bonus = {
+# 		# 	TYPE = gov
+# 		# }
+# 	}
+# }

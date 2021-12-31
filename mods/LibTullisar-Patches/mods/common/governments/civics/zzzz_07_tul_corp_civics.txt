@@ -1,0 +1,859 @@
+######################################################################################
+# Corporate Civics
+#
+######################################################################################
+#
+#
+#civic_example = {
+#	playable = {}								# AND trigger, no scope; use this to prevent the civic from being selectable by the player (UI)
+#	potential = {}								# requirements list, see ../readme_requirements.txt
+#	possible = {}								# requirements list, see ../readme_requirements.txt
+#	pickable_at_start = yes / no				# default: yes
+#	modification = yes / no						# default: yes, set to no to prevent adding or removing this after creation of the empire
+#
+#	random_weight = { base = 5 }				# scriptable weight for randomizing a civic; required, else the civic will not get assigned randomly
+#
+#	modifier = {}								# modifier added to the country if the civic is selected and valid
+#	can_build_ruler_ship = yes / no				# default: no
+#	traits = { trait = ... }					# default: empty; trait set to enforce on the primary species. They cannot be removed, but more can be added if points/picks permit
+#	has_secondary_species = {					# default: none; if present, will enable secondary species customization in empire designer and will create secondary species & pops at galaxy generation time (see empire_init_create_capital_secondary_pops)
+#		traits = { trait = ... }					# default: empty; trait set to enforce on the secondary species. They cannot be removed, but more can be added if points/picks permit
+#	}
+#}
+#
+#
+######################################################################################
+# Franchising
+######################################################################################
+civic_franchising = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		OR = {
+			authority = {
+				OR = {
+					value = auth_corporate
+					value = auth_cooperative
+					value = auth_private
+				}
+			}
+			civics = {
+				value = civic_galactic_sovereign_megacorp
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	description = "civic_tooltip_franchising_effects"
+	modifier = {
+		country_subject_power_penalty_mult = -0.33
+		empire_size_branch_office_mult = -0.25
+		planet_branch_offices_cost_mult = -0.15
+	}
+}
+
+######################################################################################
+# Trading Posts
+######################################################################################
+civic_trading_posts = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		OR = {
+			authority = {
+				OR = {
+					value = auth_corporate
+					value = auth_cooperative
+					value = auth_private
+				}
+			}
+			civics = {
+				value = civic_galactic_sovereign_megacorp
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		country_starbase_capacity_add = 4
+		starbase_buildings_cost_mult = -0.1
+		starbase_modules_cost_mult = -0.1
+		country_border_friction_mult = -0.25
+	}
+	description = "civic_tooltip_trading_post_effects"
+}
+
+######################################################################################
+# Media Conglomerate
+######################################################################################
+civic_media_conglomerate = {
+	description = "civic_tooltip_media_conglomerate_effects"
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		OR = {
+			authority = {
+				OR = {
+					value = auth_corporate
+					value = auth_cooperative
+					value = auth_private
+				}
+			}
+			civics = {
+				value = civic_galactic_sovereign_megacorp
+			}
+		}
+	}
+	possible = {
+		civics = {
+			NOT = {
+				value = civic_idealistic_foundation
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		op_cat_manipulation_skill_add = 2
+		country_war_exhaustion_mult = -0.2
+		pop_citizen_happiness = 0.05
+	}
+}
+
+######################################################################################
+# Naval Contractors
+######################################################################################
+civic_naval_contractors = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		OR = {
+			authority = {
+				OR = {
+					value = auth_corporate
+					value = auth_cooperative
+					value = auth_private
+				}
+			}
+			civics = {
+				value = civic_galactic_sovereign_megacorp
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+		civics = {
+			NOT = {
+				value = civic_citizen_service
+			}
+		}
+	}
+	modifier = {
+		country_naval_cap_mult = 0.25
+		admiral_skill_levels = 1
+		country_command_limit_add = 10
+	}
+}
+
+######################################################################################
+# Free Traders
+######################################################################################
+civic_free_traders = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		OR = {
+			authority = {
+				OR = {
+					value = auth_corporate
+					value = auth_cooperative
+					value = auth_private
+				}
+			}
+			civics = {
+				value = civic_galactic_sovereign_megacorp
+			}
+		}
+	}
+	possible = {
+		authority = {
+			OR = {
+				value = auth_corporate
+				value = auth_cooperative
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_corvee_system_megacorp
+				value = civic_shadow_council_megacorp
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		trade_value_mult = 0.15
+		branch_office_value_mult = 0.15
+	}
+}
+
+######################################################################################
+# Private Prospectors
+######################################################################################
+civic_private_prospectors = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		OR = {
+			authority = {
+				OR = {
+					value = auth_corporate
+					value = auth_cooperative
+					value = auth_private
+				}
+			}
+			civics = {
+				value = civic_galactic_sovereign_megacorp
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		empire_size_systems_mult = -0.33
+	}
+	# unlocks sponsored_colonizer ship size
+	description = "civic_tooltip_private_prospectors_effects"
+}
+
+######################################################################################
+# Gospel of the Masses
+######################################################################################
+civic_gospel_of_the_masses = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		OR = {
+			authority = {
+				OR = {
+					value = auth_corporate
+					value = auth_cooperative
+					value = auth_private
+				}
+			}
+			civics = {
+				value = civic_galactic_sovereign_megacorp
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	possible = {
+		authority = {
+			OR = {
+				value = auth_corporate
+				value = auth_private
+			}
+		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_royal_trading_company
+				value = civic_worker_coop
+				value = civic_byzantine_bureaucracy_corp
+			}
+		}
+	}
+	modifier = {
+		pop_ethic_spiritualist_attraction_mult = 0.5
+	}
+	description = "civic_tooltip_gospel_of_the_masses_effects"
+}
+
+######################################################################################
+# Ruthless Competition
+######################################################################################
+civic_ruthless_competition = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		OR = {
+			authority = {
+				OR = {
+					value = auth_corporate
+					value = auth_cooperative
+					value = auth_private
+				}
+			}
+			civics = {
+				value = civic_galactic_sovereign_megacorp
+			}
+		}
+	}
+	possible = {
+		civics = {
+			NOT = {
+				value = civic_meritocracy
+			}
+		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_capitalism
+				value = ethic_capitalism
+				value = ethic_fanatic_capitalism
+			}
+			# NOT = {
+			# 	value = ethic_fanatic_pluralist
+			# }
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		leader_skill_levels = 1
+		species_leader_exp_gain = 0.25
+		intel_decryption_add = 1
+	}
+	description = "civic_tooltip_cutthroat_politics_effects"
+}
+
+######################################################################################
+# Criminal Heritage
+######################################################################################
+civic_criminal_heritage = {
+	modification = no
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		OR = {
+			authority = {
+				OR = {
+					value = auth_corporate
+					value = auth_cooperative
+					value = auth_private
+				}
+			}
+			civics = {
+				value = civic_galactic_sovereign_megacorp
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			NOR = {
+				value = ethic_fanatic_xenophobe
+				value = ethic_fanatic_egalitarian
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_corp_security
+				value = civic_royal_trading_company
+				value = civic_worker_coop
+				value = civic_byzantine_bureaucracy_corp
+				value = civic_corp_philosopher_king
+			}
+		}
+		origin = {
+			NOR = {
+				value = origin_common_ground_npc
+				value = origin_private_colony
+				value = origin_iron_despot
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		max_rivalries = 1
+		spy_network_daily_value_mult = 0.2
+		intel_decryption_add = 1
+	}
+	description = "civic_tooltip_criminal_heritage_effects"
+}
+
+######################################################################################
+# Private Military Companies
+######################################################################################
+civic_private_military_companies = {
+	description = "civic_tooltip_private_military_companies_effects"
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		OR = {
+			authority = {
+				OR = {
+					value = auth_corporate
+					value = auth_cooperative
+					value = auth_private
+				}
+			}
+			civics = {
+				value = civic_galactic_sovereign_megacorp
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+		civics = {
+			NOT = {
+				value = civic_corp_reanimated_armies
+			}
+		}
+		origin = {
+			NOR = {
+				value = civic_warrior_culture
+				value = origin_iron_despot
+			}
+		}
+	}
+	modifier = {
+		army_starting_experience_add = 100
+		army_damage_mult = 0.2
+		armies_upkeep_mult = -0.2
+	}
+}
+
+######################################################################################
+# Indentured Assets
+######################################################################################
+civic_indentured_assets = {
+	description = "civic_tooltip_indentured_assets_effects"
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		OR = {
+			authority = {
+				OR = {
+					value = auth_corporate
+					value = auth_cooperative
+					value = auth_private
+				}
+			}
+			civics = {
+				value = civic_galactic_sovereign_megacorp
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_free_haven_corp
+				value = civic_corporate_hedonism
+				value = civic_slaver_guilds
+				value = civic_pleasure_seekers
+			}
+		}
+	}
+	modifier = {
+		planet_jobs_slave_produces_mult = 0.1
+		slave_market_cost_mult = -0.25
+		country_pop_enslaved_mult = 0.35
+	}
+}
+
+######################################################################################
+# Brand Loyalty
+######################################################################################
+civic_brand_loyalty = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		OR = {
+			authority = {
+				OR = {
+					value = auth_corporate
+					value = auth_cooperative
+					value = auth_private
+				}
+			}
+			civics = {
+				value = civic_galactic_sovereign_megacorp
+			}
+		}
+	}
+	possible = {
+		civics = {
+			NOT = {
+				value = civic_beacon_of_liberty
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		country_unity_produces_mult = 0.2
+		intel_encryption_add = 1
+	}
+}
+
+######################################################################################
+# Public Relations Specialists
+######################################################################################
+civic_public_relations_specialists = {
+	playable = {
+		host_has_dlc = "Federations"
+	}
+	ai_playable = {
+		host_has_dlc = "Federations"
+	}
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		OR = {
+			authority = {
+				OR = {
+					value = auth_corporate
+					value = auth_cooperative
+					value = auth_private
+				}
+			}
+			civics = {
+				value = civic_galactic_sovereign_megacorp
+			}
+		}
+	}
+	possible = {
+		civics = {
+			NOT = {
+				value = civic_diplomatic_corps
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		envoys_add = 2
+		diplo_weight_mult = 0.1
+	}
+}
+
+######################################################################################
+# Corporate Death Cult
+######################################################################################
+civic_death_cult_corporate = {
+	playable = {
+		host_has_dlc = "Necroids Species Pack"
+	}
+	ai_playable = {
+		host_has_dlc = "Necroids Species Pack"
+	}
+	description = "civic_tooltip_death_cult_effects"
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		OR = {
+			authority = {
+				OR = {
+					value = auth_corporate
+					value = auth_cooperative
+					value = auth_private
+				}
+			}
+			civics = {
+				value = civic_galactic_sovereign_megacorp
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	possible = {
+		origin = {
+			NOT = {
+				value = origin_necrophage
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_corp_philosopher_king
+				value = civic_fanatic_purifiers
+				value = civic_inwards_perfection
+				value = civic_ancient_preservers
+				value = civic_death_cult
+			}
+		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
+		authority = {
+			OR = {
+				value = auth_corporate
+				value = auth_private
+			}
+		}
+	}
+	modifier = {
+		pop_growth_speed = 0.05
+	}
+}
+
+######################################################################################
+# Catalytic Processing
+######################################################################################
+civic_corporate_catalytic_processing = {
+	playable = {
+		host_has_dlc = "Plantoids Species Pack"
+	}
+	ai_playable = {
+		host_has_dlc = "Plantoids Species Pack"
+	}
+	description = "civic_tooltip_catalytic_processing_corporate_effects"
+	potential = {
+		OR = {
+			authority = {
+				OR = {
+					value = auth_corporate
+					value = auth_cooperative
+					value = auth_private
+				}
+			}
+			civics = {
+				value = civic_galactic_sovereign_megacorp
+			}
+		}
+	}
+	possible = {
+		origin = {
+			NOT = {
+				value = origin_lithoid
+			}
+		}
+		civics = {
+			NOT = {
+				value = civic_catalytic_processing
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+}
+
+######################################################################################
+# Corporate Hedonism
+######################################################################################
+civic_corporate_hedonism = {
+	playable = {
+		host_has_dlc = "Humanoids Species Pack"
+	}
+	ai_playable = {
+		host_has_dlc = "Humanoids Species Pack"
+	}
+	description = "civic_tooltip_corporate_hedonism_effects"
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		OR = {
+			authority = {
+				OR = {
+					value = auth_corporate
+					value = auth_cooperative
+					value = auth_private
+				}
+			}
+			civics = {
+				value = civic_galactic_sovereign_megacorp
+			}
+		}
+	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_worker_coop
+				value = civic_pleasure_seekers
+				value = civic_indentured_assets
+				value = civic_slaver_guilds
+				value = civic_indentured_assets
+			}
+		}
+		ethics = {
+			NOR = {
+				text = civic_tooltip_not_green
+				value = ethic_green
+				value = ethic_fanatic_green
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+}
+
+######################################################################################
+# Anglers
+######################################################################################
+civic_corporate_anglers = {
+	modification = no
+	playable = {
+		has_aquatics = yes
+	}
+	ai_playable = {
+		has_aquatics = yes
+	}
+	description = "civic_tooltip_anglers_effects"
+	potential = {
+		OR = {
+			authority = {
+				OR = {
+					value = auth_corporate
+					value = auth_cooperative
+					value = auth_private
+				}
+			}
+			civics = {
+				value = civic_galactic_sovereign_megacorp
+			}
+		}
+	}
+	possible = {
+		origin = {
+			NOR = {
+				value = origin_post_apocalyptic
+				value = origin_shattered_ring
+				value = origin_void_dwellers
+				value = origin_subterranean_evolution
+			}
+		}
+	}
+	traits = {
+		trait = trait_aquatic
+	}
+}
+
+######################################################################################
+# Mastercraft Inc.
+######################################################################################
+civic_corporate_crafters = {
+	playable = {
+		host_has_dlc = "Humanoids Species Pack"
+	}
+	ai_playable = {
+		host_has_dlc = "Humanoids Species Pack"
+	}
+	description = "civic_tooltip_crafters_effects"
+	potential = {
+		OR = {
+			authority = {
+				OR = {
+					value = auth_corporate
+					value = auth_cooperative
+					value = auth_private
+				}
+			}
+			civics = {
+				value = civic_galactic_sovereign_megacorp
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_industrial
+				value = ethic_industrial
+				value = ethic_fanatic_industrial
+			}
+		}
+		civics = {
+			NOT = {
+				value = civic_crafters
+			}
+		}
+	}
+	random_weight = {
+		base = 3
+	}
+}

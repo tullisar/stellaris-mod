@@ -1,0 +1,32 @@
+namespace = eap_imperial_prerogative
+
+######################################################################################
+# Government Ascension Perk Events
+######################################################################################
+
+
+######################################################################################
+# Enforced Prerogative Events
+# Note: Since the on_monthly_pulse action in Reworked Advanced Ascension can't be
+# overridden to not fire this event, the override here changes the trigger so that
+# it can never be run. The bonus is now baked into the perk, and can only be taken 
+# when the empire has at least 2 sectors.
+######################################################################################
+country_event = {
+	id = eap_imperial_prerogative.1
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		always = no
+	}
+}
+
+country_event = {
+	id = eap_imperial_prerogative.2 
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		always = no
+	}
+}
+	

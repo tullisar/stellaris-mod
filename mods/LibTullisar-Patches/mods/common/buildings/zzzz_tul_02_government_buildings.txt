@@ -1,0 +1,2961 @@
+######################################################################################
+# Government Buildings
+######################################################################################
+
+######################################################################################
+# Noble Estates
+######################################################################################
+building_noble_estates = {
+	base_buildtime = @b2_time
+	icon = building_palace
+	base_cap_amount = 1
+	category = government
+	potential = {
+		exists = owner
+		planet = {
+			or = {
+				has_building = building_noble_estates
+				owner = {
+					is_ai = no
+				}
+			}
+		}
+		owner = {
+			tul_has_nobles = yes
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+	}
+	allow = {
+		has_upgraded_capital = yes
+		buildings_simple_allow = yes
+	}
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			tul_has_nobles = no
+		}
+	}
+	planet_modifier = {
+		job_noble_add = 1
+		planet_housing_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_civic = civic_harmonious_hierarchy
+			}
+		}
+		modifier = {
+			planet_housing_add = 2
+			pop_government_ethic_attraction = 0.2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_civic = civic_aristocratic_elite
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_farmer_add = 1
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	triggered_desc = {
+		text = job_noble_effect_desc
+	}
+	ai_resource_production = {
+		trigger = {
+			num_pops > 40
+		}
+		unity > 8
+	}
+}
+
+######################################################################################
+# Administrative Offices
+# 
+# Merge:
+# - Vanilla
+# - Ariphaos Unofficial Patch
+# - Plentiful Traditions 3.X
+#
+######################################################################################
+building_bureaucratic_1 = {
+	base_buildtime = @b1_time
+	category = government
+	potential = {
+		exists = owner
+		building_relaxed_basic_income_check = yes
+		owner = {
+			is_regular_empire = yes
+		}
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+		}
+	}
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			is_regular_empire = no
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	planet_modifier = {
+		job_bureaucrat_add = @b1_jobs
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+			}
+			owner = {
+				has_tradition = tr_plentiful_aspiration_3
+			}
+		}
+		modifier = {
+			job_bureaucrat_add = @b1_jobs
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_valid_civic = civic_byzantine_bureaucracy
+					has_valid_civic = civic_byzantine_bureaucracy_corp
+				}
+			}
+		}
+		modifier = {
+			pop_housing_usage_mult = -0.02
+			pop_amenities_usage_mult = -0.02
+			pop_cat_worker_happiness = -0.02
+			pop_cat_slave_happiness = -0.02
+		}
+	}
+	upgrades = {
+		"building_bureaucratic_2"
+	}
+	prerequisites = {
+		"tech_planetary_government"
+	}
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+	triggered_desc = {
+		text = job_bureaucrat_effect_desc
+	}
+	on_queued = {
+		planet = {
+			set_timed_planet_flag = {
+				flag = recent_admin_building_built
+				days = 720
+			}
+		}
+	}
+}
+
+######################################################################################
+# Administrative Park
+# 
+# Merge:
+# - Vanilla
+# - Ariphaos Unofficial Patch
+# - Plentiful Traditions 3.X
+#
+######################################################################################
+building_bureaucratic_2 = {
+	base_buildtime = @b2_time
+	can_build = no
+	category = government
+	potential = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+		}
+	}
+	allow = {
+		has_upgraded_capital = yes
+	}
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			buildings_no_crystals = yes
+			owner = {
+				is_regular_empire = no
+			}
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+			rare_crystals = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+	}
+	planet_modifier = {
+		job_bureaucrat_add = @b2_jobs
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+			}
+			owner = {
+				has_tradition = tr_plentiful_aspiration_3
+			}
+		}
+		modifier = {
+			job_bureaucrat_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_valid_civic = civic_byzantine_bureaucracy
+					has_valid_civic = civic_byzantine_bureaucracy_corp
+				}
+			}
+		}
+		modifier = {
+			pop_housing_usage_mult = -0.04
+			pop_amenities_usage_mult = -0.04
+			pop_cat_worker_happiness = -0.04
+			pop_cat_slave_happiness = -0.04
+		}
+	}
+	upgrades = {
+		"building_bureaucratic_3"
+	}
+	prerequisites = {
+		"tech_colonial_bureaucracy"
+	}
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+	triggered_desc = {
+		text = job_bureaucrat_effect_desc
+	}
+	on_queued = {
+		owner = {
+			set_timed_country_flag = {
+				flag = buildings_new_crystal_building
+				days = 480
+			}
+		}
+		planet = {
+			set_timed_planet_flag = {
+				flag = recent_admin_building_built
+				days = 720
+			}
+		}
+	}
+}
+
+######################################################################################
+# Administrative Complex
+# 
+# Merge:
+# - Vanilla
+# - Ariphaos Unofficial Patch
+# - Plentiful Traditions 3.X
+#
+######################################################################################
+building_bureaucratic_3 = {
+	base_buildtime = @b3_time
+	can_build = no
+	category = government
+	potential = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+		}
+	}
+	allow = {
+		has_upgraded_capital = yes
+	}
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			buildings_no_crystals = yes
+			owner = {
+				is_regular_empire = no
+			}
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+			rare_crystals = @b3_rare_cost
+		}
+		upkeep = {
+			energy = @b3_upkeep
+			rare_crystals = @b3_rare_upkeep
+		}
+	}
+	planet_modifier = {
+		job_bureaucrat_add = @b3_jobs
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+			}
+			owner = {
+				has_tradition = tr_plentiful_aspiration_3
+			}
+		}
+		modifier = {
+			job_bureaucrat_add = 4
+		}
+	}
+	prerequisites = {
+		"tech_galactic_bureaucracy"
+	}
+	show_tech_unlock_if = {
+		#		is_regular_empire = yes
+		always = no
+	}
+	triggered_desc = {
+		text = job_bureaucrat_effect_desc
+	}
+	on_queued = {
+		planet = {
+			set_timed_planet_flag = {
+				flag = recent_admin_building_built
+				days = 720
+			}
+		}
+	}
+}
+
+building_uplink_node = {
+	base_buildtime = @b1_time
+	icon = building_autochthon_monument
+	category = government
+	potential = {
+		exists = owner
+		building_relaxed_basic_income_check = yes
+		owner = {
+			is_machine_empire = yes
+		}
+	}
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			is_machine_empire = no
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	planet_modifier = {
+		job_coordinator_add = @b1_jobs
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+			}
+			owner = {
+				has_tradition = tr_plentiful_aspiration_3
+			}
+		}
+		modifier = {
+			job_coordinator_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_administrator
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+	upgrades = {
+		"building_network_junction"
+	}
+	prerequisites = {
+		"tech_planetary_government"
+	}
+	show_tech_unlock_if = {
+		is_machine_empire = yes
+	}
+	triggered_desc = {
+		text = job_coordinator_effect_desc
+	}
+	on_queued = {
+		planet = {
+			set_timed_planet_flag = {
+				flag = recent_admin_building_built
+				days = 720
+			}
+		}
+	}
+}
+
+building_network_junction = {
+	base_buildtime = @b2_time
+	can_build = no
+	icon = building_heritage_site
+	category = government
+	potential = {
+		exists = owner
+		owner = {
+			is_machine_empire = yes
+		}
+	}
+	allow = {
+		has_upgraded_capital = yes
+	}
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			buildings_no_crystals = yes
+			owner = {
+				is_machine_empire = no
+			}
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+			rare_crystals = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+	}
+	planet_modifier = {
+		job_coordinator_add = @b2_jobs
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+			}
+			owner = {
+				has_tradition = tr_plentiful_aspiration_3
+			}
+		}
+		modifier = {
+			job_coordinator_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_administrator
+			}
+		}
+		modifier = {
+			planet_housing_add = 2
+		}
+	}
+	upgrades = {
+		"building_system_conflux"
+	}
+	prerequisites = {
+		"tech_colonial_bureaucracy"
+	}
+	show_tech_unlock_if = {
+		is_machine_empire = yes
+	}
+	triggered_desc = {
+		text = job_coordinator_effect_desc
+	}
+	on_queued = {
+		planet = {
+			set_timed_planet_flag = {
+				flag = recent_admin_building_built
+				days = 720
+			}
+		}
+	}
+}
+
+building_system_conflux = {
+	base_buildtime = @b3_time
+	can_build = no
+	icon = building_hypercomms_forum
+	category = government
+	potential = {
+		exists = owner
+		owner = {
+			is_machine_empire = yes
+		}
+	}
+	allow = {
+		has_upgraded_capital = yes
+	}
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			buildings_no_crystals = yes
+			owner = {
+				is_machine_empire = no
+			}
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b3_minerals
+			rare_crystals = @b3_rare_cost
+		}
+		upkeep = {
+			energy = @b3_upkeep
+			rare_crystals = @b3_rare_upkeep
+		}
+	}
+	planet_modifier = {
+		job_coordinator_add = @b3_jobs
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_administrator
+			}
+		}
+		modifier = {
+			planet_housing_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+			}
+			owner = {
+				has_tradition = tr_plentiful_aspiration_3
+			}
+		}
+		modifier = {
+			job_coordinator_add = 4
+		}
+	}
+	prerequisites = {
+		"tech_galactic_bureaucracy"
+	}
+	show_tech_unlock_if = {
+		is_machine_empire = yes
+	}
+	triggered_desc = {
+		text = job_coordinator_effect_desc
+	}
+	on_queued = {
+		planet = {
+			set_timed_planet_flag = {
+				flag = recent_admin_building_built
+				days = 720
+			}
+		}
+	}
+}
+
+######################################################################################
+# Slave Processing
+######################################################################################
+building_slave_processing = {
+	base_buildtime = @b1_time
+	base_cap_amount = 1
+	category = government
+	potential = {
+		owner = {
+			is_regular_empire = yes
+		}
+		owner = {
+			has_policy_flag = slavery_allowed
+		}
+		NOT = {
+			has_modifier = resort_colony
+		}
+	}
+	allow = {
+		has_upgraded_capital = yes
+	}
+	destroy_trigger = {
+		# destroys if true
+		exists = owner
+		OR = {
+			owner = {
+				is_regular_empire = no
+			}
+			NOT = {
+				owner = {
+					has_policy_flag = slavery_allowed
+				}
+			}
+			has_modifier = resort_colony
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
+			}
+			has_building = building_clone_vats
+		}
+		modifier = {
+			planet_pop_assembly_organic_add = 1
+		}
+	}
+	planet_modifier = {
+		job_slave_enforcer_add = 2
+		planet_jobs_slave_produces_mult = 0.05
+		pop_cat_slave_political_power = -0.25
+		planet_resettlement_unemployed_mult = -0.5
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 400
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	upgrades = {
+		building_plentiful_traditions_advanced_slave_processing
+	}
+	prerequisites = {
+		"tech_neural_implants"
+	}
+	triggered_desc = {
+		text = building_slave_processing_slave_army_effect_desc
+	}
+	triggered_desc = {
+		text = building_slave_processing_migrate_effect_desc
+	}
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 10
+			any_owned_pop = {
+				is_enslaved = yes
+			}
+		}
+	}
+}
+
+######################################################################################
+# Advanced Slave Processing Facility
+######################################################################################
+building_plentiful_traditions_advanced_slave_processing = {
+	base_buildtime = 360
+	#	base_cap_amount = 1
+	can_build = no
+	category = government
+	potential = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+		}
+		owner = {
+			has_policy_flag = slavery_allowed
+		}
+		NOT = {
+			has_modifier = resort_colony
+		}
+		owner = {
+			has_tradition = tr_plentiful_malice_5
+		}
+	}
+	allow = {
+		has_upgraded_capital = yes
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
+			}
+			has_building = building_clone_vats
+		}
+		modifier = {
+			planet_pop_assembly_organic_add = 1.5
+		}
+	}
+	planet_modifier = {
+		job_slave_enforcer_add = 5
+		planet_jobs_slave_produces_mult = 0.1
+		pop_cat_slave_political_power = -0.5
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 600
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+	prerequisites = {
+		"tech_neural_implants"
+	}
+	triggered_desc = {
+		text = building_slave_processing_slave_army_effect_desc
+	}
+	triggered_desc = {
+		text = building_slave_processing_migrate_effect_desc
+	}
+	show_tech_unlock_if = {
+		owner = {
+			has_tradition = tr_plentiful_malice_5
+		}
+	}
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 10
+			any_owned_pop = {
+				is_enslaved = yes
+			}
+		}
+	}
+}
+
+######################################################################################
+# Precint House
+######################################################################################
+building_precinct_house = {
+	base_buildtime = @b1_time
+	category = government
+	potential = {
+		owner = {
+			is_regular_empire = yes
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+	}
+	allow = {
+		hidden_trigger = {
+			OR = {
+				owner = {
+					is_ai = no
+				}
+				AND = {
+					planet_crime > 15
+					NOR = {
+						AND = {
+							has_building = building_precinct_house
+							owner = {
+								has_technology = tech_colonial_centralization
+							}
+						}
+						has_building = building_hall_judgment
+						num_buildings = {
+							type = building_precinct_house
+							value = 3
+						}
+						AND = {
+							planet_crime > 40
+							has_modifier = crime_lord_deal
+						}
+						AND = {
+							planet_crime > 20
+							has_branch_office = yes
+							branch_office_owner = {
+								is_criminal_syndicate = yes
+							}
+						}
+					}
+					owner = {
+						resource_income_compare = {
+							resource = energy
+							value > 0
+						}
+						resource_income_compare = {
+							resource = minerals
+							value > 0
+						}
+						OR = {
+							resource_income_compare = {
+								resource = food
+								value > 0
+							}
+							is_lithoid_empire = yes
+						}
+					}
+				}
+			}
+		}
+	}
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			NOT = {
+				owner = {
+					is_regular_empire = yes
+				}
+			}
+			AND = {
+				owner = {
+					is_ai = yes
+				}
+				#Players dont like random buildings blowing up
+				planet = {
+					has_building = building_hall_judgment
+				}
+			}
+			#This way the AI gets to reclaim its building slots that it sunk into this expense
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			OR = {
+				owner = {
+					NOT = {
+						has_ascension_perk = ap_mind_over_matter
+					}
+				}
+				NOT = {
+					has_planet_flag = built_one_psi_corps
+				}
+			}
+		}
+		modifier = {
+			job_enforcer_add = @b1_jobs
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_telepaths = yes
+			}
+			has_planet_flag = built_one_psi_corps
+		}
+		modifier = {
+			job_telepath_add = @b1_jobs
+		}
+	}
+	planet_modifier = {
+		job_enforcer_add = 2
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = 2
+		}
+		upkeep = {
+			trigger = {
+				owner = {
+					has_civic = civic_police_state
+				}
+			}
+			energy = 1
+		}
+	}
+	prerequisites = {
+		"tech_planetary_government"
+	}
+	triggered_desc = {
+		text = job_enforcer_effect_desc
+	}
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+	upgrades = {
+		building_hall_judgment
+	}
+}
+
+building_hall_judgment = {
+	base_buildtime = @b2_time
+	category = government
+	can_build = no
+	potential = {
+		owner = {
+			is_regular_empire = yes
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+	}
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			buildings_no_exotic_gases = yes
+			NOT = {
+				owner = {
+					is_regular_empire = yes
+				}
+			}
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			OR = {
+				owner = {
+					NOT = {
+						has_ascension_perk = ap_mind_over_matter
+					}
+				}
+				NOT = {
+					has_planet_flag = built_one_psi_corps
+				}
+			}
+		}
+		modifier = {
+			job_enforcer_add = @b2_jobs
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_ascension_perk = ap_mind_over_matter
+			}
+			has_planet_flag = built_one_psi_corps
+		}
+		modifier = {
+			job_telepath_add = @b2_jobs
+		}
+	}
+	planet_modifier = {
+		job_enforcer_add = 5
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+			exotic_gases = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b1_upkeep
+			exotic_gases = @b2_rare_upkeep
+		}
+		upkeep = {
+			trigger = {
+				owner = {
+					has_civic = civic_police_state
+				}
+			}
+			energy = 2
+		}
+	}
+	prerequisites = {
+		"tech_colonial_centralization"
+	}
+	triggered_desc = {
+		text = job_enforcer_effect_desc
+	}
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+}
+
+######################################################################################
+# Sentinel Posts
+######################################################################################
+building_sentinel_posts = {
+	base_buildtime = @b1_time
+	category = government
+	potential = {
+		exists = owner
+		owner = {
+			is_gestalt = yes
+		}
+	}
+	allow = {
+		hidden_trigger = {
+			OR = {
+				owner = {
+					is_ai = no
+				}
+				AND = {
+					buildings_simple_allow = yes
+					NOT = {
+						has_building = building_sentinel_posts
+					}
+				}
+			}
+		}
+	}
+	destroy_trigger = {
+		exists = owner
+		NOT = {
+			owner = {
+				is_gestalt = yes
+			}
+		}
+	}
+	planet_modifier = {
+		job_patrol_drone_add = 2
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	prerequisites = {
+		"tech_planetary_government"
+	}
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}
+	show_tech_unlock_if = {
+		is_gestalt = yes
+	}
+}
+
+#############
+# Ascension perks
+#############
+######################################################################################
+# Psi Corps
+######################################################################################
+building_psi_corps = {
+	base_buildtime = @b2_time
+	category = government
+	base_cap_amount = 1
+	potential = {
+		custom_tooltip = {
+			text = EMPIRE_UNIQUE_BUILDING
+			owner = {
+				NOR = {
+					has_country_flag = building_psi_corps
+					has_country_flag = built_one_psi_corps
+				}
+			}
+		}
+		owner = {
+			tul_has_telepaths = yes
+		}
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+		}
+	}
+	allow = {
+		has_major_upgraded_capital = yes
+		buildings_simple_allow = yes
+		num_pops >= 50
+	}
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			tul_has_telepaths = no
+		}
+	}
+	planet_modifier = {
+		job_telepath_add = @b1_jobs
+		# stability added to jobs
+	}
+	country_modifier = {
+		pop_government_ethic_attraction = 0.05
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 500
+			sr_zro = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			sr_zro = @b2_rare_upkeep
+		}
+	}
+	triggered_desc = {
+		text = job_telepath_effect_desc
+	}
+	triggered_desc = {
+		text = building_psi_corps_effect_desc
+	}
+	on_queued = {
+		owner = {
+			set_country_flag = building_psi_corps
+		}
+	}
+	on_unqueued = {
+		owner = {
+			remove_country_flag = building_psi_corps
+		}
+	}
+	on_built = {
+		owner = {
+			set_country_flag = built_one_psi_corps
+		}
+		owner = {
+			remove_country_flag = building_psi_corps
+		}
+		set_planet_flag = built_one_psi_corps
+	}
+	on_destroy = {
+		owner = {
+			remove_country_flag = built_one_psi_corps
+		}
+	}
+	ai_resource_production = {
+		trigger = {
+			num_pops >= 50
+		}
+		alloys = 4
+		energy = 8
+		minerals = 8
+	}
+	ai_resource_production = {
+		trigger = {
+			is_capital = yes
+		}
+		alloys = 4
+		energy = 8
+		minerals = 8
+	}
+}
+
+######################################################################################
+# Clone Vats
+######################################################################################
+building_clone_vats = {
+	base_buildtime = @b1_time
+	category = pop_assembly
+	base_cap_amount = 1
+	potential = {
+		exists = owner
+		owner = {
+			has_ascension_perk = ap_engineered_evolution
+		}
+		NOT = {
+			has_modifier = resort_colony
+		}
+		OR = {
+			owner = {
+				is_ai = no
+			}
+			NOT = {
+				has_building = building_robot_assembly_plant
+			}
+		}
+	}
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			AND = {
+				owner = {
+					is_ai = yes
+				}
+				planet = {
+					free_district_slots = 0
+					free_building_slots = 0
+				}
+			}
+			NOT = {
+				owner = {
+					has_ascension_perk = ap_engineered_evolution
+				}
+			}
+		}
+	}
+	planet_modifier = {
+		planet_pop_assembly_organic_add = 3
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_ascension_perk = ap_total_assimilation
+			}
+		}
+		modifier = {
+			planet_pop_assembly_organic_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_civic = civic_symbiotic_race
+			}
+		}
+		modifier = {
+			planet_jobs_unity_produces_mult = 0.1
+		}
+	}
+	resources = {
+		category = planet_buildings
+		# Base cost
+		cost = {
+			minerals = 500
+		}
+		# Org/Lith cost vanilla
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = no
+				}
+				NOT = {
+					owner = {
+						has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
+					}
+					OR = {
+						has_building = building_plentiful_traditions_advanced_slave_processing
+						has_building = building_slave_processing
+					}
+				}
+			}
+			food = 500
+		}
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+				}
+				NOT = {
+					owner = {
+						has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
+					}
+					OR = {
+						has_building = building_plentiful_traditions_advanced_slave_processing
+						has_building = building_slave_processing
+					}
+				}
+			}
+			energy = 500
+		}
+		# Org/Lith cost mit Perk etc.
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = no
+				}
+				owner = {
+					has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
+				}
+				OR = {
+					has_building = building_plentiful_traditions_advanced_slave_processing
+					has_building = building_slave_processing
+				}
+			}
+			food = 250
+		}
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+				}
+				owner = {
+					has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
+				}
+				OR = {
+					has_building = building_plentiful_traditions_advanced_slave_processing
+					has_building = building_slave_processing
+				}
+			}
+			energy = 250
+		}
+		# Base upkeep
+		upkeep = {
+			energy = 2
+		}
+		# Org/Lith upkeep vanilla
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = no
+				}
+				NOT = {
+					owner = {
+						has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
+					}
+					OR = {
+						has_building = building_plentiful_traditions_advanced_slave_processing
+						has_building = building_slave_processing
+					}
+				}
+			}
+			food = 30
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+				}
+				NOT = {
+					owner = {
+						has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
+					}
+					OR = {
+						has_building = building_plentiful_traditions_advanced_slave_processing
+						has_building = building_slave_processing
+					}
+				}
+			}
+			minerals = 30
+		}
+		# Org/Lith upkeep mit Perk
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = no
+				}
+				owner = {
+					has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
+				}
+				OR = {
+					has_building = building_plentiful_traditions_advanced_slave_processing
+					has_building = building_slave_processing
+				}
+			}
+			food = 15
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+				}
+				owner = {
+					has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
+				}
+				OR = {
+					has_building = building_plentiful_traditions_advanced_slave_processing
+					has_building = building_slave_processing
+				}
+			}
+			minerals = 15
+		}
+	}
+	triggered_desc = {
+		trigger = {
+			has_building = building_robot_assembly_plant
+		}
+		text = tooltip_organic_and_artificial_assembly_warning
+	}
+}
+
+######################################################################################
+# Embassy Complex
+######################################################################################
+building_embassy = {
+	base_buildtime = @b2_time
+	category = government
+	base_cap_amount = 1
+	potential = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+		}
+		exists = planet
+		planet = {
+			is_capital = yes
+		}
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+	}
+	upgrades = {
+		"building_grand_embassy"
+	}
+	allow = {
+		has_upgraded_capital = yes
+		buildings_simple_allow = yes
+	}
+	destroy_trigger = {
+		OR = {
+			AND = {
+				exists = owner
+				owner = {
+					is_regular_empire = no
+				}
+			}
+			planet = {
+				is_capital = no
+			}
+			buildings_no_crystals = yes
+		}
+	}
+	country_modifier = {
+		envoys_add = 1
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+			rare_crystals = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+	}
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+	prerequisites = {
+		"tech_xeno_diplomacy"
+	}
+}
+
+######################################################################################
+# Grand Embassy Complex
+######################################################################################
+building_grand_embassy = {
+	base_buildtime = @b3_time
+	can_build = no
+	category = government
+	potential = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+		}
+		planet = {
+			is_capital = yes
+		}
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+	}
+	allow = {
+		has_major_upgraded_capital = yes
+	}
+	destroy_trigger = {
+		OR = {
+			AND = {
+				exists = owner
+				owner = {
+					is_regular_empire = no
+				}
+			}
+			planet = {
+				is_capital = no
+			}
+			buildings_no_crystals = yes
+		}
+	}
+	country_modifier = {
+		envoys_add = 2
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b3_minerals
+			rare_crystals = @b3_rare_cost
+		}
+		upkeep = {
+			energy = @b3_upkeep
+			rare_crystals = @b3_rare_upkeep
+		}
+	}
+	prerequisites = {
+		"tech_xeno_relations"
+	}
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+}
+
+######################################################################################
+# Gaia Seeders Phase 1
+######################################################################################
+building_gaiaseeders_1 = {
+	base_buildtime = @b2_time
+	base_cap_amount = 1
+	category = government
+	can_be_disabled = no
+	upgrades = {
+		"building_gaiaseeders_2"
+	}
+	potential = {
+		exists = owner
+		owner = {
+			is_country_type = default
+			OR = {
+				has_valid_civic = civic_idyllic_bloom
+				has_valid_civic = civic_hive_idyllic_bloom
+			}
+		}
+		building_basic_income_check = yes
+		NOR = {
+			is_planet_class = pc_gaia
+			is_planet_class = pc_city
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+		}
+		is_artificial = no
+	}
+	allow = {
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_continental
+						ideal_planet_class = pc_retinal
+						ideal_planet_class = pc_tepid
+						ideal_planet_class = pc_forest
+						ideal_planet_class = pc_lake
+						ideal_planet_class = pc_superhabitable
+						ideal_planet_class = pc_megaflora
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_continental
+				is_planet_class = pc_retinal
+				is_planet_class = pc_tepid
+				is_planet_class = pc_forest
+				is_planet_class = pc_lake
+				is_planet_class = pc_superhabitable
+				is_planet_class = pc_megaflora
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_tropical
+						ideal_planet_class = pc_hajungle
+						ideal_planet_class = pc_desertislands
+						ideal_planet_class = pc_mangrove
+						ideal_planet_class = pc_cenote
+						ideal_planet_class = pc_biolumen
+						ideal_planet_class = pc_geothermal
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_tropical
+				is_planet_class = pc_hajungle
+				is_planet_class = pc_desertislands
+				is_planet_class = pc_mangrove
+				is_planet_class = pc_cenote
+				is_planet_class = pc_biolumen
+				is_planet_class = pc_geothermal
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_ocean
+						ideal_planet_class = pc_cascadian
+						ideal_planet_class = pc_wetswamp
+						ideal_planet_class = pc_subarctic
+						ideal_planet_class = pc_fog
+						ideal_planet_class = pc_karst
+						ideal_planet_class = pc_reef
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_ocean
+				is_planet_class = pc_cascadian
+				is_planet_class = pc_wetswamp
+				is_planet_class = pc_subarctic
+				is_planet_class = pc_fog
+				is_planet_class = pc_karst
+				is_planet_class = pc_reef
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_desert
+						ideal_planet_class = pc_sandsea
+						ideal_planet_class = pc_oasis
+						ideal_planet_class = pc_outback
+						ideal_planet_class = pc_coastal
+						ideal_planet_class = pc_salt
+						ideal_planet_class = pc_aquifer
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_desert
+				is_planet_class = pc_sandsea
+				is_planet_class = pc_oasis
+				is_planet_class = pc_outback
+				is_planet_class = pc_coastal
+				is_planet_class = pc_salt
+				is_planet_class = pc_aquifer
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_arid
+						ideal_planet_class = pc_mesa
+						ideal_planet_class = pc_hadesert
+						ideal_planet_class = pc_med
+						ideal_planet_class = pc_badlands
+						ideal_planet_class = pc_coral
+						ideal_planet_class = pc_primal
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_arid
+				is_planet_class = pc_mesa
+				is_planet_class = pc_hadesert
+				is_planet_class = pc_med
+				is_planet_class = pc_badlands
+				is_planet_class = pc_coral
+				is_planet_class = pc_primal
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_savannah
+						ideal_planet_class = pc_steppe
+						ideal_planet_class = pc_prairie
+						ideal_planet_class = pc_veld
+						ideal_planet_class = pc_semiarid
+						ideal_planet_class = pc_tidallylocked
+						ideal_planet_class = pc_supercon
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_savannah
+				is_planet_class = pc_steppe
+				is_planet_class = pc_prairie
+				is_planet_class = pc_veld
+				is_planet_class = pc_semiarid
+				is_planet_class = pc_tidallylocked
+				is_planet_class = pc_supercon
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_arctic
+						ideal_planet_class = pc_frozen_desert
+						ideal_planet_class = pc_glacial
+						ideal_planet_class = pc_antarctic
+						ideal_planet_class = pc_aeolian
+						ideal_planet_class = pc_storm
+						ideal_planet_class = pc_eyeball
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_arctic
+				is_planet_class = pc_frozen_desert
+				is_planet_class = pc_glacial
+				is_planet_class = pc_antarctic
+				is_planet_class = pc_aeolian
+				is_planet_class = pc_storm
+				is_planet_class = pc_eyeball
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_alpine
+						ideal_planet_class = pc_boreal
+						ideal_planet_class = pc_snow
+						ideal_planet_class = pc_highland
+						ideal_planet_class = pc_duneforest
+						ideal_planet_class = pc_glacio
+						ideal_planet_class = pc_lanthanide
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_alpine
+				is_planet_class = pc_boreal
+				is_planet_class = pc_snow
+				is_planet_class = pc_highland
+				is_planet_class = pc_duneforest
+				is_planet_class = pc_glacio
+				is_planet_class = pc_lanthanide
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_tundra
+						ideal_planet_class = pc_swamp
+						ideal_planet_class = pc_mushroom
+						ideal_planet_class = pc_mud
+						ideal_planet_class = pc_basalt
+						ideal_planet_class = pc_rogue
+						ideal_planet_class = pc_lichen
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_tundra
+				is_planet_class = pc_swamp
+				is_planet_class = pc_mushroom
+				is_planet_class = pc_mud
+				is_planet_class = pc_basalt
+				is_planet_class = pc_rogue
+				is_planet_class = pc_lichen
+			}
+		}
+		has_upgraded_capital = yes
+	}
+	destroy_trigger = {
+		OR = {
+			is_planet_class = pc_gaia			# No double bonuses if player uses other tools to turn it into a Gaia world.
+			is_planet_class = pc_city
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+			NOT = {
+				exists = owner
+			}
+			owner = {
+				NOR = {
+					has_valid_civic = civic_idyllic_bloom
+					has_valid_civic = civic_hive_idyllic_bloom
+				}
+			}
+			is_pd_arcology = yes
+			is_pd_hive_arcology = yes
+			is_pd_robot_arcology = yes
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			energy = 1500
+		}
+		upkeep = {
+			energy = 20
+		}
+	}
+	planet_modifier = {
+		pop_growth_speed = 0.1
+	}
+}
+
+######################################################################################
+# Gaia Seeders Phase 2
+######################################################################################
+building_gaiaseeders_2 = {
+	base_buildtime = @b2_time
+	can_build = no
+	category = government
+	can_be_disabled = no
+	upgrades = {
+		"building_gaiaseeders_3"
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			energy = 1500
+			exotic_gases = @b2_rare_cost
+		}
+		upkeep = {
+			energy = 20
+			exotic_gases = @b2_rare_upkeep
+		}
+	}
+	destroy_trigger = {
+		OR = {
+			is_planet_class = pc_gaia
+			is_planet_class = pc_city
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+			NOT = {
+				exists = owner
+			}
+			owner = {
+				NOR = {
+					has_valid_civic = civic_idyllic_bloom
+					has_valid_civic = civic_hive_idyllic_bloom
+				}
+			}
+			is_pd_arcology = yes
+			is_pd_hive_arcology = yes
+			is_pd_robot_arcology = yes
+		}
+	}
+	allow = {
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_continental
+						ideal_planet_class = pc_retinal
+						ideal_planet_class = pc_tepid
+						ideal_planet_class = pc_forest
+						ideal_planet_class = pc_lake
+						ideal_planet_class = pc_superhabitable
+						ideal_planet_class = pc_megaflora
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_continental
+				is_planet_class = pc_retinal
+				is_planet_class = pc_tepid
+				is_planet_class = pc_forest
+				is_planet_class = pc_lake
+				is_planet_class = pc_superhabitable
+				is_planet_class = pc_megaflora
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_tropical
+						ideal_planet_class = pc_hajungle
+						ideal_planet_class = pc_desertislands
+						ideal_planet_class = pc_mangrove
+						ideal_planet_class = pc_cenote
+						ideal_planet_class = pc_biolumen
+						ideal_planet_class = pc_geothermal
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_tropical
+				is_planet_class = pc_hajungle
+				is_planet_class = pc_desertislands
+				is_planet_class = pc_mangrove
+				is_planet_class = pc_cenote
+				is_planet_class = pc_biolumen
+				is_planet_class = pc_geothermal
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_ocean
+						ideal_planet_class = pc_cascadian
+						ideal_planet_class = pc_wetswamp
+						ideal_planet_class = pc_subarctic
+						ideal_planet_class = pc_fog
+						ideal_planet_class = pc_karst
+						ideal_planet_class = pc_reef
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_ocean
+				is_planet_class = pc_cascadian
+				is_planet_class = pc_wetswamp
+				is_planet_class = pc_subarctic
+				is_planet_class = pc_fog
+				is_planet_class = pc_karst
+				is_planet_class = pc_reef
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_desert
+						ideal_planet_class = pc_sandsea
+						ideal_planet_class = pc_oasis
+						ideal_planet_class = pc_outback
+						ideal_planet_class = pc_coastal
+						ideal_planet_class = pc_salt
+						ideal_planet_class = pc_aquifer
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_desert
+				is_planet_class = pc_sandsea
+				is_planet_class = pc_oasis
+				is_planet_class = pc_outback
+				is_planet_class = pc_coastal
+				is_planet_class = pc_salt
+				is_planet_class = pc_aquifer
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_arid
+						ideal_planet_class = pc_mesa
+						ideal_planet_class = pc_hadesert
+						ideal_planet_class = pc_med
+						ideal_planet_class = pc_badlands
+						ideal_planet_class = pc_coral
+						ideal_planet_class = pc_primal
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_arid
+				is_planet_class = pc_mesa
+				is_planet_class = pc_hadesert
+				is_planet_class = pc_med
+				is_planet_class = pc_badlands
+				is_planet_class = pc_coral
+				is_planet_class = pc_primal
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_savannah
+						ideal_planet_class = pc_steppe
+						ideal_planet_class = pc_prairie
+						ideal_planet_class = pc_veld
+						ideal_planet_class = pc_semiarid
+						ideal_planet_class = pc_tidallylocked
+						ideal_planet_class = pc_supercon
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_savannah
+				is_planet_class = pc_steppe
+				is_planet_class = pc_prairie
+				is_planet_class = pc_veld
+				is_planet_class = pc_semiarid
+				is_planet_class = pc_tidallylocked
+				is_planet_class = pc_supercon
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_arctic
+						ideal_planet_class = pc_frozen_desert
+						ideal_planet_class = pc_glacial
+						ideal_planet_class = pc_antarctic
+						ideal_planet_class = pc_aeolian
+						ideal_planet_class = pc_storm
+						ideal_planet_class = pc_eyeball
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_arctic
+				is_planet_class = pc_frozen_desert
+				is_planet_class = pc_glacial
+				is_planet_class = pc_antarctic
+				is_planet_class = pc_aeolian
+				is_planet_class = pc_storm
+				is_planet_class = pc_eyeball
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_alpine
+						ideal_planet_class = pc_boreal
+						ideal_planet_class = pc_snow
+						ideal_planet_class = pc_highland
+						ideal_planet_class = pc_duneforest
+						ideal_planet_class = pc_glacio
+						ideal_planet_class = pc_lanthanide
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_alpine
+				is_planet_class = pc_boreal
+				is_planet_class = pc_snow
+				is_planet_class = pc_highland
+				is_planet_class = pc_duneforest
+				is_planet_class = pc_glacio
+				is_planet_class = pc_lanthanide
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_tundra
+						ideal_planet_class = pc_swamp
+						ideal_planet_class = pc_mushroom
+						ideal_planet_class = pc_mud
+						ideal_planet_class = pc_basalt
+						ideal_planet_class = pc_rogue
+						ideal_planet_class = pc_lichen
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_tundra
+				is_planet_class = pc_swamp
+				is_planet_class = pc_mushroom
+				is_planet_class = pc_mud
+				is_planet_class = pc_basalt
+				is_planet_class = pc_rogue
+				is_planet_class = pc_lichen
+			}
+		}
+	}
+	planet_modifier = {
+		pop_growth_speed = 0.05
+		pop_environment_tolerance = 0.1
+	}
+}
+
+######################################################################################
+# Gaia Seeders Phase 3
+######################################################################################
+building_gaiaseeders_3 = {
+	base_buildtime = @b2_time
+	can_build = no
+	category = government
+	can_be_disabled = no
+	upgrades = {
+		"building_gaiaseeders_4"
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			energy = 1500
+			exotic_gases = @b3_rare_cost
+		}
+		upkeep = {
+			energy = 20
+			exotic_gases = @b3_rare_upkeep
+		}
+	}
+	destroy_trigger = {
+		OR = {
+			is_planet_class = pc_gaia
+			is_planet_class = pc_city
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+			NOT = {
+				exists = owner
+			}
+			owner = {
+				NOR = {
+					has_valid_civic = civic_idyllic_bloom
+					has_valid_civic = civic_hive_idyllic_bloom
+				}
+			}
+			is_pd_arcology = yes
+			is_pd_hive_arcology = yes
+			is_pd_robot_arcology = yes
+		}
+	}
+	allow = {
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_continental
+						ideal_planet_class = pc_retinal
+						ideal_planet_class = pc_tepid
+						ideal_planet_class = pc_forest
+						ideal_planet_class = pc_lake
+						ideal_planet_class = pc_superhabitable
+						ideal_planet_class = pc_megaflora
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_continental
+				is_planet_class = pc_retinal
+				is_planet_class = pc_tepid
+				is_planet_class = pc_forest
+				is_planet_class = pc_lake
+				is_planet_class = pc_superhabitable
+				is_planet_class = pc_megaflora
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_tropical
+						ideal_planet_class = pc_hajungle
+						ideal_planet_class = pc_desertislands
+						ideal_planet_class = pc_mangrove
+						ideal_planet_class = pc_cenote
+						ideal_planet_class = pc_biolumen
+						ideal_planet_class = pc_geothermal
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_tropical
+				is_planet_class = pc_hajungle
+				is_planet_class = pc_desertislands
+				is_planet_class = pc_mangrove
+				is_planet_class = pc_cenote
+				is_planet_class = pc_biolumen
+				is_planet_class = pc_geothermal
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_ocean
+						ideal_planet_class = pc_cascadian
+						ideal_planet_class = pc_wetswamp
+						ideal_planet_class = pc_subarctic
+						ideal_planet_class = pc_fog
+						ideal_planet_class = pc_karst
+						ideal_planet_class = pc_reef
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_ocean
+				is_planet_class = pc_cascadian
+				is_planet_class = pc_wetswamp
+				is_planet_class = pc_subarctic
+				is_planet_class = pc_fog
+				is_planet_class = pc_karst
+				is_planet_class = pc_reef
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_desert
+						ideal_planet_class = pc_sandsea
+						ideal_planet_class = pc_oasis
+						ideal_planet_class = pc_outback
+						ideal_planet_class = pc_coastal
+						ideal_planet_class = pc_salt
+						ideal_planet_class = pc_aquifer
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_desert
+				is_planet_class = pc_sandsea
+				is_planet_class = pc_oasis
+				is_planet_class = pc_outback
+				is_planet_class = pc_coastal
+				is_planet_class = pc_salt
+				is_planet_class = pc_aquifer
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_arid
+						ideal_planet_class = pc_mesa
+						ideal_planet_class = pc_hadesert
+						ideal_planet_class = pc_med
+						ideal_planet_class = pc_badlands
+						ideal_planet_class = pc_coral
+						ideal_planet_class = pc_primal
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_arid
+				is_planet_class = pc_mesa
+				is_planet_class = pc_hadesert
+				is_planet_class = pc_med
+				is_planet_class = pc_badlands
+				is_planet_class = pc_coral
+				is_planet_class = pc_primal
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_savannah
+						ideal_planet_class = pc_steppe
+						ideal_planet_class = pc_prairie
+						ideal_planet_class = pc_veld
+						ideal_planet_class = pc_semiarid
+						ideal_planet_class = pc_tidallylocked
+						ideal_planet_class = pc_supercon
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_savannah
+				is_planet_class = pc_steppe
+				is_planet_class = pc_prairie
+				is_planet_class = pc_veld
+				is_planet_class = pc_semiarid
+				is_planet_class = pc_tidallylocked
+				is_planet_class = pc_supercon
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_arctic
+						ideal_planet_class = pc_frozen_desert
+						ideal_planet_class = pc_glacial
+						ideal_planet_class = pc_antarctic
+						ideal_planet_class = pc_aeolian
+						ideal_planet_class = pc_storm
+						ideal_planet_class = pc_eyeball
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_arctic
+				is_planet_class = pc_frozen_desert
+				is_planet_class = pc_glacial
+				is_planet_class = pc_antarctic
+				is_planet_class = pc_aeolian
+				is_planet_class = pc_storm
+				is_planet_class = pc_eyeball
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_alpine
+						ideal_planet_class = pc_boreal
+						ideal_planet_class = pc_snow
+						ideal_planet_class = pc_highland
+						ideal_planet_class = pc_duneforest
+						ideal_planet_class = pc_glacio
+						ideal_planet_class = pc_lanthanide
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_alpine
+				is_planet_class = pc_boreal
+				is_planet_class = pc_snow
+				is_planet_class = pc_highland
+				is_planet_class = pc_duneforest
+				is_planet_class = pc_glacio
+				is_planet_class = pc_lanthanide
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_tundra
+						ideal_planet_class = pc_swamp
+						ideal_planet_class = pc_mushroom
+						ideal_planet_class = pc_mud
+						ideal_planet_class = pc_basalt
+						ideal_planet_class = pc_rogue
+						ideal_planet_class = pc_lichen
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_tundra
+				is_planet_class = pc_swamp
+				is_planet_class = pc_mushroom
+				is_planet_class = pc_mud
+				is_planet_class = pc_basalt
+				is_planet_class = pc_rogue
+				is_planet_class = pc_lichen
+			}
+		}
+	}
+	planet_modifier = {
+		pop_environment_tolerance = 0.2
+	}
+}
+
+######################################################################################
+# Gaia Seeders Phase 4
+######################################################################################
+building_gaiaseeders_4 = {
+	base_buildtime = @b2_time
+	can_build = no
+	category = government
+	can_be_disabled = no
+	destroy_trigger = {
+		OR = {
+			is_planet_class = pc_city
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+			NOT = {
+				exists = owner
+			}
+			owner = {
+				NOR = {
+					has_valid_civic = civic_idyllic_bloom
+					has_valid_civic = civic_hive_idyllic_bloom
+				}
+			}
+			is_pd_arcology = yes
+			is_pd_hive_arcology = yes
+			is_pd_robot_arcology = yes
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			energy = 1500
+			exotic_gases = @b4_rare_cost
+		}
+	}
+	allow = {
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_continental
+						ideal_planet_class = pc_retinal
+						ideal_planet_class = pc_tepid
+						ideal_planet_class = pc_forest
+						ideal_planet_class = pc_lake
+						ideal_planet_class = pc_superhabitable
+						ideal_planet_class = pc_megaflora
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_continental
+				is_planet_class = pc_retinal
+				is_planet_class = pc_tepid
+				is_planet_class = pc_forest
+				is_planet_class = pc_lake
+				is_planet_class = pc_superhabitable
+				is_planet_class = pc_megaflora
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_tropical
+						ideal_planet_class = pc_hajungle
+						ideal_planet_class = pc_desertislands
+						ideal_planet_class = pc_mangrove
+						ideal_planet_class = pc_cenote
+						ideal_planet_class = pc_biolumen
+						ideal_planet_class = pc_geothermal
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_tropical
+				is_planet_class = pc_hajungle
+				is_planet_class = pc_desertislands
+				is_planet_class = pc_mangrove
+				is_planet_class = pc_cenote
+				is_planet_class = pc_biolumen
+				is_planet_class = pc_geothermal
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_ocean
+						ideal_planet_class = pc_cascadian
+						ideal_planet_class = pc_wetswamp
+						ideal_planet_class = pc_subarctic
+						ideal_planet_class = pc_fog
+						ideal_planet_class = pc_karst
+						ideal_planet_class = pc_reef
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_ocean
+				is_planet_class = pc_cascadian
+				is_planet_class = pc_wetswamp
+				is_planet_class = pc_subarctic
+				is_planet_class = pc_fog
+				is_planet_class = pc_karst
+				is_planet_class = pc_reef
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_desert
+						ideal_planet_class = pc_sandsea
+						ideal_planet_class = pc_oasis
+						ideal_planet_class = pc_outback
+						ideal_planet_class = pc_coastal
+						ideal_planet_class = pc_salt
+						ideal_planet_class = pc_aquifer
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_desert
+				is_planet_class = pc_sandsea
+				is_planet_class = pc_oasis
+				is_planet_class = pc_outback
+				is_planet_class = pc_coastal
+				is_planet_class = pc_salt
+				is_planet_class = pc_aquifer
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_arid
+						ideal_planet_class = pc_mesa
+						ideal_planet_class = pc_hadesert
+						ideal_planet_class = pc_med
+						ideal_planet_class = pc_badlands
+						ideal_planet_class = pc_coral
+						ideal_planet_class = pc_primal
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_arid
+				is_planet_class = pc_mesa
+				is_planet_class = pc_hadesert
+				is_planet_class = pc_med
+				is_planet_class = pc_badlands
+				is_planet_class = pc_coral
+				is_planet_class = pc_primal
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_savannah
+						ideal_planet_class = pc_steppe
+						ideal_planet_class = pc_prairie
+						ideal_planet_class = pc_veld
+						ideal_planet_class = pc_semiarid
+						ideal_planet_class = pc_tidallylocked
+						ideal_planet_class = pc_supercon
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_savannah
+				is_planet_class = pc_steppe
+				is_planet_class = pc_prairie
+				is_planet_class = pc_veld
+				is_planet_class = pc_semiarid
+				is_planet_class = pc_tidallylocked
+				is_planet_class = pc_supercon
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_arctic
+						ideal_planet_class = pc_frozen_desert
+						ideal_planet_class = pc_glacial
+						ideal_planet_class = pc_antarctic
+						ideal_planet_class = pc_aeolian
+						ideal_planet_class = pc_storm
+						ideal_planet_class = pc_eyeball
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_arctic
+				is_planet_class = pc_frozen_desert
+				is_planet_class = pc_glacial
+				is_planet_class = pc_antarctic
+				is_planet_class = pc_aeolian
+				is_planet_class = pc_storm
+				is_planet_class = pc_eyeball
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_alpine
+						ideal_planet_class = pc_boreal
+						ideal_planet_class = pc_snow
+						ideal_planet_class = pc_highland
+						ideal_planet_class = pc_duneforest
+						ideal_planet_class = pc_glacio
+						ideal_planet_class = pc_lanthanide
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_alpine
+				is_planet_class = pc_boreal
+				is_planet_class = pc_snow
+				is_planet_class = pc_highland
+				is_planet_class = pc_duneforest
+				is_planet_class = pc_glacio
+				is_planet_class = pc_lanthanide
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						ideal_planet_class = pc_tundra
+						ideal_planet_class = pc_swamp
+						ideal_planet_class = pc_mushroom
+						ideal_planet_class = pc_mud
+						ideal_planet_class = pc_basalt
+						ideal_planet_class = pc_rogue
+						ideal_planet_class = pc_lichen
+					}
+				}
+			}
+			OR = {
+				is_planet_class = pc_tundra
+				is_planet_class = pc_swamp
+				is_planet_class = pc_mushroom
+				is_planet_class = pc_mud
+				is_planet_class = pc_basalt
+				is_planet_class = pc_rogue
+				is_planet_class = pc_lichen
+			}
+		}
+	}
+	triggered_desc = {
+		text = building_gaiaseeders_4_effect_desc
+	}
+}
+
+######################################################################################
+# Modded Buildings
+######################################################################################
+######################################################################################
+# Individualist Enclave
+######################################################################################
+building_individualist_enclave = {
+	base_buildtime = @b1_time
+	category = government
+	icon = building_residence
+	potential = {
+		exists = owner
+		owner = {
+			tul_is_gestalt_with_individuals_empire = yes
+		}
+		NOR = {
+			is_planet_class = pc_machine
+			is_planet_class = pc_hive
+		}
+		OR = {
+			owner = {
+				is_ai = no
+			}
+			NOR = {
+				has_building = building_individualist_enclave
+				has_building = building_individualist_colony
+			}
+			any_owned_pop = {
+				is_free_pop_gestalt = yes
+				is_unemployed = yes
+			}
+			owner = {
+				has_monthly_income = {
+					resource = consumer_goods
+					value < 10
+				}
+			}
+		}
+	}
+	allow = {
+		hidden_trigger = {
+			buildings_simple_allow = yes
+		}
+		any_owned_pop = {
+			is_free_pop_gestalt = yes
+		}
+	}
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			is_planet_class = pc_machine
+			is_planet_class = pc_hive
+			NOT = {
+				any_owned_pop = {
+					is_free_pop_gestalt = yes
+				}
+			}
+			owner = {
+				tul_is_gestalt_with_individuals_empire = no
+			}
+		}
+	}
+	convert_to = {
+		building_luxury_residence
+		building_communal_housing
+	}
+	planet_modifier = {
+		planet_housing_add = 8
+		planet_amenities_no_happiness_add = 4
+		job_supplier_add = 1
+		job_laborer_gestalt_add = 1
+	}
+	#triggered_planet_modifier = {
+	#	potential = {
+	#		exists = planet
+	#		planet = {
+	#			NOT = { is_planet_class = pc_habitat }
+	#			NOT = { is_planet_class = pc_city }
+	#			NOT = { is_planet_class = pc_relic }
+	#			any_owned_pop = {
+	#				is_free_pop_gestalt = yes
+	#				is_lithoid = no
+	#			}
+	#		}
+	#	}
+	#	modifier = {
+	#		job_farmer_gestalt_add = 2
+	#	}
+	#}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_valid_civic = civic_harm_hive
+					has_valid_civic = civic_harm_machine
+				}
+			}
+		}
+		modifier = {
+			job_researcher_gestalt_add = 1
+			job_entertainer_gestalt_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_housing_1
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_housing_2
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	triggered_desc = {
+		text = individualist_enclave_effect_desc
+	}
+	upgrades = {
+		"building_individualist_colony"
+	}
+	triggered_desc = {
+		text = job_administrator_gestalt_effect_desc
+	}
+	triggered_desc = {
+		text = job_enforcer_gestalt_effect_desc
+	}
+	triggered_desc = {
+		text = job_supplier_effect_desc
+	}
+	#triggered_desc = {
+	#	text = job_farmer_gestalt_effect_desc
+	#}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				OR = {
+					has_valid_civic = civic_harm_hive
+					has_valid_civic = civic_harm_machine
+				}
+			}
+		}
+		text = job_researcher_gestalt_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				OR = {
+					has_valid_civic = civic_harm_hive
+					has_valid_civic = civic_harm_machine
+				}
+			}
+		}
+		text = job_entertainer_gestalt_effect_desc
+	}
+	ai_resource_production = {
+		trigger = {
+			always = yes
+		}
+		consumer_goods = 4
+	}
+	ai_resource_production = {
+		physics_research = 2
+		society_research = 2
+		engineering_research = 2
+		trigger = {
+			owner = {
+				OR = {
+					has_valid_civic = civic_harm_hive
+					has_valid_civic = civic_harm_machine
+				}
+			}
+		}
+	}
+}
+
+######################################################################################
+# Individualist Colony
+######################################################################################
+building_individualist_colony = {
+	base_buildtime = @b2_time
+	category = government
+	icon = building_paradise_dome
+	potential = {
+		has_building = building_individualist_enclave
+	}
+	allow = {
+		has_upgraded_capital = yes
+		any_owned_pop = {
+			is_free_pop_gestalt = yes
+		}
+	}
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			is_planet_class = pc_machine
+			is_planet_class = pc_hive
+			NOT = {
+				any_owned_pop = {
+					is_free_pop_gestalt = yes
+				}
+			}
+			owner = {
+				tul_is_gestalt_with_individuals_empire = no
+			}
+		}
+	}
+	convert_to = {
+		building_paradise_dome
+		building_communal_housing_large
+	}
+	planet_modifier = {
+		planet_housing_add = 16
+		planet_amenities_no_happiness_add = 8
+		job_supplier_add = 2
+		job_laborer_gestalt_add = 2
+		job_enforcer_gestalt_add = 1
+	}
+	#triggered_planet_modifier = {
+	#	potential = {
+	#		exists = planet
+	#		planet = {
+	#			NOT = { is_planet_class = pc_habitat }
+	#			NOT = { is_planet_class = pc_city }
+	#			NOT = { is_planet_class = pc_relic }
+	#			any_owned_pop = {
+	#				is_free_pop_gestalt = yes
+	#				is_lithoid = no
+	#			}
+	#		}
+	#	}
+	#	modifier = {
+	#		job_farmer_gestalt_add = 4
+	#	}
+	#}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_valid_civic = civic_harm_hive
+					has_valid_civic = civic_harm_machine
+				}
+			}
+		}
+		modifier = {
+			job_researcher_gestalt_add = 2
+			job_entertainer_gestalt_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_housing_1
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_housing_2
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+			rare_crystals = @b2_rare_cost
+		}
+		upkeep = {
+			energy = 8
+		}
+	}
+	prerequisites = {
+		"tech_housing_2"
+	}
+	show_tech_unlock_if = {
+		tul_is_gestalt_with_individuals_empire = yes
+	}
+	triggered_desc = {
+		text = individualist_enclave_effect_desc
+	}
+	triggered_desc = {
+		text = job_administrator_gestalt_effect_desc
+	}
+	triggered_desc = {
+		text = job_enforcer_gestalt_effect_desc
+	}
+	triggered_desc = {
+		text = job_supplier_effect_desc
+	}
+	#triggered_desc = {
+	#	text = job_farmer_gestalt_effect_desc
+	#}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				OR = {
+					has_valid_civic = civic_harm_hive
+					has_valid_civic = civic_harm_machine
+				}
+			}
+		}
+		text = job_researcher_gestalt_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				OR = {
+					has_valid_civic = civic_harm_hive
+					has_valid_civic = civic_harm_machine
+				}
+			}
+		}
+		text = job_entertainer_gestalt_effect_desc
+	}
+	ai_resource_production = {
+		trigger = {
+			always = yes
+		}
+		consumer_goods = 8
+	}
+	ai_resource_production = {
+		physics_research = 4
+		society_research = 4
+		engineering_research = 4
+		trigger = {
+			owner = {
+				OR = {
+					has_valid_civic = civic_harm_hive
+					has_valid_civic = civic_harm_machine
+				}
+			}
+		}
+	}
+}

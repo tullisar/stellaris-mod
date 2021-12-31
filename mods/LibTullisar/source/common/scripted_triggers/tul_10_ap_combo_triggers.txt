@@ -1,0 +1,123 @@
+######################################################################################
+# Scripted Triggers
+# Package: APC
+######################################################################################
+#
+#
+######################################################################################
+# Trigger: ⭐❔ tul_is_ap_combo_feature_enabled
+#
+#  Source: SRD_01_00001_0
+# Purpose: Determine whether the ascension perk combo feature is enabled
+#  Scopes: any (global)
+#
+#  Inputs: TODO(tullisar)
+#
+# Outputs: yes/no = Whether the ascension perk combo feature is enabled. 
+#
+######################################################################################
+tul_is_ap_combo_feature_enabled = {
+	# TODO(tullisar)
+	always = yes
+}
+
+######################################################################################
+# Trigger: ⭐❔ tul_is_ap_combo_feature_initialized
+#
+#  Source: SRD_01_00002_0, SRD_01_00003_0
+# Purpose: Determine whether the ascension perk combo feature has been initialized.
+#  Scopes: any (global)
+#
+#  Inputs: 🌎🏁 tul_flag_ap_combo_initialized
+#
+# Outputs: yes/no = Whether the ascension perk combo feature has been initialized.
+#
+# Details: TODO
+#
+#  Limits: TODO
+#
+#   Notes: TODO
+#
+######################################################################################
+tul_is_ap_combo_feature_initialized = {
+	has_global_flag = tul_flag_ap_combo_initialized
+}
+
+######################################################################################
+# Trigger: ⭐❔ tul_ap_combo_is_type_defined
+#
+#  Source: SRD_01_00019_0
+# Purpose: Determine whether the given asension perk combo type is defined.
+#  Scopes: ⭐❔ tul_ap_combo_type_is_defined
+#
+#  Inputs: TYPE = The ascension perk combo type to check
+#          ⭐🔢 var_tul_ap_combo_$TYPE$
+#
+# Outputs: yes/no = Whether the ascension perk combo type is defined.
+#
+######################################################################################
+tul_ap_combo_is_type_defined = {
+	tul_is_global_variable_set = {
+		WHICH = var_tul_ap_combo_type_$TYPE$
+	}
+}
+
+######################################################################################
+# Trigger: 🌐❔ tul_scope_is_country_and_has_perk
+#
+#  Source: TODO
+# Purpose: Determine whether a scoped country has a given ascension perk
+#  Scopes: 🌐 country
+# 
+#  Inputs: PERK = The ascension perk to check for existence 
+#          🌐❔ has_ascension_perk
+#
+# Details: Determines whether the current scope is 'country', exists, and that the 
+#          country has a specified ascension perk. 
+#
+######################################################################################
+tul_scope_is_country_and_has_perk = {
+	exists = this
+	is_scope_type = country
+	this = {
+		has_ascension_perk = $PERK$
+	}
+}
+
+######################################################################################
+# Trigger: 🌐❔ tul_scope_is_country_and_perk_is_new
+#
+#  Source: TODO
+# Purpose: Determine whether a scoped country has a given ascension perk
+#  Scopes: 🌐 country
+# 
+#  Inputs: PERK = The ascension perk to check for existence 
+#          🌐❔ tul_scope_is_country_and_has_perk
+#
+# Details: Determines whether the current scope is 'country', exists, and that the 
+#          country has just selected the specified ascension perk.
+#
+######################################################################################
+tul_scope_is_country_and_perk_is_new = {
+	tul_scope_is_country_and_has_perk = {
+		PERK = $PERK$
+	}
+	NOT = {
+		has_country_flag = tul_flag_ap_combo_country_has_$PERK$
+	}
+}
+
+######################################################################################
+# tul_ap_combo_has_perk_been_counted
+#
+# Determines whether the specified ascension perk has been counted (after having 
+# been taken) 
+#
+######################################################################################
+tul_ap_combo_has_perk_been_counted = {
+	exists = this
+	is_scope_type = country
+	this = {
+		has_country_flag = tul_ap_combo_$PERK$_counted
+	}
+}

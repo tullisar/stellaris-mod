@@ -1,0 +1,484 @@
+######################################################################################
+# Government Perks
+# -------------------------------------------
+# This file contains merged ascenion perks for the various tiered government themed
+# ascension perks provided by the following mods:
+# - Plentiful Traditions
+# - Expanded Stellaris Ascension Perks
+# - Reworked Advanced Ascension
+# - 
+#
+# The effects are all merged into new perks, and there is a scripted trigger 
+# available to check for their existence by rank rather than by perk specifically.
+#
+######################################################################################
+#
+#
+#
+######################################################################################
+# Executive Vigor
+# Source: Vanilla
+# Type: Government
+######################################################################################
+# Expanded Stellaris Ascension Perks (Regular)
+ap_esap_gov_1 = {
+	potential = {
+		always = no
+	}
+}
+
+# Expanded Stellaris Ascension Perks (Gestalt)
+ap_esap_gov_GC_1 = {
+	potential = {
+		always = no
+	}
+}
+
+# Merged 
+ap_executive_vigor = {
+	modifier = {
+		mod_tul_ap_executive_vigor_base = 1
+	}
+	potential = {
+		tul_has_executive_vigor = no
+		is_megacorp = no
+	}
+	ai_weight = {
+		factor = 30
+		modifier = {
+			factor = 10
+			has_technology = tech_ascension_theory
+		}
+	}
+	on_enabled = {
+		custom_tooltip = ap_tul_executive_vigor_tooltip
+
+		# Notify listeners that this perk was picked. 
+		# fire_on_action = {
+		# 	on_action = on_ap_executive_vigor_picked
+		# 	scopes = {
+		# 		from = prev
+		# 	}
+		# }
+
+		# Reset the combo bonus for the current type, and set up the type variable
+		# for the country event that will be run for the rest of the necessary
+		# processing.
+		tul_effect_reset_ap_combo_bonus = {
+			TYPE = gov
+			CALC_TYPE = 1
+		}
+		# Run the country event which will update the modifiers as needed
+		# based on other government ascension perks.
+		country_event = {
+			id = tul_ap_combo.1
+		}
+		run_ai_strategic_data = yes
+	}
+}
+
+######################################################################################
+# Efficient Executive / Efficient Execution
+# Source: ESAP
+# Type: Government
+# Prerequisites: Executive Vigor / Restless Execution
+######################################################################################
+# Reworked Advanced Ascension
+eap_executive_vigor = {
+	modifier = {
+		mod_tul_ap_efficient_executive_base = 1
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "tul_requires_ap_executive_vigor"
+			tul_has_executive_vigor = yes
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
+		}
+	}
+	potential = {
+		tul_has_executive_vigor = yes
+		NOT = {
+			has_ascension_perk = eap_executive_vigor
+		}
+	}
+	ai_weight = {
+		factor = 30
+	}
+	on_enabled = {
+		# custom_tooltip = ap_tul_efficient_executive_tooltip
+		# # Reset the combo bonus for the current type, and set up the type variable
+		# # for the country event that will be run for the rest of the necessary
+		# # processing.
+		# tul_effect_reset_ap_combo_bonus = {
+		# 	TYPE = gov
+		# 	CALC_TYPE = 1
+		# }
+		# # Run the country event which will update the modifiers as needed
+		# # based on other government ascension perks.
+		# country_event = {
+		# 	id = tul_ap_combo.1
+		# }
+		run_ai_strategic_data = yes
+	}
+}
+
+######################################################################################
+# Transcendent Learning
+# Source: Vanilla, ESAP, Reworked Advanced Ascension
+# Type: Government
+######################################################################################
+# Expanded Stellaris Ascension Perks (Regular)
+ap_esap_gov_2 = {
+	potential = {
+		always = no
+	}
+}
+
+# Expanded Stellaris Ascension Perks (Gestalt)
+ap_esap_gov_GC_2 = {
+	potential = {
+		always = no
+	}
+}
+
+# Merged 
+ap_transcendent_learning = {
+	modifier = {
+		mod_tul_ap_transcendent_learning_base = 1
+	}
+	potential = {
+		tul_has_transcendent_learning = no
+	}
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 0.2
+			is_machine_empire = no
+		}
+	}
+	on_enabled = {
+		# custom_tooltip = ap_tul_transcendent_learning_tooltip
+		every_pool_leader = {
+			add_skill = 1
+		}
+		# # Reset the combo bonus for the current type, and set up the type variable
+		# # for the country event that will be run for the rest of the necessary
+		# # processing.
+		# tul_effect_reset_ap_combo_bonus = {
+		# 	TYPE = gov
+		# 	CALC_TYPE = 1
+		# }
+		# # Run the country event which will update the modifiers as needed
+		# # based on other government ascension perks.
+		# country_event = {
+		# 	id = tul_ap_combo.1
+		# }
+		run_ai_strategic_data = yes
+	}
+}
+
+######################################################################################
+# Limitless 
+# Source: Reworked Advanced Ascension
+# Type: Government
+# Prerequisite: Transcendent Learning
+######################################################################################
+# Reworked Advanced Ascension
+eap_transcendent_learning = {
+	modifier = {
+		mod_tul_ap_limitless_base = 1
+	}
+	potential = {
+		tul_is_synthetic_empire = no
+		NOT = {
+			has_ascension_perk = eap_transcendent_learning
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			tul_is_synthetic_empire = no
+			fail_text = "tul_requires_not_synthetic_empire"
+		}
+		custom_tooltip = {
+			tul_has_transcendent_learning = yes
+			fail_text = "requires_ap_transcendent_learning"
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
+		}
+		OR = {
+			has_technology = tech_subdermal_stimulation
+			tul_is_hive_empire = yes
+		}
+	}
+	ai_weight = {
+		factor = 10
+	}
+	on_enabled = {
+		# custom_tooltip = ap_tul_limitless_tooltip
+		# # Reset the combo bonus for the current type, and set up the type variable
+		# # for the country event that will be run for the rest of the necessary
+		# # processing.
+		# tul_effect_reset_ap_combo_bonus = {
+		# 	TYPE = gov
+		# 	CALC_TYPE = 1
+		# }
+		# # Run the country event which will update the modifiers as needed
+		# # based on other government ascension perks.
+		# country_event = {
+		# 	id = tul_ap_combo.1
+		# }
+		run_ai_strategic_data = yes
+	}
+}
+
+######################################################################################
+# Imperial Prerogative
+######################################################################################
+ap_esap_gov_3 = {
+	potential = {
+		always = no
+	}
+}
+ap_esap_gov_3_corp = {
+	potential = {
+		always = no
+	}
+}
+
+ap_esap_gov_GC_3 = {
+	potential = {
+		always = no
+	}
+}
+
+ap_imperial_prerogative = {
+	potential = {
+		tul_has_imperial_prerogative = no
+	}
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 5
+			is_civic_expansionist = yes
+		}
+	}
+	on_enabled = {
+		# custom_tooltip = ap_tul_imperial_prerogative_tooltip
+		# Apply the appropriate base modifier.
+		if = {
+			limit = {
+				is_megacorp = yes
+			}
+			add_modifier = {
+				modifier = mod_tul_ap_imperial_prerogative_base_corp
+			}
+		}
+		else = {
+			add_modifier = {
+				modifier = mod_tul_ap_imperial_prerogative_base
+			}
+		}
+		# # Reset the combo bonus for the current type, and set up the type variable
+		# # for the country event that will be run for the rest of the necessary
+		# # processing.
+		# tul_effect_reset_ap_combo_bonus = {
+		# 	TYPE = gov
+		# 	CALC_TYPE = 1
+		# }
+		# # Run the country event which will update the modifiers as needed
+		# # based on other government ascension perks.
+		# country_event = {
+		# 	id = tul_ap_combo.1
+		# }
+		run_ai_strategic_data = yes
+	}
+}
+
+######################################################################################
+# Enforce Prerogative
+######################################################################################
+# Corporate
+eap_imperial_prerogative_corp = {
+	potential = {
+		always = no
+	}
+}
+
+# Corportate 2
+eap_imperial_prerogative_corp2 = {
+	potential = {
+		always = no
+	}
+}
+
+# Merged
+eap_imperial_prerogative = {
+	modifier = {
+		country_admin_cap_mult = 0.3
+		planet_colony_development_speed_mult = 0.5
+		colony_start_num_pops_add = 3
+		pop_demotion_time_mult = -0.3
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_ap_imperial_prerogative"
+			or = {
+				has_ascension_perk = ap_imperial_prerogative
+				has_ascension_perk = ap_esap_gov_3
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
+		}
+		num_sectors >= 2
+	}
+	potential = {
+		tul_has_enforce_prerogative = no
+	}
+	ai_weight = {
+		factor = 10
+	}
+	on_enabled = {
+		# custom_tooltip = ap_tul_enforce_prerogative_tooltip
+		# Apply the appropriate base modifier.
+		if = {
+			limit = {
+				is_megacorp = yes
+			}
+			add_modifier = {
+				modifier = mod_tul_ap_enforce_prerogative_base_corp
+			}
+		}
+		else = {
+			add_modifier = {
+				modifier = mod_tul_ap_enforce_prerogative_base
+			}
+		}
+		# # Reset the combo bonus for the current type, and set up the type variable
+		# # for the country event that will be run for the rest of the necessary
+		# # processing.
+		# tul_effect_reset_ap_combo_bonus = {
+		# 	TYPE = gov
+		# 	CALC_TYPE = 1
+		# }
+		# # Run the country event which will update the modifiers as needed
+		# # based on other government ascension perks.
+		# country_event = {
+		# 	id = tul_ap_combo.1
+		# }
+
+		run_ai_strategic_data = yes
+	}
+}
+
+######################################################################################
+# The Beautiful Bureaucracy 
+# Source: ESAP
+# Type: Government
+######################################################################################
+# Hives
+ap_esap_gov_hive_4 = {
+	potential = {
+		always = no
+	}
+}
+
+# Machines
+ap_esap_gov_machines_4 = {
+	potential = {
+		always = no
+	}
+}
+
+# Merged
+ap_esap_gov_4 = {
+	potential = {
+		tul_has_beautiful_bureaucracy = no
+	}
+	ai_weight = {
+		factor = 2
+	}
+	on_enabled = {
+		# custom_tooltip = ap_tul_beautiful_bureaucracy_tooltip
+		# Apply the appropriate base modifier.
+		if = {
+			limit = {
+				tul_is_hive_empire = yes
+			}
+			add_modifier = {
+				modifier = mod_tul_ap_beautiful_bureaucracy_base_hive
+			}
+		}
+		else_if = {
+			limit = {
+				tul_is_machine_empire = yes
+			}
+			add_modifier = {
+				modifier = mod_tul_ap_beautiful_bureaucracy_base_machines
+			}
+		}
+		else = {
+			add_modifier = {
+				modifier = mod_tul_ap_beautiful_bureaucracy_base
+			}
+		}
+
+		# Reset the combo bonus for the current type, and set up the type variable
+		# for the country event that will be run for the rest of the necessary
+		# processing.
+		# tul_effect_reset_ap_combo_bonus = {
+		# 	TYPE = gov
+		# 	CALC_TYPE = 1
+		# }
+		# # Run the country event which will update the modifiers as needed
+		# # based on other government ascension perks.
+		# country_event = {
+		# 	id = tul_ap_combo.1
+		# }
+		run_ai_strategic_data = yes
+	}
+}
+
+######################################################################################
+# Ascendancy of the State (Expanded Stellaris Ascension Perks)
+######################################################################################
+ap_esap_gov_GC_5 = {
+	potential = {
+		always = no
+	}
+}
+
+ap_esap_gov_5 = {
+	modifier = {
+		mod_tul_ap_ascendancy_of_the_state_base = 1
+	}
+	potential = {
+		tul_has_ascendancy_of_the_state = no
+	}
+	ai_weight = {
+		factor = 2
+	}
+	# on_enabled = {
+	# 	custom_tooltip = ap_tul_ascendancy_of_the_state_tooltip
+
+	# 	# Reset the combo bonus for the current type, and set up the type variable
+	# 	# for the country event that will be run for the rest of the necessary
+	# 	# processing.
+	# 	tul_effect_reset_ap_combo_bonus = {
+	# 		TYPE = gov
+	# 		CALC_TYPE = 1
+	# 	}
+	# 	# Run the country event which will update the modifiers as needed
+	# 	# based on other government ascension perks.
+	# 	country_event = {
+	# 		id = tul_ap_combo.1
+	# 	}
+	# 	run_ai_strategic_data = yes
+	# }
+}

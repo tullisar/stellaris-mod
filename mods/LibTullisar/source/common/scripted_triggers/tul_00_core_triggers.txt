@@ -1,0 +1,93 @@
+######################################################################################
+# Utility Triggers
+######################################################################################
+
+######################################################################################
+# Trigger: tul_has_lib_mod_installed
+#
+#  Source: SRD_00_00002_0
+# Purpose: Determine whether this library is installed.
+#  Scopes: ⭐ global
+#
+#  Inputs: ⭐🏁 tul_flag_has_lib_mod
+#
+# Outputs: yes/no = Whether the library mod has been installed.
+#
+######################################################################################
+tul_has_lib_mod_installed = {
+	has_global_flag = tul_flag_has_lib_mod
+}
+
+######################################################################################
+# Trigger: tul_is_host_set
+#
+#  Source: SRD_00_00004_0
+# Purpose: Check whether the multiplayer host has been set. 
+#  Scopes: ⭐ global
+#
+#  Inputs: ⭐🏁 tul_flag_host_set
+#
+# Outputs: yes/no = Whether the multiplayer host has been set.
+#
+######################################################################################
+tul_is_host_set = {
+	has_global_flag = tul_flag_host_set
+}
+
+######################################################################################
+# Trigger: tul_is_host
+#
+#  Source: SRD_00_00005_0
+# Purpose: Determine if the scoped country is the multiplayer host
+#  Scopes: 🌐 country
+#
+#  Inputs: 🌐🏁 tul_flag_is_game_host
+#          ⭐🎯 tul_multiplayer_host
+#
+# Outputs: yes/no = Whether the scoped country is the multiplayer host.
+#
+######################################################################################
+tul_is_host = {
+	if = {
+		limit = {
+			tul_is_player_country = yes
+		}
+		has_country_flag = tul_flag_is_game_host
+		is_same_empire = event_target:tul_multiplayer_host
+	}
+	else = {
+		always = no
+	}
+}
+
+######################################################################################
+# Trigger: tul_is_logging_verbose
+#
+#  Source: SRD_00_00007_0
+# Purpose: Determine whether verbose logging is enabled.
+#  Scopes: ⭐ global
+#
+#  Inputs: TODO
+#
+# Outputs: yes/no = Whether verbose logging is enabled or not.
+#
+######################################################################################
+tul_is_logging_verbose = {
+	always = yes
+}
+
+######################################################################################
+# Trigger: tul_is_player_lib_initialized
+#
+#  Source: SRD_00_00008_0
+# Purpose: Determine whether library initialization has completed for a scoped country.
+#  Scopes: 🌐 country
+#
+#  Inputs: 🌐🏁 tul_flag_country_library_initialized
+#
+# Outputs: yes/no = Whether library initialization has completed for the scoped country.
+#
+######################################################################################
+tul_is_player_lib_initialized = {
+	has_country_flag = tul_flag_country_library_initialized
+}

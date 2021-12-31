@@ -1,0 +1,148 @@
+﻿l_english:
+######################################################################################
+# Ascension Perks
+######################################################################################
+
+ap_tul_type_gov:0 "Government"
+ap_tul_type_gov_gestalt:0 "Control"
+ap_tul_type_gov_note:0 "§Y[This.GetPerkGovType] Perk§!"
+
+######################################################################################
+# Executive Vigor
+######################################################################################
+# Perk Localisation
+ap_tul_executive_vigor_regular:0 "Executive Vigor"
+ap_tul_executive_vigor_gestalt:0 "$ap_esap_gov_GC_1$"
+ap_executive_vigor:0 "[This.GetPerkExecutiveVigorName]"
+ap_executive_vigor_desc:0 "[This.GetPerkExecutiveVigorDescription]"
+ap_tul_executive_vigor_tooltip:0 "$ap_tul_type_gov_note$: §G+1§! §YEdict Capacity§!\n§BCombo Bonus: For each $ap_tul_type_gov_note$ unlocked (including this one), the following bonuses also apply:§!\n§G+1§! §YEdict Capacity§!\n§YEdict Length§! increased by §G+20%§!"
+
+# Modifier Localisation
+mod_tul_ap_executive_vigor_base:0 "$ap_executive_vigor$"
+mod_tul_ap_executive_vigor_combo:0 "$ap_executive_vigor$ (Combo Bonus)"
+mod_tul_ap_executive_vigor_combo_desc:0 "$ap_executive_vigor_desc$"
+
+######################################################################################
+# Efficient Execution / Efficient Executive
+######################################################################################
+# Perk Localisation
+ap_tul_efficient_executive_regular:0 "Efficient Executive"
+ap_tul_efficient_executive_gestalt:0 "Efficient Execution"
+eap_executive_vigor:0 "[This.GetPerkEfficientExecutiveName]"
+eap_executive_vigor_desc:0 "The edicts decided upon by our government will be carried out to the maximum extent."
+ap_tul_efficient_executive_tooltip:0 "$ap_tul_type_gov_note$: §G+3§! §YEdict Capacity§!\n§YEdict Length§! increased by §G+100%§!\n§G+1§! Civic Point\n§BCombo Bonus: For each $ap_tul_type_gov_note$ unlocked (including this one), the following bonuses also apply:§!\n§YEdict Cost§! reduced by §G25%§!\n§G+1§! §YInfluence Gain§!"
+tul_requires_ap_executive_vigor:0 "$TRIGGER_FAIL$Requires the §Y$ap_executive_vigor$§! Ascension Perk."
+
+# Modifier Localisation
+mod_tul_ap_efficient_executive_base:0 "$eap_executive_vigor$"
+mod_tul_ap_efficient_executive_combo:0 "$eap_executive_vigor$ (Combo Bonus)"
+mod_tul_ap_efficient_executive_combo_desc:0 "$eap_executive_vigor_desc$"
+
+######################################################################################
+# Transcendent Learning
+######################################################################################
+# Perk Localisation
+ap_tul_transcendent_learning_tooltip:0 "$ap_tul_type_gov_note$: Leaders spawn at level §G2§!\n§G+1§! Leader §YSkill Levels§!\nLeader §YExperience Gain§! increased by §G+50%§!\n§BCombo Bonus: For each $ap_tul_type_gov_note$ unlocked (including this one), the following bonuses also apply:§!\nLeader §YExperience Gain§! increased by §G+10%§!"
+
+# Modifier Localisation
+mod_tul_ap_transcendent_learning_base:0 "$ap_transcendent_learning$"
+mod_tul_ap_transcendent_learning_combo:0 "$ap_transcendent_learning$ (Combo Bonus)"
+mod_tul_ap_transcendent_learning_combo_desc:0 "$ap_transcendent_learning_desc$"
+
+######################################################################################
+# Limitless
+######################################################################################
+# Perk Localisation
+
+decision_nzt48:0 "Distribute NZT-48"
+allow_decision_nzt48:0 "$tul_unlocks_planetary_edict$ $decision_nzt48$"
+decision_nzt48_desc:0 "The local government began to spray NTZ-48 in large areas, The planet is shrouded in a strong academic atmosphere."
+eap_transcendent_learning_desc:0 "We have developed a new chemical agent: NZT-48; which can greatly improve the thinking ability of those who use it. Users experience euphoria, metaphysical journeys, and intense hyperfocus. Side effects are minimal, and tend to induce deviant behavior."
+
+ap_tul_describe_nzt48:0 "§EThis is a Planetary Edict that lasts for §Y100§! years and increases £pops£ Pop §Y$MOD_POP_HAPPINESS$§!, increases Pop §YResearch Output§!, decrease §YGoverning Ethics Attraction§!.§!"
+ap_tul_limitless_tooltip:0 "$ap_tul_type_gov_note$: §G+2§! Leader §YSkill Levels§!\nLeader §YExperience Gain§! increased by §G+250%§!\n$allow_decision_nzt48$ ($ap_tul_describe_nzt48$).\n§BCombo Bonus: For each $ap_tul_type_gov_note$ unlocked (including this one), the following bonuses also apply:§!\n§G+1§! Leader §YPool Size§!Leader §YExperience Gain§! increased by §G+10%§!"
+tul_requires_ap_transcendent_learning:0 "$TRIGGER_FAIL$Requires the §Y$ap_transcendent_learning$§! Ascension Perk."
+
+# Modifier Localisation
+mod_tul_ap_limitless_base:0 "$eap_transcendent_learning$"
+mod_tul_ap_limitless_combo:0 "$eap_transcendent_learning$ (Combo Bonus)"
+mod_tul_ap_limitless_combo_desc:0 "$eap_transcendent_learning_desc$"
+
+######################################################################################
+# Imperial Prerogative
+######################################################################################
+# Perk Localisation
+
+ap_tul_imperial_prerogative_tooltip:0 "$ap_tul_type_gov_note$: §YAdministrative Capacity§! Increased by §G+20%§!\n§BCombo Bonus: For each $ap_tul_type_gov_note$ unlocked (including this one), the following bonuses also apply:§!\n§G+20§! §YAdministrative Capacity§!."
+
+# Modifier Localisation
+mod_tul_ap_imperial_prerogative_base:0 "$ap_imperial_prerogative$"
+mod_tul_ap_imperial_prerogative_base_corp:0 "$ap_imperial_prerogative$"
+mod_tul_ap_imperial_prerogative_base_desc:0 "$ap_imperial_prerogative_desc$"
+mod_tul_ap_imperial_prerogative_combo:0 "$ap_imperial_prerogative$ (Combo Bonus)"
+mod_tul_ap_imperial_prerogative_combo_desc:0 "$ap_imperial_prerogative_desc$"
+
+######################################################################################
+# Enforce Prerogative
+# Source: RAA
+######################################################################################
+# Perk Localisation
+
+eap_imperial_prerogative_desc:0 "A series of government reforms have improved the government's ability to administrate the complexities of a galaxy spanning legal system."
+ap_tul_enforce_prerogative_admin_cap_bonus:0 "§Y$MOD_COUNTRY_ADMIN_CAP_MULT$§! increased by §G+15%§!"
+ap_tul_enforce_prerogative_admin_cap_bonus_corp:0 "§G+70§! §Y$MOD_COUNTRY_ADMIN_CAP_ADD$§! increased by §G70§!" 
+ap_tul_enforce_prerogative_tooltip:0 "$ap_tul_type_gov_note$: [This.GetPerkEnforcePrerogativeAdminCapBonus]\n§Y$MOD_PLANET_COLONY_DEVELOPMENT_SPEED_MULT$§! increased by §G+50%§!\nNewly founded colonies begin with §G1§ additional £pops£ Pop.\nTime taken for £pops£ to demote to a lower strata decreased by §G-30%§!. \n§BCombo Bonus: For each $ap_tul_type_gov_note$ unlocked (including this one), the following bonuses also apply:§!\nNewly founded colonies begin with §G1§ additional £pops£ Pop.\nTime taken for £pops£ to demote to a lower strata decreased by §G-10%§!"
+
+# Modifier Localisation
+mod_tul_ap_enforce_prerogative_base:0 "$eap_imperial_prerogative$"
+mod_tul_ap_enforce_prerogative_base_corp:0 "$eap_imperial_prerogative$"
+mod_tul_ap_enforce_prerogative_base_desc:0 "$eap_imperial_prerogative_desc$"
+mod_tul_ap_enforce_prerogative_base_corp_desc:0 "$eap_imperial_prerogative_desc$"
+mod_tul_ap_enforce_prerogative_combo:0 "$eap_imperial_prerogative$ (Combo Bonus)"
+mod_tul_ap_enforce_prerogative_combo_desc:0 "$eap_imperial_prerogative_desc$"
+
+######################################################################################
+# The Beautiful Bureaucracy / The Great Echo
+# Source: ESAP
+######################################################################################
+# Perk Localisation
+ap_tul_beautiful_bureacracy:0 "The Beautiful Bureaucracy"
+ap_tul_the_great_echo:0 "$ap_esap_gov_hive_4$"
+ap_esap_gov_4:0 "[This.GetPerkBeautifulBureaucracyName]"
+ap_tul_beautiful_bureaucracy_desc:0 "Nothing can truly be considered an achievement until the appropriate paperwork have been signed and filed."
+ap_tul_the_great_echo_hive_desc:0 "Our synapse drones now not merely transmits the minds throughout our empire. They amplify the great echo, which resonates throughout our empire, ensuring that each and every drone acts as one single organism."
+ap_tul_the_great_echo_machines_desc:0 "Our coordinatiors now not merely transmits the minds throughout our empire. They amplify the great echo, which resonates throughout our empire, ensuring that each and every drone acts as one single organism."
+ap_esap_gov_4_desc:0 "[This.GetPerkBeautifulBureaucracyDesc]"
+ap_tul_beautiful_bureaucracy_tooltip:0 "$ap_tul_type_gov_note$: TODO(robertb)\n§BCombo Bonus: For each $ap_tul_type_gov_note$ unlocked (including this one), the following bonuses also apply:§!\nTODO(robertb)"
+tul_requires_ap_executive_vigor:0 "$TRIGGER_FAIL$Requires the §Y$ap_executive_vigor$§! Ascension Perk."
+
+
+# Modifier Localisation
+mod_tul_ap_beautiful_bureaucracy_base:0 "$ap_esap_gov_4$"
+mod_tul_ap_beautiful_bureaucracy_base_hive:0 "$ap_esap_gov_4$"
+mod_tul_ap_beautiful_bureaucracy_base_machines:0 "$ap_esap_gov_4$"
+mod_tul_ap_beautiful_bureaucracy_base_desc:0 "$ap_esap_gov_4_desc$"
+mod_tul_ap_beautiful_bureaucracy_base_hive_desc:0 "$ap_esap_gov_4_desc$"
+mod_tul_ap_beautiful_bureaucracy_base_machines_desc:0 "$ap_esap_gov_4_desc$"
+mod_tul_ap_beautiful_bureaucracy_combo:0 "$ap_esap_gov_4$ (Combo Bonus)$"
+mod_tul_ap_beautiful_bureaucracy_combo_hive:0 "$ap_esap_gov_4$ (Combo Bonus)"
+mod_tul_ap_beautiful_bureaucracy_combo_machines:0 "$ap_esap_gov_4$ (Combo Bonus)"
+
+######################################################################################
+# Ascendancy of the State / The Ascendant Mind
+# Source: ESAP
+######################################################################################
+# Perks
+ap_tul_ascendancy_of_the_state:0 "Ascendancy of the State"
+ap_tul_the_ascendant_mind:0 "$ap_esap_gov_GC_5$"
+ap_tul_ascendancy_of_the_state_desc:0 "Through the millennia since we formed the first cities our government have developed to something that could hardly be recognized by our predecessor before the age of space."
+ap_tul_the_ascendant_mind_desc:0 "Since we woke, our mind has developed into something that can hardly be recognized as the same one which controlled but a few drones on a single planet so many millennia ago."
+ap_esap_gov_5:0 "[This.GetAscendancyOfTheStateName]"
+ap_esap_gov_5_desc:0 "[This.GetAscendancyOfTheStateDesc]"
+ap_tul_ascendancy_of_the_state_tooltip:0 "$ap_tul_type_gov_note$: TODO(robertb)\n§BCombo Bonus: For each $ap_tul_type_gov_note$ unlocked (including this one), the following bonuses also apply:§!\nTODO(robertb)"
+
+# Modifiers
+mod_tul_ap_ascendancy_of_the_state_base:0 "$ap_esap_gov_5$"
+mod_tul_ap_ascendancy_of_the_state_base_desc:0 "$ap_esap_gov_5_desc$"
+mod_tul_ap_ascendancy_of_the_state_combo:0 "$ap_esap_gov_5$"
+mod_tul_ap_ascendancy_of_the_state_combo_desc:0 "$ap_esap_gov_5_desc$"

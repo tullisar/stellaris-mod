@@ -1,0 +1,38 @@
+######################################################################################
+# On Actions
+# Package: Core
+######################################################################################
+
+######################################################################################
+#  Action: on_game_start
+#
+#  Source: SRD_00_00001_0
+# Purpose: Initialize the state of the library on game start.
+#   Scope: ⭐ global
+#
+# Outputs: See ⭐❗ tul_core.001
+#
+######################################################################################
+on_game_start = {
+	events = {
+		# tul_core.000
+		tul_core.001
+	}
+}
+
+######################################################################################
+#  Action: on_game_start_country
+#
+#  Source: SRD_00_00009_0
+# Purpose: Initialize the state of the library for a scoped country on game start.
+#  Scopes: 🌐 country
+#
+# Outputs: See 🌐❗ tul_core.002 and 🌐❗ tul_core.003
+#
+######################################################################################
+on_game_start_country = {
+	events = {
+		#tul_core.002
+		#tul_core.003
+	}
+}

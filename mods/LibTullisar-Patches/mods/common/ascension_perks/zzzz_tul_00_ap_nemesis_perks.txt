@@ -1,0 +1,186 @@
+######################################################################################
+# Crisis Ascension Perks
+######################################################################################
+######################################################################################
+# Become The Crisis
+# Source: Vanilla
+# Type: Crisis (TODO)
+######################################################################################
+ap_become_the_crisis = {
+	potential = {
+		has_nemesis = yes
+		NOT = {
+			has_ascension_perk = ap_become_the_crisis
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
+		}
+		custom_tooltip = {
+			fail_text = "requires_independence"
+			is_subject = no
+		}
+		custom_tooltip = {
+			fail_text = "must_not_be_custodian"
+			is_galactic_custodian = no
+		}
+		custom_tooltip = {
+			fail_text = "must_not_be_emperor"
+			is_galactic_emperor = no
+		}
+		NOR = {
+			is_civic_machine_servitor = yes
+			has_civic = civic_closed_collective
+			has_civic = civic_closed_network
+			has_ethic = ethic_xenophile
+			has_ethic = ethic_fanatic_xenophile
+			has_ethic = ethic_pacifist
+			has_ethic = ethic_fanatic_pacifist
+			has_civic = civic_machine_servitor
+			has_origin = origin_symbiote
+			has_ethic = ethic_egalitarian
+			has_ethic = ethic_fanatic_egalitarian
+			has_ethic = ethic_green
+			has_ethic = ethic_fanatic_green
+			has_ethic = ethic_socialism
+			has_ethic = ethic_fanatic_socialism
+		}
+	}
+	on_enabled = {
+		hidden_effect = {
+			set_ai_personality = became_the_crisis
+		}
+		activate_crisis_progression = yes
+	}
+	ai_weight = {
+		factor = 7.5
+		modifier = {
+			factor = 0
+			nor = {
+				is_militarist = yes
+				is_xenophobe = yes
+				is_gestalt = yes
+				and = {
+					is_authoritarian = yes
+					is_spiritualist = yes
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			or = {
+				is_open_gestalt = yes
+				is_honorbound_warriors = yes				# would be dishonorable
+				is_civic_environmentalist = yes				# would destroy the galaxy
+				has_origin = origin_terraformer
+				is_pleasure_seeker = yes
+				has_origin = origin_common_ground
+				has_origin = origin_common_ground_npc
+				has_origin = origin_holy_mountain				# would destroy their mountain
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_materialist = yes
+		}
+		modifier = {
+			factor = 10
+			is_homicidal = yes
+		}
+		modifier = {
+			factor = 0
+			fleet_power < 100000
+		}
+		modifier = {
+			factor = 2
+			has_tradition = tr_supremacy_finish
+		}
+		modifier = {
+			factor = 10
+			num_ascension_perks > 2
+			resource_income_compare = {
+				resource = alloys
+				value > 200
+			}
+			resource_income_compare = {
+				resource = physics_research
+				value > 500
+			}
+			OR = {
+				is_xenophobe = yes
+				is_militarist = yes
+				is_civic_militarist = yes
+				is_homicidal = yes
+			}
+		}
+		modifier = {
+			factor = 0
+			galaxy_percentage < 0.05
+		}
+		modifier = {
+			factor = 5
+			galaxy_percentage > 0.2
+		}
+		modifier = {
+			factor = 2
+			galaxy_percentage > 0.4
+		}
+		modifier = {
+			factor = 5
+			resource_income_compare = {
+				resource = alloys
+				value > 500
+			}
+		}
+		modifier = {
+			factor = 5
+			num_ascension_perks > 3
+		}
+		modifier = {
+			factor = 0
+			num_ascension_perks >= 5
+		}
+		modifier = {
+			factor = 10
+			OR = {
+				is_xenophobe = yes
+				is_militarist = yes
+				is_civic_militarist = yes
+				is_homicidal = yes
+			}
+			any_country = {
+				is_ai = no
+				OR = {
+					is_galactic_custodian = yes
+					is_galactic_emperor = yes
+					is_civic_machine_servitor = yes
+					has_ethic = ethic_xenophile
+					has_ethic = ethic_fanatic_xenophile
+					has_ethic = ethic_pacifist
+					has_ethic = ethic_fanatic_pacifist
+					has_origin = origin_symbiote
+				}
+			}
+		}
+		modifier = {
+			factor = 0.1
+			count_playable_country = {
+				count > 1
+				limit = {
+					has_ascension_perk = ap_become_the_crisis
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			count_country = {
+				count > 2
+				limit = {
+					has_ascension_perk = ap_become_the_crisis
+				}
+			}
+		}
+	}
+}

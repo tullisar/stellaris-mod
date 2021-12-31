@@ -1,0 +1,96 @@
+######################################################################################
+# Government Ascension Perk Triggers
+#
+######################################################################################
+
+######################################################################################
+# Executive Vigor / Restless Execution
+# Source: Vanilla, ESAP
+######################################################################################
+tul_has_executive_vigor = {
+	OR = {
+		has_ascension_perk = ap_executive_vigor
+		has_ascension_perk = ap_esap_gov_1
+		has_ascension_perk = ap_esap_gov_GC_1
+	}
+}
+
+######################################################################################
+# Efficient Executive / Efficient Execution
+# Source: RAA
+######################################################################################
+tul_has_efficient_executive = {
+	OR = {
+		has_ascension_perk = eap_executive_vigor
+	}
+}
+
+######################################################################################
+# Transcendent Learning
+# Source: Vanilla, ESAP
+######################################################################################
+tul_has_transcendent_learning = {
+	OR = {
+		has_ascension_perk = ap_transcendent_learning
+		has_ascension_perk = ap_esap_gov_2
+		has_ascension_perk = ap_esap_gov_GC_2
+	}
+}
+
+######################################################################################
+# Limitless
+# Source: RAA
+######################################################################################
+tul_has_limitless = {
+	OR = {
+		has_ascension_perk = eap_transcendent_learning
+	}
+}
+
+######################################################################################
+# Imperial Prerogative
+# Source: Vanilla, ESAP
+######################################################################################
+tul_has_imperial_prerogative = {
+	OR = {
+		has_ascension_perk = ap_imperial_prerogative
+		has_ascension_perk = ap_esap_gov_3
+		has_ascension_perk = ap_esap_gov_GC_3
+		has_ascension_perk = ap_esap_gov_3_corp
+	}
+}
+
+######################################################################################
+# Enforce Prerogative
+# Source: RAA
+######################################################################################
+tul_has_enforce_prerogative = {
+	OR = {
+		has_ascension_perk = eap_imperial_prerogative
+		has_ascension_perk = eap_imperial_prerogative_corp
+		has_ascension_perk = eap_imperial_prerogative_corp2
+	}
+}
+
+######################################################################################
+# The Beautiful Bureaucracy / The Great Echo
+# Source: ESAP
+######################################################################################
+tul_has_beautiful_bureaucracy = {
+	OR = {
+		has_ascension_perk = ap_esap_gov_4
+		has_ascension_perk = ap_esap_gov_machines_4
+		has_ascension_perk = ap_esap_gov_hive_4
+	}
+}
+
+######################################################################################
+# Ascendancy of the state / The Ascendant Mind
+# Source: ESAP
+######################################################################################
+tul_has_ascendancy_of_the_state = {
+	OR = {
+		has_ascension_perk = ap_esap_gov_5
+		has_ascension_perk = ap_esap_gov_GC_5
+	}
+}

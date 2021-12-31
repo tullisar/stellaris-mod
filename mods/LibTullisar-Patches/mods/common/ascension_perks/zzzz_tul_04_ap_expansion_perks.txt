@@ -1,0 +1,233 @@
+######################################################################################
+# Expansion Ascension Perks
+######################################################################################
+#
+#
+#
+######################################################################################
+# Interstellar Dominion
+# Source: Vanilla
+# Type: Expansion
+######################################################################################
+ap_interstellar_dominion = {
+	modifier = {
+		country_starbase_influence_cost_mult = -0.2
+		country_claim_influence_cost_mult = -0.2
+	}
+	potential = {
+		NOT = {
+			has_ascension_perk = ap_interstellar_dominion
+		}
+	}
+	ai_weight = {
+		factor = 20
+		modifier = {
+			factor = 0
+			is_pacifist = yes
+		}
+		modifier = {
+			factor = 2
+			has_ethic = ethic_xenophobe
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_xenophobe
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				#useless, total war CBs
+				is_homicidal = yes
+				has_valid_civic = civic_machine_assimilator
+				has_ascension_perk = ap_become_the_crisis
+				any_owned_fleet = {
+					is_ship_size = colossus
+				}
+			}
+		}
+	}
+}
+
+######################################################################################
+# Galactic Hegemony
+# Source: RAA
+# Type: Expansion
+######################################################################################
+# eap_interstellar_dominion = {
+#
+# }
+#
+#
+#
+######################################################################################
+# Grasp the Void
+# Source: Vanilla
+# Type: Expansion
+######################################################################################
+ap_grasp_the_void = {
+	possible = {
+		OR = {
+			custom_tooltip = {
+				fail_text = "requires_technology_exploration_cruiser"
+				has_technology = tech_explorationship_1
+			}
+			custom_tooltip = {
+				fail_text = "requires_technology_automated_exploration"
+				has_technology = tech_automated_exploration
+			}
+			custom_tooltip = {
+				fail_text = "requires_discovery_tree"
+				has_tradition = tr_discovery_faith_in_science
+			}
+		}
+	}
+	modifier = {
+		country_starbase_capacity_add = 10
+		ship_interstellar_speed_mult = 0.3
+		science_ship_survey_speed = 0.3
+		ship_anomaly_research_speed_mult = 0.3
+		ship_archaeological_site_excavation_speed_mult = 0.3
+		planet_sensor_range_add = 2
+	}
+	potential = {
+		NOT = {
+			has_ascension_perk = ap_grasp_the_void
+		}
+	}
+	ai_weight = {
+		factor = 3
+		modifier = {
+			factor = 5
+			has_civic = civic_inwards_perfection
+		}
+		modifier = {
+			factor = 1.5
+			is_xenophobe = yes
+		}
+	}
+}
+
+######################################################################################
+# Voidborn
+# Source: Vanilla (Utopia DLC)
+# Type: Expansion / Mega
+######################################################################################
+ap_voidborn = {
+	potential = {
+		host_has_dlc = "Utopia"
+		NOT = {
+			has_ascension_perk = ap_voidborn
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_technology_habitat_1"
+			has_technology = tech_habitat_1
+		}
+	}
+	on_enabled = {
+		custom_tooltip = "ap_voidborn_habitat_effect"
+		if = {
+			limit = {
+				NOT = {
+					has_technology = tech_habitat_2
+				}
+			}
+			add_research_option = tech_habitat_2
+			custom_tooltip = "add_research_options_voidborn"
+		}
+		if = {
+			limit = {
+				has_technology = tech_habitat_2
+				NOT = {
+					has_technology = tech_habitat_3
+				}
+			}
+			add_research_option = tech_habitat_3
+		}
+	}
+	modifier = {
+		# TODO - Make this a static modifier for re-use
+		pc_habitat_habitability = 0.2
+		pc_pd_barren_hab_habitability = 0.2
+		pc_pd_barren_cold_hab_habitability = 0.2
+		pc_pd_frozen_hab_habitability = 0.2
+		pc_pd_molten_hab_habitability = 0.2
+		pc_pd_hothouse_hab_habitability = 0.2
+		pc_pd_toxic_hab_habitability = 0.2
+		pc_pd_gas_giant_hab_habitability = 0.2
+		pc_pd_asteroid_hab_habitability = 0.2
+	}
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 2
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_ethic = ethic_fanatic_pacifist
+				has_origin = origin_void_dwellers
+			}
+		}
+		modifier = {
+			factor = 2
+			count_owned_planet = {
+				count > 2
+				limit = {
+					OR = {
+						is_pd_habitat = yes
+						is_planet_class = pc_pd_asteroid_hab
+					}
+				}
+			}
+		}
+	}
+}
+
+######################################################################################
+# Arcology Project
+# Source: Vanilla (Megacorp DLC)
+# Type: Expansion
+######################################################################################
+ap_arcology_project = {
+	potential = {
+		host_has_dlc = "Megacorp"
+		OR = {
+			is_regular_empire = yes
+			has_valid_civic = civic_machine_servitor
+		}
+		NOT = {
+			has_valid_civic = civic_agrarian_idyll
+		}
+		NOT = {
+			has_ascension_perk = ap_arcology_project
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_technology_housing_2"
+			has_technology = tech_housing_2
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
+		}
+	}
+	on_enabled = {
+		custom_tooltip = "allow_arcology_project"
+		custom_tooltip = "decision_arcology_project_effects"
+	}
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 2
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_pacifist
+		}
+	}
+}

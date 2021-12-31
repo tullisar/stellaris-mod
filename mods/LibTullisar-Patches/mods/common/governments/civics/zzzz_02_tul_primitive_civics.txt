@@ -1,0 +1,142 @@
+######################################################################################
+# Primitive Civilization Civics
+######################################################################################
+#
+#
+######################################################################################
+# Secret of Fire
+######################################################################################
+civic_secret_of_fire = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_revanchist_fervor.dds"
+	potential = {
+		country_type = {
+			value = primitive
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+}
+
+######################################################################################
+# The Wheel
+######################################################################################
+civic_the_wheel = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_agrarian_idyll.dds"
+	potential = {
+		country_type = {
+			value = primitive
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+}
+
+######################################################################################
+# Landed Nobility
+######################################################################################
+civic_landed_nobility = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_aristocratic_elite.dds"
+	potential = {
+		country_type = {
+			value = primitive
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+}
+
+######################################################################################
+# Flat World Theory
+######################################################################################
+civic_flat_world_theory = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_agrarian_idyll.dds"
+	potential = {
+		country_type = {
+			value = primitive
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+}
+
+######################################################################################
+# Increasing Urbanization
+######################################################################################
+civic_increasing_urbanization = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_byzantine_bureaucracy.dds"
+	potential = {
+		country_type = {
+			value = primitive
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+}
+
+######################################################################################
+# Atmospheric Pollution
+######################################################################################
+civic_atmospheric_pollution = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_agrarian_idyll.dds"
+	potential = {
+		country_type = {
+			value = primitive
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+}

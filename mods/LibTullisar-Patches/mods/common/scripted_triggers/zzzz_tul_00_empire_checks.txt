@@ -1,0 +1,137 @@
+######################################################################################
+# Scripted Triggers: Empires
+######################################################################################
+######################################################################################
+# tul_is_hive_empire
+#
+# Determines whether the scoped country is a hive mind empire or not.
+#
+######################################################################################
+tul_is_hive_empire = {
+	has_authority = auth_hive_mind
+}
+
+######################################################################################
+# tul_is_machine_empire
+#
+# Determines whether the scoped country is a machine intelligence empire or not.
+#
+######################################################################################
+tul_is_machine_empire = {
+	OR = {
+		has_authority = auth_machine_intelligence
+		has_authority = auth_ancient_machine_intelligence
+	}
+}
+
+######################################################################################
+# tul_is_cyborg_empire
+#
+######################################################################################
+tul_is_cyborg_empire = {
+	owner_species = {
+		has_trait = trait_cybernetic
+	}
+}
+
+######################################################################################
+# tul_is_mechanical_empire
+#
+######################################################################################
+tul_is_mechanical_empire = {
+	OR = {
+		owner_species = {
+			has_trait = trait_mechanical
+		}
+		has_country_flag = synthetic_empire
+		has_ascension_perk = ap_synthetic_evolution
+	}
+}
+
+######################################################################################
+# tul_is_robot_empire
+#
+######################################################################################
+tul_is_robot_empire = {
+	OR = {
+		owner_species = {
+			has_trait = trait_mechanical
+		}
+		has_country_flag = synthetic_empire
+		tul_is_machine_empire = yes
+	}
+}
+
+######################################################################################
+# tul_is_synthetic_empire
+#
+# Determines whether the scoped country is synthetic empire or not. 
+#
+######################################################################################
+tul_is_synthetic_empire = {
+	OR = {
+		tul_is_machine_empire = yes
+		tul_is_mechanical_empire = yes
+	}
+}
+
+######################################################################################
+# tul_is_special_tree_origin
+#
+######################################################################################
+tul_is_special_tree_origin = {
+	OR = {
+		has_origin = origin_tree_of_life
+		has_origin = origin_hive_cx_hive_world
+		has_origin = origin_pd_tree_of_life
+		# has_origin = origin_sacred_tree
+	}
+}
+
+tul_is_closed_empire = {
+	has_valid_civic = civic_inwards_perfection
+	has_valid_civic = civic_pompous_purists
+	has_valid_civic = civic_closed_collective
+	has_valid_civic = civic_closed_network
+}
+
+######################################################################################
+# tul_is_gestalt_with_individuals_empire
+#
+######################################################################################
+tul_is_gestalt_with_individuals_empire = {
+	exists = this
+	is_scope_type = country
+	this = {
+		is_gestalt = yes
+		NOR = {
+			has_valid_civic = civic_hive_devouring_swarm
+			has_valid_civic = civic_closed_collective
+			has_valid_civic = civic_machine_servitor
+			has_valid_civic = civic_machine_assimilator
+			has_valid_civic = civic_machine_terminator
+			has_valid_civic = civic_closed_network
+			has_valid_civic = civic_infestation
+			has_origin = origin_necrophage
+			has_valid_civic = civic_living_hosts
+			# Not sure what mod this is from
+			# has_valid_civic = civic_machine_consciousness
+		}
+	}
+}
+
+######################################################################################
+# tul_is_organic_loving_machine_empire
+#
+######################################################################################
+tul_is_organic_loving_machine_empire = {
+	exists = this
+	is_scope_type = country
+	this = {
+		OR = {
+			has_valid_civic = civic_machine_servitor
+			# Not sure what mod this is from
+			# has_valid_civic = civic_machine_consciousness
+		}
+	}
+}

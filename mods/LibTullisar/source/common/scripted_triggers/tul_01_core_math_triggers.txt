@@ -1,0 +1,154 @@
+######################################################################################
+# Scripted Triggers
+# Package: Core.Math
+######################################################################################
+
+######################################################################################
+# Trigger: ⭐❔ tul_is_global_variable_set
+#
+#  Source: SRD_00_00012_0
+# Purpose: Check whether a variable is set on the global event country
+#  Scopes: ⭐ global
+#
+#  Inputs: WHICH = The variable to check for
+#
+# Outputs: yes/no = Whether the provided variable is set on the global event country.
+#
+######################################################################################
+tul_is_global_variable_set = {
+	event_target:global_event_country = {
+		is_variable_set = $WHICH$
+	}
+}
+
+######################################################################################
+# Trigger: ⭐❔ tul_is_global_variable_equal_to
+#
+#  Source: SRD_00_00013_0
+# Purpose: Check whether a variable set on the global event country is equal to a value.
+#  Scopes: ⭐ global
+#
+#  Inputs: WHICH = The variable to check for
+#		   VALUE = The value against which to test for equality.
+#
+# Outputs: yes/no = Whether the provided variable is set on the global event country.
+#
+######################################################################################
+tul_is_global_variable_equal_to = {
+	event_target:global_event_country = {
+		check_variable = {
+			which = $WHICH$
+			value = $VALUE$
+		}
+	}
+}
+
+######################################################################################
+# Trigger: ⭐❔ tul_is_global_variable_not_equal_to
+#
+#  Source: SRD_00_00018_0
+# Purpose: Check whether a variable set on the global event country is not equal to a value.
+#  Scopes: ⭐ global
+#
+#  Inputs: WHICH = The variable to check for
+#		   VALUE = The value against which to test for equality.
+#
+# Outputs: yes/no = Whether the provided variable is set on the global event country.
+#
+######################################################################################
+tul_is_global_variable_not_equal_to = {
+	NOT = {
+		tul_is_global_variable_equal_to = {
+			WHICH = $WHICH$
+			VALUE = $VALUE$
+		}
+	}
+}
+
+######################################################################################
+# Trigger: ⭐❔ tul_is_global_variable_greater_than
+#
+#  Source: SRD_00_00014_0
+# Purpose: Check whether a global variable is greater than a value.
+#  Scopes: ⭐ global
+#
+#  Inputs: WHICH = The variable to check for
+#		   VALUE = The value against which to compare the variable's value.
+#
+# Outputs: yes/no = Whether the provided variable is set on the global event country.
+#
+######################################################################################
+tul_is_global_variable_greater_than = {
+	event_target:global_event_country = {
+		check_variable = {
+			which = $WHICH$
+			value > $VALUE$
+		}
+	}
+}
+
+######################################################################################
+# Trigger: ⭐❔ tul_is_global_variable_less_than
+#
+#  Source: SRD_00_00015_0
+# Purpose: Check whether a global variable is less than a value.
+#  Scopes: ⭐ global
+#
+#  Inputs: WHICH = The variable to check for
+#		   VALUE = The value against which to compare the variable's value.
+#
+# Outputs: yes/no = Whether the provided variable is set on the global event country.
+#
+######################################################################################
+tul_is_global_variable_less_than = {
+	event_target:global_event_country = {
+		check_variable = {
+			which = $WHICH$
+			value < $VALUE$
+		}
+	}
+}
+
+######################################################################################
+# Trigger: ⭐❔ tul_is_global_variable_greater_equal_than
+#
+#  Source: SRD_00_00016_0
+# Purpose: Check whether a global variable is greater than or equal to a value.
+#  Scopes: ⭐ global
+#
+#  Inputs: WHICH = The variable to check for
+#		   VALUE = The value against which to compare the variable's value.
+#
+# Outputs: yes/no = Whether the provided variable is set on the global event country.
+#
+######################################################################################
+tul_is_global_variable_greater_equal_than = {
+	event_target:global_event_country = {
+		check_variable = {
+			which = $WHICH$
+			value >= $VALUE$
+		}
+	}
+}
+
+######################################################################################
+# Trigger: ⭐❔ tul_is_global_variable_less_equal_than
+#
+#  Source: SRD_00_00017_0
+# Purpose: Check whether a variable set on the global event country is less than a value.
+#  Scopes: ⭐ global
+#
+#  Inputs: WHICH = The variable to check for
+#		   VALUE = The value against which to compare the variable's value.
+#
+# Outputs: yes/no = Whether the provided variable is set on the global event country.
+#
+######################################################################################
+tul_is_global_variable_less_equal_than = {
+	event_target:global_event_country = {
+		check_variable = {
+			which = $WHICH$
+			value <= $VALUE$
+		}
+	}
+}

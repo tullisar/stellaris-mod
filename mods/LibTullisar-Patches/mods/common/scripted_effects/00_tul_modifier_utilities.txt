@@ -1,0 +1,32 @@
+######################################################################################
+# Scripted Effects: Modifiers
+#
+######################################################################################
+#
+#
+#
+######################################################################################
+# tul_effect_remove_static_modifier_if_present
+#
+# Removes a static modifier from a country (where it is THIS scope)
+#
+# Parameters:
+# MODIFIER = The key of the static modifier to remove
+#
+######################################################################################
+tul_effect_remove_static_modifier_if_present = {
+	if = {
+		limit = {
+			exists = this
+			is_scope_type = country
+		}
+		this = {
+			switch = {
+				trigger = has_modifier
+				$MODIFIER$ = {
+					remove_modifier = "$MODIFIER$"
+				}
+			}
+		}
+	}
+}

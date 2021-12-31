@@ -1,0 +1,4760 @@
+#############
+# Capital buildings
+#############
+@buildings_t1 = 1
+@buildings_t2 = 2
+@buildings_t3 = 3
+@buildings_t4 = 4
+
+######################################################################################
+# Regular Empires
+#
+######################################################################################
+
+######################################################################################
+# Colony Shelter
+#
+# Merge: 
+# - Ethics & Civics Classic 3.2
+# - Expanded Traits, Civics, Pops, and More
+#
+######################################################################################
+building_colony_shelter = {
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	category = government
+	potential = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+			is_fallen_empire = no
+		}
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+		}
+	}
+	convert_to = {
+		building_hive_capital
+		building_deployment_post
+		building_resort_capital
+		building_slave_capital
+		building_ancient_control_center
+		building_ancient_palace
+	}
+	planet_modifier = {
+		planet_housing_add = 3
+		planet_amenities_add = 3
+		planet_max_buildings_add = @buildings_t1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_mechanical_empire = no
+			}
+		}
+		job_colonist_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_mechanical_empire = yes
+			}
+		}
+		job_roboticist_add = 1
+		job_colonist_add = 1
+	}
+	resources = {
+		category = planet_buildings
+		produces = {
+			trigger = {
+				exists = planet
+				planet = {
+					is_capital = yes
+					exists = owner
+					owner = {
+						has_valid_civic = civic_imperial_cult
+					}
+				}
+			}
+			unity = 5
+		}
+		upkeep = {
+			energy = 1
+		}
+	}
+	upgrades = {
+		building_capital
+	}
+	triggered_desc = {
+		text = job_colonist_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_mechanical_empire = yes
+			}
+		}
+		text = job_roboticist_effect_desc
+	}
+}
+
+######################################################################################
+# Planetary Administration
+#
+# Merge: 
+# - Ethics & Civics Classic 3.2
+# - Expanded Traits, Civics, Pops, and More
+#
+######################################################################################
+building_capital = {
+	base_buildtime = @b2_time
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	category = government
+	potential = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+			is_fallen_empire = no
+		}
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+		}
+	}
+	convert_to = {
+		building_hive_capital
+		building_machine_capital
+		building_resort_capital
+		building_slave_capital
+		building_ancient_control_center
+		building_ancient_palace
+	}
+	allow = {
+		num_pops >= 10
+	}
+	upgrades = {
+		"building_major_capital"
+	}
+	prerequisites = {
+		"tech_planetary_government"
+	}
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+	planet_modifier = {
+		job_enforcer_add = 1
+		planet_housing_add = 5
+		planet_amenities_add = 5
+		planet_max_buildings_add = @buildings_t2
+		planet_max_branch_office_buildings_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_anarchy_ideals
+			}
+		}
+		modifier = {
+			job_enforcer_add = -1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_ethic = ethic_authoritarian
+			}
+		}
+		modifier = {
+			job_enforcer_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			OR = {
+				owner = {
+					tul_has_telepaths = no
+				}
+				NOT = {
+					has_planet_flag = built_one_psi_corps
+				}
+			}
+		}
+		modifier = {
+			job_enforcer_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_telepaths = yes
+			}
+			has_planet_flag = built_one_psi_corps
+		}
+		modifier = {
+			job_telepath_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_ethic = ethic_fanatic_authoritarian
+			}
+		}
+		modifier = {
+			job_enforcer_add = 2
+		}
+	}
+	#
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_domination_imperious_architecture
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_mechanical_empire = yes
+			}
+		}
+		job_roboticist_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOR = {
+					is_megacorp = yes
+					tul_has_high_priests = yes
+					tul_has_nobles = yes
+					tul_has_moguls = yes
+					tul_has_commandantes = yes
+					tul_has_head_researchers = yes
+					tul_has_supervisors = yes
+				}
+			}
+		}
+		modifier = {
+			job_administrator_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_origin = origin_iron_despot
+			}
+		}
+		modifier = {
+			job_administrator_add = -1
+			job_high_programmer_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_authority = auth_imperial
+				has_origin = origin_ancient_dynasty
+			}
+		}
+		modifier = {
+			job_noble_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_capital = yes
+			exists = owner
+			owner = {
+				has_origin = origin_militarist
+			}
+		}
+		modifier = {
+			job_soldier_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				NOT = {
+					has_civic = civic_royal_trading_company
+				}
+			}
+		}
+		modifier = {
+			job_executive_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				has_civic = civic_royal_trading_company
+			}
+		}
+		modifier = {
+			job_executive_add = 1
+			job_noble_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+			}
+		}
+		modifier = {
+			job_executive_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_high_priests = yes
+				tul_has_moguls = no
+			}
+		}
+		modifier = {
+			job_administrator_add = 1
+			job_high_priest_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_nobles = yes
+				tul_has_moguls = no
+			}
+		}
+		modifier = {
+			job_administrator_add = 1
+			job_noble_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_head_researchers = yes
+				NOT = {
+					has_civic = civic_technocracy_corp
+				}
+			}
+		}
+		modifier = {
+			job_head_researcher_add = 1
+			job_administrator_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_civic = civic_technocracy_corp
+			}
+		}
+		modifier = {
+			job_head_researcher_add = 1
+			job_executive_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_moguls = yes
+				NOR = {
+					tul_has_nobles = yes
+					tul_has_high_priests = yes
+				}
+			}
+		}
+		modifier = {
+			job_administrator_add = 1
+			job_mogul_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_commandantes = yes
+			}
+		}
+		modifier = {
+			job_administrator_add = 1
+			job_commandante_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_supervisors = yes
+			}
+		}
+		modifier = {
+			job_administrator_add = 1
+			job_supervisor_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_nobles = yes
+				tul_has_moguls = yes
+			}
+		}
+		modifier = {
+			job_mogul_add = 1
+			job_noble_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_high_priests = yes
+				tul_has_moguls = yes
+			}
+		}
+		modifier = {
+			job_mogul_add = 1
+			job_high_priest_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_1
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			trade_value_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	resources = {
+		category = planet_buildings
+		produces = {
+			trigger = {
+				exists = planet
+				planet = {
+					is_capital = yes
+					exists = owner
+					owner = {
+						has_valid_civic = civic_imperial_cult
+					}
+				}
+			}
+			unity = 5
+		}
+		cost = {
+			minerals = @b2_minerals
+		}
+		upkeep = {
+			energy = @b2_upkeep
+		}
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_high_priests = yes
+			}
+		}
+		text = job_high_priest_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_nobles = yes
+			}
+		}
+		text = job_noble_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_head_researchers = yes
+			}
+		}
+		text = job_head_researcher_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_moguls = yes
+			}
+		}
+		text = job_mogul_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_commandantes = yes
+			}
+		}
+		text = job_commandante_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_supervisors = yes
+			}
+		}
+		text = job_supervisor_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				NOT = {
+					is_megacorp = yes
+				}
+				is_regular_empire = yes
+			}
+		}
+		text = job_administrator_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_mechanical_empire = yes
+			}
+		}
+		text = job_roboticist_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+			}
+		}
+		text = job_executive_effect_desc
+	}
+	triggered_desc = {
+		text = job_enforcer_effect_desc
+	}
+	#please upgrade
+	ai_resource_production = {
+		alloys = 11
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+######################################################################################
+# Major Capital
+#
+# Merge: 
+# - Ethics & Civics Classic 3.2
+# - Expanded Traits, Civics, Pops, and More
+#
+######################################################################################
+building_major_capital = {
+	base_buildtime = @b3_time
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	category = government
+	potential = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+			is_fallen_empire = no
+		}
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+		}
+	}
+	allow = {
+		num_pops >= 25
+	}
+	convert_to = {
+		building_hive_major_capital
+		building_machine_major_capital
+		building_resort_major_capital
+		building_slave_major_capital
+		building_ancient_control_center
+		building_ancient_palace
+	}
+	prerequisites = {
+		"tech_colonial_centralization"
+	}
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+	planet_modifier = {
+		job_enforcer_add = 2
+		planet_housing_add = 8
+		planet_amenities_add = 8
+		planet_max_buildings_add = @buildings_t3
+		planet_max_branch_office_buildings_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			OR = {
+				owner = {
+					tul_has_telepaths = no
+				}
+				NOT = {
+					has_planet_flag = built_one_psi_corps
+				}
+			}
+		}
+		modifier = {
+			job_enforcer_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_telepaths = yes
+			}
+			has_planet_flag = built_one_psi_corps
+		}
+		modifier = {
+			job_telepath_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_domination_imperious_architecture
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_mechanical_empire = yes
+			}
+		}
+		job_roboticist_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOR = {
+					is_megacorp = yes
+					tul_has_high_priests = yes
+					tul_has_nobles = yes
+					tul_has_moguls = yes
+					tul_has_commandantes = yes
+					tul_has_head_researchers = yes
+					tul_has_supervisors = yes
+				}
+			}
+		}
+		modifier = {
+			job_administrator_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_origin = origin_iron_despot
+			}
+		}
+		modifier = {
+			job_administrator_add = -1
+			job_high_programmer_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_authority = auth_imperial
+				has_origin = origin_ancient_dynasty
+			}
+		}
+		modifier = {
+			job_noble_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_capital = yes
+			exists = owner
+			owner = {
+				has_origin = origin_militarist
+			}
+		}
+		modifier = {
+			job_soldier_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				NOT = {
+					has_civic = civic_royal_trading_company
+				}
+			}
+		}
+		modifier = {
+			job_executive_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				has_civic = civic_royal_trading_company
+			}
+		}
+		modifier = {
+			job_executive_add = 2
+			job_noble_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_head_researchers = yes
+				NOT = {
+					has_civic = civic_technocracy_corp
+				}
+			}
+		}
+		modifier = {
+			job_head_researcher_add = 1
+			job_administrator_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_civic = civic_technocracy_corp
+			}
+		}
+		modifier = {
+			job_head_researcher_add = 1
+			job_executive_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_high_priests = yes
+				tul_has_moguls = no
+			}
+		}
+		modifier = {
+			job_high_priest_add = 2
+			job_administrator_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_nobles = yes
+				tul_has_moguls = no
+			}
+		}
+		modifier = {
+			job_noble_add = 1
+			job_administrator_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_moguls = yes
+				NOR = {
+					tul_has_nobles = yes
+					tul_has_high_priests = yes
+				}
+			}
+		}
+		modifier = {
+			job_mogul_add = 1
+			job_administrator_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_nobles = yes
+				tul_has_moguls = yes
+			}
+		}
+		modifier = {
+			job_mogul_add = 2
+			job_noble_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_high_priests = yes
+				tul_has_moguls = yes
+			}
+		}
+		modifier = {
+			job_mogul_add = 2
+			job_high_priest_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_anarchy_ideals
+			}
+		}
+		modifier = {
+			job_enforcer_add = -1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_ethic = ethic_authoritarian
+			}
+		}
+		modifier = {
+			job_enforcer_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_civic = civic_spiritual_seekers
+			}
+		}
+		modifier = {
+			job_transcend_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_ethic = ethic_fanatic_authoritarian
+			}
+		}
+		modifier = {
+			job_enforcer_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_moguls = yes
+			}
+		}
+		modifier = {
+			job_mogul_add = 2
+			job_administrator_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_commandantes = yes
+			}
+		}
+		modifier = {
+			job_administrator_add = 2
+			job_commandante_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_supervisors = yes
+			}
+		}
+		modifier = {
+			job_administrator_add = 1
+			job_supervisor_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_1
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			trade_value_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_2
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			trade_value_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	resources = {
+		category = planet_buildings
+		produces = {
+			trigger = {
+				exists = planet
+				planet = {
+					is_capital = yes
+					exists = owner
+					owner = {
+						has_valid_civic = civic_imperial_cult
+					}
+				}
+			}
+			unity = 8
+		}
+		cost = {
+			minerals = @b3_minerals
+		}
+		upkeep = {
+			energy = @b3_upkeep
+		}
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_commandantes = yes
+			}
+		}
+		text = job_commandante_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_supervisors = yes
+			}
+		}
+		text = job_supervisor_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_high_priests = yes
+			}
+		}
+		text = job_high_priest_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_nobles = yes
+			}
+		}
+		text = job_noble_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_head_researchers = yes
+			}
+		}
+		text = job_head_researcher_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_moguls = yes
+			}
+		}
+		text = job_mogul_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				is_regular_empire = yes
+			}
+		}
+		text = job_administrator_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_mechanical_empire = yes
+			}
+		}
+		text = job_roboticist_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+			}
+		}
+		text = job_executive_effect_desc
+	}
+	triggered_desc = {
+		text = job_enforcer_effect_desc
+	}
+	upgrades = {
+		"building_system_capital"
+	}
+}
+
+######################################################################################
+# System Capital
+#
+# Merge: 
+# - Ethics & Civics Classic 3.2
+# - Expanded Traits, Civics, Pops, and More
+#
+######################################################################################
+building_system_capital = {
+	base_buildtime = @b4_time
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	category = government
+	potential = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+			is_fallen_empire = no
+		}
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+		}
+	}
+	convert_to = {
+		building_hive_major_capital
+		building_machine_major_capital
+		building_major_capital
+		building_resort_major_capital
+		building_slave_major_capital
+		building_ancient_control_center
+		building_ancient_palace
+	}
+	allow = {
+		num_pops >= 40
+	}
+	prerequisites = {
+		"tech_galactic_administration"
+	}
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+	planet_modifier = {
+		job_enforcer_add = 3
+		planet_housing_add = 12
+		planet_amenities_add = 12
+		planet_max_buildings_add = @buildings_t4
+		planet_max_branch_office_buildings_add = 4
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			OR = {
+				owner = {
+					tul_has_telepaths = no
+				}
+				NOT = {
+					has_planet_flag = built_one_psi_corps
+				}
+			}
+		}
+		modifier = {
+			job_enforcer_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_telepaths = yes
+			}
+			has_planet_flag = built_one_psi_corps
+		}
+		modifier = {
+			job_telepath_add = 4
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_domination_imperious_architecture
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_mechanical_empire = yes
+			}
+		}
+		job_roboticist_add = 3
+	}
+	# Megacorps
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOR = {
+					is_megacorp = yes
+					tul_has_high_priests = yes
+					tul_has_nobles = yes
+					tul_has_moguls = yes
+					tul_has_commandantes = yes
+					tul_has_head_researchers = yes
+					tul_has_supervisors = yes
+				}
+			}
+		}
+		modifier = {
+			job_administrator_add = 4
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_1
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			trade_value_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_2
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			trade_value_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_3
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			trade_value_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_origin = origin_iron_despot
+			}
+		}
+		modifier = {
+			job_administrator_add = -1
+			job_high_programmer_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_authority = auth_imperial
+				has_origin = origin_ancient_dynasty
+			}
+		}
+		modifier = {
+			job_noble_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				NOT = {
+					has_civic = civic_royal_trading_company
+				}
+			}
+		}
+		modifier = {
+			job_executive_add = 4
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_capital = yes
+			exists = owner
+			owner = {
+				has_origin = origin_militarist
+			}
+		}
+		modifier = {
+			job_soldier_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				has_civic = civic_royal_trading_company
+			}
+		}
+		modifier = {
+			job_executive_add = 2
+			job_noble_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_head_researchers = yes
+				NOT = {
+					has_civic = civic_technocracy_corp
+				}
+			}
+		}
+		modifier = {
+			job_head_researcher_add = 2
+			job_administrator_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_civic = civic_technocracy_corp
+			}
+		}
+		modifier = {
+			job_head_researcher_add = 2
+			job_executive_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_anarchy_ideals
+			}
+		}
+		modifier = {
+			job_enforcer_add = -1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_civic = civic_spiritual_seekers
+			}
+		}
+		modifier = {
+			job_transcend_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_ethic = ethic_authoritarian
+			}
+		}
+		modifier = {
+			job_enforcer_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_ethic = ethic_fanatic_authoritarian
+			}
+		}
+		modifier = {
+			job_enforcer_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_high_priests = yes
+				tul_has_moguls = no
+			}
+		}
+		modifier = {
+			job_high_priest_add = 2
+			job_administrator_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_nobles = yes
+				tul_has_moguls = no
+			}
+		}
+		modifier = {
+			job_noble_add = 2
+			job_administrator_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_moguls = yes
+				NOR = {
+					tul_has_high_priests = yes
+					tul_has_nobles = yes
+				}
+			}
+		}
+		modifier = {
+			job_mogul_add = 2
+			job_administrator_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_nobles = yes
+				tul_has_moguls = yes
+			}
+		}
+		modifier = {
+			job_mogul_add = 2
+			job_noble_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_high_priests = yes
+				tul_has_moguls = yes
+			}
+		}
+		modifier = {
+			job_mogul_add = 2
+			job_high_priest_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_commandantes = yes
+			}
+		}
+		modifier = {
+			job_administrator_add = 2
+			job_commandante_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_supervisors = yes
+			}
+		}
+		modifier = {
+			job_administrator_add = 2
+			job_supervisor_add = 2
+		}
+	}
+	resources = {
+		category = planet_buildings
+		produces = {
+			trigger = {
+				exists = planet
+				planet = {
+					is_capital = yes
+					exists = owner
+					owner = {
+						has_valid_civic = civic_imperial_cult
+					}
+				}
+			}
+			unity = 10
+		}
+		cost = {
+			minerals = @b4_minerals
+		}
+		upkeep = {
+			energy = @b4_upkeep
+		}
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_commandantes = yes
+			}
+		}
+		text = job_commandante_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_supervisors = yes
+			}
+		}
+		text = job_supervisor_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_high_priests = yes
+			}
+		}
+		text = job_high_priest_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_nobles = yes
+			}
+		}
+		text = job_noble_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_head_researchers = yes
+			}
+		}
+		text = job_head_researcher_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_moguls = yes
+			}
+		}
+		text = job_mogul_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				is_regular_empire = yes
+			}
+		}
+		text = job_administrator_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_mechanical_empire = yes
+			}
+		}
+		text = job_roboticist_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+			}
+		}
+		text = job_executive_effect_desc
+	}
+	triggered_desc = {
+		text = job_enforcer_effect_desc
+	}
+	upgrades = {
+		building_imperial_capital
+	}
+}
+
+######################################################################################
+# Machine Empires
+#
+######################################################################################
+
+######################################################################################
+# Deployment Post
+#
+# Merge: 
+# - Ethics & Civics Classic 3.2
+# - Expanded Traits, Civics, Pops, and More
+#
+######################################################################################
+building_deployment_post = {
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	category = government
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_machine_empire = yes
+				is_country_type = ai_empire
+			}
+			is_fallen_empire = no
+		}
+	}
+	convert_to = {
+		building_hive_capital
+		building_colony_shelter
+		building_ancient_control_center
+		building_ancient_palace
+	}
+	planet_modifier = {
+		planet_housing_add = 3
+		planet_amenities_add = 8
+		job_replicator_add = 2
+		job_patrol_drone_add = 1
+		job_maintenance_drone_add = 2
+		planet_max_buildings_add = @buildings_t1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_civic = civic_machine_assimilator
+					has_origin = origin_extant_creators
+				}
+			}
+		}
+		modifier = {
+			job_replicator_add = -1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		modifier = {
+			job_bio_trophy_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			OR = {
+				has_building = building_individualist_enclave
+				has_building = building_individualist_colony
+			}
+		}
+		modifier = {
+			job_administrator_gestalt_add = 1
+			job_enforcer_gestalt_add = 1
+		}
+	}
+	resources = {
+		category = planet_buildings
+		upkeep = {
+			energy = 1
+		}
+	}
+	upgrades = {
+		building_machine_capital
+	}
+	triggered_desc = {
+		text = job_coordinator_effect_desc
+	}
+	triggered_desc = {
+		text = job_replicator_effect_desc
+	}
+	triggered_desc = {
+		text = job_maintenance_drone_effect_desc
+	}
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}
+}
+
+######################################################################################
+# Administrative Array
+#
+# Merge: 
+# - Ethics & Civics Classic 3.2
+# - Expanded Traits, Civics, Pops, and More
+#
+######################################################################################
+building_machine_capital = {
+	base_buildtime = @b2_time
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	category = government
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_machine_empire = yes
+				is_country_type = ai_empire
+				AND = {
+					exists = event_target:mechanocalibrator_country
+					is_same_value = event_target:mechanocalibrator_country
+				}
+			}
+			is_fallen_empire = no
+		}
+	}
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			is_machine_empire = no
+		}
+	}
+	convert_to = {
+		building_hive_capital
+		building_colony_shelter
+		building_ancient_control_center
+		building_ancient_palace
+	}
+	allow = {
+		num_pops >= 10
+	}
+	prerequisites = {
+		"tech_planetary_government"
+	}
+	show_tech_unlock_if = {
+		is_machine_empire = yes
+	}
+	planet_modifier = {
+		planet_housing_add = 5
+		planet_amenities_add = 10
+		job_replicator_add = 2
+		job_patrol_drone_add = 1
+		job_maintenance_drone_add = 3
+		planet_max_buildings_add = @buildings_t2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_civic = civic_machine_assimilator
+					has_origin = origin_extant_creators
+				}
+			}
+		}
+		modifier = {
+			job_replicator_add = -1
+			job_maintenance_drone_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		modifier = {
+			job_bio_trophy_add = 5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_1
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			OR = {
+				has_building = building_individualist_enclave
+				has_building = building_individualist_colony
+			}
+		}
+		modifier = {
+			job_administrator_gestalt_add = 1
+			job_enforcer_gestalt_add = 1
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+		}
+		upkeep = {
+			energy = @b2_upkeep
+		}
+	}
+	upgrades = {
+		building_machine_major_capital
+	}
+	triggered_desc = {
+		text = job_replicator_effect_desc
+	}
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}
+	triggered_desc = {
+		text = job_maintenance_drone_effect_desc
+	}
+	#please upgrade
+	ai_resource_production = {
+		alloys = 11
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+######################################################################################
+# Planetary Processor
+#
+# Merge: 
+# - Ethics & Civics Classic 3.2
+# - Expanded Traits, Civics, Pops, and More
+#
+######################################################################################
+building_machine_major_capital = {
+	base_buildtime = @b3_time
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	category = government
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_machine_empire = yes
+				is_country_type = ai_empire
+			}
+			is_fallen_empire = no
+		}
+	}
+	convert_to = {
+		building_hive_major_capital
+		building_major_capital
+		building_ancient_control_center
+		building_ancient_palace
+	}
+	allow = {
+		num_pops >= 25
+	}
+	prerequisites = {
+		"tech_colonial_centralization"
+	}
+	show_tech_unlock_if = {
+		is_machine_empire = yes
+	}
+	planet_modifier = {
+		planet_housing_add = 8
+		planet_amenities_add = 12
+		job_replicator_add = 2
+		job_patrol_drone_add = 2
+		job_maintenance_drone_add = 4
+		planet_max_buildings_add = @buildings_t3
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_civic = civic_machine_assimilator
+					has_origin = origin_extant_creators
+				}
+			}
+		}
+		modifier = {
+			job_replicator_add = -1
+			job_maintenance_drone_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		modifier = {
+			job_bio_trophy_add = 10
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_1
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_2
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			OR = {
+				has_building = building_individualist_enclave
+				has_building = building_individualist_colony
+			}
+		}
+		modifier = {
+			job_administrator_gestalt_add = 1
+			job_enforcer_gestalt_add = 1
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b3_minerals
+		}
+		upkeep = {
+			energy = @b3_upkeep
+		}
+	}
+	triggered_desc = {
+		text = job_coordinator_effect_desc
+	}
+	triggered_desc = {
+		text = job_replicator_effect_desc
+	}
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}
+	upgrades = {
+		"building_machine_system_capital"
+	}
+}
+
+######################################################################################
+# Primary Nexus
+#
+# Merge: 
+# - Ethics & Civics Classic 3.2
+# - Expanded Traits, Civics, Pops, and More
+#
+######################################################################################
+building_machine_system_capital = {
+	base_buildtime = @b4_time
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	category = government
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_machine_empire = yes
+				is_country_type = ai_empire
+			}
+			is_fallen_empire = no
+		}
+	}
+	convert_to = {
+		building_hive_major_capital
+		building_major_capital
+		building_machine_major_capital
+		building_ancient_control_center
+		building_ancient_palace
+	}
+	allow = {
+		num_pops >= 40
+	}
+	prerequisites = {
+		"tech_galactic_administration"
+	}
+	show_tech_unlock_if = {
+		is_machine_empire = yes
+	}
+	planet_modifier = {
+		planet_housing_add = 12
+		planet_amenities_add = 18
+		job_replicator_add = 2
+		job_patrol_drone_add = 3
+		job_maintenance_drone_add = 5
+		planet_max_buildings_add = @buildings_t4
+	}
+	triggered_planet_modifier = {
+		potential = {
+			num_pops >= 10
+		}
+		modifier = {
+			job_replicator_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			num_pops >= 25
+		}
+		modifier = {
+			job_replicator_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_civic = civic_machine_assimilator
+					has_origin = origin_extant_creators
+				}
+			}
+		}
+		modifier = {
+			job_replicator_add = -1
+			job_maintenance_drone_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		modifier = {
+			job_bio_trophy_add = 10
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_1
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_2
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_3
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			OR = {
+				has_building = building_individualist_enclave
+				has_building = building_individualist_colony
+			}
+		}
+		modifier = {
+			job_administrator_gestalt_add = 1
+			job_enforcer_gestalt_add = 1
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b4_minerals
+		}
+		upkeep = {
+			energy = @b4_upkeep
+		}
+	}
+	triggered_desc = {
+		text = job_coordinator_effect_desc
+	}
+	triggered_desc = {
+		text = job_replicator_effect_desc
+	}
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}
+	upgrades = {
+		"building_imperial_machine_capital"
+	}
+}
+
+######################################################################################
+# Hive Buildings
+#
+######################################################################################
+
+######################################################################################
+# Hive Core
+#
+# Merge: 
+# - Ethics & Civics Classic 3.2
+# - Expanded Traits, Civics, Pops, and More
+#
+######################################################################################
+building_hive_capital = {
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	category = government
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_hive_empire = yes
+				is_country_type = swarm
+			}
+			is_fallen_empire = no
+		}
+	}
+	destroy_trigger = {
+		# destroys and/or triggers conversion if true
+		exists = owner
+		owner = {
+			is_hive_empire = no
+		}
+	}
+	convert_to = {
+		building_machine_capital
+		building_capital
+		building_ancient_control_center
+		building_ancient_palace
+	}
+	upgrades = {
+		"building_hive_major_capital"
+	}
+	prerequisites = {
+		"tech_planetary_government"
+	}
+	show_tech_unlock_if = {
+		is_hive_empire = yes
+	}
+	planet_modifier = {
+		planet_housing_add = 5
+		planet_amenities_add = 8
+		job_synapse_drone_add = 2
+		job_maintenance_drone_add = 2
+		job_patrol_drone_add = 1
+		planet_max_buildings_add = @buildings_t2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_1
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			OR = {
+				has_building = building_individualist_enclave
+				has_building = building_individualist_colony
+			}
+		}
+		modifier = {
+			job_administrator_gestalt_add = 1
+			job_enforcer_gestalt_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_relic
+			}
+			exists = owner
+			owner = {
+				has_civic = civic_starvation_fearing
+				is_lithoid_empire = no
+			}
+		}
+		modifier = {
+			job_agri_drone_add = 1
+			job_agri_drone_per_pop = 0.04
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_relic
+				is_planet_class = pc_ringworld_habitable
+			}
+			exists = owner
+			owner = {
+				has_civic = civic_starvation_fearing
+				is_lithoid_empire = yes
+			}
+		}
+		modifier = {
+			job_mining_drone_add = 1
+			job_mining_drone_per_pop = 0.04
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
+					is_lithoid_empire = no
+				}
+			}
+			minerals = 667
+			food = 333
+		}
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+				}
+			}
+			minerals = 1000
+		}
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
+					is_lithoid_empire = no
+				}
+			}
+			minerals = 667
+			food = 333
+		}
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_valid_civic = civic_integrated_bioarchitecture
+				}
+			}
+			food = 800
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = no
+				}
+			}
+			energy = 1.3
+			food = 0.7
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
+				}
+			}
+			energy = 2
+		}
+	}
+	triggered_desc = {
+		text = job_synapse_drone_effect_desc
+	}
+	triggered_desc = {
+		text = job_maintenance_drone_effect_desc
+	}
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}
+}
+
+######################################################################################
+# Hive Nexus
+#
+# Merge: 
+# - Ethics & Civics Classic 3.2
+# - Expanded Traits, Civics, Pops, and More
+#
+######################################################################################
+building_hive_major_capital = {
+	base_buildtime = @b2_time
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	category = government
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_hive_empire = yes
+				is_country_type = swarm
+			}
+			is_fallen_empire = no
+		}
+	}
+	convert_to = {
+		building_machine_major_capital
+		building_major_capital
+		building_ancient_control_center
+		building_ancient_palace
+	}
+	upgrades = {
+		"building_imperial_hive_capital"
+	}
+	allow = {
+		num_pops >= 25
+	}
+	prerequisites = {
+		"tech_colonial_centralization"
+	}
+	show_tech_unlock_if = {
+		is_hive_empire = yes
+	}
+	planet_modifier = {
+		planet_housing_add = 10
+		planet_amenities_add = 12
+		job_synapse_drone_add = 3
+		job_maintenance_drone_add = 5
+		job_patrol_drone_add = 2
+		planet_max_buildings_add = @buildings_t4
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			exists = planet
+			planet = {
+				num_pops >= 40
+			}
+			owner = {
+				has_technology = tech_galactic_administration
+			}
+		}
+		job_maintenance_drone_add = 1
+		job_patrol_drone_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_1
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_2
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_3
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			OR = {
+				has_building = building_individualist_enclave
+				has_building = building_individualist_colony
+			}
+		}
+		modifier = {
+			job_administrator_gestalt_add = 1
+			job_enforcer_gestalt_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_relic
+			}
+			exists = owner
+			owner = {
+				has_civic = civic_starvation_fearing
+				is_lithoid_empire = no
+			}
+		}
+		modifier = {
+			job_agri_drone_add = 1
+			job_agri_drone_per_pop = 0.04
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_relic
+				is_planet_class = pc_ringworld_habitable
+			}
+			exists = owner
+			owner = {
+				has_civic = civic_starvation_fearing
+				is_lithoid_empire = yes
+			}
+		}
+		modifier = {
+			job_mining_drone_add = 1
+			job_mining_drone_per_pop = 0.04
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+				}
+			}
+			minerals = @b2_minerals
+		}
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
+					is_lithoid_empire = no
+				}
+			}
+			minerals = @b2_hive_minerals
+			food = @b2_hive_food
+		}
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_valid_civic = civic_integrated_bioarchitecture
+					is_lithoid_empire = no
+				}
+			}
+			food = @b2_minerals
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = no
+				}
+			}
+			energy = @b2_upkeep_hive
+			food = @b2_upkeep_food
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
+				}
+			}
+			energy = @b2_upkeep
+		}
+	}
+	triggered_desc = {
+		text = job_synapse_drone_effect_desc
+	}
+	triggered_desc = {
+		text = job_maintenance_drone_effect_desc
+	}
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}
+}
+######################################################################################
+# Habitat Buildings
+#
+######################################################################################
+
+######################################################################################
+# Habitat Administration
+#
+# Merge: 
+# - Ethics & Civics Classic 3.2
+# - Expanded Traits, Civics, Pops, and More
+#
+######################################################################################
+building_hab_capital = {
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	icon = building_capital
+	category = government
+	potential = {
+		is_planet_class = pc_habitat
+		exists = owner
+		owner = {
+			is_fallen_empire = no
+		}
+	}
+	convert_to = {
+		building_hab_fe_capital
+	}
+	triggered_planet_modifier = {
+		potential = {
+			OR = {
+				has_building = building_individualist_enclave
+				has_building = building_individualist_colony
+			}
+		}
+		modifier = {
+			job_administrator_gestalt_add = 1
+			job_enforcer_gestalt_add = 1
+		}
+	}
+	resources = {
+		category = planet_buildings
+		produces = {
+			trigger = {
+				exists = planet
+				planet = {
+					is_capital = yes
+					exists = owner
+					owner = {
+						has_valid_civic = civic_imperial_cult
+					}
+				}
+			}
+			unity = 5
+		}
+		upkeep = {
+			energy = 3
+			alloys = 5
+		}
+		upkeep = {
+			trigger = {
+				owner = {
+					has_active_tradition = tr_domination_adopt_void
+				}
+			}
+			alloys = -1
+		}
+	}
+	planet_modifier = {
+		planet_housing_add = 3
+		planet_amenities_add = 3
+		planet_max_buildings_add = @buildings_t1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_domination_imperious_architecture
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_prosperity_void_works
+			}
+		}
+		modifier = {
+			planet_max_buildings_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_mechanical_empire = yes
+			}
+		}
+		job_roboticist_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				is_regular_empire = yes
+			}
+		}
+		job_administrator_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_origin = origin_iron_despot
+			}
+		}
+		modifier = {
+			job_administrator_add = -1
+			job_high_programmer_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+			}
+		}
+		modifier = {
+			job_executive_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		modifier = {
+			job_bio_trophy_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_ascension_perk = ap_voidborn
+			}
+		}
+		modifier = {
+			planet_max_buildings_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+			}
+		}
+		job_synapse_drone_add = 2
+		job_maintenance_drone_add = 1
+		planet_amenities_add = 3
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+			}
+		}
+		job_coordinator_add = 1
+		job_replicator_add = 1
+		job_maintenance_drone_add = 1
+		planet_amenities_add = 3
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				is_regular_empire = yes
+			}
+		}
+		text = job_administrator_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_mechanical_empire = yes
+			}
+		}
+		text = job_roboticist_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+			}
+		}
+		text = job_executive_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+			}
+		}
+		text = job_coordinator_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+			}
+		}
+		text = job_replicator_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+			}
+		}
+		text = job_maintenance_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+			}
+		}
+		text = job_synapse_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = planet
+			planet = {
+				has_modifier = pleasure_palace
+			}
+		}
+		text = job_entertainer_effect_desc
+	}
+	upgrades = {
+		"building_hab_major_capital"
+	}
+}
+
+######################################################################################
+# Habitat Central Control
+#
+# Merge: 
+# - Ethics & Civics Classic 3.2
+# - Expanded Traits, Civics, Pops, and More
+#
+######################################################################################
+building_hab_major_capital = {
+	base_buildtime = @b2_time
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	icon = building_major_capital
+	category = government
+	potential = {
+		is_planet_class = pc_habitat
+		exists = owner
+		owner = {
+			is_fallen_empire = no
+		}
+	}
+	convert_to = {
+		building_hab_fe_capital
+	}
+	allow = {
+		num_pops >= 10
+	}
+	triggered_planet_modifier = {
+		potential = {
+			OR = {
+				has_building = building_individualist_enclave
+				has_building = building_individualist_colony
+			}
+		}
+		modifier = {
+			job_administrator_gestalt_add = 1
+			job_enforcer_gestalt_add = 1
+		}
+	}
+	resources = {
+		category = planet_buildings
+		produces = {
+			trigger = {
+				exists = planet
+				planet = {
+					is_capital = yes
+					exists = owner
+					owner = {
+						has_valid_civic = civic_imperial_cult
+					}
+				}
+			}
+			unity = 8
+		}
+		cost = {
+			minerals = @b2_minerals
+		}
+		upkeep = {
+			energy = 3
+			alloys = 5
+		}
+		upkeep = {
+			trigger = {
+				owner = {
+					has_active_tradition = tr_domination_adopt_void
+				}
+			}
+			alloys = -1
+		}
+	}
+	planet_modifier = {
+		planet_housing_add = 5
+		planet_amenities_add = 5
+		planet_max_buildings_add = @buildings_t2
+		planet_max_branch_office_buildings_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_planet_flag = advanced_habitat
+		}
+		modifier = {
+			planet_max_buildings_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_planet_flag = advanced_habitat_2
+		}
+		modifier = {
+			planet_max_buildings_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_domination_imperious_architecture
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_prosperity_void_works
+			}
+		}
+		modifier = {
+			planet_max_buildings_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			OR = {
+				owner = {
+					tul_has_telepaths = no
+					is_regular_empire = yes
+				}
+				NOT = {
+					has_planet_flag = built_one_psi_corps
+				}
+			}
+		}
+		modifier = {
+			job_enforcer_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				tul_has_telepaths = yes
+			}
+			has_planet_flag = built_one_psi_corps
+		}
+		modifier = {
+			job_telepath_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_ascension_perk = ap_voidborn
+			}
+		}
+		modifier = {
+			planet_max_buildings_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_1
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			trade_value_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+			}
+		}
+		job_enforcer_add = 1
+	}
+	#
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_2
+			}
+			has_planet_flag = advanced_habitat
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			trade_value_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_3
+			}
+			has_planet_flag = advanced_habitat_2
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			trade_value_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+			}
+		}
+		job_synapse_drone_add = 3
+		job_maintenance_drone_add = 1
+		planet_amenities_add = 3
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+			}
+		}
+		job_coordinator_add = 2
+		job_replicator_add = 1
+		job_maintenance_drone_add = 2
+		planet_amenities_add = 3
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_mechanical_empire = yes
+			}
+		}
+		job_roboticist_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOR = {
+					is_megacorp = yes
+					is_megacorp = yes
+					tul_has_high_priests = yes
+					tul_has_nobles = yes
+					tul_has_moguls = yes
+					tul_has_commandantes = yes
+					tul_has_head_researchers = yes
+					tul_has_supervisors = yes
+				}
+			}
+		}
+		modifier = {
+			job_administrator_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				NOT = {
+					has_civic = civic_royal_trading_company
+				}
+			}
+		}
+		modifier = {
+			job_executive_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_origin = origin_iron_despot
+			}
+		}
+		modifier = {
+			job_administrator_add = -1
+			job_high_programmer_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_authority = auth_imperial
+				has_origin = origin_ancient_dynasty
+			}
+		}
+		modifier = {
+			job_noble_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_capital = yes
+			exists = owner
+			owner = {
+				has_origin = origin_militarist
+			}
+		}
+		modifier = {
+			job_soldier_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		modifier = {
+			job_bio_trophy_add = 5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				has_modifier = pleasure_palace
+			}
+		}
+		modifier = {
+			job_entertainer_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				has_civic = civic_royal_trading_company
+			}
+		}
+		modifier = {
+			job_executive_add = 1
+			job_noble_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_head_researchers = yes
+				NOT = {
+					has_civic = civic_technocracy_corp
+				}
+			}
+		}
+		modifier = {
+			job_head_researcher_add = 1
+			job_administrator_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_civic = civic_technocracy_corp
+			}
+		}
+		modifier = {
+			job_head_researcher_add = 1
+			job_executive_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_commandantes = yes
+			}
+		}
+		modifier = {
+			job_administrator_add = 1
+			job_commandante_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_supervisors = yes
+			}
+		}
+		modifier = {
+			job_administrator_add = 1
+			job_supervisor_add = 1
+		}
+	}
+	##
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_high_priests = yes
+				tul_has_moguls = no
+			}
+		}
+		modifier = {
+			job_administrator_add = 1
+			job_high_priest_add = 1
+		}
+	}
+	#
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_nobles = yes
+				tul_has_moguls = no
+			}
+		}
+		modifier = {
+			job_administrator_add = 1
+			job_noble_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_moguls = yes
+				NOR = {
+					tul_has_high_priests = yes
+					tul_has_nobles = yes
+				}
+			}
+		}
+		modifier = {
+			job_administrator_add = 1
+			job_mogul_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_nobles = yes
+				tul_has_moguls = yes
+			}
+		}
+		modifier = {
+			job_mogul_add = 1
+			job_noble_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_nobles = yes
+				tul_has_moguls = yes
+			}
+		}
+		modifier = {
+			job_mogul_add = 1
+			job_high_priest_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_head_researchers = yes
+				NOT = {
+					has_civic = civic_technocracy_corp
+				}
+			}
+		}
+		modifier = {
+			job_head_researcher_add = 1
+			job_administrator_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_moguls = yes
+			}
+		}
+		modifier = {
+			job_administrator_add = 1
+			job_mogul_add = 1
+		}
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_head_researchers = yes
+			}
+		}
+		text = job_head_researcher_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_commandantes = yes
+			}
+		}
+		text = job_commandante_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_supervisors = yes
+			}
+		}
+		text = job_supervisor_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_high_priests = yes
+			}
+		}
+		text = job_high_priest_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_nobles = yes
+			}
+		}
+		text = job_noble_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_moguls = yes
+			}
+		}
+		text = job_mogul_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				is_regular_empire = yes
+			}
+		}
+		text = job_administrator_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_mechanical_empire = yes
+			}
+		}
+		text = job_roboticist_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+			}
+		}
+		text = job_executive_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+			}
+		}
+		text = job_enforcer_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+			}
+		}
+		text = job_coordinator_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+			}
+		}
+		text = job_replicator_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+			}
+		}
+		text = job_maintenance_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+			}
+		}
+		text = job_synapse_drone_effect_desc
+	}
+}
+
+######################################################################################
+# Special Buildings
+######################################################################################
+
+######################################################################################
+# Resort Administration
+#
+# Merge: 
+# - Ethics & Civics Classic 3.2
+# - Expanded Traits, Civics, Pops, and More
+#
+######################################################################################
+building_resort_capital = {
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	icon = building_capital
+	category = government
+	potential = {
+		has_modifier = resort_colony
+	}
+	convert_to = {
+		building_hive_capital
+		building_machine_capital
+		building_capital
+		building_ancient_control_center
+		building_ancient_palace
+	}
+	resources = {
+		category = planet_buildings
+		upkeep = {
+			energy = 2
+		}
+	}
+	planet_modifier = {
+		planet_housing_add = 5
+		planet_amenities_add = 5
+		job_entertainer_add = 1
+		planet_max_buildings_add = 5
+		planet_max_branch_office_buildings_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				is_regular_empire = yes
+			}
+		}
+		planet_amenities_add = 5
+		job_entertainer_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		planet_amenities_no_happiness_add = 5
+		job_patrol_drone_add = 1
+		job_maintenance_drone_add = 1
+		job_replicator_add = 1
+		job_servitor_caretaker_drone_add = 1
+		job_bio_trophy_add = 3
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_warrior_culture
+			}
+		}
+		modifier = {
+			job_duelist_add = 1
+			job_entertainer_add = -1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_mechanical_empire = yes
+			}
+		}
+		job_roboticist_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+			}
+		}
+		job_administrator_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_origin = origin_iron_despot
+			}
+		}
+		modifier = {
+			job_administrator_add = -1
+			job_high_programmer_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+			}
+		}
+		modifier = {
+			job_executive_add = 1
+		}
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				is_regular_empire = yes
+			}
+		}
+		text = job_administrator_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_mechanical_empire = yes
+			}
+		}
+		text = job_roboticist_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+			}
+		}
+		text = job_executive_effect_desc
+	}
+	upgrades = {
+		"building_resort_major_capital"
+	}
+}
+
+######################################################################################
+# Resort Governing Complex
+#
+# Merge: 
+# - Ethics & Civics Classic 3.2
+# - Expanded Traits, Civics, Pops, and More
+#
+######################################################################################
+building_resort_major_capital = {
+	base_buildtime = @b2_time
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	icon = building_major_capital
+	category = government
+	potential = {
+		has_modifier = resort_colony
+	}
+	convert_to = {
+		building_hive_major_capital
+		building_machine_major_capital
+		building_major_capital
+		building_ancient_control_center
+		building_ancient_palace
+	}
+	allow = {
+		num_pops >= 10
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+		}
+		upkeep = {
+			energy = @b2_upkeep
+		}
+	}
+	planet_modifier = {
+		planet_housing_add = 10
+		planet_amenities_add = 10
+		job_entertainer_add = 2
+		planet_max_buildings_add = 11
+		planet_max_branch_office_buildings_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				is_regular_empire = yes
+			}
+		}
+		planet_amenities_add = 10
+		job_entertainer_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		planet_amenities_no_happiness_add = 10
+		job_patrol_drone_add = 1
+		job_maintenance_drone_add = 1
+		job_replicator_add = 2
+		job_servitor_caretaker_drone_add = 2
+		job_bio_trophy_add = 5
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_warrior_culture
+			}
+		}
+		modifier = {
+			job_duelist_add = 2
+			job_entertainer_add = -2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_mechanical_empire = yes
+			}
+		}
+		job_roboticist_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+			}
+		}
+		job_administrator_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_origin = origin_iron_despot
+			}
+		}
+		modifier = {
+			job_administrator_add = -1
+			job_high_programmer_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+			}
+		}
+		modifier = {
+			job_executive_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_1
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			trade_value_mult = 0.2
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				is_regular_empire = yes
+			}
+		}
+		text = job_administrator_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_mechanical_empire = yes
+			}
+		}
+		text = job_roboticist_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+			}
+		}
+		text = job_executive_effect_desc
+	}
+}
+
+######################################################################################
+# Governor's Palace (Slave Capital)
+#
+# Merge: 
+# - Ethics & Civics Classic 3.2
+# - Expanded Traits, Civics, Pops, and More
+#
+######################################################################################
+building_slave_capital = {
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	icon = building_capital
+	category = government
+	potential = {
+		has_modifier = slave_colony
+	}
+	convert_to = {
+		building_hive_capital
+		building_machine_capital
+		building_capital
+		building_ancient_control_center
+		building_ancient_palace
+	}
+	resources = {
+		category = planet_buildings
+		upkeep = {
+			energy = 2
+		}
+	}
+	planet_modifier = {
+		planet_housing_add = 5
+		planet_amenities_add = 5
+		job_slave_overseer_add = 2
+		planet_stability_add = 5
+		planet_max_buildings_add = 5
+		planet_max_branch_office_buildings_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+			}
+		}
+		job_administrator_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				NOT = {
+					has_civic = civic_royal_trading_company
+				}
+			}
+		}
+		modifier = {
+			job_executive_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				has_civic = civic_royal_trading_company
+			}
+		}
+		modifier = {
+			job_executive_add = 1
+			job_noble_add = 1
+		}
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				is_regular_empire = yes
+			}
+		}
+		text = job_administrator_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+			}
+		}
+		text = job_executive_effect_desc
+	}
+	triggered_desc = {
+		text = job_slave_overseer_effect_desc
+	}
+	upgrades = {
+		"building_slave_major_capital"
+	}
+}
+
+######################################################################################
+# Governor's Estates
+#
+# Merge: 
+# - Ethics & Civics Classic 3.2
+# - Expanded Traits, Civics, Pops, and More
+#
+######################################################################################
+building_slave_major_capital = {
+	base_buildtime = @b2_time
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	icon = building_major_capital
+	category = government
+	potential = {
+		has_modifier = slave_colony
+	}
+	allow = {
+		num_pops >= 20
+	}
+	convert_to = {
+		building_hive_major_capital
+		building_machine_major_capital
+		building_major_capital
+		building_ancient_control_center
+		building_ancient_palace
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	planet_modifier = {
+		planet_housing_add = 10
+		planet_amenities_add = 10
+		job_slave_overseer_add = 4
+		planet_stability_add = 10
+		planet_max_buildings_add = 11
+		planet_max_branch_office_buildings_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+			}
+		}
+		job_administrator_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				NOT = {
+					has_civic = civic_royal_trading_company
+				}
+			}
+		}
+		modifier = {
+			job_executive_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				has_civic = civic_royal_trading_company
+			}
+		}
+		modifier = {
+			job_executive_add = 1
+			job_noble_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_1
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_2
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_3
+			}
+			num_pops > 80
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				is_regular_empire = yes
+			}
+		}
+		text = job_administrator_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+			}
+		}
+		text = job_executive_effect_desc
+	}
+	triggered_desc = {
+		text = job_slave_overseer_effect_desc
+	}
+}
+
+######################################################################################
+# Galactic Imperium Buildings
+#
+######################################################################################
+
+######################################################################################
+# Imperial Capital
+#
+# Merge: 
+# - Ethics & Civics Classic 3.2
+# - Expanded Traits, Civics, Pops, and More
+#
+######################################################################################
+building_imperial_capital = {
+	base_buildtime = @b4_time
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	category = government
+	potential = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+			is_galactic_emperor = yes
+		}
+		planet = {
+			is_capital = yes
+		}
+	}
+	convert_to = {
+		building_hive_major_capital
+		building_machine_system_capital
+		building_system_capital
+		building_hab_major_capital
+		building_ancient_control_center
+		building_ancient_palace
+	}
+	allow = {
+		num_pops >= 50
+	}
+	prerequisites = {
+	}
+	planet_modifier = {
+		job_enforcer_add = 5
+		planet_housing_add = 18
+		planet_amenities_add = 18
+		planet_max_buildings_add = 11
+		planet_max_branch_office_buildings_add = 4
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			OR = {
+				owner = {
+					tul_has_telepaths = no
+					is_regular_empire = yes
+				}
+				NOT = {
+					has_planet_flag = built_one_psi_corps
+				}
+			}
+		}
+		modifier = {
+			job_enforcer_add = 5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				tul_has_telepaths = yes
+			}
+			has_planet_flag = built_one_psi_corps
+		}
+		modifier = {
+			job_telepath_add = 6
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_anarchy_ideals
+			}
+		}
+		modifier = {
+			job_enforcer_add = -1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_domination_imperious_architecture
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_mechanical_empire = yes
+			}
+		}
+		job_roboticist_add = 5
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOR = {
+					is_megacorp = yes
+					tul_has_high_priests = yes
+					tul_has_nobles = yes
+					tul_has_moguls = yes
+					tul_has_commandantes = yes
+					tul_has_head_researchers = yes
+					tul_has_supervisors = yes
+				}
+			}
+		}
+		modifier = {
+			job_administrator_add = 6
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_origin = origin_iron_despot
+			}
+		}
+		modifier = {
+			job_administrator_add = -1
+			job_high_programmer_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_authority = auth_imperial
+				has_origin = origin_ancient_dynasty
+			}
+		}
+		modifier = {
+			job_noble_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_capital = yes
+			exists = owner
+			owner = {
+				has_origin = origin_militarist
+			}
+		}
+		modifier = {
+			job_soldier_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				NOT = {
+					has_civic = civic_royal_trading_company
+				}
+			}
+		}
+		modifier = {
+			job_executive_add = 6
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				has_civic = civic_royal_trading_company
+			}
+		}
+		modifier = {
+			job_executive_add = 3
+			job_noble_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_head_researchers = yes
+				NOT = {
+					has_civic = civic_technocracy_corp
+				}
+			}
+		}
+		modifier = {
+			job_head_researcher_add = 3
+			job_administrator_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_civic = civic_technocracy_corp
+			}
+		}
+		modifier = {
+			job_head_researcher_add = 3
+			job_executive_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_civic = civic_spiritual_seekers
+			}
+		}
+		modifier = {
+			job_transcend_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_high_priests = yes
+				tul_has_moguls = no
+			}
+		}
+		modifier = {
+			job_high_priest_add = 3
+			job_administrator_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_nobles = yes
+				tul_has_moguls = no
+			}
+		}
+		modifier = {
+			job_noble_add = 3
+			job_administrator_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_moguls = yes
+				NOR = {
+					tul_has_nobles = yes
+					tul_has_high_priests = yes
+				}
+			}
+		}
+		modifier = {
+			job_mogul_add = 3
+			job_administrator_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_nobles = yes
+				tul_has_moguls = yes
+			}
+		}
+		modifier = {
+			job_mogul_add = 3
+			job_noble_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_high_priests = yes
+				tul_has_moguls = yes
+			}
+		}
+		modifier = {
+			job_mogul_add = 3
+			job_high_priest_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_commandantes = yes
+			}
+		}
+		modifier = {
+			job_administrator_add = 3
+			job_commandante_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tul_has_supervisors = yes
+			}
+		}
+		modifier = {
+			job_administrator_add = 3
+			job_supervisor_add = 3
+		}
+	}
+	#
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_1
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			trade_value_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_2
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			trade_value_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_3
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			trade_value_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	resources = {
+		category = planet_buildings
+		produces = {
+			trigger = {
+				exists = planet
+				planet = {
+					is_capital = yes
+					exists = owner
+					owner = {
+						has_valid_civic = civic_imperial_cult
+					}
+				}
+			}
+			unity = 12
+		}
+		cost = {
+			minerals = @b4_minerals
+		}
+		upkeep = {
+			energy = @b4_upkeep
+		}
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_commandantes = yes
+			}
+		}
+		text = job_commandante_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_supervisors = yes
+			}
+		}
+		text = job_supervisor_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_high_priests = yes
+			}
+		}
+		text = job_high_priest_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_nobles = yes
+			}
+		}
+		text = job_noble_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_head_researchers = yes
+			}
+		}
+		text = job_head_researcher_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				tul_has_moguls = yes
+			}
+		}
+		text = job_merchant_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				is_regular_empire = yes
+			}
+		}
+		text = job_administrator_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_mechanical_empire = yes
+			}
+		}
+		text = job_roboticist_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+			}
+		}
+		text = job_executive_effect_desc
+	}
+	triggered_desc = {
+		text = job_enforcer_effect_desc
+	}
+}
+
+######################################################################################
+# Imperial Center (Machine)
+#
+# Merge: 
+# - Ethics & Civics Classic 3.2
+# - Expanded Traits, Civics, Pops, and More
+#
+######################################################################################
+building_imperial_machine_capital = {
+	base_buildtime = @b4_time
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	category = government
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_machine_empire = yes
+				is_country_type = ai_empire
+			}
+			is_galactic_emperor = yes
+		}
+		planet = {
+			is_capital = yes
+		}
+	}
+	convert_to = {
+		building_hive_major_capital
+		building_machine_system_capital
+		building_system_capital
+		building_hab_major_capital
+		building_ancient_control_center
+		building_ancient_palace
+	}
+	allow = {
+		num_pops >= 40
+	}
+	prerequisites = {
+	}
+	planet_modifier = {
+		planet_housing_add = 18
+		planet_amenities_add = 20
+		job_replicator_add = 4
+		job_patrol_drone_add = 5
+		job_maintenance_drone_add = 6
+		planet_max_buildings_add = 11
+		planet_max_branch_office_buildings_add = 4
+	}
+	triggered_planet_modifier = {
+		potential = {
+			num_pops >= 10
+		}
+		modifier = {
+			job_replicator_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			num_pops >= 25
+		}
+		modifier = {
+			job_replicator_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_civic = civic_machine_assimilator
+					has_origin = origin_extant_creators
+				}
+			}
+		}
+		modifier = {
+			job_replicator_add = -1
+			job_maintenance_drone_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		modifier = {
+			job_bio_trophy_add = 10
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				has_modifier = pleasure_palace
+			}
+		}
+		modifier = {
+			job_entertainer_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_1
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_2
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_3
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b4_minerals
+		}
+		upkeep = {
+			energy = @b4_upkeep
+		}
+	}
+	triggered_desc = {
+		text = job_coordinator_effect_desc
+	}
+	triggered_desc = {
+		text = job_replicator_effect_desc
+	}
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = planet
+			planet = {
+				has_modifier = pleasure_palace
+			}
+		}
+		text = job_entertainer_effect_desc
+	}
+}
+
+######################################################################################
+# Imperial Complex (Hive)
+#
+# Merge: 
+# - Ethics & Civics Classic 3.2
+# - Expanded Traits, Civics, Pops, and More
+#
+######################################################################################
+building_imperial_hive_capital = {
+	base_buildtime = @b4_time
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	category = government
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_hive_empire = yes
+				is_country_type = swarm
+			}
+			is_galactic_emperor = yes
+		}
+		planet = {
+			is_capital = yes
+		}
+	}
+	convert_to = {
+		building_hive_major_capital
+		building_machine_system_capital
+		building_system_capital
+		building_hab_major_capital
+		building_ancient_control_center
+		building_ancient_palace
+	}
+	allow = {
+		num_pops >= 40
+	}
+	prerequisites = {
+	}
+	planet_modifier = {
+		planet_housing_add = 20
+		planet_amenities_add = 20
+		job_synapse_drone_add = 5
+		job_maintenance_drone_add = 7
+		job_patrol_drone_add = 4
+		planet_max_buildings_add = 11
+		planet_max_branch_office_buildings_add = 4
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_1
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_2
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_3
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			OR = {
+				has_building = building_individualist_enclave
+				has_building = building_individualist_colony
+			}
+		}
+		modifier = {
+			job_administrator_gestalt_add = 1
+			job_enforcer_gestalt_add = 1
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b4_minerals
+		}
+		upkeep = {
+			energy = @b4_upkeep
+		}
+	}
+	triggered_desc = {
+		text = job_synapse_drone_effect_desc
+	}
+	triggered_desc = {
+		text = job_maintenance_drone_effect_desc
+	}
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}
+}

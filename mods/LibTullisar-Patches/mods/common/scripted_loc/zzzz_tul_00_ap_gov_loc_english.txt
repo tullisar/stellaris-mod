@@ -1,0 +1,159 @@
+######################################################################################
+# Scripted Localisation for Government Ascension Perks
+#
+######################################################################################
+
+
+
+defined_text = {
+	name = GetPerkGovType
+	text = {
+		trigger = {
+			is_gestalt = yes
+		}
+		localization_key = ap_tul_type_gov_gestalt
+	}
+	text = {
+		localization_key = ap_tul_type_gov
+	}
+}
+
+
+######################################################################################
+# Executive Vigor
+######################################################################################
+
+# Name
+defined_text = {
+	name = GetPerkExecutiveVigorName
+	text = {
+		trigger = {
+			is_gestalt = yes
+		}
+		localization_key = ap_esap_gov_GC_1
+	}
+	text = {
+		localization_key = ap_tul_executive_vigor_regular
+	}
+}
+
+# Description
+defined_text = {
+	name = GetPerkExecutiveVigorDescription
+	text = {
+		trigger = {
+			is_gestalt = yes
+		}
+		localization_key = ap_esap_gov_GC_1_desc
+	}
+	text = {
+		localization_key = ap_esap_gov_1_desc
+	}
+}
+
+######################################################################################
+# Efficient Executive
+######################################################################################
+#Name
+defined_text = {
+	name = GetPerkEfficientExecutiveName
+	text = {
+		trigger = {
+			is_gestalt = yes
+		}
+		localization_key = ap_tul_efficient_executive_gestalt
+	}
+	text = {
+		localization_key = ap_tul_efficient_executive_regular
+	}
+}
+
+######################################################################################
+# Enforce Prerogative
+######################################################################################
+defined_text = {
+	name = GetPerkEnforcePrerogativeAdminCapBonus
+	text = {
+		trigger = {
+			is_megacorp = yes
+		}
+		localization_key = ap_tul_enforce_prerogative_admin_cap_bonus_corp
+	}
+	text = {
+		localization_key = ap_tul_enforce_prerogative_admin_cap_bonus
+	}
+}
+
+######################################################################################
+# Beautiful Beauracracy / The Great Echo
+# Source: ESAP
+######################################################################################
+# Name
+defined_text = {
+	name = GetPerkBeautifulBureaucracyName
+	text = {
+		trigger = {
+			OR = {
+				tul_is_machine_empire = yes
+				tul_is_hive_empire = yes
+			}
+		}
+		localization_key = ap_tul_the_great_echo
+	}
+	text = {
+		localization_key = ap_tul_beautiful_bureacracy
+	}
+}
+
+# Description
+defined_text = {
+	name = GetPerkBeautifulBureaucracyDesc
+	text = {
+		trigger = {
+			tul_is_hive_empire = yes
+		}
+		localization_key = ap_tul_the_great_echo_hive_desc
+	}
+	text = {
+		trigger = {
+			tul_is_machine_empire = yes
+		}
+		localization_key = ap_tul_the_great_echo_machines_desc
+	}
+	text = {
+		localization_key = ap_tul_beautiful_bureaucracy_desc
+	}
+}
+
+######################################################################################
+# Ascendancy of the State / The Ascendant Mind
+# Source: ESAP
+######################################################################################
+
+# Name
+defined_text = {
+	name = GetPerkAscendancyOfTheStateName
+	text = {
+		trigger = {
+			is_gestalt = yes
+		}
+		localization_key = ap_tul_ascendancy_of_the_state
+	}
+	text = {
+		localization_key = ap_tul_the_ascendant_mind
+	}
+}
+
+# Description
+defined_text = {
+	name = GetPerkAscendancyOfTheStateDesc
+	text = {
+		trigger = {
+			is_gestalt = yes
+		}
+		localization_key = ap_tul_ascendancy_of_the_state_desc
+	}
+	text = {
+		localization_key = ap_tul_the_ascendant_mind_desc
+	}
+}

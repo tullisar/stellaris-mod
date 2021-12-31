@@ -1,0 +1,36 @@
+######################################################################################
+# Trait Triggers
+######################################################################################
+
+######################################################################################
+# tul_has_wet_preference_or_home
+######################################################################################
+tul_has_wet_preference_or_home = {
+	OR = {
+		has_trait = trait_pc_ocean_preference
+		has_trait = trait_pc_aquatic_preference
+		has_trait = trait_pc_reef_preference
+		has_trait = trait_pc_desertislands_preference
+		has_trait = trait_pc_subarctic_preference
+		has_trait = trait_pc_panthalassic_preference
+		has_trait = trait_pc_atoll_preference
+		has_trait = trait_pc_storm_preference
+		has_trait = trait_pc_crag_preference
+		AND = {
+			exists = home_planet
+			home_planet = {
+				has_climate = wet
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_has_aquatic_trait
+######################################################################################
+tul_has_aquatic_trait = {
+	OR = {
+		has_trait = trait_aquatic
+		has_trait = trait_marine
+	}
+}

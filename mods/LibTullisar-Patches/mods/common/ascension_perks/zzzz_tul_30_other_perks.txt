@@ -1,0 +1,526 @@
+######################################################################################
+# Uncategorized Ascension Perks
+#
+######################################################################################
+#
+#
+#
+######################################################################################
+# Enigmatic Engineering
+# Source: Vanilla (Apocalypse DLC)
+# Type: TBD (Tech / Espionage)
+######################################################################################
+ap_enigmatic_engineering = {
+	potential = {
+		host_has_dlc = "Apocalypse"
+		NOT = {
+			has_ascension_perk = ap_enigmatic_engineering
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_1"
+			num_ascension_perks > 0
+		}
+	}
+	on_enabled = {
+		custom_tooltip = "no_rev_engineering"
+	}
+	modifier = {
+		intel_encryption_add = 2
+	}
+	ai_weight = {
+		factor = 2
+		modifier = {
+			factor = 10
+			has_valid_civic = civic_inwards_perfection
+		}
+		modifier = {
+			factor = 2
+			is_materialist = yes
+			is_xenophobe = yes
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_materialist
+		}
+	}
+}
+
+######################################################################################
+# Nihilistic Acquisition
+# Source: Vanilla (Apocalypse DLC)
+# Type: TBD (Military)
+######################################################################################
+ap_nihilistic_acquisition = {
+	potential = {
+		host_has_dlc = "Apocalypse"
+		NOT = {
+			has_ascension_perk = ap_nihilistic_acquisition
+		}
+		NOT = {
+			has_valid_civic = civic_barbaric_despoilers
+		}
+	}
+	on_enabled = {
+		custom_tooltip = "allow_raiding"
+	}
+	possible = {
+		OR = {
+			is_authoritarian = yes
+			is_xenophobe = yes
+			has_ethic = ethic_gestalt_consciousness
+		}
+		custom_tooltip = {
+			# This part is added in the esap mod.
+			fail_text = "requires_ascension_perks_1"
+			num_ascension_perks > 0
+		}
+	}
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 0.1
+			not = {
+				has_ascension_perk = ap_executive_vigor
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_ai_personality_behaviour = slaver
+			}
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_hive_devouring_swarm
+				has_valid_civic = civic_inwards_perfection
+				has_valid_civic = civic_machine_terminator
+			}
+		}
+	}
+}
+
+######################################################################################
+# Colossus Project
+# Source: Vanilla (Apocalypse DLC)
+# Type TBD (Military)
+######################################################################################
+ap_colossus = {
+	potential = {
+		host_has_dlc = "Apocalypse"
+		NOT = {
+			has_ascension_perk = ap_colossus
+		}
+	}
+	on_enabled = {
+		custom_tooltip = enable_colossus_project
+		custom_tooltip = describe_colossus_project
+		hidden_effect = {
+			country_event = {
+				id = apoc.100
+			}
+		}
+	}
+	possible = {
+		has_technology = tech_titans
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_3"
+			num_ascension_perks > 2
+		}
+	}
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 10
+			OR = {
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_machine_terminator
+			}
+		}
+		modifier = {
+			factor = 0.1
+			is_xenophile = yes
+		}
+		modifier = {
+			factor = 0.25
+			is_pacifist = yes
+		}
+		modifier = {
+			factor = 2
+			is_xenophobe = yes
+		}
+		modifier = {
+			factor = 2
+			is_militarist = yes
+		}
+		modifier = {
+			factor = 2
+			has_authority = auth_machine_intelligence			#just because
+		}
+		modifier = {
+			factor = 2
+			has_ascension_perk = ap_become_the_crisis
+		}
+		modifier = {
+			factor = 0
+			has_crisis_level = crisis_level_5
+		}
+	}
+}
+
+######################################################################################
+# Technological Ascendancy
+# Source: Vanilla
+# Type: Tech / Research
+######################################################################################
+ap_technological_ascendancy = {
+	modifier = {
+		all_technology_research_speed = 0.1
+	}
+	potential = {
+		NOT = {
+			has_ascension_perk = ap_technological_ascendancy
+		}
+	}
+	on_enabled = {
+		custom_tooltip = "ap_technological_ascendancy_rare"
+	}
+	ai_weight = {
+		factor = 30		#it's better than average
+		modifier = {
+			factor = 2
+			has_ethic = ethic_materialist
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_materialist
+		}
+	}
+}
+
+######################################################################################
+# One Vision
+# Source: Vanilla
+# Type: Social
+######################################################################################
+ap_one_vision = {
+	modifier = {
+		country_unity_produces_mult = 0.1
+		pop_amenities_usage_mult = -0.1
+		pop_government_ethic_attraction = 0.5
+	}
+	potential = {
+		tul_is_machine_empire = no
+		NOT = {
+			has_ascension_perk = ap_one_vision
+		}
+	}
+	ai_weight = {
+		factor = 5
+		modifier = {
+			factor = 2
+			has_ethic = ethic_authoritarian
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_authoritarian
+		}
+		modifier = {
+			factor = 2
+			has_ethic = ethic_spiritualist
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_spiritualist
+		}
+		modifier = {
+			factor = 3
+			is_spiritualist = yes
+			is_authoritarian = yes
+		}
+	}
+}
+
+######################################################################################
+# Consecrated Worlds
+# Source: Vanilla
+# Type: Religious / Social / Amenities
+######################################################################################
+ap_consecrated_worlds = {
+	on_enabled = {
+		custom_tooltip = "allow_edict_consectrated_worlds"
+		custom_tooltip = "describe_edict_consectrated_worlds"
+	}
+	potential = {
+		NOT = {
+			has_ascension_perk = ap_consecrated_worlds
+		}
+		OR = {
+			has_ethic = ethic_spiritualist
+			has_ethic = ethic_fanatic_spiritualist
+		}
+	}
+	ai_weight = {
+		factor = 5
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_spiritualist
+		}
+	}
+}
+
+######################################################################################
+# Shared Destiny
+# Source: Vanilla
+# Type: Diplo
+######################################################################################
+ap_shared_destiny = {
+	modifier = {
+		envoys_add = 2
+		subject_integration_influence_cost_mult = -0.5
+		country_subject_trust_cap_add = 100
+	}
+	potential = {
+		NOR = {
+			has_valid_civic = civic_fanatic_purifiers
+			has_valid_civic = civic_hive_devouring_swarm
+			is_xenophobic_isolationists = yes
+			has_valid_civic = civic_machine_terminator
+			is_megacorp = yes
+		}
+		NOT = {
+			has_ascension_perk = ap_shared_destiny
+		}
+	}
+	ai_weight = {
+		factor = 2
+		modifier = {
+			factor = 0
+			NOT = {
+				any_subject = {
+					is_subject_type = vassal
+				}
+			}
+		}
+		modifier = {
+			factor = 3
+			count_envoy = {
+				count < 3
+			}
+		}
+		modifier = {
+			factor = 0
+			is_homicidal = yes
+		}
+	}
+}
+
+######################################################################################
+# Synthetic Age
+# Source: Vanilla (Synthetic Dawn DLC)
+# Type: Robots / Modding
+######################################################################################
+ap_synthetic_age = {
+	modifier = {
+		MACHINE_species_trait_points_add = 2
+		modify_species_cost_mult = -0.33
+	}
+	potential = {
+		host_has_dlc = "Synthetic Dawn Story Pack"
+		has_authority = auth_machine_intelligence
+		NOT = {
+			has_ascension_perk = ap_synthetic_age
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_technology_robomodding"
+			OR = {
+				has_technology = tech_robomodding_m
+				has_technology = tech_robomodding
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
+		}
+	}
+	ai_weight = {
+		factor = 50
+	}
+}
+
+######################################################################################
+# Xeno Compatibility
+# Source: Vanilla (Megacorp DLC)
+# Type: Pop Growth
+######################################################################################
+ap_xeno_compatibility = {
+	potential = {
+		host_has_dlc = "Megacorp"
+		NOT = {
+			has_ascension_perk = ap_xeno_compatibility
+		}
+		is_regular_empire = yes
+		xeno_compatibility_enabled = yes
+	}
+	modifier = {
+		planet_immigration_pull_mult = 0.33
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "civic_tooltip_xenophile"
+			is_xenophile = yes
+		}
+		custom_tooltip = {
+			fail_text = "requires_xeno_species"
+			any_owned_pop = {
+				NOR = {
+					is_same_species = root.owner
+					has_trait = trait_mechanical
+					has_trait = trait_machine_unit
+					has_trait = trait_hive_mind
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_technology_gene_tailoring"
+			has_technology = tech_gene_tailoring
+		}
+	}
+	on_enabled = {
+		custom_tooltip = "allow_crossbreeding"
+		if = {
+			limit = {
+				has_modifier = cc_literally_xenophile_country
+			}
+			remove_modifier = cc_literally_xenophile_country
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_policy_flag = allows_im
+					}
+				}
+				set_policy = {
+					policy = cc_interspecies_marriage
+					option = allow_im
+					cooldown = yes
+				}
+				set_country_flag = cc_has_had_interspecies_marriage
+				random_pop_faction = {
+					limit = {
+						is_pop_faction_type = xenoist
+						NOT = {
+							has_modifier = cc_xeno_marriage_allowed_xenoist
+						}
+					}
+					add_modifier = {
+						modifier = cc_xeno_marriage_allowed_xenoist
+						days = -1
+					}
+				}
+				if = {
+					limit = {
+						has_faction = supremacist
+					}
+					random_pop_faction = {
+						limit = {
+							is_pop_faction_type = supremacist
+							NOT = {
+								has_modifier = cc_xeno_marriage_allowed_supremacist
+							}
+						}
+						add_modifier = {
+							modifier = cc_xeno_marriage_allowed_supremacist
+							days = -1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_faction = isolationist
+					}
+					random_pop_faction = {
+						limit = {
+							is_pop_faction_type = isolationist
+							NOT = {
+								has_modifier = cc_xeno_marriage_allowed_isolationist
+							}
+						}
+						add_modifier = {
+							modifier = cc_xeno_marriage_allowed_isolationist
+							days = -1
+						}
+					}
+				}
+				every_owned_pop = {
+					limit = {
+						has_pop_flag = cc_literally_xenophile_manifested
+						NOT = {
+							has_modifier = cc_practising_xenophile
+						}
+					}
+					add_modifier = {
+						modifier = cc_practising_xenophile
+						days = -1
+					}
+				}
+				every_owned_pop = {
+					limit = {
+						has_modifier = cc_secretly_practising_xenophile
+					}
+					remove_modifier = cc_secretly_practising_xenophile
+				}
+				every_owned_pop = {
+					limit = {
+						has_modifier = cc_secret_xenophile
+					}
+					remove_modifier = cc_secret_xenophile
+				}
+			}
+		}
+	}
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 0
+			NOT = {
+				has_ethic = ethic_fanatic_xenophile
+			}
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_xenophile
+		}
+	}
+}
+
+######################################################################################
+# Universal Transactions
+# Source: Vanilla (Megacorp DLC)
+# Type: Corp
+######################################################################################
+ap_universal_transactions = {
+	potential = {
+		host_has_dlc = "Megacorp"
+		NOT = {
+			has_ascension_perk = ap_universal_transactions
+		}
+		is_megacorp = yes
+		is_criminal_syndicate = no
+	}
+	modifier = {
+		planet_branch_offices_cost_mult = -0.15
+	}
+	on_enabled = {
+		custom_tooltip = "free_commercial_pacts"
+	}
+	ai_weight = {
+		factor = 10
+	}
+}

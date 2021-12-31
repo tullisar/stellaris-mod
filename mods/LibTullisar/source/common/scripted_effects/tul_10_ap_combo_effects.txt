@@ -1,0 +1,464 @@
+######################################################################################
+# Scripted Effects
+# Package: APC
+######################################################################################
+#
+#
+######################################################################################
+#  Effect: ⭐💡 tul_ap_combo_initialize
+#
+#  Source: SRD_01_00002_0
+# Purpose: Initialize the ascension perk combo feature.
+#  Scopes: ⭐ global
+#
+#  Inputs: ❔ tul_is_ap_combo_feature_enabled
+#
+# Outputs: ⭐🏁 tul_flag_ap_combo_initialized
+#		   ⭐💡 tul_ap_combo_initialize_register_standard_perk_types
+#          ⭐🔢 var_tul_ap_combo_type_count
+#
+# Details: This effect is run only once to initialize core functions of the library
+#          on game start. See below for more information on the steps that are taken.
+#
+#  Limits: Can only be called once.
+#
+######################################################################################
+tul_ap_combo_initialize = {
+	if = {
+		# Ensure the feature can only be initialized once.
+		limit = {
+			tul_is_ap_combo_feature_initialized = no
+		}
+		event_target:tul_lib_global_country = {
+			set_variable = {
+				which = var_tul_ap_combo_type_count
+				value = 0
+			}
+		}
+	}
+}
+
+######################################################################################
+#  Effect: ⭐💡 tul_ap_combo_initialize_finish
+#
+#  Source: TODO
+# Purpose: TODO
+#  Scopes: TODO
+#
+#  Inputs: TODO
+#
+# Outputs: TODO
+#
+# Details: TODO
+#
+#  Limits: TODO
+#
+#   Notes: TODO
+#
+######################################################################################
+tul_ap_combo_initialize_finish = {
+	set_global_flag = tul_flag_ap_combo_initialized
+	log = "(INFO) Ascension Perk Combo Feature Initialized"
+}
+
+######################################################################################
+#  Effect: ⭐💡 tul_ap_combo_register_standard_perk_types
+#
+#  Source: SRD_01_00004_0, SRD_01_00006_0, SRD_01_00007_0, SRD_01_00008_0
+# 		   SRD_01_00009_0, SRD_01_00010_0, SRD_01_00012_0, SRD_01_00013_0
+#		   SRD_01_00014_0
+# Purpose: Register the standard ascension perk combo types
+#  Scopes: ⭐ global
+#
+# Outputs: See ⭐💡 tul_ap_combo_register_perk_type
+#
+#  Limits: TODO(tullisar): Should I prevent this after library initialization?
+#
+######################################################################################
+tul_ap_combo_register_standard_perk_types = {
+	tul_ap_combo_register_perk_type = {
+		TYPE = government
+	}
+	log = "government-done"
+	tul_ap_combo_register_perk_type = {
+		TYPE = military
+	}
+	log = "military-done"
+	tul_ap_combo_register_perk_type = {
+		TYPE = diplomacy
+	}
+	log = "diplomacy-done"
+	tul_ap_combo_register_perk_type = {
+		TYPE = mega_engineering
+	}
+	log = "mega_engineering-done"
+	tul_ap_combo_register_perk_type = {
+		TYPE = research
+	}
+	log = "research-done"
+	tul_ap_combo_register_perk_type = {
+		TYPE = economy
+	}
+	log = "economy-done"
+	tul_ap_combo_register_perk_type = {
+		TYPE = espionage
+	}
+	log = "espionage-done"
+	tul_ap_combo_register_perk_type = {
+		TYPE = expansion
+	}
+	log = "expansion-done"
+	tul_ap_combo_register_perk_type = {
+		TYPE = exploration
+	}
+}
+
+######################################################################################
+#  Effect: ⭐💡 tul_ap_combo_register_perk_type
+#
+#  Source: SRD_01_00005_0
+# Purpose: Registers a given perk type for the ascension perk combo feature.
+#  Scopes: ⭐ global
+#
+#  Inputs: TYPE = A string with the name of the type to register.
+#
+# Outputs: ⭐🔢 var_tul_ap_combo_type_$TYPE$ is defined the next value from the counter.
+#          ⭐🔢 var_tul_ap_combo_type_count is used to track the number of registered types.
+#
+#  Limits: Duplicate types will only be registered once. 
+#
+#          TODO(tullisar): Should I prevent this after library initialization?
+#  
+######################################################################################
+tul_ap_combo_register_perk_type = {
+	# Ensure that a type can only be registered once.
+	# if = {
+	# 	limit = {
+	# 		NOT = {
+	# 			exists = event_target:tul_lib_ap_combo_$TYPE$_species
+	# 		}
+	# 	}
+	# log = "(TRACE) Registering new type"
+	# log = "(TRACE) Creating species..."
+	# create_species = {
+	# 	class = MAM
+	# 	portrait = mam1
+	# 	immortal = yes
+	# 	can_generate_leaders = yes
+	# 	name = tul_ap_combo_type_$TYPE$
+	# 	effect = {
+	# 		save_global_event_target_as = tul_lib_ap_combo_$TYPE$_species
+	# 		set_species_flag = tul_flag_is_ap_combo_type_species
+	# 		log = "(TRACE) Species created."
+	# 	}
+	# }
+	# log = "(TRACE) Creating country..."
+	# create_country = {
+	# 	type = global_event
+	# 	name = "Dummy"
+	# 	species = event_target:tul_lib_ap_combo_$TYPE$_species
+	# 	effect = {
+	# 		set_variable = {
+	# 			which = var_tul_ap_combo_type_id
+	# 			value = event_target:tul_lib_global_country.var_tul_ap_combo_type_count
+	# 		}
+	# 		save_global_event_target_as = tul_lib_ap_combo_$TYPE$_country
+	# 		set_country_flag = tul_flag_is_ap_combo_type_country
+	# 		log = "(TRACE) Country created."
+	# 	}
+	# }
+	# log = "(INFO) Done."
+	# # Increment the number of combo types tracked by the library.
+	# event_target:tul_lib_global_country = {
+	# 	change_variable = {
+	# 		which = var_tul_ap_combo_type_count
+	# 		value = 1
+	# 	}
+	# }
+	# # Flag the combo perk type as having been registered.
+	# set_global_flag = tul_flag_ap_combo_$TYPE$_registered
+	# }
+	# # Although harmless to try to register the same type again, at least warn about
+	# # the attempt in the log.
+	# else = {
+	# 	log_error = "(WARN) Ascension perk combo type has already been registered"
+	# }
+    log = "Creating species..."
+    create_species = {
+        class = MAM
+        portrait = mam1
+        name = test_loc_key_$TYPE$
+		adjective = "Event type "
+        immortal = yes
+        can_generate_leaders = yes
+		can_be_modified = no
+		sapient = yes
+        effect = {
+            save_global_event_target_as = test_$TYPE$_species
+            set_species_flag = dummy_test_flag
+            log = "Species \\[This.GetName] created."
+			create_country = {
+				type = tul_global_event
+				species = prev
+				effect = {
+					save_global_event_target_as = test_$TYPE$_country
+					log = "Country created"
+				}
+			}
+        }
+    }
+	log = "Done"
+}
+
+######################################################################################
+#  Effect: ⭐💡 tul_ap_combo_register_type_for_perk_by_id
+#
+#  Source: SRD_01_00016_0
+# Purpose: Register an ascenion perk combo type for a given ascension perk by its type ID.
+#  Scopes: ⭐ global
+#
+#  Inputs: PERK = The key of the ascension perk to be associated with a type
+#            ID = The name of the type to associate with the perk.
+#
+# Outputs: TODO
+#
+# Details: ⭐💡 tul_ap_combo_register_type_for_perk should generally be preferred by
+#          external users of the library.
+#
+######################################################################################
+# tul_ap_combo_register_type_for_perk_by_id = {
+# 	# Ensure that the given ID is valid for a combo type.
+# 	if = {
+# 		limit = {
+# 			tul_is_global_variable_less_equal_than = {
+# 				WHICH = var_tul_ap_combo_type_count
+# 				VALUE = $ID$
+# 			}
+# 		}
+# 		tul_log_severe = {
+# 			MESSAGE = "There is no ascension perk type with $ID$ currently registered."
+# 		}
+# 		break = yes
+# 	}
+# 	# Ensure that the ascension perk hasn't already been associated with the given type.
+# 	if = {
+# 		limit = {
+# 			has_global_flag = tul_flag_$PERK$_is_type_$ID$
+# 		}
+# 		# Although harmless to try to register the same type for a perk again, at least warn
+# 		# about the attempt in the log.
+# 		tul_log_warn = {
+# 			MESSAGE = "The ascension perk $PERK$ is already associated with type ID $TYPE$"
+# 		}
+# 		break = yes
+# 	}
+# 	# If this is the first time a type is being associated with an ascension perk, the
+# 	# perk needs to be given an ID for use by the library elsewhere. Set up a counter
+# 	# to track the number of type associated with the perk.
+# 	if = {
+# 		limit = {
+# 			NOT = {
+# 				tul_is_global_variable_set = {
+# 					WHICH = var_tul_$PERK$_id
+# 				}
+# 			}
+# 		}
+# 		tul_set_global_variable = {
+# 			WHICH = var_tul_$PERK$_id
+# 			VALUE = event_target:global_event_country.var_tul_ap_combo_perk_count
+# 		}
+# 		tul_set_global_variable = {
+# 			WHICH = var_tul_$PERK$_type_count
+# 			VALUE = 1
+# 		}
+# 		tul_change_global_variable = {
+# 			WHICH = var_tul_ap_combo_perk_count
+# 			VALUE = 1
+# 		}
+# 		tul_log_info = {
+# 			MESSAGE = "Ascension Perk '$PERK$' registered with type ID $ID$"
+# 		}
+# 	}
+# 	# Otherwise, increment the number of types associated with the ascension perk.
+# 	else = {
+# 		tul_change_global_variable = {
+# 			WHICH = var_tul_$PERK$_type_count
+# 			VALUE = 1
+# 		}
+# 	}
+# }
+######################################################################################
+#  Effect: ⭐💡 tul_ap_combo_register_type_for_perk
+#
+#  Source: SRD_01_00016_0
+# Purpose: Register an ascension perk combo type for a given ascension perk
+#  Scopes: ⭐ global
+#
+#  Inputs: PERK = The key of the ascension perk to be associated with a type
+#          TYPE = The name of the type to associate with the perk.
+#          ⭐🔢 var_tul_ap_combo_type_$TYPE$
+#
+# Outputs: See ⭐💡 tul_ap_combo_register_type_for_perk_by_id
+#
+######################################################################################
+# tul_ap_combo_register_type_for_perk = {
+# 	# Ensure that the type being registered for the perk actually exists.
+# 	if = {
+# 		limit = {
+# 			NOT = {
+# 				tul_ap_combo_is_type_defined = {
+# 					TYPE = $TYPE$
+# 				}
+# 			}
+# 		}
+# 		tul_log_severe = {
+# 			MESSAGE = "There is no ascension perk type $TYPE$ currently registered."
+# 		}
+# 		break = yes
+# 	}
+# 	# Register the type by its ID
+# 	tul_ap_combo_register_type_for_perk_by_id = {
+# 		PERK = $PERK$
+# 		ID = event_target:global_event_country.var_tul_ap_combo_type_$TYPE$
+# 	}
+# }
+######################################################################################
+#  Effect: ⭐💡 tul_ap_combo_register_vanilla_perk_type_associations
+#
+#  Source: SRD_01_00017_0
+# Purpose: Register the vanilla ascension perk type associations
+#  Scopes: ⭐ global
+#
+# Outputs: See ⭐💡 tul_ap_combo_register_type_for_perk and the list below.
+#
+######################################################################################
+# tul_ap_combo_register_vanilla_perk_type_associations = {
+# 	tul_ap_combo_register_type_for_perk = {
+# 		PERK = "ap_executive_vigor"
+# 		TYPE = "government"
+# 	}
+# 	tul_ap_combo_register_type_for_perk = {
+# 		PERK = "ap_transcendent_learning"
+# 		TYPE = "government"
+# 	}
+# 	tul_ap_combo_register_type_for_perk = {
+# 		PERK = "ap_imperial_prerogative"
+# 		TYPE = "government"
+# 	}
+# }
+######################################################################################
+#  Effect: TODO
+#
+#  Source: TODO
+# Purpose: TODO
+#  Scopes: TODO
+#
+#  Inputs: TODO
+#
+# Outputs: TODO
+#
+# Details: TODO
+#
+#  Limits: TODO
+#
+#   Notes: TODO
+#
+######################################################################################
+# tul_ap_combo_set_has_perk = {
+# 	set_country_flag = tul_flag_ap_combo_country_has_$PERK$
+# 	set_country_flag = tul_flag_ap_combo_country_has_perk_$ID$
+# 	set_variable = {
+# 		which = var_tul_ap_combo_country_has_perk_$ID$
+# 		value = 1
+# 	}
+# }
+######################################################################################
+#  Effect: 🌐💡 tul_ap_combo_check_perk_state
+#
+#  Source: TODO
+# Purpose: Set a flag indicating the country has a given perk if necessary.
+#  Scopes: 🌐 country
+#
+#  Inputs: PERK = The ascension perk to check
+#
+# Outputs: TODO
+#
+# Details: This effect just sets a country flag which notifies the ascension perk
+#          combo feature that a country has the given perk. 
+#
+######################################################################################
+# tul_ap_combo_check_perk_state = {
+# 	if = {
+# 		limit = {
+# 			tul_is_global_variable_greater_than = {
+# 				WHICH = var_tul_$PERK$_type_count
+# 				VALUE = 0
+# 			}
+# 			tul_scope_is_country_and_perk_is_new = {
+# 				PERK = $PERK$
+# 			}
+# 		}
+# 		tul_ap_combo_set_has_perk = {
+# 			PERK = $PERK$
+# 			ID = event_target:global_event_country.var_tul_$PERK$_id
+# 		}
+# 		# fire_on_action = {
+# 		# 	on_action = tul_on_ap_combo_perk_$PERK$_selected
+# 		# }
+# 	}
+# }
+######################################################################################
+#  Effect: 🌐💡 tul_ap_combo_check_vanilla_perk_state
+#
+#  Source: TODO
+# Purpose: Check the state of vanilla perks registered to the feature. 
+#  Scopes: TODO
+#
+#  Inputs: TODO
+#
+# Outputs: TODO
+#
+# Details: TODO
+#
+#  Limits: TODO
+#
+#   Notes: TODO
+#
+######################################################################################
+# tul_ap_combo_check_vanilla_perk_state = {
+# 	tul_ap_combo_check_perk_state = {
+# 		PERK = "ap_executive_vigor"
+# 	}
+# 	tul_ap_combo_check_perk_state = {
+# 		PERK = "ap_transcendent_learning"
+# 	}
+# 	tul_ap_combo_check_perk_state = {
+# 		PERK = "ap_imperial_prerogative"
+# 	}
+# }
+######################################################################################
+#  Effect: ⭐💡 tul_ap_combo_update_bonuses
+#
+#  Source: TODO
+# Purpose: TODO
+#  Scopes: TODO
+#
+#  Inputs: TODO
+#
+# Outputs: TODO
+#
+# Details: TODO
+#
+#  Limits: TODO
+#
+#   Notes: TODO
+#
+######################################################################################
+tul_ap_combo_update_bonuses = {
+	#
+	# set counter to 0
+	# while counter < # ascension perks
+	#    check_perk
+	#
+	log = "LibTullisar: Ascension Perk Picked"
+}

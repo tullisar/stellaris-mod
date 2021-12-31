@@ -1,0 +1,37 @@
+######################################################################################
+# Food AI Budget
+######################################################################################
+#
+#
+#
+######################################################################################
+# Consumer Goods Expenditure Campaigns
+# Source: ETCPM (was originally overriding food_expenditure_camapign)
+######################################################################################
+consumer_goods_expenditure_campaigns = {
+	resource = consumer_goods
+	type = expenditure
+	category = campaigns
+
+	potential = {
+		has_valid_civic = civic_megastore
+	}
+
+	fraction = {
+		weight = 0.2
+	}
+	static_min = {
+		base = 0
+		modifier = {
+			add = 1000
+			resource_stockpile_compare = {
+				resource=consumer_goods
+				value > 500
+			}
+			resource_income_compare = {
+				resource=consumer_goods
+				value > 1
+			}
+		}
+	}
+}

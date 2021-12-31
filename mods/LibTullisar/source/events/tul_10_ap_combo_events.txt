@@ -1,0 +1,58 @@
+######################################################################################
+# On Events
+# Package: Ascension Perk Combo
+######################################################################################
+namespace = tul_ap_combo
+
+######################################################################################
+#   Event: 🌐❗ tul_ap_combo.000
+#
+#  Source: TODO
+# Purpose: Initialize the ascension perk combo feature if enabled.
+#  Scopes: 🌐 country (global_event_target only)
+#
+#  Inputs: TODO
+#
+# Outputs: TODO
+#
+# Details: TODO
+#
+#  Limits: TODO
+#
+#   Notes: TODO
+#
+######################################################################################
+country_event = {
+	id = tul_ap_combo.001
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+}
+
+
+######################################################################################
+#   Event: 🌐❗ tul_ap_combo.001
+#
+#  Source: SRD_01_00020_0
+# Purpose: Update a country's ascension perk combo bonuses when a new perk is picked.
+#  Scopes: 🌐 country
+#
+# Outputs: TODO 
+#
+# Details: TODO
+#
+#  Limits: TODO
+#
+#   Notes: TODO
+#
+######################################################################################
+# country_event = {
+# 	id = tul_ap_combo.001
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	immediate = {
+# 		tul_ap_combo_update_bonuses = yes
+# 	}
+# }

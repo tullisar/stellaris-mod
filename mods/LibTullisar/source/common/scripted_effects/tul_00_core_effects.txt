@@ -1,0 +1,132 @@
+######################################################################################
+# Scripted Effects 
+# Package: Core
+######################################################################################
+
+######################################################################################
+#  Effect: ⭐💡 tul_set_lib_mod_installed
+#
+#  Source: SRD_00_00001_0, SRD_010002_0, SRD_00_00020_0
+# Purpose: Sets a global flag indicating that this library has been installed.
+#  Scopes: ⭐ global
+#
+# Outputs: ⭐💡 tul_ap_combo_initialize
+#          ⭐🏁 tul_flag_has_lib_mod
+#
+######################################################################################
+tul_lib_initialize = {
+	# Ensure this effect can only be fired once only
+	if = {
+		limit = {
+			OR = {
+				has_global_flag = tul_flag_has_lib_mod
+				has_global_flag = tul_flag_lib_mod_init_in_progress
+			}
+		}
+		log_error = "(SEVERE) The library may only be initialized once"
+		break = yes
+	}
+
+	# Set up a dedicated species and country for global variable use. 
+	log = "(INFO) Initializing library"
+	set_global_flag = tul_flag_lib_mod_init_in_progress
+	# log = "(TRACE) Creating global event species..."
+	create_species = {
+		class = MAM
+		portrait = mam1
+		name = "LibTullisar Global Event Species"
+		immortal = yes
+		can_generate_leaders = yes
+		can_be_modified = no
+		sapient = yes
+		effect = {
+			save_global_event_target_as = tul_lib_global_species
+			#log = "(TRACE) Created global event species."
+			# log = "(TRACE) Creating global event country..."
+			create_country = {
+				type = tul_global_event
+				species = prev
+				
+				effect = {
+					save_global_event_target_as = tul_lib_global_country
+					# log = "(INFO) Created global event country."
+				}
+			}
+		}
+	}
+
+}
+
+######################################################################################
+#  Effect: ⭐💡 tul_lib_initialize_finish
+#
+#  Source: SRD_00_00001_0
+# Purpose: Finalize library installation.
+#  Scopes: TODO
+#
+#  Inputs: TODO
+#
+# Outputs: TODO
+#
+# Details: TODO
+#
+#  Limits: TODO
+#
+#   Notes: TODO
+#
+######################################################################################
+tul_lib_initialize_finish = {
+	remove_global_flag = tul_flag_lib_mod_init_in_progress
+	set_global_flag = tul_flag_has_lib_mod
+}
+
+######################################################################################
+#  Effect: 🌐💡 tul_set_host_to_scoped_country
+#
+#  Source: SRD_00_00003_0, SRD_00_00006_0
+# Purpose: Sets the flagged host to the currently scoped country. 
+#  Scopes: 🌐 country
+#
+#  Inputs: ⭐❔ is_scope_type
+#          ⭐❔ tul_is_host_set
+#          🌐❔ tul_is_host
+#          🌐❔ is_ai
+#
+# Outputs: ⭐🏁 tul_flag_host_set
+#		   🌐🏁 tul_flag_is_game_host
+#          ⭐🎯 tul_multiplayer_host
+#
+######################################################################################
+tul_set_host_to_scoped_country = {
+	if = {
+		limit = {
+			exists = this
+			is_scope_type = country
+			tul_is_host_set = no
+			tul_is_host = no
+			is_ai = no
+		}
+		set_global_flag = tul_flag_host_set
+		this = {
+			set_country_flag = tul_flag_is_game_host
+			save_global_event_target_as = tul_multiplayer_host
+		}
+	}
+}
+
+######################################################################################
+#  Effect: 🌐💡 tul_initialize_lib_for_country
+#
+#  Source: SRD_00_00008_0, SRD_00_00019_0
+# Purpose: Initialize the library for the scoped country.
+#  Scopes: 🌐 country
+#
+#  Inputs: TODO
+#
+# Outputs: 🌐🏁 tul_flag_country_library_initialized
+#
+######################################################################################
+tul_initialize_lib_for_country = {
+	# TODO(tullisar): Additional initialization
+	set_country_flag = tul_flag_country_library_initialized
+}

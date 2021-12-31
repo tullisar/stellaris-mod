@@ -1,0 +1,257 @@
+######################################################################################
+# Other / Misc Civics
+######################################################################################
+#
+#
+######################################################################################
+# Military Order
+######################################################################################
+civic_military_order = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_warrior_culture.dds"
+	potential = {
+		country_type = {
+			value = sentinels
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+}
+
+######################################################################################
+# Ancient Machine Intelligence
+######################################################################################
+civic_ancient_machine_intelligence = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_awakened_machine.dds"
+	potential = {
+		country_type = {
+			value = ai_empire
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+}
+
+######################################################################################
+# Anarcho Tribalism
+######################################################################################
+civic_anarcho_tribalism = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_warrior_culture.dds"
+	potential = {
+		country_type = {
+			value = dormant_marauders
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+}
+
+######################################################################################
+# Great Khan's Vision
+######################################################################################
+civic_great_khans_vision = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_warrior_culture.dds"
+	description = origin_no_effect
+	potential = {
+		country_type = {
+			value = awakened_marauders
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+}
+
+######################################################################################
+# Diadochi
+######################################################################################
+civic_diadochi = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_warrior_culture.dds"
+	description = origin_no_effect
+	potential = {
+		origin = {
+			value = origin_khan_successor
+		}
+	}
+	random_weight = {
+		base = 0
+	}
+	modifier = {
+		country_naval_cap_mult = 0.15
+	}
+}
+
+######################################################################################
+# Great Khan's Legacy
+######################################################################################
+civic_great_khans_legacy = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_warrior_culture.dds"
+	potential = {
+		origin = {
+			value = origin_khan_successor
+		}
+	}
+	random_weight = {
+		base = 0
+	}
+	modifier = {
+		ship_fire_rate_mult = 0.1
+	}
+}
+
+######################################################################################
+# Galactic Sovereign
+######################################################################################
+civic_galactic_sovereign = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_galactic_sovereign.dds"
+	potential = {
+		civics = {
+			value = civic_galactic_sovereign			# Added via event - this trigger prevents the civic from being picked by others
+		}
+	}
+	random_weight = {
+		base = 0
+	}
+	modifier = {
+		country_civics_influence_produces_add = 6
+		diplo_weight_mult = 0.4
+		envoys_add = 1
+		country_government_civic_points_add = 1
+	}
+}
+
+######################################################################################
+# Corporate Soverign
+######################################################################################
+civic_galactic_sovereign_megacorp = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_galactic_sovereign.dds"
+	potential = {
+		civics = {
+			value = civic_galactic_sovereign_megacorp			# Added via event - this trigger prevents the civic from being picked by others
+		}
+	}
+	random_weight = {
+		base = 0
+	}
+	modifier = {
+		country_civics_influence_produces_add = 6
+		diplo_weight_mult = 0.4
+		envoys_add = 1
+		country_government_civic_points_add = 1
+	}
+}
+
+######################################################################################
+# Caravaneers
+######################################################################################
+civic_caravaneer_caravansary = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_caravaneer_caravansary.dds"
+	potential = {
+		country_type = {
+			value = caravaneer_home
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+}
+
+######################################################################################
+# Orlan Topless Pyramid (Caravaneers)
+######################################################################################
+civic_caravaneer_fleet1 = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_caravaneer_fleet1.dds"
+	potential = {
+		country_type = {
+			value = caravaneer_fleet
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+}
+
+######################################################################################
+# Mercantile Priesthood (Caravaneers)
+######################################################################################
+civic_caravaneer_fleet2 = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_caravaneer_fleet2.dds"
+	potential = {
+		country_type = {
+			value = caravaneer_fleet
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+}
+
+######################################################################################
+# Absolute Commodifiers (Caravaneers)
+######################################################################################
+civic_caravaneer_fleet3 = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_caravaneer_fleet3.dds"
+	potential = {
+		country_type = {
+			value = caravaneer_fleet
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+}

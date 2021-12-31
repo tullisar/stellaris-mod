@@ -1,0 +1,158 @@
+######################################################################################
+# Events
+# Package: Core
+######################################################################################
+namespace = tul_core
+
+
+######################################################################################
+#   Event: ⭐❗ tul_core.000
+#
+#  Source: TODO
+# Purpose: Debug/test event 
+#  Scopes: TODO
+#
+#  Inputs: TODO
+#
+# Outputs: TODO
+#
+# Details: TODO
+#
+#  Limits: TODO
+#
+#   Notes: TODO
+#
+######################################################################################
+event = {
+	id = tul_core.000
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+
+	}
+}
+
+######################################################################################
+#   Event: ⭐❗ tul_core.001
+#
+#  Source: SRD_00_00001_0
+# Purpose: Initial game start processing for the library
+#  Scopes: ⭐ global
+#
+#  Inputs: ⭐❔ tul_has_lib_mod_installed
+#
+# Outputs: ⭐💡 tul_lib_initialize
+#
+# Details:  Fired by on_game_start, this sets the global flag tul_has_lib_mod which 
+#			is used to check for the existence of this mod elsewhere.
+#
+######################################################################################
+event = {
+	id = tul_core.001
+	hide_window = yes
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tul_has_lib_mod_installed = no
+	}
+	immediate = {
+		tul_lib_initialize = yes
+		tul_ap_combo_initialize = yes
+
+		# Register the standard types with the sytem, then notify mods that they may
+		# register additional types.
+		tul_ap_combo_register_perk_type = {
+			TYPE = government
+		}
+		log = "government-done"
+		tul_ap_combo_register_perk_type = {
+			TYPE = military
+		}
+		log = "military-done"
+		tul_ap_combo_register_perk_type = {
+			TYPE = diplomacy
+		}
+		log = "diplomacy-done"
+		tul_ap_combo_register_perk_type = {
+			TYPE = mega_engineering
+		}
+		log = "mega_engineering-done"
+		tul_ap_combo_register_perk_type = {
+			TYPE = research
+		}
+		log = "research-done"
+		tul_ap_combo_register_perk_type = {
+			TYPE = economy
+		}
+		log = "economy-done"
+		tul_ap_combo_register_perk_type = {
+			TYPE = espionage
+		}
+		log = "espionage-done"
+		tul_ap_combo_register_perk_type = {
+			TYPE = expansion
+		}
+		log = "expansion-done"
+		tul_ap_combo_register_perk_type = {
+			TYPE = exploration
+		}
+		fire_on_action = {
+			on_action = tul_on_ap_combo_register_mod_type
+		}
+
+
+		tul_lib_initialize_finish = yes
+	}
+}
+
+######################################################################################
+#   Event: 🌐❗ tul_core.002
+#
+#  Source: SRD_00_00003_0
+# Purpose: Check for a defined mulitplayer host and set it if necessary.
+#  Scopes: 🌐 country
+#
+#  Inputs: ❔ tul_is_host_set
+#
+# Outputs: 💡 tul_set_host_to_scoped_country (if necessary)
+#
+######################################################################################
+country_event = {
+	id = tul_core.002
+	hide_window = yes
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tul_is_host_set = no
+	}
+	immediate = {
+		tul_set_host_to_scoped_country = yes
+	}
+}
+
+######################################################################################
+#   Event: 🌐❗ tul_core.003
+#
+#  Source: SRD_00_00009_0
+# Purpose: Perform country scoped library initialization.
+#  Scopes: 🌐 country
+#
+#  Inputs: TODO
+#
+# Outputs: TODO
+#
+# Details: TODO
+#
+#  Limits: TODO
+#
+#   Notes: TODO
+#
+######################################################################################
+country_event = {
+	id = tul_core.003
+	hide_window = yes
+	fire_only_once = yes
+	trigger = {
+
+	}
+}

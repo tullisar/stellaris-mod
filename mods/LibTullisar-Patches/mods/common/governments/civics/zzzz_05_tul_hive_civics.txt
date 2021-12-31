@@ -1,0 +1,393 @@
+######################################################################################
+# Hive Civics
+######################################################################################
+#
+#
+#civic_example = {
+#	playable = {}								# AND trigger, no scope; use this to prevent the civic from being selectable by the player (UI)
+#	potential = {}								# requirements list, see ../readme_requirements.txt
+#	possible = {}								# requirements list, see ../readme_requirements.txt
+#	pickable_at_start = yes / no				# default: yes
+#	modification = yes / no						# default: yes, set to no to prevent adding or removing this after creation of the empire
+#
+#	random_weight = { base = 5 }				# scriptable weight for randomizing a civic; required, else the civic will not get assigned randomly
+#
+#	modifier = {}								# modifier added to the country if the civic is selected and valid
+#	can_build_ruler_ship = yes / no				# default: no
+#	traits = { trait = ... }					# default: empty; trait set to enforce on the primary species. They cannot be removed, but more can be added if points/picks permit
+#	has_secondary_species = {					# default: none; if present, will enable secondary species customization in empire designer and will create secondary species & pops at galaxy generation time (see empire_init_create_capital_secondary_pops)
+#		traits = { trait = ... }					# default: empty; trait set to enforce on the secondary species. They cannot be removed, but more can be added if points/picks permit
+#	}
+#}
+#
+#
+######################################################################################
+# Subspace Ephapse
+######################################################################################
+civic_hive_subspace_ephapse = {
+	potential = {
+		authority = {
+			value = auth_hive_mind
+		}
+	}
+	possible = {
+		civics = {
+			NOT = {
+				value = civic_harm_hive
+			}
+		}
+		origin = {
+			NOT = {
+				value = origin_extant_creators
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		country_naval_cap_mult = 0.15
+		ship_speed_mult = 0.2
+	}
+}
+
+######################################################################################
+# Natural Neural Network
+######################################################################################
+civic_hive_natural_neural_network = {
+	description = "civic_tooltip_natural_neural_network_effects"
+	potential = {
+		authority = {
+			value = auth_hive_mind
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		num_tech_alternatives_add = 1
+		planet_researchers_upkeep_mult = -0.2
+		all_technology_research_speed = 0.05
+	}
+}
+
+######################################################################################
+# Ascetic
+######################################################################################
+civic_hive_ascetic = {
+	potential = {
+		authority = {
+			value = auth_hive_mind
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		pop_environment_tolerance = 0.05
+		pop_amenities_usage_no_happiness_mult = -0.2
+		planet_pops_organics_food_upkeep_mult = -0.1
+	}
+}
+
+######################################################################################
+# One Mind
+######################################################################################
+civic_hive_one_mind = {
+	potential = {
+		authority = {
+			value = auth_hive_mind
+		}
+	}
+	description = "civic_hive_one_mind_effects"
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		country_unity_produces_mult = 0.15
+	}
+}
+
+######################################################################################
+# Divided Attention
+######################################################################################
+civic_hive_divided_attention = {
+	potential = {
+		authority = {
+			value = auth_hive_mind
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		country_admin_cap_mult = 0.2
+	}
+}
+
+######################################################################################
+# Strength of Legions
+######################################################################################
+civic_hive_strength_of_legions = {
+	potential = {
+		authority = {
+			value = auth_hive_mind
+		}
+	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_closed_collective
+				value = civic_harm_hive
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		army_starting_experience_add = 100
+		army_damage_mult = 0.2
+		armies_upkeep_mult = -0.2
+		army_health = 0.25
+		job_warrior_drone_per_pop = 0.05
+	}
+}
+
+######################################################################################
+# Subsumed Will
+######################################################################################
+civic_hive_subsumed_will = {
+	potential = {
+		authority = {
+			value = auth_hive_mind
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	description = "civic_hive_subsumed_will_effects"
+	modifier = {
+		empire_size_pops_mult = -0.2
+		planet_resettlement_unemployed_mult = 0.5
+	}
+}
+
+######################################################################################
+# Pooled Knowledge
+######################################################################################
+civic_hive_pooled_knowledge = {
+	description = "civic_tooltip_hive_pooled_knowledge_effects"
+	potential = {
+		authority = {
+			value = auth_hive_mind
+		}
+	}
+	possible = {
+		civics = {
+			NOT = {
+				value = civic_hive_synapses
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		leader_skill_levels = 1
+		species_leader_exp_gain = 0.2
+		country_leader_pool_size = 2
+		intel_encryption_add = 1
+	}
+}
+
+######################################################################################
+# Devouring Swarm
+######################################################################################
+civic_hive_devouring_swarm = {
+	modification = no
+	potential = {
+		authority = {
+			value = auth_hive_mind
+		}
+	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_harm_hive
+				value = civic_closed_collective
+				value = civic_infestation
+				value = civic_hive_memorialist
+			}
+		}
+		origin = {
+			NOR = {
+				value = origin_common_ground
+				value = origin_common_ground_npc
+				value = origin_scion
+				value = origin_hegemon
+				value = origin_tree_of_life
+				value = origin_symbiote
+				value = origin_syncretic_evolution_hive
+				value = origin_syncretic_livestock
+				value = origin_syncretic_livestock_lithoid
+				value = origin_here_be_dragons
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	description = "civic_tooltip_devouring_swarm_effects"
+	modifier = {
+		country_starbase_influence_cost_mult = -0.5
+		ship_hull_mult = 0.25
+		ship_armor_mult = 0.25
+		ship_hull_regen_add_perc = 0.5
+		ship_armor_regen_add_perc = 0.5
+		army_damage_mult = 0.4
+		category_biology_research_speed_mult = 0.2
+		starbase_shipyard_build_cost_mult = -0.25
+		country_naval_cap_mult = 0.33
+	}
+	swap_type = {
+		name = civic_hive_devouring_swarm_lithoid
+		description = "civic_tooltip_devouring_swarm_lithoid_effects"
+		trigger = {
+			local_human_species_class = LITHOID
+		}
+	}
+}
+
+######################################################################################
+# Empath
+######################################################################################
+civic_hive_empath = {
+	playable = {
+		host_has_dlc = "Federations"
+	}
+	ai_playable = {
+		host_has_dlc = "Federations"
+	}
+	potential = {
+		authority = {
+			value = auth_hive_mind
+		}
+	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_hive_devouring_swarm
+				value = civic_closed_collective
+				value = civic_infestation
+				value = civic_living_hosts
+				value = civic_hive_territorial
+				value = civic_hive_reanimated_armies
+			}
+		}
+		origin = {
+			NOR = {
+				value = origin_natural_hunters
+				value = origin_necrophage
+			}
+		}
+	}
+	description = "civic_tooltip_empath_effects"
+	modifier = {
+		envoys_add = 2
+		diplo_weight_mult = 0.1
+	}
+}
+
+######################################################################################
+# Memorialist
+######################################################################################
+civic_hive_memorialist = {
+	playable = {
+		host_has_dlc = "Necroids Species Pack"
+	}
+	ai_playable = {
+		host_has_dlc = "Necroids Species Pack"
+	}
+	description = "civic_tooltip_memorialist_gestalt_effects"
+	potential = {
+		authority = {
+			value = auth_hive_mind
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_hive_devouring_swarm				#Includes Terravore
+				value = civic_closed_collective
+				value = civic_living_hosts
+			}
+		}
+	}
+}
+
+######################################################################################
+# Catalytic Processing
+######################################################################################
+civic_hive_catalytic_processing = {
+	playable = {
+		host_has_dlc = "Plantoids Species Pack"
+	}
+	ai_playable = {
+		host_has_dlc = "Plantoids Species Pack"
+	}
+	description = "civic_tooltip_hive_catalytic_processing_effects"
+	potential = {
+		authority = {
+			value = auth_hive_mind
+		}
+	}
+	possible = {
+		origin = {
+			NOT = {
+				value = origin_lithoid
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+}
+
+######################################################################################
+# Idyllic Bloom
+######################################################################################
+civic_hive_idyllic_bloom = {
+	modification = no
+	playable = {
+		host_has_dlc = "Plantoids Species Pack"
+	}
+	ai_playable = {
+		host_has_dlc = "Plantoids Species Pack"
+	}
+	description = "civic_tooltip_idyllic_bloom_effects"
+	potential = {
+		authority = {
+			value = auth_hive_mind
+		}
+	}
+	possible = {
+		species_class = {
+			OR = {
+				value = FUN
+				value = PLANT
+			}
+		}
+		origin = {
+			NOR = {
+				text = civic_tooltip_not_origin_non_standard_habitability_preference
+				value = origin_life_seeded
+				value = origin_void_dwellers
+				value = origin_shattered_ring
+			}
+		}
+	}
+}

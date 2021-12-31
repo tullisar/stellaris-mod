@@ -1,0 +1,88 @@
+######################################################################################
+# General Purpose Combo Ascension Perk Scripted Effects
+######################################################################################
+
+
+######################################################################################
+# tul_effect_inc_ap_combo_bonus
+#
+# Increments the combo bonus for the given ascension perk combo group type.
+#
+# Parameters:
+# $TYPE$ = The type grouping of ascension perk for which to apply the combo 
+#		   gov|...
+#
+######################################################################################
+tul_effect_inc_ap_combo_bonus = {
+	if = {
+		limit = {
+			exists = this
+			is_scope_type = country
+		}
+		this = {
+			hidden_effect = {
+				if = {
+					limit = {
+						NOT = {
+							is_variable_set = var_tul_ap_$TYPE$_perk_count
+						}
+					}
+					set_variable = {
+						which = var_tul_ap_$TYPE$_perk_count
+						value = 0
+					}
+				}
+				change_variable = {
+					which = var_tul_ap_$TYPE$_perk_count
+					value = 1
+				}
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_effect_check_combo_and_apply
+#
+######################################################################################
+tul_effect_check_combo_and_apply = {
+	if = {
+		limit = {
+			exists = this
+			is_scope_type = country
+			is_variable_set = var_tul_ap_$TYPE$_perk_count
+		}
+		this = {
+			add_modifier = {
+				modifier = "$MODIFIER$"
+				multiplier = var_tul_ap_$TYPE$_perk_count
+			}
+		}
+	}
+}
+
+
+######################################################################################
+# tul_effect_check_ap_combo_bonus
+#
+# Parameters:
+# $TYPE$ = The type grouping of ascension perk for which to apply the combo 
+#		   gov|...
+#
+#
+######################################################################################
+tul_effect_reset_ap_combo_bonus = {
+	hidden_effect = {
+
+		# Initialize the government perk count variable. 
+		set_variable = {
+			which = var_tul_ap_$TYPE$_perk_count
+			value = 0
+		}
+
+		set_variable = {
+			which = var_current_perk_calc_type
+			value = $CALC_TYPE$
+		}
+	}
+}

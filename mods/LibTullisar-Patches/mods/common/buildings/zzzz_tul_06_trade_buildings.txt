@@ -1,0 +1,888 @@
+######################################################################################
+# Trade Buildings
+#
+######################################################################################
+
+######################################################################################
+# Commercial Zones
+#
+######################################################################################
+building_commercial_zone = {
+	base_buildtime = @b1_time
+	category = trade
+	potential = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+			NOT = {
+				has_valid_civic = civic_agrarian_idyll
+			}
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+	}
+	allow = {
+		buildings_simple_allow = yes
+	}
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = {
+				is_regular_empire = no
+			}
+			owner = {
+				has_valid_civic = civic_agrarian_idyll
+			}
+			has_modifier = slave_colony
+		}
+	}
+	convert_to = {
+		building_farmer_market
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	planet_modifier = {
+		trade_value_mult = 0.02
+		job_clerk_add = 3
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOT = {
+					has_civic = civic_merchant_guilds
+				}
+			}
+		}
+		modifier = {
+			job_clerk_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_civic = civic_merchant_guilds
+			}
+		}
+		modifier = {
+			job_manager_add = 1
+			job_clerk_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_mercantile_commercial_enterprise
+			}
+		}
+		modifier = {
+			job_merchant_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_consumerism
+			}
+		}
+		modifier = {
+			job_clerk_add = 1
+		}
+	}
+	triggered_desc = {
+		text = job_clerk_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_mercantile_commercial_enterprise
+			}
+		}
+		text = job_merchant_effect_desc
+	}
+	prerequisites = {
+		"tech_interplanetary_commerce"
+	}
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+		NOT = {
+			has_valid_civic = civic_agrarian_idyll
+		}
+	}
+	upgrades = {
+		"building_commercial_megaplex"
+	}
+	ai_resource_production = {
+		energy = 2
+		trigger = {
+			always = yes
+		}
+	}
+	ai_resource_production = {
+		energy = 3
+		trigger = {
+			OR = {
+				num_unemployed >= 10
+				num_assigned_jobs = {
+					job = servant
+					value >= 10
+				}
+			}
+		}
+	}
+}
+
+######################################################################################
+# Commercial Megaplexes
+#
+######################################################################################
+building_commercial_megaplex = {
+	base_buildtime = @b2_time
+	can_build = no
+	category = trade
+	potential = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+		}
+		owner = {
+			NOT = {
+				has_valid_civic = civic_agrarian_idyll
+			}
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+		has_building = building_commercial_zone
+	}
+	allow = {
+		buildings_upgrade_allow = yes
+	}
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = {
+				is_regular_empire = no
+			}
+			owner = {
+				has_valid_civic = civic_agrarian_idyll
+			}
+			has_modifier = slave_colony
+			buildings_no_crystals = yes
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+			rare_crystals = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+		produces = {
+			trigger = {
+				owner = {
+					has_valid_civic = civic_consumerism
+				}
+			}
+			unity = 5
+		}
+	}
+	convert_to = {
+		building_farmer_complex
+	}
+	planet_modifier = {
+		trade_value_mult = 0.04
+		job_clerk_add = 6
+		job_merchant_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOT = {
+					has_civic = civic_merchant_guilds
+				}
+			}
+		}
+		modifier = {
+			job_merchant_add = 1
+			job_clerk_add = 6
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_civic = civic_merchant_guilds
+			}
+		}
+		modifier = {
+			job_merchant_add = 1
+			job_manager_add = 1
+			job_clerk_add = 5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_mercantile_commercial_enterprise
+			}
+		}
+		modifier = {
+			job_merchant_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_consumerism
+			}
+		}
+		modifier = {
+			job_clerk_add = 2
+			job_merchant_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_corporate_dominion
+			}
+		}
+		modifier = {
+			job_entrepreneur_add = 1
+		}
+	}
+	triggered_desc = {
+		text = job_clerk_effect_desc
+	}
+	triggered_desc = {
+		text = job_merchant_effect_desc
+	}
+	triggered_desc = {
+		text = job_entrepreneur_effect_desc
+	}
+	prerequisites = {
+		"tech_interstellar_economics"
+	}
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+		NOT = {
+			has_valid_civic = civic_agrarian_idyll
+		}
+	}
+	ai_resource_production = {
+		energy = 4
+		trigger = {
+			always = yes
+		}
+	}
+	ai_resource_production = {
+		energy = 6
+		trigger = {
+			OR = {
+				num_unemployed >= 10
+				num_assigned_jobs = {
+					job = servant
+					value >= 10
+				}
+				num_assigned_jobs = {
+					job = servant_noble
+					value >= 10
+				}
+			}
+		}
+	}
+	on_queued = {
+		IF = {
+			limit = {
+				owner = {
+					has_technology = tech_construction_templates
+				}
+			}
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 270
+				}
+			}
+		}
+		ELSE_IF = {
+			limit = {
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
+			}
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 390
+				}
+			}
+		}
+		else = {
+			planet = {
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_crystal_building
+						days = 510
+					}
+				}
+			}
+		}
+	}
+}
+
+######################################################################################
+# Galatic Stock Exchange
+#
+######################################################################################
+building_galactic_stock_exchange = {
+	base_buildtime = @b2_time
+	base_cap_amount = 1
+	category = trade
+	potential = {
+		custom_tooltip = {
+			text = EMPIRE_UNIQUE_BUILDING
+			owner = {
+				NOT = {
+					has_country_flag = building_stocks
+				}
+				NOT = {
+					has_country_flag = built_one_stocks
+				}
+			}
+		}
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+	}
+	allow = {
+		buildings_simple_allow = yes
+		has_major_upgraded_capital = yes
+	}
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = {
+				is_regular_empire = no
+			}
+			has_modifier = slave_colony
+			has_modifier = resort_colony
+			buildings_no_crystals = yes
+		}
+	}
+	country_modifier = {
+		job_merchant_per_pop = 0.025		# per 40 pops
+		trade_value_mult = 0.2
+	}
+	planet_modifier = {
+		job_mogul_add = 2
+		trade_value_mult = 0.2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					tul_has_moguls = yes
+				}
+			}
+		}
+		modifier = {
+			job_mogul_add = 1
+			trade_value_mult = 0.05
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 1000
+			rare_crystals = 100
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+	}
+	prerequisites = {
+		"tech_galactic_markets"
+	}
+	triggered_desc = {
+		text = job_mogul_effect_desc
+	}
+	on_queued = {
+		owner = {
+			set_country_flag = building_stocks
+		}
+	}
+	on_unqueued = {
+		owner = {
+			remove_country_flag = building_stocks
+		}
+	}
+	on_built = {
+		owner = {
+			set_country_flag = built_one_stocks
+		}
+		owner = {
+			remove_country_flag = building_stocks
+		}
+	}
+	on_destroy = {
+		owner = {
+			remove_country_flag = built_one_stocks
+		}
+		owner = {
+			remove_country_flag = building_stocks
+		}
+	}
+	ai_resource_production = {
+		energy = 10		# important empire unique building
+		trigger = {
+			always = yes
+		}
+	}
+	ai_resource_production = {
+		energy = 5
+		trigger = {
+			solar_system = {
+				has_system_trade_value >= 50
+			}
+		}
+	}
+	ai_resource_production = {
+		energy = 3
+		trigger = {
+			solar_system = {
+				has_system_trade_value >= 80
+			}
+		}
+	}
+}
+
+######################################################################################
+# Farmer's Market
+#
+######################################################################################
+building_farmer_market = {
+	base_buildtime = @b1_time
+	icon = building_commercial_zone
+	category = trade
+	potential = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+			has_valid_civic = civic_agrarian_idyll
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+	}
+	allow = {
+		buildings_simple_allow = yes
+		OR = {
+			NOR = {
+				has_building = building_farmer_complex
+				num_buildings = {
+					type = building_farmer_market
+					value > 1
+				}
+			}
+			owner = {
+				is_ai = yes
+			}
+		}
+	}
+	destroy_trigger = {
+		OR = {
+			owner = {
+				is_regular_empire = no
+			}
+			owner = {
+				NOT = {
+					has_valid_civic = civic_agrarian_idyll
+				}
+			}
+			has_modifier = slave_colony
+			AND = {
+				owner = {
+					is_ai = yes
+				}
+				OR = {
+					has_building = building_farmer_complex
+					num_buildings = {
+						type = building_farmer_market
+						value > 2
+					}
+				}
+			}
+		}
+	}
+	convert_to = {
+		building_commercial_zone
+	}
+	planet_modifier = {
+		trade_value_mult = 0.02
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_lithoid_empire = no
+			}
+		}
+		modifier = {
+			planet_farmers_food_produces_mult = 0.05
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_lithoid_empire = yes
+			}
+		}
+		modifier = {
+			planet_miners_minerals_produces_mult = 0.05
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOT = {
+					has_civic = civic_merchant_guilds
+				}
+			}
+		}
+		modifier = {
+			job_clerk_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_civic = civic_merchant_guilds
+			}
+		}
+		modifier = {
+			job_manager_add = 1
+			job_clerk_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_mercantile_commercial_enterprise
+			}
+		}
+		modifier = {
+			job_merchant_add = 1
+		}
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_mercantile_commercial_enterprise
+			}
+		}
+		text = job_merchant_effect_desc
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	prerequisites = {
+		"tech_interplanetary_commerce"
+	}
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+		has_valid_civic = civic_agrarian_idyll
+	}
+	triggered_desc = {
+		text = job_clerk_effect_desc
+	}
+	upgrades = {
+		"building_farmer_complex"
+	}
+	ai_resource_production = {
+		energy = 2
+		trigger = {
+			always = yes
+		}
+	}
+	ai_resource_production = {
+		food = 2
+		trigger = {
+			exists = owner
+			owner = {
+				is_lithoid_empire = no
+			}
+		}
+	}
+	ai_resource_production = {
+		minerals = 2
+		trigger = {
+			exists = owner
+			owner = {
+				is_lithoid_empire = yes
+			}
+		}
+	}
+}
+
+######################################################################################
+# Farmer's Complex
+#
+######################################################################################
+building_farmer_complex = {
+	base_buildtime = @b2_time
+	can_build = no
+	icon = building_commercial_megaplex
+	category = trade
+	potential = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+			has_valid_civic = civic_agrarian_idyll
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+		has_building = building_farmer_market
+	}
+	allow = {
+		buildings_simple_allow = yes
+		OR = {
+			owner = {
+				is_ai = no
+			}
+			NOR = {
+				has_building = building_farmer_market
+				has_building = building_farmer_complex
+			}
+		}
+	}
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = {
+				is_regular_empire = no
+			}
+			owner = {
+				NOT = {
+					has_valid_civic = civic_agrarian_idyll
+				}
+			}
+			has_modifier = slave_colony
+			buildings_no_crystals = yes
+			AND = {
+				owner = {
+					is_ai = yes
+				}
+				num_buildings = {
+					type = building_farmer_complex
+					value > 1
+				}
+			}
+		}
+	}
+	convert_to = {
+		building_commercial_zone
+	}
+	planet_modifier = {
+		trade_value_mult = 0.04
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_lithoid_empire = no
+			}
+		}
+		modifier = {
+			planet_farmers_food_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_lithoid_empire = yes
+			}
+		}
+		modifier = {
+			planet_miners_minerals_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOT = {
+					has_civic = civic_merchant_guilds
+				}
+			}
+		}
+		modifier = {
+			job_merchant_add = 1
+			job_clerk_add = 6
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_civic = civic_merchant_guilds
+			}
+		}
+		modifier = {
+			job_merchant_add = 1
+			job_manager_add = 1
+			job_clerk_add = 5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_mercantile_commercial_enterprise
+			}
+		}
+		modifier = {
+			job_merchant_add = 1
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+			rare_crystals = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+	}
+	prerequisites = {
+		"tech_interstellar_economics"
+	}
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+		has_valid_civic = civic_agrarian_idyll
+	}
+	triggered_desc = {
+		text = job_clerk_effect_desc
+	}
+	triggered_desc = {
+		text = job_merchant_effect_desc
+	}
+	ai_resource_production = {
+		energy = 4
+		trigger = {
+			always = yes
+		}
+	}
+	ai_resource_production = {
+		food = 4
+		trigger = {
+			exists = owner
+			owner = {
+				is_lithoid_empire = no
+			}
+		}
+	}
+	ai_resource_production = {
+		minerals = 4
+		trigger = {
+			exists = owner
+			owner = {
+				is_lithoid_empire = yes
+			}
+		}
+	}
+	ai_resource_production = {
+		energy = 6
+		trigger = {
+			OR = {
+				num_unemployed >= 10
+				num_assigned_jobs = {
+					job = servant
+					value >= 10
+				}
+				num_assigned_jobs = {
+					job = servant_noble
+					value >= 10
+				}
+			}
+		}
+	}
+	on_queued = {
+		IF = {
+			limit = {
+				owner = {
+					has_technology = tech_construction_templates
+				}
+			}
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 270
+				}
+			}
+		}
+		ELSE_IF = {
+			limit = {
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
+			}
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 390
+				}
+			}
+		}
+		else = {
+			planet = {
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_crystal_building
+						days = 510
+					}
+				}
+			}
+		}
+	}
+}

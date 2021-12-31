@@ -1,0 +1,8 @@
+﻿l_english:
+
+######################################################################################
+# General Purposes Empire Localisation Strings
+######################################################################################
+
+tul_unlocks_planetary_edict:0 "§HUnlocks Planetary Edict:§!"
+tul_requires_not_synthetic_empire:0 "Not available to synthetic empires."
