@@ -15,28 +15,33 @@ tokens {
 	COLON,
 	DOT,
 	AT,
-	BOOLEAN,
+	YES,
+	NO,
 	COLOR_TYPE,
 	ARITHMETIC_OPERATOR,
-    RELATIONAL_OPERATOR,
+	RELATIONAL_OPERATOR,
 	LOCALIZER_COMMAND_BEGIN,
 	LOCALIZER_COMMAND_END,
 	MATH_COMMAND_BEGIN,
 	MATH_COMMAND_END,
 	MACRO_BEGIN,
-    MACRO_CONTENTS,
-    MACRO_END,
+	MACRO_CONTENTS,
+	MACRO_END,
 	STRING_BEGIN,
-    STRING_VALUE,
-    STRING_END,
+	STRING_VALUE,
+	STRING_END,
 	PARENTHESIS,
 	BRACKET,
 	IDENTIFIER,
+	IDENTIFIER_CONTINUATION,
 	INVALID_TOKEN,
 	EVENT_ID,
 	NUMBER,
 	EVENT_TARGET,
 	GLOBAL_EVENT_TARGET,
+	TRIGGER,
+	RANDOM_LIST,
+	SAVED_SCOPE,
 	SIGN
 }
 
@@ -89,8 +94,6 @@ fragment RIGHT_BRACKET: ']';
 fragment DOLLAR: '$';
 fragment UNDERSCORE: '_';
 fragment PIPE: '|';
-fragment NO: 'no';
-fragment YES: 'yes';
 
 // Whitespace is defined as the following set of characters, and are sent to the hidden channel
 fragment WHITESPACE_SET: [ \t\n\r\u00A0\uFEFF\u2003];
@@ -113,7 +116,8 @@ DOT: '.';
 AT: '@';
 
 // Boolean literals
-BOOLEAN: NO | YES;
+NO: 'no';
+YES: 'yes';
 
 // Color type literals
 COLOR_TYPE: 'hsv' | 'rgb';
@@ -121,6 +125,8 @@ COLOR_TYPE: 'hsv' | 'rgb';
 // Event target references are special tokens on their own
 EVENT_TARGET: 'event_target';
 GLOBAL_EVENT_TARGET: 'global_event_target';
+TRIGGER: 'trigger';
+RANDOM_LIST: 'random_list';
 
 // In the default mode, the set of allowed tokens is fairly restrictive. Identifiers are the most
 // common type of token, and are represented by a sequence of valid ASCII letters, digits, and
@@ -172,11 +178,47 @@ IDENTIFIER_MACRO_START: MACRO_BEGIN -> type(MACRO_BEGIN), pushMode(MACRO_EXPANSI
 
 // Otherwise, additional characters means that macro mode has been popped and that there are
 // more characters left in the current identifier. Tokenize these together. 
-IDENTIFIER_ADDITIONAL_SEQUENCE: IDENTIFIER_ALLOWED+ -> type(IDENTIFIER);
+IDENTIFIER_ADDITIONAL_SEQUENCE: IDENTIFIER_ALLOWED+ -> type(IDENTIFIER_CONTINUATION);
+
+// The following operators need to be captured while in identifier mode in the event there is
+// no whitespace separating a key from an operator. Encountering these also exits identifier
+// mode.
+IDENTIFIER_DOT: DOT -> type(DOT), popMode;
+IDENTIFIER_NOT_EQUALS: NOT_EQUALS -> type(NOT_EQUALS), popMode;
+IDENTIFIER_EQUALS: EQUALS -> type(EQUALS), popMode;
+IDENTIFIER_GREATER_EQUAL_THAN: GREATER_EQUAL_THAN -> type(GREATER_EQUAL_THAN), popMode;
+IDENTIFIER_LESS_EQUAL_THAN: LESS_EQUAL_THAN -> type(LESS_EQUAL_THAN), popMode;
+IDENTIFIER_GREATER_THAN: GREATER_THAN -> type(GREATER_THAN), popMode;
+IDENTIFIER_LESS_THAN: LESS_THAN -> type(LESS_THAN), popMode;
+// IDENTIFIER_LEFT_BRACE: LEFT_BRACE -> type(LEFT_BRACE), popMode;
+// IDENTIFIER_RIGHT_BRACE: RIGHT_BRACE -> type(RIGHT_BRACE), popMode;
+
+// @ characters encountered within an identifier generally indicate a dynamic flag assignment
+// (such as is_friend_of_@ROOT). The @ will be tokenized, but the lexer remains in identifier
+// mode. 
+IDENTIFIER_AT: AT -> type(AT), pushMode(IN_SAVED_SCOPE);
 
 // Any other character encountered is treated as an invalid token of it's own, and results in
 // the mode being popped.
 IDENTIFIER_INVALID: . -> type(INVALID_TOKEN), popMode;
+
+// -----------------------------------------------------------------------------------------------
+// Mode: IN_SAVED_SCOPE
+// -----------------------------------------------------------------------------------------------
+mode IN_SAVED_SCOPE;
+SAVED_SCOPE_WHITESPACE_EXIT: (NEWLINE | WHITESPACE) -> type(WHITESPACE), channel(HIDDEN), popMode, popMode;
+SAVED_SCOPE_EOF_ABORT: EOF -> type(INVALID_TOKEN), mode(DEFAULT_MODE);
+
+// Event target references are special tokens on their own
+SAVED_EVENT_TARGET: EVENT_TARGET -> type(EVENT_TARGET);
+SAVED_GLOBAL_EVENT_TARGET: GLOBAL_EVENT_TARGET -> type(GLOBAL_EVENT_TARGET);
+
+SAVED_SCOPE_COLON: COLON -> type(COLON);
+
+SCOPE_IDENTIFIER: IDENTIFIER_ALLOWED+ -> type(IDENTIFIER);
+SCOPE_DOT: DOT -> type(DOT);
+
+SCOPE_INVALID: . -> type(INVALID_TOKEN), popMode, popMode;
 
 // -----------------------------------------------------------------------------------------------
 // Mode: IN_STRING
@@ -234,9 +276,10 @@ LOCALIZER_COMMAND_END: RIGHT_BRACKET -> popMode, type(LOCALIZER_COMMAND_END);
 
 // Whitespace is tokenized and retained, while everything else encountered until the end of the
 // command is tokenized either as an identifier or a variable separator.
-LOC_WHITESPACE: WHITESPACE -> type(WHITESPACE);
+LOC_WHITESPACE: WHITESPACE -> type(WHITESPACE), channel(HIDDEN);
 LOC_SEPARATOR: DOT -> type(DOT);
-LOC_IDENTIFIER: .+? -> type(IDENTIFIER);
+LOC_IDENTIFIER: IDENTIFIER_ALLOWED+ -> type(IDENTIFIER);
+LOC_INVALID: . -> type(INVALID_TOKEN);
 
 // TODO(tullisar): Support macro expansions within inline localizer commands.
 
@@ -246,19 +289,20 @@ LOC_IDENTIFIER: .+? -> type(IDENTIFIER);
 
 // Within the context of inline math, 
 mode INLINE_MATH;
-MATH_EXIT_LEFT:
-	LEFT_BRACKET -> type(MATH_COMMAND_END), popMode;
-MATH_EXIT_RIGHT:
-	RIGHT_BRACKET -> type(MATH_COMMAND_END), popMode;
+MATH_ABORT: (NEWLINE | EOF | LEFT_BRACKET) -> type(INVALID_TOKEN), mode (DEFAULT_MODE);
+MATH_COMMAND_END: RIGHT_BRACKET -> popMode;
 MATH_PARENS: (LEFT_PARENS | RIGHT_PARENS) -> type(PARENTHESIS);
 MATH_OPERATORS: (
 		OPERATOR_ADD
 		| OPERATOR_SUBTRACT
 		| OPERATOR_MULTIPLY
 		| OPERATOR_DIVIDE
+		| PIPE
 	) -> type(ARITHMETIC_OPERATOR);
 MATH_NUMBER: NUMBER -> type(NUMBER);
 MATH_MACRO_BEGIN: MACRO_BEGIN -> type(MACRO_BEGIN), pushMode(MACRO_EXPANSION);
+MATH_WHITESPACE: WHITESPACE -> type(WHITESPACE), channel(HIDDEN);
+MATH_INVALID: . -> type(INVALID_TOKEN);
 
 // -----------------------------------------------------------------------------------------------
 // Mode: MACRO_EXPANSION
@@ -281,6 +325,8 @@ mode MACRO_EXPANSION;
 MACRO_END: DOLLAR -> popMode;
 MACRO_ABORT: NEWLINE -> mode(DEFAULT_MODE);
 MACRO_WHITESPACE: WHITESPACE -> type(WHITESPACE);
-MACRO_CONTENTS: .+?;
+fragment MACRO_ALLOWED: (IDENTIFIER_ALLOWED | PIPE | AT | DOT); 
+MACRO_CONTENTS: MACRO_ALLOWED+;
+MACRO_INVALID: . -> type(INVALID_TOKEN);
 
 // TODO(tullisar): For now, everythign within a $$ pair is treated just as "MACRO CONTENTS".

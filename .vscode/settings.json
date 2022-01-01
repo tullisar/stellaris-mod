@@ -35,6 +35,7 @@
         "visitors": true,
         "outputDir": "${workspaceFolder}\\tools\\HelperTool\\mod-helper-tools\\target\\generated-sources\\antlr4"
     },
-    "java.dependency.packagePresentation": "hierarchical"
+    "java.dependency.packagePresentation": "hierarchical",
+    "java.format.settings.url": "eclipse-formatter.xml"
 
 }

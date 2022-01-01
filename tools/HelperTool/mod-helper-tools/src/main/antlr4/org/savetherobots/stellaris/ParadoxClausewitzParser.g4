@@ -15,7 +15,8 @@ tokens {
 	COLON,
 	DOT,
 	AT,
-	BOOLEAN,
+	YES,
+	NO,
 	COLOR_TYPE,
 	ARITHMETIC_OPERATOR,
 	RELATIONAL_OPERATOR,
@@ -32,11 +33,15 @@ tokens {
 	PARENTHESIS,
 	BRACKET,
 	IDENTIFIER,
+	IDENTIFIER_CONTINUATION,
 	INVALID_TOKEN,
 	EVENT_ID,
 	NUMBER,
 	EVENT_TARGET,
 	GLOBAL_EVENT_TARGET,
+	TRIGGER,
+	RANDOM_LIST,
+	SAVED_SCOPE,
 	SIGN
 }
 
@@ -44,30 +49,35 @@ tokens {
 /*                         PARSER GRAMMAR                               */
 /* -------------------------------------------------------------------- */
 
-// Modules are made of one or more elements
-module: element*;
-
-// Each element is like an element in a map, there is a key and an associated value, which is an
-// object.
-element: key EQUALS object;
-
-// Keys are composed of valid identifier tokens
-key: (identifier | numberLiteral);
+// Modules are made of one or more elements or random lists. Random lists are special top level
+// elements that do not have an identifier as their key.
+module: (randomListDeclaration | element)*;
+equals: EQUALS;
+key: IDENTIFIER;
+randomListDeclaration: RANDOM_LIST equals randomList;
+element: key equals object;
 
 // Each object is similar to another dictionary, containing a set of keys and values, where the
 // values can be objects as well as other types.
+randomList: object;
 object: map;
 map: blockBegin (property | comparison)+ blockEnd;
 blockBegin: LEFT_BRACE;
 blockEnd: RIGHT_BRACE;
-property: key EQUALS value;
+propertyKey: (
+		(eventTarget? identifier (DOT identifier)*)
+		| numberLiteral
+		| TRIGGER
+	);
+property: propertyKey equals value;
 comparison:
-	key relationalOperator (
+	propertyKey relationalOperator (
 		numberLiteral
 		| objectReference
 		| variableReference
 		| constantReference
 		| macroExpansion
+		| object
 	);
 relationalOperator: (
 		EQUALS
@@ -85,19 +95,23 @@ value: reference | literal | container | color;
 reference:
 	eventReference
 	| objectReference
+	| flagReference
 	| variableReference
 	| constantReference
+	| inlineMathReference
 	| macroExpansion;
 
 // Macro Expansions
 macroExpansion: MACRO_BEGIN MACRO_CONTENTS MACRO_END;
 
 // Identifiers
-identifier: (IDENTIFIER macroExpansion?)+;
+identifier:
+	IDENTIFIER (macroExpansion IDENTIFIER_CONTINUATION?)*;
 
 // Event references refer to an event in another namespace TODO(tullisar): Allow event ID to be
 // parameterized
-eventReference: identifier variableSeparator eventId;
+eventReference:
+	identifier (variableSeparator identifier)* variableSeparator eventId;
 eventId: (NUMBER | EVENT_ID);
 
 // Object references are by identifier
@@ -105,12 +119,16 @@ objectReference: identifier;
 
 // Variable references are also by identifier, but can contain dots for scoping
 targetResolution: COLON;
-variableReference: (
-		(EVENT_TARGET | GLOBAL_EVENT_TARGET) targetResolution
-	)? identifier;
+eventTarget: (EVENT_TARGET | GLOBAL_EVENT_TARGET | TRIGGER) targetResolution;
+variableReference:
+	eventTarget? objectReference (DOT objectReference)*;
 
 // Constant references are similar to object references by identifier with a leading AT
 constantReference: AT identifier;
+
+// Flag references are a special kind of object identifier that has a dynamic flag suffix which is a
+// variable reference.
+flagReference: objectReference AT variableReference;
 
 // Inline math reference
 inlineMathReference:
@@ -120,6 +138,7 @@ inlineMathReference:
 		| arithmeticOperator
 		| variableReference
 		| constantReference
+		| macroExpansion
 	)*? MATH_COMMAND_END;
 arithmeticOperator: ARITHMETIC_OPERATOR;
 
@@ -130,7 +149,7 @@ variableSeparator: DOT;
 literal: booleanLiteral | numberLiteral | stringLiteral;
 
 numberLiteral: SIGN? NUMBER;
-booleanLiteral: BOOLEAN;
+booleanLiteral: YES | NO;
 stringLiteral:
 	STRING_BEGIN (
 		STRING_VALUE
@@ -146,14 +165,12 @@ inlineLocalizerCommand:
 container: emptyContainer | object | collection;
 
 // Collections are a type of value which represent a group of values
-collection: LEFT_BRACE collectionValue+ LEFT_BRACE;
+collection: LEFT_BRACE collectionValue+ RIGHT_BRACE;
 collectionValue: (reference | literal);
 
 // Colors are special.
-color:
-	colorType LEFT_BRACE colorComponent colorComponent colorComponent LEFT_BRACE;
+color: colorType collection;
 colorType: COLOR_TYPE;
-colorComponent: NUMBER;
 
 // Empty container
 emptyContainer: LEFT_BRACE RIGHT_BRACE;
