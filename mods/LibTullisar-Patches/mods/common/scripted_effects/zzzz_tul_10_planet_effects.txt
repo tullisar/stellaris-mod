@@ -1,0 +1,1798 @@
+######################################################################################
+# Scripted Effects (Planet Effects)
+# Package: Patch
+######################################################################################
+#
+#
+######################################################################################
+# tul_create_planetary_habitat
+#
+# Common scripted effect for use by the various planetary habitat on_build_complete
+# effects. Reduce duplicate code and limit change impact for future updates. To
+# avoid future stack nesting issues, some of this should be moved to separate 
+# events/effects as needed.
+#
+######################################################################################
+tul_create_planetary_habitat = {
+	# Don't allow this effect to run in the wrong scope
+	if = {
+		limit = {
+			OR = {
+				NOT = {
+					is_scope_type = planet
+				}
+				has_planet_flag = pdhab
+			}
+		}
+		break = yes
+	}
+	# Set flags indicating a habitat has been built
+	set_planet_flag = pdhab
+	set_planet_flag = colony_event
+	ROOT = {
+		set_star_flag = pdhab
+	}
+	# Clear blockers and then update the planet class as needed.
+	clear_blockers = yes
+	tul_switch_habitat_planet_type = yes
+	tul_check_habitat_mars = yes
+	tul_check_habitat_luna = yes
+	tul_check_habitat_jupiter = yes
+	tul_check_habitat_saturn = yes
+	tul_check_habitat_neptune = yes
+	tul_check_habitat_uranus = yes
+	tul_add_planet_habitat_blockers = yes
+	# Check for special district types
+	tul_check_mining_habitat_deposits = yes
+	tul_check_energy_habitat_deposits = yes
+	tul_check_research_habitat_deposits = yes
+	tul_check_trade_habitat_deposits = yes
+	tul_check_exoticgas_habitat_deposits = yes
+	tul_check_rarecrystal_habtiat_deposits = yes
+	tul_check_volatilemotes_habitat_deposits = yes
+	tul_check_zro_habitat_deposits = yes
+	tul_check_darkmatter_habitat_deposits = yes
+	tul_check_livingmetal_habitat_deposits = yes
+	tul_check_alloys_habitat_deposits = yes
+	tul_check_nanites_habitat_deposits = yes
+	tul_check_habitat_terraforming_candidates = yes
+}
+
+######################################################################################
+# tul_switch_habitat_planet_type
+######################################################################################
+tul_switch_habitat_planet_type = {
+	switch = {
+		trigger = is_planet_class
+		# Barren World Habitats
+		pc_barren = {
+			change_pc = pc_pd_barren_hab
+			if = {
+				limit = {
+					is_moon = yes
+				}
+				set_planet_entity = {
+					entity = "pdcmoon2_planet_01_entity"
+				}
+			}
+		}
+		# Cold Barren World Habitat
+		pc_barren_cold = {
+			change_pc = pc_pd_barren_cold_hab
+			if = {
+				limit = {
+					is_moon = yes
+				}
+				set_planet_entity = {
+					entity = "pdcmoon_planet_01_entity"
+				}
+			}
+		}
+		# Diamond World Habitat
+		pc_diamond = {
+			change_pc = pc_pd_barren_cold_hab
+			set_planet_flag = pdhab_diamond
+			if = {
+				limit = {
+					is_moon = yes
+				}
+				set_planet_entity = {
+					entity = diamondhabmoon_planet_01_entity
+				}
+			}
+			else = {
+				set_planet_entity = {
+					entity = diamondhab_planet_01_entity
+				}
+			}
+		}
+		# Iron World Habitat
+		pc_iron = {
+			change_pc = pc_pd_barren_cold_hab
+			set_planet_flag = pdhab_iron
+			IF = {
+				limit = {
+					is_moon = yes
+				}
+				set_planet_entity = {
+					entity = ironhabmoon_planet_01_entity
+				}
+			}
+			else = {
+				set_planet_entity = {
+					entity = ironhab_planet_01_entity
+				}
+			}
+		}
+		# Carbon World Habitat
+		pc_carbon = {
+			change_pc = pc_pd_barren_hab
+			set_planet_flag = pdhab_carbon
+			IF = {
+				limit = {
+					is_moon = yes
+				}
+				set_planet_entity = {
+					entity = carbonhabmoon_planet_01_entity
+				}
+			}
+			else = {
+				set_planet_entity = {
+					entity = carbonhab_planet_01_entity
+				}
+			}
+		}
+		# Chthonian World Habitat
+		pc_chthonian = {
+			change_pc = pc_pd_barren_hab
+			set_planet_flag = pdhab_chthonian
+			IF = {
+				limit = {
+					is_moon = yes
+				}
+				set_planet_entity = {
+					entity = chthonianhabmoon_planet_01_entity
+				}
+			}
+			else = {
+				set_planet_entity = {
+					entity = chthonianhab_planet_01_entity
+				}
+			}
+		}
+		# Frozen Habitat
+		pc_frozen = {
+			change_pc = pc_pd_frozen_hab
+			IF = {
+				limit = {
+					is_moon = yes
+				}
+				set_planet_entity = {
+					entity = "fhab_moon_01_entity"
+				}
+			}
+		}
+		# Subglacial Habitat
+		pc_subglacial = {
+			change_pc = pc_pd_frozen_hab
+			set_planet_flag = pdhab_subglacial
+			IF = {
+				limit = {
+					is_moon = yes
+				}
+				set_planet_entity = {
+					entity = subglacialhabmoon_planet_01_entity
+				}
+			}
+			else = {
+				set_planet_entity = {
+					entity = subglacialhab_planet_01_entity
+				}
+			}
+		}
+		# Hydrocarbon Habitat
+		pc_hydrocarbon = {
+			change_pc = pc_pd_frozen_hab
+			set_planet_entity = {
+				entity = hydrocarbon_planet_01_entity
+			}
+			set_planet_flag = pdhab_hydrocarbon
+		}
+		# Gas Giant
+		pc_gas_giant = {
+			change_pc = pc_pd_gas_giant_hab
+		}
+		# Cold Gas Giant
+		pc_cold_gas_giant = {
+			change_pc = pc_pd_gas_giant_hab
+			set_planet_flag = pdhab_coldgg
+			set_planet_entity = {
+				picture = pc_coldgghab
+				entity = cold_gas_giant_02_entity
+			}
+		}
+		# Hot Gas Giant
+		pc_hot_gas_giant = {
+			change_pc = pc_pd_gas_giant_hab
+			#GD new flag
+			set_planet_flag = pdhab_hotgg
+			set_planet_entity = {
+				picture = pc_hotgghab
+				entity = hot_gas_giant_01_entity
+			}
+		}
+		# Cloudless Gas Giant
+		pc_cloudless_gas_giant = {
+			change_pc = pc_pd_gas_giant_hab
+			#GD new flag
+			set_planet_flag = pdhab_cloudlessgg
+			set_planet_entity = {
+				picture = pc_cloudlessgghab
+				entity = cloudless_gas_giant_01_entity
+			}
+		}
+		# Hothouse World
+		pc_hothouse = {
+			change_pc = pc_pd_hothouse_hab
+			IF = {
+				limit = {
+					is_moon = yes
+				}
+				set_planet_entity = {
+					entity = "hothouse_hab_moon_01_entity"
+				}
+			}
+		}
+		# Molten World
+		pc_molten = {
+			change_pc = pc_pd_molten_hab
+			IF = {
+				limit = {
+					is_moon = yes
+				}
+				set_planet_entity = {
+					entity = "mhab_moon_01_entity"
+				}
+			}
+		}
+		# Volcanic World
+		pc_volcanic = {
+			change_pc = pc_pd_molten_hab
+			IF = {
+				limit = {
+					is_moon = yes
+				}
+				set_planet_entity = {
+					entity = volcanichabmoon_planet_01_entity
+					picture = pc_pd_volcanic_hab
+				}
+			}
+			ELSE = {
+				set_planet_entity = {
+					entity = volcanichab_planet_01_entity
+					picture = pc_pd_volcanic_hab
+				}
+			}
+		}
+		# Toxic World
+		pc_toxic = {
+			change_pc = pc_pd_toxic_hab
+			IF = {
+				limit = {
+					is_moon = yes
+				}
+				set_planet_entity = {
+					entity = "toxic_hab_moon_01_entity"
+				}
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_check_mining_habitat_deposits
+######################################################################################
+tul_check_mining_habitat_deposits = {
+	if = {
+		limit = {
+			OR = {
+				fromfrom.planet = {
+					has_deposit = d_minerals_1
+				}
+				fromfrom.planet = {
+					has_deposit = d_minerals_2
+				}
+				fromfrom.planet = {
+					has_deposit = d_minerals_3
+				}
+				fromfrom.planet = {
+					has_deposit = d_minerals_4
+				}
+				fromfrom.planet = {
+					has_deposit = d_minerals_5
+				}
+				fromfrom.planet = {
+					has_deposit = d_minerals_6
+				}
+				fromfrom.planet = {
+					has_deposit = d_minerals_7
+				}
+				fromfrom.planet = {
+					has_deposit = d_minerals_8
+				}
+				fromfrom.planet = {
+					has_deposit = d_minerals_9
+				}
+				fromfrom.planet = {
+					has_deposit = d_minerals_10
+				}
+				has_modifier = pdhabcavesystem
+				has_modifier = asteroid_belt
+				is_planet_class = pc_diamond
+				is_planet_class = pc_chthonian
+				has_modifier = extensive_moon_system
+				has_modifier = asteroid_belt
+				has_modifier = pdhabvolcanicminerals
+			}
+		}
+		remove_deposit = d_minerals_1
+		remove_deposit = d_minerals_2
+		remove_deposit = d_minerals_3
+		remove_deposit = d_minerals_4
+		remove_deposit = d_minerals_5
+		remove_deposit = d_minerals_6
+		remove_deposit = d_minerals_7
+		remove_deposit = d_minerals_8
+		remove_deposit = d_minerals_9
+		remove_deposit = d_minerals_10
+		set_planet_flag = pd_mining_hab
+		IF = {
+			limit = {
+				NOT = {
+					has_planet_flag = pd_hab_d1
+				}
+			}
+			set_planet_flag = pd_hab_d1
+		}
+		ELSE_IF = {
+			limit = {
+				has_planet_flag = pd_hab_d1
+			}
+			set_planet_flag = pd_hab_d2
+		}
+	}
+}
+
+######################################################################################
+# tul_check_energy_habitat_deposits
+######################################################################################
+tul_check_energy_habitat_deposits = {
+	if = {
+		limit = {
+			OR = {
+				fromfrom.planet = {
+					has_deposit = d_energy_1
+				}
+				fromfrom.planet = {
+					has_deposit = d_energy_2
+				}
+				fromfrom.planet = {
+					has_deposit = d_energy_3
+				}
+				fromfrom.planet = {
+					has_deposit = d_energy_4
+				}
+				fromfrom.planet = {
+					has_deposit = d_energy_5
+				}
+				fromfrom.planet = {
+					has_deposit = d_energy_6
+				}
+				fromfrom.planet = {
+					has_deposit = d_energy_7
+				}
+				fromfrom.planet = {
+					has_deposit = d_energy_8
+				}
+				fromfrom.planet = {
+					has_deposit = d_energy_9
+				}
+				fromfrom.planet = {
+					has_deposit = d_energy_10
+				}
+				has_modifier = pdhabcalmwinds
+			}
+		}
+		remove_deposit = d_energy_1
+		remove_deposit = d_energy_2
+		remove_deposit = d_energy_3
+		remove_deposit = d_energy_4
+		remove_deposit = d_energy_5
+		remove_deposit = d_energy_6
+		remove_deposit = d_energy_7
+		remove_deposit = d_energy_8
+		remove_deposit = d_energy_9
+		remove_deposit = d_energy_10
+		set_planet_flag = pd_energy_hab
+		IF = {
+			limit = {
+				NOT = {
+					has_planet_flag = pd_hab_d1
+				}
+			}
+			set_planet_flag = pd_hab_d1
+		}
+		ELSE_IF = {
+			limit = {
+				has_planet_flag = pd_hab_d1
+			}
+			set_planet_flag = pd_hab_d2
+		}
+	}
+}
+
+######################################################################################
+# tul_check_research_habitat_deposits
+######################################################################################
+tul_check_research_habitat_deposits = {
+	if = {
+		limit = {
+			OR = {
+				fromfrom.planet = {
+					has_deposit = d_society_1
+				}
+				fromfrom.planet = {
+					has_deposit = d_society_2
+				}
+				fromfrom.planet = {
+					has_deposit = d_society_3
+				}
+				fromfrom.planet = {
+					has_deposit = d_society_4
+				}
+				fromfrom.planet = {
+					has_deposit = d_society_5
+				}
+				fromfrom.planet = {
+					has_deposit = d_society_6
+				}
+				fromfrom.planet = {
+					has_deposit = d_society_7
+				}
+				fromfrom.planet = {
+					has_deposit = d_society_8
+				}
+				fromfrom.planet = {
+					has_deposit = d_society_9
+				}
+				fromfrom.planet = {
+					has_deposit = d_society_10
+				}
+				fromfrom.planet = {
+					has_deposit = d_physics_1
+				}
+				fromfrom.planet = {
+					has_deposit = d_physics_2
+				}
+				fromfrom.planet = {
+					has_deposit = d_physics_3
+				}
+				fromfrom.planet = {
+					has_deposit = d_physics_4
+				}
+				fromfrom.planet = {
+					has_deposit = d_physics_5
+				}
+				fromfrom.planet = {
+					has_deposit = d_physics_6
+				}
+				fromfrom.planet = {
+					has_deposit = d_physics_7
+				}
+				fromfrom.planet = {
+					has_deposit = d_physics_8
+				}
+				fromfrom.planet = {
+					has_deposit = d_physics_9
+				}
+				fromfrom.planet = {
+					has_deposit = d_physics_10
+				}
+				fromfrom.planet = {
+					has_deposit = d_engineering_1
+				}
+				fromfrom.planet = {
+					has_deposit = d_engineering_2
+				}
+				fromfrom.planet = {
+					has_deposit = d_engineering_3
+				}
+				fromfrom.planet = {
+					has_deposit = d_engineering_4
+				}
+				fromfrom.planet = {
+					has_deposit = d_engineering_5
+				}
+				fromfrom.planet = {
+					has_deposit = d_engineering_6
+				}
+				fromfrom.planet = {
+					has_deposit = d_engineering_7
+				}
+				fromfrom.planet = {
+					has_deposit = d_engineering_8
+				}
+				fromfrom.planet = {
+					has_deposit = d_engineering_9
+				}
+				fromfrom.planet = {
+					has_deposit = d_engineering_10
+				}
+			}
+		}
+		set_planet_flag = pd_science_hab
+		IF = {
+			limit = {
+				NOT = {
+					has_planet_flag = pd_hab_d1
+				}
+			}
+			set_planet_flag = pd_hab_d1
+		}
+		ELSE_IF = {
+			limit = {
+				has_planet_flag = pd_hab_d1
+			}
+			set_planet_flag = pd_hab_d2
+		}
+		remove_deposit = d_society_1
+		remove_deposit = d_society_2
+		remove_deposit = d_society_3
+		remove_deposit = d_society_4
+		remove_deposit = d_society_5
+		remove_deposit = d_society_6
+		remove_deposit = d_society_7
+		remove_deposit = d_society_8
+		remove_deposit = d_society_9
+		remove_deposit = d_society_10
+		remove_deposit = d_physics_1
+		remove_deposit = d_physics_2
+		remove_deposit = d_physics_3
+		remove_deposit = d_physics_4
+		remove_deposit = d_physics_5
+		remove_deposit = d_physics_6
+		remove_deposit = d_physics_7
+		remove_deposit = d_physics_8
+		remove_deposit = d_physics_9
+		remove_deposit = d_physics_10
+		remove_deposit = d_engineering_1
+		remove_deposit = d_engineering_2
+		remove_deposit = d_engineering_3
+		remove_deposit = d_engineering_4
+		remove_deposit = d_engineering_5
+		remove_deposit = d_engineering_6
+		remove_deposit = d_engineering_7
+		remove_deposit = d_engineering_8
+		remove_deposit = d_engineering_9
+		remove_deposit = d_engineering_10
+	}
+}
+
+######################################################################################
+# tul_check_trade_habitat_deposits
+######################################################################################
+tul_check_trade_habitat_deposits = {
+	if = {
+		limit = {
+			OR = {
+				fromfrom.planet = {
+					has_deposit = d_trade_value_1
+				}
+				fromfrom.planet = {
+					has_deposit = d_trade_value_2
+				}
+				fromfrom.planet = {
+					has_deposit = d_trade_value_3
+				}
+				fromfrom.planet = {
+					has_deposit = d_trade_value_4
+				}
+				fromfrom.planet = {
+					has_deposit = d_trade_value_5
+				}
+				fromfrom.planet = {
+					has_deposit = d_trade_value_6
+				}
+				fromfrom.planet = {
+					has_deposit = d_trade_value_7
+				}
+				fromfrom.planet = {
+					has_deposit = d_trade_value_8
+				}
+				fromfrom.planet = {
+					has_deposit = d_trade_value_9
+				}
+				fromfrom.planet = {
+					has_deposit = d_trade_value_10
+				}
+			}
+		}
+		remove_deposit = d_trade_value_1
+		remove_deposit = d_trade_value_2
+		remove_deposit = d_trade_value_3
+		remove_deposit = d_trade_value_4
+		remove_deposit = d_trade_value_5
+		remove_deposit = d_trade_value_6
+		remove_deposit = d_trade_value_7
+		remove_deposit = d_trade_value_8
+		remove_deposit = d_trade_value_9
+		remove_deposit = d_trade_value_10
+		set_planet_flag = pd_commercial_hab
+		IF = {
+			limit = {
+				NOT = {
+					has_planet_flag = pd_hab_d1
+				}
+			}
+			set_planet_flag = pd_hab_d1
+		}
+		ELSE_IF = {
+			limit = {
+				has_planet_flag = pd_hab_d1
+			}
+			set_planet_flag = pd_hab_d2
+		}
+	}
+}
+
+######################################################################################
+# tul_check_exoticgas_habitat_deposits
+######################################################################################
+tul_check_exoticgas_habitat_deposits = {
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_exotic_gases_1
+			}
+		}
+		remove_deposit = d_exotic_gases_1
+		add_deposit = d_hab_gas_1
+	}
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_exotic_gases_2
+			}
+		}
+		remove_deposit = d_exotic_gases_2
+		add_deposit = d_hab_gas_2
+	}
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_exotic_gases_3
+			}
+		}
+		remove_deposit = d_exotic_gases_3
+		add_deposit = d_hab_gas_3
+	}
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_exotic_gases_4
+			}
+		}
+		remove_deposit = d_exotic_gases_4
+		add_deposit = d_hab_gas_4
+	}
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_exotic_gases_5
+			}
+		}
+		remove_deposit = d_exotic_gases_5
+		add_deposit = d_hab_gas_5
+	}
+}
+
+######################################################################################
+# tul_check_rarecrystal_habtiat_deposits
+######################################################################################
+tul_check_rarecrystal_habtiat_deposits = {
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_rare_crystals_1
+			}
+		}
+		remove_deposit = d_rare_crystals_1
+		add_deposit = d_hab_crystal_1
+	}
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_rare_crystals_2
+			}
+		}
+		remove_deposit = d_rare_crystals_2
+		add_deposit = d_hab_crystal_2
+	}
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_rare_crystals_3
+			}
+		}
+		remove_deposit = d_rare_crystals_3
+		add_deposit = d_hab_crystal_3
+	}
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_rare_crystals_4
+			}
+		}
+		remove_deposit = d_rare_crystals_4
+		add_deposit = d_hab_crystal_4
+	}
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_rare_crystals_5
+			}
+		}
+		remove_deposit = d_rare_crystals_5
+		add_deposit = d_hab_crystal_5
+	}
+}
+
+######################################################################################
+# tul_check_volatilemotes_habitat_deposits
+######################################################################################
+tul_check_volatilemotes_habitat_deposits = {
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_volatile_motes_1
+			}
+		}
+		remove_deposit = d_volatile_motes_1
+		add_deposit = d_hab_mote_1
+	}
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_volatile_motes_2
+			}
+		}
+		remove_deposit = d_volatile_motes_2
+		add_deposit = d_hab_mote_2
+	}
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_volatile_motes_3
+			}
+		}
+		remove_deposit = d_volatile_motes_3
+		add_deposit = d_hab_mote_3
+	}
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_volatile_motes_4
+			}
+		}
+		remove_deposit = d_volatile_motes_4
+		add_deposit = d_hab_mote_4
+	}
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_volatile_motes_5
+			}
+		}
+		remove_deposit = d_volatile_motes_5
+		add_deposit = d_hab_mote_5
+	}
+}
+
+######################################################################################
+# tul_check_zro_habitat_deposits
+######################################################################################
+tul_check_zro_habitat_deposits = {
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_zro_deposit_1
+			}
+		}
+		remove_deposit = d_zro_deposit_1
+		add_deposit = d_hab_zro_1
+		set_planet_flag = pd_science_hab
+		IF = {
+			limit = {
+				NOT = {
+					has_planet_flag = pd_hab_d1
+				}
+			}
+			set_planet_flag = pd_hab_d1
+		}
+		ELSE_IF = {
+			limit = {
+				has_planet_flag = pd_hab_d1
+			}
+			set_planet_flag = pd_hab_d2
+		}
+	}
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_zro_deposit_2
+			}
+		}
+		remove_deposit = d_zro_deposit_2
+		add_deposit = d_hab_zro_2
+		set_planet_flag = pd_science_hab
+		IF = {
+			limit = {
+				NOT = {
+					has_planet_flag = pd_hab_d1
+				}
+			}
+			set_planet_flag = pd_hab_d1
+		}
+		ELSE_IF = {
+			limit = {
+				has_planet_flag = pd_hab_d1
+			}
+			set_planet_flag = pd_hab_d2
+		}
+	}
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_zro_deposit_3
+			}
+		}
+		remove_deposit = d_zro_deposit_3
+		add_deposit = d_hab_zro_3
+		set_planet_flag = pd_science_hab
+		IF = {
+			limit = {
+				NOT = {
+					has_planet_flag = pd_hab_d1
+				}
+			}
+			set_planet_flag = pd_hab_d1
+		}
+		ELSE_IF = {
+			limit = {
+				has_planet_flag = pd_hab_d1
+			}
+			set_planet_flag = pd_hab_d2
+		}
+	}
+}
+
+######################################################################################
+# tul_check_darkmatter_habitat_deposits
+######################################################################################
+tul_check_darkmatter_habitat_deposits = {
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_dark_matter_deposit_1
+			}
+		}
+		remove_deposit = d_dark_matter_deposit_1
+		add_deposit = d_hab_dark_matter_1
+		set_planet_flag = pd_science_hab
+		IF = {
+			limit = {
+				NOT = {
+					has_planet_flag = pd_hab_d1
+				}
+			}
+			set_planet_flag = pd_hab_d1
+		}
+		ELSE_IF = {
+			limit = {
+				has_planet_flag = pd_hab_d1
+			}
+			set_planet_flag = pd_hab_d2
+		}
+	}
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_dark_matter_deposit_2
+			}
+		}
+		remove_deposit = d_dark_matter_deposit_2
+		add_deposit = d_hab_dark_matter_2
+		set_planet_flag = pd_science_hab
+		IF = {
+			limit = {
+				NOT = {
+					has_planet_flag = pd_hab_d1
+				}
+			}
+			set_planet_flag = pd_hab_d1
+		}
+		ELSE_IF = {
+			limit = {
+				has_planet_flag = pd_hab_d1
+			}
+			set_planet_flag = pd_hab_d2
+		}
+	}
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_dark_matter_deposit_3
+			}
+		}
+		remove_deposit = d_dark_matter_deposit_3
+		add_deposit = d_hab_dark_matter_3
+		set_planet_flag = pd_science_hab
+		IF = {
+			limit = {
+				NOT = {
+					has_planet_flag = pd_hab_d1
+				}
+			}
+			set_planet_flag = pd_hab_d1
+		}
+		ELSE_IF = {
+			limit = {
+				has_planet_flag = pd_hab_d1
+			}
+			set_planet_flag = pd_hab_d2
+		}
+	}
+}
+
+######################################################################################
+# tul_check_livingmetal_habitat_deposits
+######################################################################################
+tul_check_livingmetal_habitat_deposits = {
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_living_metal_deposit
+			}
+		}
+		remove_deposit = d_living_metal_deposit
+		add_deposit = d_hab_living_metal_1
+		set_planet_flag = pd_science_hab
+		IF = {
+			limit = {
+				NOT = {
+					has_planet_flag = pd_hab_d1
+				}
+			}
+			set_planet_flag = pd_hab_d1
+		}
+		ELSE_IF = {
+			limit = {
+				has_planet_flag = pd_hab_d1
+			}
+			set_planet_flag = pd_hab_d2
+		}
+	}
+}
+
+######################################################################################
+# tul_check_alloys_habitat_deposits
+######################################################################################
+tul_check_alloys_habitat_deposits = {
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_alloys_1
+			}
+		}
+		remove_deposit = d_alloys_1
+		add_deposit = d_hab_alloy_1
+		set_planet_flag = pd_foundry_hab
+		IF = {
+			limit = {
+				NOT = {
+					has_planet_flag = pd_hab_d1
+				}
+			}
+			set_planet_flag = pd_hab_d1
+		}
+		ELSE_IF = {
+			limit = {
+				has_planet_flag = pd_hab_d1
+			}
+			set_planet_flag = pd_hab_d2
+		}
+	}
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_alloys_2
+			}
+		}
+		remove_deposit = d_alloys_2
+		add_deposit = d_hab_alloy_2
+		set_planet_flag = pd_foundry_hab
+		IF = {
+			limit = {
+				NOT = {
+					has_planet_flag = pd_hab_d1
+				}
+			}
+			set_planet_flag = pd_hab_d1
+		}
+		ELSE_IF = {
+			limit = {
+				has_planet_flag = pd_hab_d1
+			}
+			set_planet_flag = pd_hab_d2
+		}
+	}
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_alloys_3
+			}
+		}
+		remove_deposit = d_alloys_3
+		add_deposit = d_hab_alloy_3
+		set_planet_flag = pd_foundry_hab
+		IF = {
+			limit = {
+				NOT = {
+					has_planet_flag = pd_hab_d1
+				}
+			}
+			set_planet_flag = pd_hab_d1
+		}
+		ELSE_IF = {
+			limit = {
+				has_planet_flag = pd_hab_d1
+			}
+			set_planet_flag = pd_hab_d2
+		}
+	}
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_alloys_4
+			}
+		}
+		remove_deposit = d_alloys_4
+		add_deposit = d_hab_alloy_4
+		set_planet_flag = pd_foundry_hab
+		IF = {
+			limit = {
+				NOT = {
+					has_planet_flag = pd_hab_d1
+				}
+			}
+			set_planet_flag = pd_hab_d1
+		}
+		ELSE_IF = {
+			limit = {
+				has_planet_flag = pd_hab_d1
+			}
+			set_planet_flag = pd_hab_d2
+		}
+	}
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_alloys_5
+			}
+		}
+		remove_deposit = d_hab_alloy_5
+		add_deposit = d_hab_alloy_5
+		set_planet_flag = pd_foundry_hab
+		IF = {
+			limit = {
+				NOT = {
+					has_planet_flag = pd_hab_d1
+				}
+			}
+			set_planet_flag = pd_hab_d1
+		}
+		ELSE_IF = {
+			limit = {
+				has_planet_flag = pd_hab_d1
+			}
+			set_planet_flag = pd_hab_d2
+		}
+	}
+}
+
+######################################################################################
+# tul_check_nanites_habitat_deposits
+######################################################################################
+tul_check_nanites_habitat_deposits = {
+	if = {
+		limit = {
+			fromfrom.planet = {
+				has_deposit = d_nanites_deposit
+			}
+		}
+		remove_deposit = d_nanites_deposit
+		add_deposit = d_hab_nanites_1
+		set_planet_flag = pd_science_hab
+		IF = {
+			limit = {
+				NOT = {
+					has_planet_flag = pd_hab_d1
+				}
+			}
+			set_planet_flag = pd_hab_d1
+		}
+		ELSE_IF = {
+			limit = {
+				has_planet_flag = pd_hab_d1
+			}
+			set_planet_flag = pd_hab_d2
+		}
+	}
+}
+
+######################################################################################
+# tul_check_habitat_terraforming_candidates
+######################################################################################
+tul_check_habitat_terraforming_candidates = {
+	if = {
+		limit = {
+			fromfrom.planet = {
+				OR = {
+					has_modifier = terraforming_candidate
+					has_modifier = terraforming_methane
+					has_modifier = terraforming_ammonia
+					has_modifier = terraforming_sulfur
+					has_modifier = terraforming_ash
+				}
+			}
+		}
+		set_planet_flag = pd_science_hab
+		IF = {
+			limit = {
+				NOT = {
+					has_planet_flag = pd_hab_d1
+				}
+			}
+			set_planet_flag = pd_hab_d1
+		}
+		ELSE_IF = {
+			limit = {
+				has_planet_flag = pd_hab_d1
+			}
+			set_planet_flag = pd_hab_d2
+		}
+		remove_modifier = terraforming_candidate
+		add_modifier = {
+			modifier = hab_terraforming_candidate
+			days = -1
+		}
+	}
+}
+
+######################################################################################
+# tul_check_habitat_mars
+######################################################################################
+tul_check_habitat_mars = {
+	IF = {
+		limit = {
+			tul_is_planet_mars = yes
+		}
+		set_planet_entity = {
+			entity = "bhab_planet_mars_entity"
+			picture = pc_pd_mars_hab
+		}
+	}
+}
+
+######################################################################################
+# tul_check_habitat_luna
+######################################################################################
+tul_check_habitat_luna = {
+	IF = {
+		limit = {
+			tul_is_planet_luna = yes
+		}
+		set_planet_entity = {
+			entity = "pdcmoon_planet_luna_entity"
+		}
+	}
+}
+
+######################################################################################
+# tul_check_habitat_jupiter
+######################################################################################
+tul_check_habitat_jupiter = {
+	IF = {
+		limit = {
+			tul_is_planet_jupiter = yes
+		}
+		set_planet_entity = {
+			entity = "pd_gas_giant_jupiter_entity"
+		}
+	}
+}
+
+######################################################################################
+# tul_check_habitat_saturn
+######################################################################################
+tul_check_habitat_saturn = {
+	IF = {
+		limit = {
+			tul_is_planet_saturn = yes
+		}
+		set_planet_entity = {
+			entity = "gas_giant_saturn_entity"
+		}
+	}
+}
+
+######################################################################################
+# tul_check_habitat_neptune
+######################################################################################
+tul_check_habitat_neptune = {
+	IF = {
+		limit = {
+			tul_is_planet_neptune = yes
+		}
+		set_planet_entity = {
+			entity = "gas_giant_neptune_entity"
+		}
+	}
+}
+
+######################################################################################
+# tul_check_habitat_uranus
+######################################################################################
+tul_check_habitat_uranus = {
+	IF = {
+		limit = {
+			tul_is_planet_uranus = yes
+		}
+		set_planet_entity = {
+			entity = "gas_giant_uranus_entity"
+		}
+	}
+}
+
+######################################################################################
+# tul_add_planet_habitat_blockers_for_type
+######################################################################################
+tul_add_planet_habitat_blockers_for_type = {
+	while = {
+		limit = {
+			check_variable = {
+				which = var_tul_hab_blocker_counter
+				value > 0
+			}
+		}
+		IF = {
+			limit = {
+				check_variable = {
+					which = var_tul_hab_blocker_counter
+					value >= 15
+				}
+			}
+			add_deposit = $BLOCKERTYPE$15
+			change_variable = {
+				which = var_tul_hab_blocker_counter
+				value = -15
+			}
+		}
+		ELSE_IF = {
+			limit = {
+				check_variable = {
+					which = var_tul_hab_blocker_counter
+					value >= 10
+				}
+			}
+			add_deposit = $BLOCKERTYPE$10
+			change_variable = {
+				which = var_tul_hab_blocker_counter
+				value = -10
+			}
+		}
+		ELSE_IF = {
+			limit = {
+				check_variable = {
+					which = var_tul_hab_blocker_counter
+					value >= 5
+				}
+			}
+			add_deposit = $BLOCKERTYPE$5
+			change_variable = {
+				which = var_tul_hab_blocker_counter
+				value = -5
+			}
+		}
+		ELSE_IF = {
+			limit = {
+				check_variable = {
+					which = var_tul_hab_blocker_counter
+					value >= 4
+				}
+			}
+			add_deposit = $BLOCKERTYPE$4
+			change_variable = {
+				which = var_tul_hab_blocker_counter
+				value = -4
+			}
+		}
+		ELSE_IF = {
+			limit = {
+				check_variable = {
+					which = var_tul_hab_blocker_counter
+					value >= 3
+				}
+			}
+			add_deposit = $BLOCKERTYPE$3
+			change_variable = {
+				which = var_tul_hab_blocker_counter
+				value = -3
+			}
+		}
+		ELSE_IF = {
+			limit = {
+				check_variable = {
+					which = var_tul_hab_blocker_counter
+					value >= 2
+				}
+			}
+			add_deposit = $BLOCKERTYPE$2
+			change_variable = {
+				which = var_tul_hab_blocker_counter
+				value = -2
+			}
+		}
+		ELSE_IF = {
+			limit = {
+				check_variable = {
+					which = var_tul_hab_blocker_counter
+					value >= 1
+				}
+			}
+			add_deposit = $BLOCKERTYPE$1
+			change_variable = {
+				which = var_tul_hab_blocker_counter
+				value = -1
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_add_planet_habitat_blockers
+######################################################################################
+tul_add_planet_habitat_blockers = {
+	# Set up a counter to track the remaining number of blockers to be placed
+	set_variable = {
+		which = var_tul_hab_blocker_counter
+		value = trigger:planet_size
+	}
+	# Adjust this counter based on whether the planet is a moon or not
+	IF = {
+		limit = {
+			is_moon = yes
+		}
+		change_variable = {
+			which = var_tul_hab_blocker_counter
+			value = -2
+		}
+	}
+	ELSE = {
+		change_variable = {
+			which = var_tul_hab_blocker_counter
+			value = -4
+		}
+	}
+	# Depending on the type of habitat, add blockers as needed.
+	IF = {
+		limit = {
+			OR = {
+				is_planet_class = pc_pd_barren_hab
+				is_planet_class = pc_pd_barren_cold_hab
+			}
+		}
+		tul_add_planet_habitat_blockers_for_type = {
+			BLOCKERTYPE = d_bblock
+		}
+	}
+	ELSE_IF = {
+		limit = {
+			is_planet_class = pc_pd_frozen_hab
+		}
+		tul_add_planet_habitat_blockers_for_type = {
+			BLOCKERTYPE = d_fblock
+		}
+	}
+	ELSE_IF = {
+		limit = {
+			is_planet_class = pc_pd_gas_giant_hab
+		}
+		tul_add_planet_habitat_blockers_for_type = {
+			BLOCKERTYPE = d_ggstorm
+		}
+	}
+	ELSE_IF = {
+		limit = {
+			OR = {
+				is_planet_class = pc_pd_hothouse_hab
+				is_planet_class = pc_pd_toxic_hab
+			}
+		}
+		tul_add_planet_habitat_blockers_for_type = {
+			BLOCKERTYPE = d_hhblock
+		}
+	}
+	ELSE_IF = {
+		limit = {
+			is_planet_class = pc_pd_molten_hab
+		}
+		tul_add_planet_habitat_blockers_for_type = {
+			BLOCKERTYPE = d_mblock
+		}
+	}
+}
+
+######################################################################################
+# tul_change_planet_to_random_molten_world
+######################################################################################
+tul_change_planet_to_random_molten_world = {
+	random_list = {
+		50 = {
+			change_pc = pc_molten
+		}
+		# Planetary Diversity
+		50 = {
+			change_pc = pc_volcanic
+		}
+	}
+}
+
+######################################################################################
+# tul_change_planet_to_random_hot_barren_world
+######################################################################################
+tul_change_planet_to_random_hot_barren_world = {
+	random_list = {
+		60 = {
+			change_pc = pc_barren
+		}
+		# Planetary Diversity
+		10 = {
+			change_pc = pc_carbon
+		}
+		10 = {
+			change_pc = pc_iron
+		}
+		10 = {
+			change_pc = pc_diamond
+		}
+		10 = {
+			change_pc = pc_chthonian
+		}
+	}
+}
+
+######################################################################################
+# tul_change_planet_to_random_desert_world
+######################################################################################
+tul_change_planet_to_random_desert_world = {
+	random_list = {
+		50 = {
+			change_pc = pc_desert
+		}
+		# Planetary Diversity
+		10 = {
+			change_pc = pc_oasis
+		}
+		10 = {
+			change_pc = pc_sandsea
+		}
+		10 = {
+			change_pc = pc_ash
+		}
+		10 = {
+			change_pc = pc_salt
+		}
+		10 = {
+			change_pc = pc_aquifer
+		}
+	}
+}
+
+######################################################################################
+# tul_change_planet_to_random_arid_world
+######################################################################################
+tul_change_planet_to_random_arid_world = {
+	random_list = {
+		50 = {
+			change_pc = pc_arid
+		}
+		# Planetary Diversity
+		10 = {
+			change_pc = pc_mesa
+		}
+		10 = {
+			change_pc = pc_karst
+		}
+		10 = {
+			change_pc = pc_outback
+		}
+		10 = {
+			change_pc = pc_med
+		}
+		10 = {
+			change_pc = pc_sulfur
+		}
+	}
+}
+
+######################################################################################
+# tul_change_planet_to_random_savannah_world
+######################################################################################
+tul_change_planet_to_random_savannah_world = {
+	random_list = {
+		50 = {
+			change_pc = pc_savannah
+		}
+		# Planetary Diversity
+		10 = {
+			change_pc = pc_steppe
+		}
+		10 = {
+			change_pc = pc_prairie
+		}
+		10 = {
+			change_pc = pc_badlands
+		}
+		10 = {
+			change_pc = pc_veld
+		}
+		10 = {
+			change_pc = pc_semiarid
+		}
+	}
+}
+
+######################################################################################
+# tul_change_planet_to_random_ocean_world
+######################################################################################
+tul_change_planet_to_random_ocean_world = {
+	random_list = {
+		50 = {
+			change_pc = pc_ocean
+		}
+		# Planetary Diversity
+		10 = {
+			change_pc = pc_mangrove
+		}
+		10 = {
+			change_pc = pc_wetswamp
+		}
+		10 = {
+			change_pc = pc_subarctic
+		}
+		10 = {
+			change_pc = pc_fog
+		}
+		10 = {
+			change_pc = pc_reef
+		}
+	}
+}
+
+######################################################################################
+# tul_change_planet_to_random_continental_world
+######################################################################################
+tul_change_planet_to_random_continental_world = {
+	random_list = {
+		50 = {
+			change_pc = pc_continental
+		}
+		# Planetary Diversity
+		10 = {
+			change_pc = pc_superhabitable
+		}
+		10 = {
+			change_pc = pc_retinal
+		}
+		10 = {
+			change_pc = pc_tidallylocked
+		}
+		10 = {
+			change_pc = pc_tepid
+		}
+		10 = {
+			change_pc = pc_supercon
+		}
+	}
+}
+
+######################################################################################
+# tul_change_planet_to_random_tropical_world
+######################################################################################
+tul_change_planet_to_random_tropical_world = {
+	random_list = {
+		50 = {
+			change_pc = pc_tropical
+		}
+		# Planetary Diversity
+		10 = {
+			change_pc = pc_hajungle
+		}
+		10 = {
+			change_pc = pc_biolumen
+		}
+		10 = {
+			change_pc = pc_forest
+		}
+		10 = {
+			change_pc = pc_primal
+		}
+		10 = {
+			change_pc = pc_cenote
+		}
+	}
+}
+
+######################################################################################
+# tul_change_planet_to_random_tundra_world
+######################################################################################
+tul_change_planet_to_random_tundra_world = {
+	random_list = {
+		50 = {
+			change_pc = pc_tundra
+		}
+		# Planetary Diversity
+		10 = {
+			change_pc = pc_swamp
+		}
+		10 = {
+			change_pc = pc_mud
+		}
+		10 = {
+			change_pc = pc_hadesert
+		}
+		10 = {
+			change_pc = pc_lichen
+		}
+		10 = {
+			change_pc = pc_aeolian
+		}
+	}
+}
+
+######################################################################################
+# tul_change_planet_to_random_arctic_world
+######################################################################################
+tul_change_planet_to_random_arctic_world = {
+	random_list = {
+		50 = {
+			change_pc = pc_arctic
+		}
+		# Planetary Diversity
+		10 = {
+			change_pc = pc_frozen_desert
+		}
+		10 = {
+			change_pc = pc_geothermal
+		}
+		10 = {
+			change_pc = pc_glacial
+		}
+		10 = {
+			change_pc = pc_antarctic
+		}
+		10 = {
+			change_pc = pc_snow
+		}
+	}
+}
+
+######################################################################################
+# tul_change_planet_to_random_alpine_world
+######################################################################################
+tul_change_planet_to_random_alpine_world = {
+	random_list = {
+		50 = {
+			change_pc = pc_alpine
+		}
+		# Planetary Diversity
+		10 = {
+			change_pc = pc_cascadian
+		}
+		10 = {
+			change_pc = pc_boreal
+		}
+		10 = {
+			change_pc = pc_duneforest
+		}
+		10 = {
+			change_pc = pc_lanthanide
+		}
+		10 = {
+			change_pc = pc_storm
+		}
+	}
+}
+
+######################################################################################
+# tul_change_planet_to_random_frozen_world
+######################################################################################
+tul_change_planet_to_random_frozen_world = {
+	random_list = {
+		60 = {
+			change_pc = pc_frozen
+		}
+		# Planetary Diversity
+		10 = {
+			change_pc = pc_methane
+		}
+		10 = {
+			change_pc = pc_ammonia
+		}
+		10 = {
+			change_pc = pc_subglacial
+		}
+		10 = {
+			change_pc = pc_hydrocarbon
+		}
+	}
+}
+
+######################################################################################
+# tul_change_planet_to_random_cold_barren_world
+######################################################################################
+tul_change_planet_to_random_cold_barren_world = {
+	random_list = {
+		50 = {
+			change_pc = pc_barren_cold
+		}
+		50 = {
+			change_pc = pc_rogue_barren
+		}
+	}
+}
+
+######################################################################################
+# tul_change_planet_to_random_nuked_world
+######################################################################################
+tul_change_planet_to_random_nuked_world = {
+	random_list = {
+		80 = {
+			change_pc = pc_nuked
+		}
+		20 = {
+			change_pc = pc_irradiated
+		}
+	}
+}
+
+######################################################################################
+# tul_change_planet_to_random_toxic_world
+######################################################################################
+tul_change_planet_to_random_toxic_world = {
+	random_list = {
+		70 = {
+			change_pc = pc_toxic
+		}
+		10 = {
+			change_pc = pc_hothouse
+		}
+		10 = {
+			change_pc = pc_ethane_ocean
+		}
+		10 = {
+			change_pc = pc_red_toxic
+		}
+	}
+}

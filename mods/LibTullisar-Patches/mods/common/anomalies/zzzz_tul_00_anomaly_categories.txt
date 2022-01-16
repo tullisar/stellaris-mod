@@ -1,0 +1,463 @@
+######################################################################################
+# Anomalies
+# Package: Patch
+######################################################################################
+#
+#
+# Atmospheric Object (Gas Giant)
+object_gasgiant_category = {
+	desc = "object_gasgiant_category_desc"
+	picture = GFX_evt_gas_giant_station
+	level = 4
+	spawn_chance = {
+		modifier = {
+			add = 3
+			tul_is_planet_gas_giant = yes
+		}
+	}
+	on_success = {
+		1 = anomaly.325
+		1 = anomaly.335
+	}
+}
+
+# Promising Moon (Gas Giant)
+moon_gasgiant_category = {
+	desc = "moon_gasgiant_category_desc"
+	picture = GFX_evt_ship_in_orbit_3
+	level = 1
+	spawn_chance = {
+		modifier = {
+			add = 3
+			tul_is_planet_gas_giant = yes
+			has_any_strategic_resource = no
+		}
+	}
+	max_once = yes
+	on_success = {
+		1 = anomaly.340
+		0 = {
+			modifier = {
+				add = 10
+				FROM = {
+					has_ring = no
+				}
+			}
+			anomaly_event = anomaly.6840
+		}
+	}
+}
+
+# Life Signs (Gas Giant)
+life_gasgiant_category = {
+	desc = "life_gasgiant_category_desc"
+	picture = GFX_evt_atmospheric_flight
+	level = 2
+	spawn_chance = {
+		modifier = {
+			add = 3
+			tul_is_planet_gas_giant = yes
+			has_any_strategic_resource = no
+		}
+	}
+	max_once = yes
+	on_success = {
+		1 = anomaly.300
+		1 = anomaly.6845
+	}
+}
+
+# Atmospheric Storms (Gas Giant)
+storms_gasgiant_category = {
+	desc = "storms_gasgiant_category_desc"
+	picture = GFX_evt_atmospheric_flight
+	level = 1
+	spawn_chance = {
+		modifier = {
+			add = 3
+			tul_is_planet_gas_giant = yes
+			has_any_strategic_resource = no
+		}
+	}
+	on_success = {
+		1 = anomaly.330
+		0 = {
+			modifier = {
+				add = 1
+				owner = {
+					count_owned_ship = {
+						limit = {
+							is_ship_class = shipclass_science_ship
+						}
+						count > 1
+					}
+				}
+			}
+			anomaly_event = anomaly.6855
+		}
+	}
+}
+
+# Aerostat Structures (Gas Giant)
+aerostat_gasgiant_category = {
+	desc = "aerostat_gasgiant_category_desc"
+	picture = GFX_evt_gas_giant_station
+	level = 1
+	spawn_chance = {
+		modifier = {
+			add = 3
+			tul_is_planet_gas_giant = yes
+		}
+	}
+	on_success = {
+		1 = anomaly.310
+		1 = {
+			modifier = {
+				factor = 0
+				from = {
+					has_any_strategic_resource = yes
+				}
+			}
+			anomaly_event = anomaly.315
+		}
+	}
+}
+
+# Cargo Pod (Gas Giant)
+cargo_gasgiant_category = {
+	desc = "cargo_gasgiant_category_desc"
+	picture = GFX_evt_ship_in_orbit
+	level = 1
+	spawn_chance = {
+		modifier = {
+			add = 3
+			tul_is_planet_gas_giant = yes
+		}
+	}
+	on_success = {
+		1 = anomaly.305
+		1 = anomaly.6865
+	}
+}
+
+# Debris (Gas Giant)
+debris_gasgiant_category = {
+	desc = "debris_gasgiant_category_desc"
+	picture = GFX_evt_ruined_system
+	level = 1
+	spawn_chance = {
+		modifier = {
+			add = 3
+			tul_is_planet_gas_giant = yes
+		}
+	}
+	on_success = {
+		0 = {
+			modifier = {
+				add = 1
+				OR = {
+					any_system = {
+						OR = {
+							has_star_flag = com_sol
+							has_star_flag = nuked_sol
+						}
+					}
+					any_country = {
+						OR = {
+							has_country_flag = human_1
+							has_country_flag = humans_early_space_age
+						}
+					}
+				}
+				owner = {
+					NOR = {
+						species_portrait = human
+						has_country_flag = human_1
+						has_country_flag = human_2
+					}
+				}
+			}
+			anomaly_event = distar.1055
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				from = {
+					has_any_strategic_resource = yes
+				}
+			}
+			anomaly_event = anomaly.320
+		}
+	}
+}
+
+######################################################################################
+# Life Signs (Toxic)
+######################################################################################
+life_toxic_category = {
+	desc = "life_toxic_category_desc"
+	picture = GFX_evt_microscopic_life
+	level = 2
+
+	spawn_chance = {
+		modifier = {
+			add = 3
+			tul_is_planet_toxic = yes
+			has_any_strategic_resource = no
+		}
+	}
+
+	on_success = { 
+		1 = anomaly.690
+		1 = anomaly.6895
+	}
+}
+
+
+######################################################################################
+# Life Signs (Frozen)
+######################################################################################
+life_frozen_category = {
+	desc = "life_frozen_category_desc"
+	picture = GFX_evt_microscopic_life
+	level = 2
+	spawn_chance = {
+		modifier = {
+			add = 3
+			tul_is_planet_frozen = yes
+			has_any_strategic_resource = no
+		}
+		modifier = {
+			factor = 0
+			from.owner = {
+				AND = {
+					has_authority = auth_machine_intelligence
+					NOT = {
+						has_civic = civic_machine_servitor
+					}
+				}
+			}
+		}
+	}
+	on_success = {
+		1 = anomaly.2510
+		1 = anomaly.6900
+	}
+}
+
+######################################################################################
+# Life Signs (Barren)
+######################################################################################
+life_barren_category = {
+	desc = "life_barren_category_desc"
+	picture = GFX_evt_microscopic_life
+	level = 2
+	spawn_chance = {
+		modifier = {
+			add = 3
+			tul_is_planet_barren = yes
+			has_any_strategic_resource = no
+		}
+	}
+	on_success = anomaly.695
+}
+
+######################################################################################
+# Signs of Former Habitation
+######################################################################################
+inhabited_toxic_category = {
+	desc = "inhabited_toxic_category_desc"
+	picture = GFX_evt_relic_world_street
+	level = 1
+	spawn_chance = {
+		modifier = {
+			add = 3
+			tul_is_planet_toxic = yes
+			has_any_strategic_resource = no
+		}
+	}
+	on_success = {
+		1 = anomaly.670
+		1 = anomaly.685
+	}
+}
+
+######################################################################################
+# Gas Giant Signal
+######################################################################################
+signal_gasgiant_category = {
+	desc = "signal_gasgiant_category_desc"
+	picture = GFX_evt_atmospheric_flight
+	level = 5
+	spawn_chance = {
+		modifier = {
+			add = 1
+			tul_is_planet_gas_giant = yes
+		}
+	}
+	max_once_global = yes
+	on_success = anomaly.5000
+}
+
+######################################################################################
+# Gas Giant Ship
+######################################################################################
+ship_gasgiant_category = {
+	desc = "ship_gasgiant_category_desc"
+	picture = GFX_evt_atmospheric_flight
+	level = 5
+	spawn_chance = {
+		modifier = {
+			add = 3
+			tul_is_planet_gas_giant = yes
+		}
+	}
+	on_success = anomaly.2560
+}
+
+######################################################################################
+# Terminal Orbit (Gas Giant)
+######################################################################################
+terminal_gasgiant_category = {
+	desc = "terminal_gasgiant_category_desc"
+	picture = GFX_evt_ship_in_orbit_3
+	level = 5
+	#risk = 30
+	spawn_chance = {
+		modifier = {
+			add = 3
+			tul_is_planet_gas_giant = yes
+			is_moon = no
+		}
+	}
+	on_success = anomaly.2570
+}
+
+######################################################################################
+# Ancient Signs of Life
+######################################################################################
+terraforming_candidate_category = {
+	desc = "terraforming_candidate_category_desc"
+	picture = GFX_evt_drilling_for_gas
+	level = 2
+	should_ai_and_humans_use = yes
+	spawn_chance = {
+		modifier = {
+			add = 1
+			NOR = {
+				has_modifier = terraforming_candidate
+				has_deposit = d_nanites_deposit
+			}
+			OR = {
+				tul_is_planet_barren = yes
+				AND = {
+					tul_is_planet_frozen = yes
+					from.owner = {
+						has_ascension_perk = ap_hydrocentric
+					}
+				}
+			}
+			planet_size > 9
+			planet_size < 26
+			solar_system = {
+				tul_is_star_singularity = no
+			}
+		}
+		modifier = {
+			factor = 2
+			years_passed < 30
+		}
+	}
+	on_success = {
+		1 = {
+			anomaly_event = anomaly.2575
+			max_once = yes
+		}
+	}
+}
+
+######################################################################################
+# Peculiar Cater (Living Metal)
+######################################################################################
+living_metal_category = {
+	desc = "living_metal_category_desc"
+	picture = GFX_evt_cold_barren
+	level = 7
+	should_ai_and_humans_use = yes
+	spawn_chance = {
+		modifier = {
+			add = 0.1
+			OR = {
+				tul_is_planet_barren = yes
+				is_asteroid = yes
+			}
+			has_any_strategic_resource = no
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_deposit_for = shipclass_mining_station
+				has_deposit_for = shipclass_research_station
+			}
+		}
+	}
+	on_success = anomaly.2576
+}
+
+######################################################################################
+# Fungal Emitters
+######################################################################################
+fungal_emitters_category = {
+	desc = "fungal_emitters_category_desc"
+	picture = GFX_evt_cold_barren
+	level = 4
+	spawn_chance = {
+		modifier = {
+			add = 30
+			tul_is_planet_barren = yes
+			has_global_flag = fumongus_spawned
+			closest_system = {
+				limit = {
+					has_star_flag = fumongus_system
+				}
+				min_steps = 1
+				max_steps = 12
+			}
+		}
+	}
+	on_success = {
+		1 = {
+			modifier = {
+				factor = 0
+				owner = {
+					has_global_flag = fumongus_resolved
+				}
+			}
+			anomaly_event = anomaly.6755
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				owner = {
+					NAND = {
+						has_global_flag = fumongus_resolved
+						has_global_flag = fumongus_active
+					}
+				}
+			}
+			anomaly_event = anomaly.6760
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				owner = {
+					NAND = {
+						has_global_flag = fumongus_dismantled
+						has_global_flag = fumongus_resolved
+					}
+				}
+			}
+			anomaly_event = anomaly.6765
+		}
+	}
+}

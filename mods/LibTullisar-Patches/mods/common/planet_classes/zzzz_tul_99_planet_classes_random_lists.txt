@@ -1,0 +1,1014 @@
+######################################################################################
+# Planet Classes (Merged Random Lists)
+######################################################################################
+#
+######################################################################################
+# Normal Habitable Worlds
+######################################################################################
+random_list = {
+	name = "rl_habitable_normal"
+	planets = {
+		"pc_desert"
+		"pc_tropical"
+		"pc_arid"
+		"pc_ocean"
+		"pc_tundra"
+		"pc_arctic"
+		"pc_continental"
+		"pc_alpine"
+		"pc_savannah"
+		# Planetary Diversity
+		"pc_sandsea"
+		"pc_oasis"
+		"pc_mesa"
+		"pc_outback"
+		"pc_coastal"
+		"pc_med"
+		"pc_mangrove"
+		"pc_wetswamp"
+		"pc_fog"
+		"pc_desertislands"
+		"pc_hajungle"
+		"pc_cenote"
+		"pc_forest"
+		"pc_lake"
+		"pc_steppe"
+		"pc_prairie"
+		"pc_veld"
+		"pc_semiarid"
+		"pc_retinal"
+		"pc_cascadian"
+		"pc_hadesert"
+		"pc_snow"
+		"pc_highland"
+		"pc_duneforest"
+		"pc_mushroom"
+		"pc_swamp"
+		"pc_mud"
+		"pc_basalt"
+		"pc_subarctic"
+		"pc_antarctic"
+		"pc_badlands"
+		"pc_aeolian"
+		"pc_tepid"
+		"pc_frozen_desert"
+		"pc_boreal"
+		"pc_glacial"
+		"pc_snowball"
+	}
+}
+
+######################################################################################
+# Special Habitable Worlds
+######################################################################################
+random_list = {
+	name = "rl_habitable_special"
+	planets = {
+		"pc_gaia"
+		"pc_nuked"
+		# Gigastructural Engineering
+		"pc_ll_temperate"
+		"pc_ll_foggy"
+		"pc_ll_torrid"
+		# Planetary Diversity
+		# "pc_aquatic"
+		# "pc_aquatichot"
+		# "pc_aquaticcold"
+		# "pc_tidallyaquatic"
+		# "pc_aquatic_surface"
+		# "pc_aquatic_uw"
+		# "pc_aquaticbio_uw"
+		# "pc_aquaticshroud_uw"
+		# "pc_aquatichot_uw"
+		# "pc_aquaticcold_uw"
+		# "pc_aquatickarst_uw"
+		# "pc_aquaticcenote_uw"
+		# "pc_aquaticcity"
+		"pc_acid"
+		"pc_methane"
+		"pc_ammonia"
+		"pc_sulfur"
+		"pc_ash"
+		"pc_irradiated"
+		"pc_tidallygaia"
+		# Giga Diversity
+		"pc_ll_methane"
+		"pc_ll_ash"
+		"pc_ll_sulfur"
+		"pc_ll_ammonia"
+		"pc_ll_ocean"
+		"pc_ll_tidallylocked_cold"
+		"pc_ll_rogue"
+	}
+}
+
+######################################################################################
+# Planetary Diversity Normal Habitable Worlds
+# Source: Planetary Diversity
+######################################################################################
+random_list = {
+	name = "rl_pd_habitable_normal"
+	planets = {
+		"pc_sandsea"
+		"pc_oasis"
+		"pc_mesa"
+		"pc_outback"
+		"pc_coastal"
+		"pc_med"
+		"pc_mangrove"
+		"pc_wetswamp"
+		"pc_fog"
+		"pc_desertislands"
+		"pc_hajungle"
+		"pc_cenote"
+		"pc_forest"
+		"pc_lake"
+		"pc_steppe"
+		"pc_prairie"
+		"pc_veld"
+		"pc_semiarid"
+		"pc_retinal"
+		"pc_cascadian"
+		"pc_hadesert"
+		"pc_snow"
+		"pc_highland"
+		"pc_duneforest"
+		"pc_mushroom"
+		"pc_swamp"
+		"pc_mud"
+		"pc_basalt"
+		"pc_subarctic"
+		"pc_antarctic"
+		"pc_aeolian"
+		"pc_frozen_desert"
+		"pc_boreal"
+		"pc_glacial"
+		"pc_geothermal"
+		"pc_karst"
+		"pc_reef"
+		"pc_primal"
+		"pc_salt"
+		"pc_aquifer"
+		"pc_coral"
+		"pc_storm"
+		"pc_rogue"
+		"pc_lichen"
+		"pc_eyeball"
+		"pc_glacio"
+		"pc_lanthanide"
+		"pc_megaflora"
+		"pc_aquatic"
+		"pc_biolumen"
+		"pc_superhabitable"
+		"pc_tidallylocked"
+		"pc_supercon"
+	}
+}
+
+######################################################################################
+# Forested Worlds
+# Source: More Events Mod
+######################################################################################
+random_list = {
+	name = "rl_mem_forested_planets"
+	planets = {
+		"pc_continental"
+		"pc_tropical"
+		"pc_ocean"
+		"pc_gaia"
+		# Planetary Diversity
+		"pc_fog"
+		"pc_cenote"
+		"pc_duneforest"
+		"pc_tepid"
+		"pc_boreal"
+		"pc_cascadian"
+		"pc_swamp"
+		"pc_mangrove"
+		"pc_wetswamp"
+		"pc_desertislands"
+		"pc_hajungle"
+		"pc_mushroom"
+		"pc_retinal"
+		"pc_forest"
+		"pc_lake"
+		"pc_tidallygaia"
+		"pc_aquifer"
+		"pc_supercon"
+		"pc_megafloraforge"
+		"pc_megafloratol"
+		"pc_megaflora"
+		"pc_megaflorahive"
+		"pc_megaflorafort"
+		"pc_megafloracapital"
+		"pc_primal"
+		"pc_superhabitable"
+		"pc_geothermal"
+		"pc_biolumen"
+	}
+}
+
+######################################################################################
+# Cool Moist Planets
+######################################################################################
+random_list = {
+	name = "rl_cool_moist_planets"
+	planets = {
+		"pc_continental"
+		"pc_ocean"
+		"pc_tundra"
+		"pc_alpine"
+		"pc_gaia"
+		# Planetary Diversity
+		"pc_fog"
+		"pc_cenote"
+		"pc_duneforest"
+		"pc_aeolian"
+		"pc_tepid"
+		"pc_boreal"
+		"pc_highland"
+		"pc_subarctic"
+		"pc_cascadian"
+		"pc_swamp"
+		"pc_wetswamp"
+		"pc_mushroom"
+		"pc_retinal"
+		"pc_forest"
+		"pc_lake"
+		"pc_tidallygaia"
+		"pc_reef"
+		"pc_lichen"
+		"pc_lanthanide"
+		"pc_storm"
+		"pc_megafloraforge"
+		"pc_megafloratol"
+		"pc_megaflora"
+		"pc_megaflorahive"
+		"pc_megaflorafort"
+		"pc_megafloracapital"
+		"pc_karst"
+		"pc_geothermal"
+	}
+}
+
+######################################################################################
+# All Normal Planets
+######################################################################################
+random_list = {
+	name = "rl_all_normal_planets"
+	planets = {
+		"pc_continental"
+		"pc_desert"
+		"pc_tropical"
+		"pc_arid"
+		"pc_ocean"
+		"pc_tundra"
+		"pc_arctic"
+		"pc_alpine"
+		"pc_savannah"
+		"pc_asteroid"
+		"pc_gas_giant"
+		"pc_molten"
+		"pc_barren"
+		"pc_barren_cold"
+		"pc_toxic"
+		"pc_frozen"
+		"pc_gaia"
+		# Planetary Diversity
+		"pc_fog"
+		"pc_coastal"
+		"pc_snowball"
+		"pc_basalt"
+		"pc_badlands"
+		"pc_cenote"
+		"pc_duneforest"
+		"pc_aeolian"
+		"pc_tepid"
+		"pc_prairie"
+		"pc_antarctic"
+		"pc_snow"
+		"pc_glacial"
+		"pc_frozen_desert"
+		"pc_steppe"
+		"pc_veld"
+		"pc_semiarid"
+		"pc_hadesert"
+		"pc_boreal"
+		"pc_highland"
+		"pc_sandsea"
+		"pc_subarctic"
+		"pc_cascadian"
+		"pc_mud"
+		"pc_swamp"
+		"pc_mangrove"
+		"pc_wetswamp"
+		"pc_desertislands"
+		"pc_mesa"
+		"pc_outback"
+		"pc_oasis"
+		"pc_hajungle"
+		"pc_mushroom"
+		"pc_retinal"
+		"pc_forest"
+		"pc_lake"
+		"pc_med"
+	}
+}
+
+######################################################################################
+# All Planets
+######################################################################################
+random_list = {
+	name = "rl_all_planets"
+	planets = {
+		"pc_continental"
+		"pc_desert"
+		"pc_tropical"
+		"pc_arid"
+		"pc_ocean"
+		"pc_tundra"
+		"pc_arctic"
+		"pc_alpine"
+		"pc_savannah"
+		"pc_asteroid"
+		"pc_gas_giant"
+		"pc_molten"
+		"pc_barren"
+		"pc_barren_cold"
+		"pc_toxic"
+		"pc_frozen"
+		"pc_nuked"
+		"pc_ai"
+		"pc_infested"
+		"pc_shielded"
+		"pc_gaia"
+		"pc_shrouded"
+		"pc_broken"
+		"pc_shattered_2"
+		"pc_egg_cracked"
+		# Forgotten Queens
+		"pc_hollow"
+		"pc_matryoshka"
+		"pc_shattered"
+		# Gigastructural Engineering
+		"pc_giga_planetary_computer"
+		"pc_habitable_gas_giant"
+		"pc_ll_temperate"
+		"pc_ll_foggy"
+		"pc_ll_torrid"
+		"pc_red_toxic"
+		"pc_gigabrown_dwarf"
+		"pc_melted_frozen"
+		"pc_core_mined"
+		"pc_strip_mined"
+		# Machine and Robot Expansion
+		"xvcv_mdlc_pc_mechanical"
+		"xvcv_mdlc_pc_machine_auto"
+		"xvcv_mdlc_pc_machine_ecu"
+		"xvcv_mdlc_pc_machine_cpu"
+		"xvcv_mdlc_pc_machine_ser"
+		# More Events Mod
+		"pc_mem_broken_city"
+		"pc_mem_destroyed_barren"
+		# Planetary Diversity
+		"pc_aquatic"
+		"pc_aquatichot"
+		"pc_aquaticcold"
+		"pc_tidallyaquatic"
+		"pc_aquatic_surface"
+		"pc_aquatic_uw"
+		"pc_aquaticbio_uw"
+		"pc_aquaticshroud_uw"
+		"pc_aquatichot_uw"
+		"pc_aquaticcold_uw"
+		"pc_aquatickarst_uw"
+		"pc_aquaticcenote_uw"
+		"pc_aquaticcity"
+		"pc_necrohive"
+		"pc_machine_necropolis"
+		"pc_capitalarc"
+		"pc_palacearc"
+		"pc_necropolis"
+		"pc_milarc"
+		"pc_ecocity"
+		"pc_bioforge"
+		"pc_biofort"
+		"pc_biocapital"
+		"pc_machine_factory"
+		"pc_machine_fort"
+		"pc_milarc_relic"
+		"pc_shroudcity"
+		"pc_shroudecocity"
+		"pc_shroudcapitalarc"
+		"pc_shroudpalacearc"
+		"pc_shroudmilarc"
+		"pc_machine_capital"
+		"pc_corpoarc"
+		"pc_shroudcorpoarc"
+		"pc_acid"
+		"pc_methane"
+		"pc_ammonia"
+		"pc_sulfur"
+		"pc_ash"
+		"pc_irradiated"
+		"pc_ammoniacity"
+		"pc_sulfurcity"
+		"pc_methanecity"
+		"pc_ashcity"
+		"pc_aquatichab"
+		"pc_aquatichothab"
+		"pc_aquaticcoldhab"
+		"pc_pd_gas_giant_hab"
+		"pc_pd_barren_hab"
+		"pc_pd_barren_cold_hab"
+		"pc_pd_molten_hab"
+		"pc_pd_frozen_hab"
+		"pc_pd_hothouse_hab"
+		"pc_pd_toxic_hab"
+		"pc_fog"
+		"pc_coastal"
+		"pc_snowball"
+		"pc_basalt"
+		"pc_badlands"
+		"pc_cenote"
+		"pc_duneforest"
+		"pc_aeolian"
+		"pc_tepid"
+		"pc_prairie"
+		"pc_antarctic"
+		"pc_snow"
+		"pc_glacial"
+		"pc_frozen_desert"
+		"pc_steppe"
+		"pc_veld"
+		"pc_semiarid"
+		"pc_hadesert"
+		"pc_boreal"
+		"pc_highland"
+		"pc_sandsea"
+		"pc_subarctic"
+		"pc_cascadian"
+		"pc_mud"
+		"pc_swamp"
+		"pc_mangrove"
+		"pc_wetswamp"
+		"pc_desertislands"
+		"pc_mesa"
+		"pc_outback"
+		"pc_oasis"
+		"pc_hajungle"
+		"pc_mushroom"
+		"pc_retinal"
+		"pc_forest"
+		"pc_lake"
+		"pc_med"
+		"pc_geothermal"
+		"pc_karst"
+		"pc_reef"
+		"pc_primal"
+		"pc_salt"
+		"pc_aquifer"
+		"pc_coral"
+		"pc_storm"
+		"pc_rogue"
+		"pc_lichen"
+		"pc_eyeball"
+		"pc_glacio"
+		"pc_lanthanide"
+		"pc_megaflora"
+		"pc_megaflorahive"
+		"pc_megafloratol"
+		"pc_megafloraforge"
+		"pc_megaflorafort"
+		"pc_megafloracapital"
+		"pc_aquatic"
+		"pc_biolumen"
+		"pc_irradiated"
+		"pc_superhabitable"
+		"pc_pdshroud"
+		"pc_tidallygaia"
+		"pc_crystal"
+		"pc_floating"
+		"pc_graveyard"
+		"pc_technoorganic"
+		"pc_carbon"
+		"pc_iron"
+		"pc_subglacial"
+		"pc_hydrocarbon"
+		"pc_hothouse"
+		"pc_ethane_ocean"
+		"pc_diamond"
+		"pc_volcanic"
+		"pc_chthonian"
+		"pc_hot_gas_giant"
+		"pc_cloudless_gas_giant"
+		"pc_cold_gas_giant"
+		# Giga Diversity
+		"pc_ll_methane"
+		"pc_ll_ash"
+		"pc_ll_sulfur"
+		"pc_ll_ammonia"
+		"pc_ll_ocean"
+		"pc_ll_tidallylocked_cold"
+		"pc_ll_rogue"
+	}
+}
+
+######################################################################################
+# Brown Dwarf Moons
+# Source: Gigastructural Engineering
+######################################################################################
+random_list = {
+	name = "rl_browndwarf_moon"
+	planets = {
+		"pc_barren"
+		"pc_frozen"
+		"pc_barren_cold"
+	}
+}
+
+######################################################################################
+# O Star Planets
+# Source: Gigastructural Engineering
+######################################################################################
+random_list = {
+	name = "rl_giga_o_star_planets"
+	planets = {
+		"pc_barren"
+		"pc_molten"
+	}
+}
+
+######################################################################################
+# Destroyed Worlds
+# Source: Gigastructural Engineering
+######################################################################################
+random_list = {
+	name = "rl_destroyed"
+	planets = {
+		"pc_broken"
+		"pc_shattered"
+		"pc_mem_broken_city"
+		"pc_mem_destroyed_barren"
+	}
+}
+
+######################################################################################
+# Voidspawn Egg Planets
+######################################################################################
+random_list = {
+	name = "rl_voidspawn_egg"
+	planets = {
+		"pc_savannah"
+		"pc_desert"
+		"pc_arid"
+		# Planetary Diversity
+		"pc_mesa"
+		"pc_sandsea"
+		"pc_semiarid"
+	}
+}
+
+######################################################################################
+# No Atmosphere Planets
+######################################################################################
+random_list = {
+	name = "rl_no_atmosphere_planets"
+	planets = {
+		"pc_molten"
+		"pc_barren"
+		"pc_barren_cold"
+		"pc_frozen"
+		"pc_shattered"
+		"pc_shattered_2"
+		"pc_egg_cracked"
+		# More Events Mod
+		"pc_mem_broken_city"
+		"pc_mem_destroyed_barren"
+		# Planetary Diversity
+		"pc_tidallylocked_barren"
+		"pc_rogue_barren"
+	}
+}
+
+######################################################################################
+# Uninhabitable Planets
+######################################################################################
+random_list = {
+	name = "rl_unhabitable_planets"
+	planets = {
+		"pc_gas_giant"
+		"pc_molten"
+		"pc_barren"
+		"pc_barren_cold"
+		"pc_toxic"
+		"pc_frozen"
+		# Gigastructural Engineering
+		"pc_red_toxic"
+		# Planetary Diversity
+		"pc_hothouse"
+		"pc_tidallylocked_barren"
+		"pc_rogue_barren"
+		"pc_carbon"
+		"pc_iron"
+		"pc_subglacial"
+		"pc_hydrocarbon"
+		"pc_hothouse"
+		"pc_ethane_ocean"
+		"pc_diamond"
+		"pc_volcanic"
+		"pc_chthonian"
+		"pc_hot_gas_giant"
+		"pc_cloudless_gas_giant"
+		"pc_cold_gas_giant"
+	}
+}
+
+######################################################################################
+# Uninhabitable Planets (Warm / Dry)
+# Source: Gigastructural Engineering
+######################################################################################
+random_list = {
+	name = "rl_warm_unhabitable"
+	planets = {
+		"pc_gas_giant"
+		"pc_barren"
+		"pc_molten"
+		# Planetary Diversity
+		"pc_hot_gas_giant"
+		"pc_cloudless_gas_giant"
+		"pc_hothouse"
+		"pc_carbon"
+		"pc_volcanic"
+		"pc_diamond"
+	}
+}
+
+######################################################################################
+# Uninhabitable Planets (Temperate / Wet)
+# Source: Gigastructural Engineering
+######################################################################################
+random_list = {
+	name = "rl_temp_unhabitable"
+	planets = {
+		"pc_gas_giant"
+		"pc_barren"
+		"pc_molten"
+		"pc_toxic"
+		"pc_barren_cold"
+		"pc_frozen"
+		# Gigastructural Engineering
+		"pc_red_toxic"
+		# Planetary Diversity
+		"pc_tidallylocked_barren"
+		"pc_diamond"
+		"pc_subglacial"
+		"pc_hydrocarbon"
+		"pc_cloudless_gas_giant"
+		"pc_cold_gas_giant"
+		"pc_ethane_ocean"
+		
+	}
+}
+
+######################################################################################
+# Uninhabitable Planets (Cold)
+# Source: Gigastructural Engineering
+######################################################################################
+random_list = {
+	name = "rl_cold_unhabitable"
+	planets = {
+		"pc_gas_giant"
+		"pc_barren_cold"
+		"pc_broken"
+		"pc_shattered"
+		"pc_frozen"
+		# Planetary Diversity
+		"pc_tidallylocked_barren"
+		"pc_rogue_barren"
+		"pc_cloudless_gas_giant"
+		"pc_cold_gas_giant"
+		"pc_subglacial"
+		"pc_chthonian"
+		"pc_iron"
+	}
+}
+
+######################################################################################
+# Molten Worlds
+######################################################################################
+random_list = {
+	name = "rl_molten_worlds"
+	planets = {
+		"pc_molten"
+		# Planetary Diversity
+		"pc_volcanic"
+	}
+}
+
+######################################################################################
+# Hot Barren Worlds
+######################################################################################
+random_list = {
+	name = "rl_hot_barren_worlds"
+	planets = {
+		"pc_barren"
+		# Planetary Diversity
+		"pc_carbon"
+		"pc_iron"
+		"pc_diamond"
+		"pc_chthonian"
+	}
+}
+
+######################################################################################
+# Desert Worlds
+######################################################################################
+random_list = {
+	name = "rl_desert_worlds"
+	planets = {
+		"pc_desert"
+		# Planetary Diversity
+		"pc_oasis"
+		"pc_sandsea"
+		"pc_salt"
+		"pc_ash"
+		"pc_aquifer"
+	}
+}
+
+######################################################################################
+# Arid Worlds
+######################################################################################
+random_list = {
+	name = "rl_arid_worlds"
+	planets = {
+		"pc_arid"
+		# Planetary Diversity
+		"pc_mesa"
+		"pc_karst"
+		"pc_outback"
+		"pc_med"
+		"pc_sulfur"
+	}
+}
+
+######################################################################################
+# Savannah Worlds
+######################################################################################
+random_list = {
+	name = "rl_savannah_worlds"
+	planets = {
+		"pc_savannah"
+		# Planetary Diversity
+		"pc_steppe"
+		"pc_prairie"
+		"pc_badlands"
+		"pc_veld"
+		"pc_semiarid"
+	}
+}
+
+######################################################################################
+# Ocean Worlds
+######################################################################################
+random_list = {
+	name = "rl_ocean_worlds"
+	planets = {
+		"pc_ocean"
+		# Planetary Diversity
+		"pc_mangrove"
+		"pc_wetswamp"
+		"pc_subarctic"
+		"pc_fog"
+		"pc_reef"
+	}
+}
+
+######################################################################################
+# Continental Worlds
+######################################################################################
+random_list = {
+	name = "rl_continental_worlds"
+	planets = {
+		"pc_continental"
+		# Planetary Diversity
+		"pc_superhabitable"
+		"pc_retinal"
+		"pc_tidallylocked"
+		"pc_tepid"
+		"pc_supercon"
+	}
+}
+
+######################################################################################
+# Tropical Worlds
+######################################################################################
+random_list = {
+	name = "rl_tropical_worlds"
+	planets = {
+		"pc_tropical"
+		# Planetary Diversity
+		"pc_hajungle"
+		"pc_biolumen"
+		"pc_forest"
+		"pc_primal"
+		"pc_cenote"
+	}
+}
+
+######################################################################################
+# Tundra Worlds
+######################################################################################
+random_list = {
+	name = "rl_tundra_worlds"
+	planets = {
+		"pc_tundra"
+		# Planetary Diversity
+		"pc_swamp"
+		"pc_mud"
+		"pc_hadesert"
+		"pc_lichen"
+		"pc_aeolian"
+	}
+}
+
+######################################################################################
+# Arctic Worlds
+######################################################################################
+random_list = {
+	name = "rl_arctic_worlds"
+	planets = {
+		"pc_arctic"
+		# Planetary Diversity
+		"pc_frozen_desert"
+		"pc_geothermal"
+		"pc_glacial"
+		"pc_antarctic"
+		"pc_snow"
+	}
+}
+
+######################################################################################
+# Alpine Worlds
+######################################################################################
+random_list = {
+	name = "rl_alpine_worlds"
+	planets = {
+		"pc_alpine"
+		# Planetary Diversity
+		"pc_cascadian"
+		"pc_boreal"
+		"pc_duneforest"
+		"pc_lanthanide"
+		"pc_storm"
+	}
+}
+
+######################################################################################
+# Frozen Worlds
+######################################################################################
+random_list = {
+	name = "rl_frozen_worlds"
+	planets = {
+		"pc_frozen"
+		# Planetary Diversity
+		"pc_methane"
+		"pc_ammonia"
+		"pc_subglacial"
+		"pc_hydrocarbon"
+	}
+}
+
+######################################################################################
+# Blue Stars
+# Source: Real Space
+######################################################################################
+random_list = {
+	name = "blue_stars"
+	planets = {
+		"pc_o_star"
+		"pc_b_star"
+		"pc_a_star"
+	}
+}
+
+######################################################################################
+# Blue Giant Stars
+######################################################################################
+random_list = {
+	name = "giant_blue_stars"
+	planets = {
+		"pc_o_star"
+		"pc_b_star"
+		"pc_a_star"
+		"pc_f_star"
+	}
+}
+
+######################################################################################
+# Orange Giant Stars
+######################################################################################
+random_list = {
+	name = "giant_orange_stars"
+	planets = {
+		"pc_g_giant_star"
+		"pc_k_giant_star"
+		"pc_m_giant_star"
+	}
+}
+
+######################################################################################
+# White Stars
+######################################################################################
+random_list = {
+	name = "white_stars"
+	planets = {
+		"pc_a_star"
+		"pc_f_star"
+	}
+}
+
+######################################################################################
+# Yellow Stars
+######################################################################################
+random_list = {
+	name = "yellow_stars"
+	planets = {
+		"pc_g_star"
+		"pc_k_star"
+	}
+}
+
+######################################################################################
+# Dwarf Stars
+######################################################################################
+random_list = {
+	name = "dwarf_stars"
+	planets = {
+		"pc_m_star"
+		"pc_l_star"
+		"pc_d_star"
+	}
+}
+
+######################################################################################
+# Red Stars
+######################################################################################
+random_list = {
+	name = "red_stars"
+	planets = {
+		"pc_m_star"
+		"pc_l_star"
+	}
+}
+
+######################################################################################
+# Red Giant Stars
+######################################################################################
+random_list = {
+	name = "red_giant"
+	planets = {
+		"pc_k_giant_star"
+		"pc_m_giant_star"
+	}
+}
+
+######################################################################################
+# Yellow Supergiant Stars
+######################################################################################
+random_list = {
+	name = "yellow_supergiant"
+	planets = {
+		"pc_g_super_star"
+		"pc_k_super_star"
+		"pc_m_super_star"
+	}
+}
+
+######################################################################################
+# Blue Supergiant Stars
+######################################################################################
+random_list = {
+	name = "blue_supergiant"
+	planets = {
+		"pc_o_super_star"
+		"pc_b_super_star"
+		"pc_a_super_star"
+		"pc_f_super_star"
+	}
+}
+
+######################################################################################
+# Special Stars
+######################################################################################
+random_list = {
+	name = "special_stars"
+	planets = {
+		"pc_black_hole"
+		"pc_neutron_star"
+		"pc_pulsar"
+	}
+}
+
+				

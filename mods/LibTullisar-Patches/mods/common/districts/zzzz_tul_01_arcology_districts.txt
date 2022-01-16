@@ -1,5 +1,9 @@
 ######################################################################################
-# Arcology Districts
+# Districts (Arcologies)
+######################################################################################
+#
+######################################################################################
+# Residential Arcology
 ######################################################################################
 district_arcology_housing = {
 	base_buildtime = 600
@@ -160,6 +164,9 @@ district_arcology_housing = {
 	}
 }
 
+######################################################################################
+# Foundry Arcology
+######################################################################################
 district_arcology_arms_industry = {
 	base_buildtime = 600
 	is_capped_by_modifier = no
@@ -379,6 +386,9 @@ district_arcology_arms_industry = {
 	#### plentiful traditions
 }
 
+######################################################################################
+# Industrial Arcology
+######################################################################################
 district_arcology_civilian_industry = {
 	base_buildtime = 600
 	is_capped_by_modifier = no
@@ -581,6 +591,9 @@ district_arcology_civilian_industry = {
 	#### plentiful traditions
 }
 
+######################################################################################
+# Leisure Arcology
+######################################################################################
 district_arcology_leisure = {
 	base_buildtime = 600
 	is_capped_by_modifier = no
@@ -762,6 +775,9 @@ district_arcology_leisure = {
 	}
 }
 
+######################################################################################
+# Sanctuary Arcology
+######################################################################################
 district_arcology_organic_housing = {
 	base_buildtime = 600
 	is_capped_by_modifier = no
@@ -811,6 +827,9 @@ district_arcology_organic_housing = {
 	}
 }
 
+######################################################################################
+# Coordination District
+######################################################################################
 district_arcology_coordination = {
 	base_buildtime = 600
 	is_capped_by_modifier = no

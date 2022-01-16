@@ -1,0 +1,1774 @@
+trait_extremely_adaptive_upgrade = {
+	cost = 2
+	initial = no
+	randomized = no
+	icon = "gfx/interface/icons/traits/trait_extremely_adaptive.dds"
+	allowed_archetypes = { BIOLOGICAL }
+	opposites = { "trait_robust_upgrade_1" "trait_ageless_upgrade_1" }
+	species_potential_add = {
+		has_trait = trait_adaptive
+		exists = from
+		from = {
+			is_ai = yes
+		}
+	}
+	modifier = {
+		pop_environment_tolerance = 0.2
+	}
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 2
+			root = {
+				NOR = {
+					has_trait = trait_survivor
+					has_trait = trait_pc_nuked_preference
+				}	
+			}
+			any_owned_planet = { is_planet_class = pc_nuked }
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_ascension_perk = ap_voidborn
+				has_ascension_perk = ap_world_shaper
+				has_ascension_perk = ap_galactic_wonders_utopia
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality_behaviour = purger
+				has_ai_personality_behaviour = displacer
+			}
+			is_same_species = root
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					has_trait = trait_rapid_breeders
+					has_trait = trait_rapid_breeders_lithoid
+					has_trait = trait_fertile
+					has_trait = trait_nomadic
+				}
+				has_citizenship_type = {
+					country = prev
+					type = citizenship_full
+				}
+			}
+		}
+	}
+}
+
+trait_very_strong_upgrade = {
+	cost = 2
+	initial = no
+	randomized = no
+	icon = "gfx/interface/icons/traits/trait_very_strong.dds"
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	opposites = { "trait_titanic_strength_upgrade_1" }
+	species_potential_add = {
+		has_trait = trait_strong
+		exists = from
+		from = {
+			is_ai = yes
+		}
+	}
+	modifier = {
+		army_damage_mult = 0.4
+		planet_jobs_worker_produces_mult = 0.05
+	}
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 2
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			root = {
+				has_military_service_type = { country = prev type = military_service_none }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			root = {
+				NOT = { has_citizenship_type = { country = prev type = citizenship_slavery } }
+			}
+			any_owned_species = {
+				has_citizenship_type = { type = citizenship_slavery country = prev }
+			}
+		}
+		modifier = {
+			factor = 4
+			exists = root.home_planet
+			root.home_planet = {
+				OR = {
+					has_designation = col_rural
+					has_designation = col_rural_gestalt
+					has_designation = col_fortress
+				}
+				is_owned_by = prev
+			}
+		}
+		modifier = {
+			factor = 2
+			exists = root.home_planet
+			root.home_planet = {
+				OR = {
+					has_designation = col_mining
+					has_designation = col_farming
+					has_designation = col_ring_farming
+					has_designation = col_slave
+				}
+				is_owned_by = prev
+			}
+		}
+		modifier = {
+			factor = 0.5
+			exists = root.home_planet
+			root = {
+				NOR = {
+					has_trait = trait_void_dweller_1
+					
+				}
+			}
+			root.home_planet = {
+				NOR = {
+					has_designation = col_capital
+					has_designation = col_default
+					has_designation = col_penal
+					has_designation = col_rural
+					has_designation = col_rural_gestalt
+					has_designation = col_fortress
+					has_designation = col_mining
+					has_designation = col_farming
+					has_designation = col_ring_farming
+				}
+				is_owned_by = prev
+			}
+		}
+		modifier = {
+			factor = 2
+			is_militarist = yes
+		}
+		modifier = {
+			factor = 0.5
+			is_pacifist = yes
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_organic_trophy }
+			}
+		}
+	}
+}
+
+trait_titanic_strength_upgrade_1 = {
+	cost = 3
+	initial = no
+	randomized = no
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_unyielding.dds"
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	opposites = { "trait_very_strong_upgrade" }
+	species_potential_add = {
+		has_trait = trait_strong
+		exists = from
+		from = {
+			is_ai = yes
+			has_technology = tech_genetic_resequencing
+		}
+	}
+	modifier = {
+		army_damage_mult = 0.60
+		planet_jobs_worker_produces_mult = 0.075
+	}
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 2
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			root = {
+				has_military_service_type = { country = prev type = military_service_none }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			root = {
+				NOT = { has_citizenship_type = { country = prev type = citizenship_slavery } }
+			}
+			any_owned_species = {
+				has_citizenship_type = { type = citizenship_slavery country = prev }
+			}
+		}
+		modifier = {
+			factor = 4
+			exists = root.home_planet
+			root.home_planet = {
+				OR = {
+					has_designation = col_rural
+					has_designation = col_rural_gestalt
+					has_designation = col_fortress
+				}
+				is_owned_by = prev
+			}
+		}
+		modifier = {
+			factor = 2
+			exists = root.home_planet
+			root.home_planet = {
+				OR = {
+					has_designation = col_mining
+					has_designation = col_farming
+					has_designation = col_ring_farming
+					has_designation = col_slave
+				}
+				is_owned_by = prev
+			}
+		}
+		modifier = {
+			factor = 0.5
+			exists = root.home_planet
+			root = {
+				NOR = {
+					has_trait = trait_void_dweller_1
+					
+				}
+			}
+			root.home_planet = {
+				NOR = {
+					has_designation = col_capital
+					has_designation = col_default
+					has_designation = col_penal
+					has_designation = col_rural
+					has_designation = col_rural_gestalt
+					has_designation = col_fortress
+					has_designation = col_mining
+					has_designation = col_farming
+					has_designation = col_ring_farming
+				}
+				is_owned_by = prev
+			}
+		}
+		modifier = {
+			factor = 2
+			is_militarist = yes
+		}
+		modifier = {
+			factor = 0.5
+			is_pacifist = yes
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_organic_trophy }
+			}
+		}
+	}
+}
+
+trait_titanic_strength_upgrade_2 = {
+	cost = 1
+	initial = no
+	randomized = no
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_unyielding.dds"
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	species_potential_add = {
+		has_trait = trait_very_strong
+		exists = from
+		from = {
+			is_ai = yes
+			has_technology = tech_genetic_resequencing
+		}
+	}
+	modifier = {
+		army_damage_mult = 0.60
+		planet_jobs_worker_produces_mult = 0.075
+	}
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 2
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			root = {
+				has_military_service_type = { country = prev type = military_service_none }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			root = {
+				NOT = { has_citizenship_type = { country = prev type = citizenship_slavery } }
+			}
+			any_owned_species = {
+				has_citizenship_type = { type = citizenship_slavery country = prev }
+			}
+		}
+		modifier = {
+			factor = 4
+			exists = root.home_planet
+			root.home_planet = {
+				OR = {
+					has_designation = col_rural
+					has_designation = col_rural_gestalt
+					has_designation = col_fortress
+				}
+				is_owned_by = prev
+			}
+		}
+		modifier = {
+			factor = 2
+			exists = root.home_planet
+			root.home_planet = {
+				OR = {
+					has_designation = col_mining
+					has_designation = col_farming
+					has_designation = col_ring_farming
+					has_designation = col_slave
+				}
+				is_owned_by = prev
+			}
+		}
+		modifier = {
+			factor = 0.5
+			exists = root.home_planet
+			root = {
+				NOR = {
+					has_trait = trait_void_dweller_1
+					
+				}
+			}
+			root.home_planet = {
+				NOR = {
+					has_designation = col_capital
+					has_designation = col_default
+					has_designation = col_penal
+					has_designation = col_rural
+					has_designation = col_rural_gestalt
+					has_designation = col_fortress
+					has_designation = col_mining
+					has_designation = col_farming
+					has_designation = col_ring_farming
+				}
+				is_owned_by = prev
+			}
+		}
+		modifier = {
+			factor = 2
+			is_militarist = yes
+		}
+		modifier = {
+			factor = 0.5
+			is_pacifist = yes
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_organic_trophy }
+			}
+		}
+	}
+}
+
+trait_venerable_upgrade = {
+	cost = 3
+	initial = no
+	randomized = no
+	modifier = { leader_age = 80 }
+	icon = "gfx/interface/icons/traits/trait_venerable.dds"
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	species_potential_add = {
+		has_trait = trait_enduring
+		exists = from
+		from = {
+			is_ai = yes
+			NOT = { has_technology = tech_genetic_resequencing }
+		}
+	}
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 2
+			is_materialist = yes
+		}
+		modifier = {
+			factor = 0.5
+			has_ethic = ethic_spiritualist # look to the afterlife rather than prolonging this one
+		}
+		modifier = {
+			factor = 0.25
+			has_ethic = ethic_fanatic_spiritualist
+		}
+		modifier = {
+			factor = 0
+			has_valid_civic = civic_warrior_culture # what are you doing living to old age, you should be dying honourably in battle.
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery }
+			}
+		}
+		modifier = {
+			factor = 0
+			is_xenophile = no
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_limited }
+			}
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					has_citizenship_type = { country = prev type = citizenship_full }
+					has_military_service_type = { country = prev type = military_service_full }
+				}		
+			}
+			pop_percentage = {
+				percentage < 0.5
+				limit = {
+					OR = {
+						has_citizenship_type = { country = prev type = citizenship_full }
+						has_military_service_type = { country = prev type = military_service_full }
+					}	
+				}
+			}
+		}
+	}
+}
+
+trait_erudite_upgrade = {
+	cost = 2
+	initial = no
+	randomized = no
+	advanced_trait = yes
+	opposites = { "trait_nerve_stapled" "remove_trait_intelligent" }
+	icon = "gfx/interface/icons/traits/trait_erudite.dds"
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	species_potential_add = {
+		has_trait = trait_intelligent
+		exists = from
+		from = { is_ai = yes }
+	}
+	ai_weight = {
+		weight = 10000
+		modifier = {
+			factor = 0.25
+			root = {
+				NOR = {
+					has_trait = trait_natural_engineers
+					has_trait = trait_natural_physicists
+					has_trait = trait_natural_sociologists
+				}	
+			}
+			any_owned_species = {
+				NOT = { has_citizenship_type = { country = prev type = citizenship_slavery } }
+				OR = {
+					has_trait = trait_erudite
+					has_trait = trait_natural_engineers
+					has_trait = trait_natural_physicists
+					has_trait = trait_natural_sociologists
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			root = {
+				OR = {
+					has_citizenship_type = { country = prev type = citizenship_slavery }
+					has_citizenship_type = { country = prev type = citizenship_organic_trophy }	
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_xenophile = no
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_limited }
+			}
+		}
+		modifier = {
+			factor = 2
+			any_owned_species = {
+				has_citizenship_type = { type = citizenship_slavery country = prev }
+			}
+		}
+		modifier = {
+			factor = 2
+			is_materialist = yes
+		}
+		modifier = {
+			factor = 2
+			has_valid_civic = civic_technocracy
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_full }
+			}
+		}
+		modifier = {
+			factor = 2
+			has_valid_civic = civic_meritocracy
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_full }
+			}
+		}
+		modifier = {
+			factor = 4
+			exists = root.home_planet
+			root.home_planet = {
+				OR = {
+					has_designation = col_research
+					has_designation = col_ring_research
+					has_designation = col_ecu_research
+				}
+				is_owned_by = prev
+			}
+		}
+		modifier = {
+			factor = 2
+			exists = root.home_planet
+			root.home_planet = {
+				OR = {
+					has_designation = col_city
+					has_designation = col_nexus
+					has_designation = col_hive
+					has_designation = col_ring_mix
+					has_designation = col_ecu_mix
+				}
+				is_owned_by = prev
+			}
+		}
+		modifier = {
+			factor = 0.5
+			exists = root.home_planet
+			root = {
+				NOR = {
+					has_trait = trait_void_dweller_1
+					
+				}
+			}
+			root.home_planet = {
+				NOR = {
+					has_designation = col_capital
+					has_designation = col_default
+					has_designation = col_penal
+					has_designation = col_research
+					has_designation = col_ring_research
+					has_designation = col_ecu_research
+					has_designation = col_city
+					has_designation = col_nexus
+					has_designation = col_hive
+					has_designation = col_ring_mix
+					has_designation = col_ecu_mix
+				}
+				is_owned_by = prev
+			}
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					has_citizenship_type = { country = prev type = citizenship_full }
+					has_military_service_type = { country = prev type = military_service_full }
+				}		
+			}
+			pop_percentage = {
+				percentage < 0.5
+				limit = {
+					OR = {
+						has_citizenship_type = { country = prev type = citizenship_full }
+						has_military_service_type = { country = prev type = military_service_full }
+					}	
+				}
+			}
+		}
+		modifier = {
+			factor = 0.01
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_organic_trophy }
+			}
+		}
+	}
+}
+
+trait_robust_upgrade_1 = {
+	cost = 2
+	initial = no
+	randomized = no
+	advanced_trait = yes
+	opposites = { "trait_extremely_adaptive_upgrade" }
+	icon = "gfx/interface/icons/traits/trait_robust.dds"
+	allowed_archetypes = { BIOLOGICAL }
+	species_potential_add = {
+		has_trait = trait_adaptive
+		exists = from
+		from = {
+			is_ai = yes
+			has_technology = tech_genetic_resequencing
+		}
+	}
+	ai_weight = {
+		weight = 10000
+		modifier = {
+			factor = 2
+			is_materialist = yes
+		}
+		modifier = {
+			factor = 0.5
+			has_ethic = ethic_spiritualist # look to the afterlife rather than prolonging this one
+		}
+		modifier = {
+			factor = 0.25
+			has_ethic = ethic_fanatic_spiritualist
+		}
+		modifier = {
+			factor = 0.5
+			has_valid_civic = civic_warrior_culture # what are you doing living to old age, you should be dying honourably in battle.
+		}
+		modifier = {
+			factor = 0.5
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_ascension_perk = ap_voidborn
+				has_ascension_perk = ap_world_shaper
+				has_ascension_perk = ap_galactic_wonders_utopia
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality_behaviour = purger
+				has_ai_personality_behaviour = displacer
+			}
+			is_same_species = root
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					has_trait = trait_rapid_breeders
+					has_trait = trait_rapid_breeders_lithoid
+					has_trait = trait_fertile
+					has_trait = trait_nomadic
+				}
+				has_citizenship_type = {
+					country = prev
+					type = citizenship_full
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_xenophile = no
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_limited }
+			}
+		}
+	}
+}
+
+trait_robust_upgrade_2 = {
+	cost = 0
+	initial = no
+	randomized = no
+	advanced_trait = yes
+	icon = "gfx/interface/icons/traits/trait_robust.dds"
+	allowed_archetypes = { BIOLOGICAL }
+	opposites = { "trait_ageless_upgrade_2" }
+	species_potential_add = {
+		has_trait = trait_extremely_adaptive
+		exists = from
+		from = {
+			is_ai = yes
+			has_technology = tech_genetic_resequencing
+		}
+	}
+	ai_weight = {
+		weight = 80000
+		modifier = {
+			factor = 2
+			is_materialist = yes
+		}
+		modifier = {
+			factor = 0.5
+			has_ethic = ethic_spiritualist # look to the afterlife rather than prolonging this one
+		}
+		modifier = {
+			factor = 0.25
+			has_ethic = ethic_fanatic_spiritualist
+		}
+		modifier = {
+			factor = 0.5
+			has_valid_civic = civic_warrior_culture # what are you doing living to old age, you should be dying honourably in battle.
+		}
+		modifier = {
+			factor = 0.5
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_ascension_perk = ap_voidborn
+				has_ascension_perk = ap_world_shaper
+				has_ascension_perk = ap_galactic_wonders_utopia
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality_behaviour = purger
+				has_ai_personality_behaviour = displacer
+			}
+			is_same_species = root
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					has_trait = trait_rapid_breeders
+					has_trait = trait_rapid_breeders_lithoid
+					has_trait = trait_fertile
+					has_trait = trait_nomadic
+				}
+				has_citizenship_type = {
+					country = prev
+					type = citizenship_full
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_xenophile = no
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_limited }
+			}
+		}
+	}
+}
+
+trait_robust_upgrade_3 = {
+	cost = 1
+	initial = no
+	randomized = no
+	advanced_trait = yes
+	icon = "gfx/interface/icons/traits/trait_robust.dds"
+	allowed_archetypes = { BIOLOGICAL }
+	opposites = { "trait_ageless_upgrade_3" }
+	species_potential_add = {
+		has_trait = trait_adaptable_evolution
+		exists = from
+		from = {
+			is_ai = yes
+			has_technology = tech_genetic_resequencing
+		}
+	}
+	ai_weight = {
+		weight = 80000
+		modifier = {
+			factor = 2
+			is_materialist = yes
+		}
+		modifier = {
+			factor = 0.5
+			has_ethic = ethic_spiritualist # look to the afterlife rather than prolonging this one
+		}
+		modifier = {
+			factor = 0.25
+			has_ethic = ethic_fanatic_spiritualist
+		}
+		modifier = {
+			factor = 0.5
+			has_valid_civic = civic_warrior_culture # what are you doing living to old age, you should be dying honourably in battle.
+		}
+		modifier = {
+			factor = 0.5
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_ascension_perk = ap_voidborn
+				has_ascension_perk = ap_world_shaper
+				has_ascension_perk = ap_galactic_wonders_utopia
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality_behaviour = purger
+				has_ai_personality_behaviour = displacer
+			}
+			is_same_species = root
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					has_trait = trait_rapid_breeders
+					has_trait = trait_rapid_breeders_lithoid
+					has_trait = trait_fertile
+					has_trait = trait_nomadic
+				}
+				has_citizenship_type = {
+					country = prev
+					type = citizenship_full
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_xenophile = no
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_limited }
+			}
+		}
+	}
+}
+
+trait_ageless_upgrade_1 = {
+	cost = 3
+	initial = no
+	randomized = no
+	advanced_trait = yes
+	opposites = { "trait_extremely_adaptive_upgrade" "trait_robust_upgrade_1" }
+	icon = "gfx/interface/icons/traits/trait_ageless.dds"
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	species_potential_add = {
+		OR = {
+			has_trait = trait_adaptive
+			has_trait = trait_adaptive_lithoid
+		}
+		exists = from
+		from = {
+			is_ai = yes
+			has_technology = tech_genetic_mastery
+		}
+	}
+	ai_weight = {
+		weight = 25000
+		modifier = {
+			factor = 2
+			is_materialist = yes
+		}
+		modifier = {
+			factor = 0.5
+			has_ethic = ethic_spiritualist # look to the afterlife rather than prolonging this one
+		}
+		modifier = {
+			factor = 0.25
+			has_ethic = ethic_fanatic_spiritualist
+		}
+		modifier = {
+			factor = 0.5
+			has_valid_civic = civic_warrior_culture # what are you doing living to old age, you should be dying honourably in battle.
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery } # no immortality for slaves
+			}
+		}
+		modifier = {
+			factor = 0.75
+			OR = {
+				has_ascension_perk = ap_voidborn
+				has_ascension_perk = ap_world_shaper
+				has_ascension_perk = ap_galactic_wonders_utopia
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality_behaviour = purger
+				has_ai_personality_behaviour = displacer
+			}
+			is_same_species = root
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					is_trait_rapid_breeders = yes
+					has_trait = trait_nomadic
+				}
+				has_citizenship_type = {
+					country = prev
+					type = citizenship_full
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			is_xenophile = no
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_limited }
+			}
+		}
+		modifier = {
+			factor = 0
+			is_xenophobe = yes
+			NOT = { is_same_species = root }
+		}
+	}
+}
+
+trait_ageless_upgrade_2 = {
+	cost = 1
+	initial = no
+	randomized = no
+	advanced_trait = yes
+	icon = "gfx/interface/icons/traits/trait_ageless.dds"
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	opposites = { "trait_robust_upgrade_2" }
+	species_potential_add = {
+		OR = {
+			has_trait = trait_venerable
+			has_trait = trait_venerable_lithoid
+			has_trait = trait_extremely_adaptive
+			has_trait = trait_ancient
+			has_trait = trait_necroid_ancient
+			has_trait = trait_lithoid_eternal
+		}
+		exists = from
+		from = {
+			is_ai = yes
+			has_technology = tech_genetic_mastery
+		}
+	}
+	ai_weight = {
+		weight = 100000
+		modifier = {
+			factor = 2
+			is_materialist = yes
+		}
+		modifier = {
+			factor = 0.5
+			has_ethic = ethic_spiritualist # look to the afterlife rather than prolonging this one
+		}
+		modifier = {
+			factor = 0.25
+			has_ethic = ethic_fanatic_spiritualist
+		}
+		modifier = {
+			factor = 0.5
+			has_valid_civic = civic_warrior_culture # what are you doing living to old age, you should be dying honourably in battle.
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery } # no immortality for slaves
+			}
+		}
+		modifier = {
+			factor = 0.75
+			OR = {
+				has_ascension_perk = ap_voidborn
+				has_ascension_perk = ap_world_shaper
+				has_ascension_perk = ap_galactic_wonders_utopia
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality_behaviour = purger
+				has_ai_personality_behaviour = displacer
+			}
+			is_same_species = root
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					is_trait_rapid_breeders = yes
+					has_trait = trait_nomadic
+				}
+				has_citizenship_type = {
+					country = prev
+					type = citizenship_full
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			is_xenophile = no
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_limited }
+			}
+		}
+		modifier = {
+			factor = 0
+			is_xenophobe = yes
+			NOT = { is_same_species = root }
+		}
+	}
+}
+
+trait_ageless_upgrade_3 = {
+	cost = 2
+	initial = no
+	randomized = no
+	advanced_trait = yes
+	icon = "gfx/interface/icons/traits/trait_ageless.dds"
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	opposites = { "trait_robust_upgrade_3" }
+	species_potential_add = {
+		has_trait = trait_adaptable_evolution
+		exists = from
+		from = {
+			is_ai = yes
+			has_technology = tech_genetic_mastery
+		}
+	}
+	ai_weight = {
+		weight = 100000
+		modifier = {
+			factor = 2
+			is_materialist = yes
+		}
+		modifier = {
+			factor = 0.5
+			has_ethic = ethic_spiritualist # look to the afterlife rather than prolonging this one
+		}
+		modifier = {
+			factor = 0.25
+			has_ethic = ethic_fanatic_spiritualist
+		}
+		modifier = {
+			factor = 0.5
+			has_valid_civic = civic_warrior_culture # what are you doing living to old age, you should be dying honourably in battle.
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery } # no immortality for slaves
+			}
+		}
+		modifier = {
+			factor = 0.75
+			OR = {
+				has_ascension_perk = ap_voidborn
+				has_ascension_perk = ap_world_shaper
+				has_ascension_perk = ap_galactic_wonders_utopia
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality_behaviour = purger
+				has_ai_personality_behaviour = displacer
+			}
+			is_same_species = root
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					is_trait_rapid_breeders = yes
+					has_trait = trait_nomadic
+				}
+				has_citizenship_type = {
+					country = prev
+					type = citizenship_full
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			is_xenophile = no
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_limited }
+			}
+		}
+		modifier = {
+			factor = 0
+			is_xenophobe = yes
+			NOT = { is_same_species = root }
+		}
+	}
+}
+
+trait_ageless_upgrade_4 = {
+	cost = 1
+	initial = no
+	randomized = no
+	advanced_trait = yes
+	icon = "gfx/interface/icons/traits/trait_ageless.dds"
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	species_potential_add = {
+		has_trait = trait_robust
+		exists = from
+		from = {
+			is_ai = yes
+			has_technology = tech_genetic_mastery
+		}
+	}
+	ai_weight = {
+		weight = 100000
+		modifier = {
+			factor = 2
+			is_materialist = yes
+		}
+		modifier = {
+			factor = 0.5
+			has_ethic = ethic_spiritualist # look to the afterlife rather than prolonging this one
+		}
+		modifier = {
+			factor = 0.25
+			has_ethic = ethic_fanatic_spiritualist
+		}
+		modifier = {
+			factor = 0.5
+			has_valid_civic = civic_warrior_culture # what are you doing living to old age, you should be dying honourably in battle.
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery } # no immortality for slaves
+			}
+		}
+		modifier = {
+			factor = 0.75
+			OR = {
+				has_ascension_perk = ap_voidborn
+				has_ascension_perk = ap_world_shaper
+				has_ascension_perk = ap_galactic_wonders_utopia
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality_behaviour = purger
+				has_ai_personality_behaviour = displacer
+			}
+			is_same_species = root
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					is_trait_rapid_breeders = yes
+					has_trait = trait_nomadic
+				}
+				has_citizenship_type = {
+					country = prev
+					type = citizenship_full
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			is_xenophile = no
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_limited }
+			}
+		}
+		modifier = {
+			factor = 0
+			is_xenophobe = yes
+			NOT = { is_same_species = root }
+		}
+	}
+}
+
+trait_ageless_upgrade_5 = {
+	cost = 4
+	initial = no
+	randomized = no
+	advanced_trait = yes
+	icon = "gfx/interface/icons/traits/trait_ageless.dds"
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	species_potential_add = {
+		OR = {
+			has_trait = trait_enduring
+			has_trait = trait_enduring_lithoid
+		}
+		exists = from
+		from = {
+			is_ai = yes
+			has_technology = tech_genetic_mastery
+		}
+	}
+	ai_weight = {
+		weight = 100000
+		modifier = {
+			factor = 2
+			is_materialist = yes
+		}
+		modifier = {
+			factor = 0.5
+			has_ethic = ethic_spiritualist # look to the afterlife rather than prolonging this one
+		}
+		modifier = {
+			factor = 0.25
+			has_ethic = ethic_fanatic_spiritualist
+		}
+		modifier = {
+			factor = 0.5
+			has_valid_civic = civic_warrior_culture # what are you doing living to old age, you should be dying honourably in battle.
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery } # no immortality for slaves
+			}
+		}
+		modifier = {
+			factor = 0.75
+			OR = {
+				has_ascension_perk = ap_voidborn
+				has_ascension_perk = ap_world_shaper
+				has_ascension_perk = ap_galactic_wonders_utopia
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality_behaviour = purger
+				has_ai_personality_behaviour = displacer
+			}
+			is_same_species = root
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					is_trait_rapid_breeders = yes
+					has_trait = trait_nomadic
+				}
+				has_citizenship_type = {
+					country = prev
+					type = citizenship_full
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			is_xenophile = no
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_limited }
+			}
+		}
+		modifier = {
+			factor = 0
+			is_xenophobe = yes
+			NOT = { is_same_species = root }
+		}
+	}
+}
+
+trait_fertile_upgrade_1 = {
+	cost = 2
+	initial = no
+	randomized = no
+	advanced_trait = yes
+	icon = "gfx/interface/icons/traits/trait_fertile.dds"
+	allowed_archetypes = { BIOLOGICAL }
+	species_potential_add = {
+		has_trait = trait_rapid_breeders
+		exists = from
+		from = {
+			is_ai = yes
+			has_technology = tech_genetic_resequencing
+		}
+	}
+	ai_weight = {
+		weight = 10000
+		modifier = {
+			factor = 0
+			is_civic_environmentalist = yes
+		}
+		modifier = {
+			factor = 4
+			has_ai_personality = hive_mind
+		}
+		modifier = {
+			factor = 5
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_organic_trophy }
+			}
+		}
+	}
+}
+
+trait_rapid_breeders_lithoid_upgrade = {
+	cost = 1
+	initial = no
+	randomized = no
+	advanced_trait = yes
+	icon = "gfx/interface/icons/traits/trait_fertile.dds"
+	allowed_archetypes = { LITHOID }
+	species_potential_add = {
+		has_trait = trait_lithoid_crystal
+		exists = from
+		from = {
+			is_ai = yes
+			has_technology = tech_genetic_resequencing
+		}
+	}
+	ai_weight = {
+		weight = 200
+		modifier = {
+			factor = 0
+			is_civic_environmentalist = yes
+		}
+		modifier = {
+			factor = 4
+			has_ai_personality = hive_mind
+		}
+		modifier = {
+			factor = 5
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_organic_trophy }
+			}
+		}
+	}
+}
+
+trait_pheremones_update = {
+	cost = 1
+	initial = no
+	randomized = no
+	advanced_trait = yes
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_charismatic.dds"
+	allowed_archetypes = { BIOLOGICAL }
+	species_potential_add = {
+		has_trait = trait_charismatic
+		exists = from
+		from = {
+			is_ai = yes
+			has_technology = tech_genetic_resequencing
+		}
+	}
+	ai_weight = {
+		weight = 10000
+		modifier = {
+			factor = 4
+			has_valid_civic = civic_media_conglomerate
+		}
+		modifier = {
+			factor = 2
+			has_ascension_perk = ap_xeno_compatibility
+		}
+		modifier = {
+			factor = 2
+			is_xenophile = yes
+		}
+		modifier = {
+			factor = 0.25
+			root = {
+				NOR = {
+					is_trait_thrifty = yes
+					is_trait_traditional = yes
+				}	
+			}
+			any_owned_species = {
+				has_citizenship_type = { country = prev type = citizenship_full }
+				is_trait_charismatic = yes
+			}
+		}
+		modifier = {
+			factor = 0.5
+			root = {
+				OR = {
+					AND = {
+						OR = {
+							has_trait = trait_industrious
+							has_trait = trait_ingenious
+							has_trait = trait_agrarian		
+						}
+						NOT = {
+							prev = {
+								any_owned_species = {
+									has_citizenship_type = { country = prev type = citizenship_slavery }
+								}	
+							}
+						}
+					}
+					AND = {
+						NOT = { has_citizenship_type = { country = prev type = citizenship_slavery } }
+						OR = {
+							is_trait_thrifty = yes
+							has_trait = trait_intelligent
+							is_trait_traditional = yes
+						}
+					}
+				}	
+			}
+			any_owned_species = {
+				NOR = {
+					has_trait = trait_industrious
+					has_trait = trait_ingenious
+					has_trait = trait_agrarian
+					AND = {
+						NOT = { has_citizenship_type = { country = prev type = citizenship_slavery } }
+						OR = {
+							is_trait_thrifty = yes
+							has_trait = trait_intelligent
+							is_trait_traditional = yes
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 4
+			exists = root.home_planet
+			root.home_planet = {
+				has_designation = col_resort
+				is_owned_by = prev
+			}
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_organic_trophy }
+			}
+		}
+		modifier = {
+			factor = 0.1
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery }
+				NOT = { has_slavery_type = { country = prev type = slavery_domestic } }
+			}
+		}
+		modifier = {
+			factor = 4
+			root = {
+				has_slavery_type = { country = prev type = slavery_domestic }
+			}
+		}
+	}
+}
+
+trait_obedient_update = {
+	cost = 1
+	initial = no
+	randomized = no
+	advanced_trait = yes
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_eager.dds"
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	species_potential_add = {
+		has_trait = trait_conformists
+		exists = from
+		from = {
+			is_ai = yes
+			has_technology = tech_genetic_resequencing
+		}
+	}
+	ai_weight = {
+		weight = 10000
+		modifier = {
+			factor = 2
+			is_authoritarian = yes
+		}
+		modifier = {
+			factor = 2
+			is_civic_has_elite = yes
+			root = {
+				NOT = {
+					has_citizenship_type = { country = prev type = citizenship_full }
+				}	
+			}
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				is_egalitarian = yes
+				is_civic_has_meritocracy = yes
+			}
+			root = {
+				NOT = {
+					has_citizenship_type = { country = prev type = citizenship_slavery }
+				}	
+			}
+		}
+	}
+}
+
+trait_lithoid_shiny_update = {
+	cost = 1
+	initial = no
+	randomized = no
+	advanced_trait = yes
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_charismatic.dds"
+	allowed_archetypes = { LITHOID }
+	species_potential_add = {
+		has_trait = trait_charismatic
+		exists = from
+		from = {
+			is_ai = yes
+			has_technology = tech_genetic_resequencing
+		}
+	}
+	ai_weight = {
+		weight = 10000
+		modifier = {
+			factor = 4
+			has_valid_civic = civic_media_conglomerate
+		}
+		modifier = {
+			factor = 2
+			has_ascension_perk = ap_xeno_compatibility
+		}
+		modifier = {
+			factor = 2
+			is_xenophile = yes
+		}
+		modifier = {
+			factor = 0.25
+			root = {
+				NOR = {
+					is_trait_thrifty = yes
+					is_trait_traditional = yes
+				}	
+			}
+			any_owned_species = {
+				has_citizenship_type = { country = prev type = citizenship_full }
+				is_trait_charismatic = yes
+			}
+		}
+		modifier = {
+			factor = 0.5
+			root = {
+				OR = {
+					AND = {
+						OR = {
+							has_trait = trait_industrious
+							has_trait = trait_ingenious
+							has_trait = trait_agrarian		
+						}
+						NOT = {
+							prev = {
+								any_owned_species = {
+									has_citizenship_type = { country = prev type = citizenship_slavery }
+								}	
+							}
+						}
+					}
+					AND = {
+						NOT = { has_citizenship_type = { country = prev type = citizenship_slavery } }
+						OR = {
+							is_trait_thrifty = yes
+							has_trait = trait_intelligent
+							is_trait_traditional = yes
+						}
+					}
+				}	
+			}
+			any_owned_species = {
+				NOR = {
+					has_trait = trait_industrious
+					has_trait = trait_ingenious
+					has_trait = trait_agrarian
+					AND = {
+						NOT = { has_citizenship_type = { country = prev type = citizenship_slavery } }
+						OR = {
+							is_trait_thrifty = yes
+							has_trait = trait_intelligent
+							is_trait_traditional = yes
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 4
+			exists = root.home_planet
+			root.home_planet = {
+				has_designation = col_resort
+				is_owned_by = prev
+			}
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_organic_trophy }
+			}
+		}
+		modifier = {
+			factor = 0.1
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery }
+				NOT = { has_slavery_type = { country = prev type = slavery_domestic } }
+			}
+		}
+		modifier = {
+			factor = 4
+			root = {
+				has_slavery_type = { country = prev type = slavery_domestic }
+			}
+		}
+	}
+}
+
+trait_lithoid_compact_update = {
+	cost = 2
+	initial = no
+	randomized = no
+	advanced_trait = yes
+	icon = "gfx/interface/icons/traits/trait_lithoid_compact.dds"
+	allowed_archetypes = { LITHOID }
+	species_potential_add = {
+		has_trait = trait_communal
+		exists = from
+		from = {
+			is_ai = yes
+			has_technology = tech_genetic_resequencing
+		}
+	}
+	ai_weight = {
+		weight = 10000
+		modifier = {
+			factor = 3
+			is_civic_environmentalist = yes
+		}
+		modifier = {
+			factor = 3
+			is_civic_shared_burden = yes
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				is_pacifist = yes
+				is_xenophile = yes
+			}
+		}
+		modifier = {
+			factor = 2
+			has_origin = origin_void_dwellers
+		}
+		modifier = {
+			factor = 2
+			root = {
+				is_trait_rapid_breeders = yes
+			}
+		}
+	}
+}
+
+trait_lithoid_byproducts_update = {
+	cost = 3
+	initial = no
+	randomized = no
+	advanced_trait = yes
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_nuumismatic_priest.dds"
+	allowed_archetypes = { LITHOID }
+	species_potential_add = {
+		OR = {
+			has_trait = trait_lithoid_gaseous_byproducts
+			has_trait = trait_lithoid_scintillating
+			has_trait = trait_lithoid_volatile_excretions
+		}
+		exists = from
+		from = {
+			is_ai = yes
+			has_technology = tech_genetic_mastery
+		}
+	}
+	ai_weight = {
+		weight = 25000
+		modifier = {
+			factor = 0
+			root = {
+				OR = {
+					has_citizenship_type = { country = prev type = citizenship_assimilation }
+					has_citizenship_type = { country = prev type = citizenship_purge }
+				}
+			}
+		}
+	}
+}
+
+remove_trait_venerable = {
+	cost = -4
+	initial = no
+	randomized = no
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	icon = "gfx/interface/icons/traits/trait_fleeting.dds"
+	species_potential_add = {
+		OR = {
+			has_trait = trait_venerable
+			has_trait = trait_venerable_lithoid
+		}
+		from = {
+			is_ai = yes
+			has_technology = tech_genetic_resequencing
+		}
+	}
+	ai_weight = {
+		weight = 6000
+		modifier = {
+			factor = 0
+			root = {
+				NAND = {
+					has_species_flag = remove_venerable@prev
+					has_citizenship_type = {
+						country = prev
+						type = citizenship_slavery
+					}
+				}
+			}
+		}
+	}
+}
+
+remove_trait_intelligent = {
+	cost = -2
+	initial = no
+	randomized = no
+	opposites = { "trait_erudite_upgrade" }
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	icon = "gfx/interface/icons/traits/trait_slow_learners.dds"
+	species_potential_add = {
+		has_trait = trait_intelligent
+		from = {
+			is_ai = yes
+			has_technology = tech_genetic_resequencing
+		}
+	}
+	ai_weight = {
+		weight = 6000
+		modifier = {
+			factor = 0
+			root = {
+				NAND = {
+					has_species_flag = remove_intelligent@prev
+					has_citizenship_type = {
+						country = prev
+						type = citizenship_slavery
+					}
+				}
+			}
+		}
+	}
+}

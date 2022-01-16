@@ -1,9 +1,10 @@
 ######################################################################################
 # Species Traits
-# 
-# This file serves to merge species traits mods, currently it merges the traits
-# from Expanded Traits, Civics, Pops, and More with Planetary Diversity.
+# Package: Patch
+######################################################################################
 #
+######################################################################################
+# Agrarian
 ######################################################################################
 trait_agrarian = {
 	cost = 2
@@ -211,6 +212,9 @@ trait_agrarian = {
 	}
 }
 
+######################################################################################
+# Ingenious
+######################################################################################
 trait_ingenious = {
 	cost = 2
 	potential_crossbreeding_chance = 1
@@ -388,6 +392,9 @@ trait_ingenious = {
 	}
 }
 
+######################################################################################
+# Industrious
+######################################################################################
 trait_industrious = {
 	cost = 2
 	potential_crossbreeding_chance = 1
@@ -578,6 +585,9 @@ trait_industrious = {
 	}
 }
 
+######################################################################################
+# Slothful
+######################################################################################
 trait_slothful = {
 	cost = -2
 	potential_crossbreeding_chance = 0.5
@@ -609,6 +619,9 @@ trait_slothful = {
 	}
 }
 
+######################################################################################
+# Intelligent
+######################################################################################
 trait_intelligent = {
 	cost = 2
 	potential_crossbreeding_chance = 1
@@ -814,6 +827,9 @@ trait_intelligent = {
 	}
 }
 
+######################################################################################
+# Uninventive
+######################################################################################
 trait_uninventive = {
 	cost = -1
 	icon = "gfx/interface/icons/traits/trait_uninventive.dds"
@@ -848,6 +864,9 @@ trait_uninventive = {
 	}
 }
 
+######################################################################################
+# Thrifty
+######################################################################################
 trait_thrifty = {
 	cost = 2
 	allowed_archetypes = {
@@ -990,6 +1009,9 @@ trait_thrifty = {
 	}
 }
 
+######################################################################################
+# Natural Engineers
+######################################################################################
 trait_natural_engineers = {
 	cost = 1
 	potential_crossbreeding_chance = 1
@@ -1141,6 +1163,9 @@ trait_natural_engineers = {
 	}
 }
 
+######################################################################################
+# Natural Physicists
+######################################################################################
 trait_natural_physicists = {
 	cost = 1
 	potential_crossbreeding_chance = 1
@@ -1291,6 +1316,9 @@ trait_natural_physicists = {
 	}
 }
 
+######################################################################################
+# Natural Sociologists
+######################################################################################
 trait_natural_sociologists = {
 	cost = 1
 	potential_crossbreeding_chance = 1
@@ -1441,6 +1469,9 @@ trait_natural_sociologists = {
 	}
 }
 
+######################################################################################
+# Extremely Adaptive
+######################################################################################
 trait_extremely_adaptive = {
 	cost = 4
 	potential_crossbreeding_chance = 1
@@ -1448,9 +1479,9 @@ trait_extremely_adaptive = {
 		"trait_nonadaptive"
 		"trait_adaptive"
 		"trait_robust"
+		"trait_adaptive_lithoid"
 		"trait_ageless"
 		"trait_endemic"
-		"trait_adaptive_lithoid"
 	}
 	allowed_archetypes = {
 		BIOLOGICAL
@@ -1510,6 +1541,9 @@ trait_extremely_adaptive = {
 	}
 }
 
+######################################################################################
+# Adaptive
+######################################################################################
 trait_adaptive = {
 	cost = 2
 	potential_crossbreeding_chance = 1
@@ -1517,9 +1551,9 @@ trait_adaptive = {
 		"trait_nonadaptive"
 		"trait_extremely_adaptive"
 		"trait_robust"
+		"trait_adaptive_lithoid"
 		"trait_ageless"
 		"trait_endemic"
-		"trait_adaptive_lithoid"
 	}
 	allowed_archetypes = {
 		BIOLOGICAL
@@ -1577,6 +1611,9 @@ trait_adaptive = {
 	}
 }
 
+######################################################################################
+# Adaptive (Lithoids)
+######################################################################################
 trait_adaptive_lithoid = {
 	cost = 2
 	icon = "gfx/interface/icons/traits/trait_adaptive.dds"
@@ -1585,12 +1622,12 @@ trait_adaptive_lithoid = {
 	advanced_trait = yes
 	potential_crossbreeding_chance = 0.5
 	opposites = {
-		"trait_ageless"
-		"trait_exploiter"
 		"trait_nonadaptive"
 		"trait_extremely_adaptive"
 		"trait_robust"
 		"trait_adaptive"
+		"trait_ageless"
+		"trait_exploiter"
 	}
 	allowed_archetypes = {
 		LITHOID
@@ -1648,6 +1685,9 @@ trait_adaptive_lithoid = {
 	}
 }
 
+######################################################################################
+# Nonadaptive
+######################################################################################
 trait_nonadaptive = {
 	cost = -2
 	potential_crossbreeding_chance = 1
@@ -1655,9 +1695,9 @@ trait_nonadaptive = {
 		"trait_adaptive"
 		"trait_extremely_adaptive"
 		"trait_robust"
+		"trait_adaptive_lithoid"
 		"trait_ageless"
 		"trait_endemic"
-		"trait_adaptive_lithoid"
 	}
 	allowed_archetypes = {
 		BIOLOGICAL
@@ -1681,6 +1721,9 @@ trait_nonadaptive = {
 	}
 }
 
+######################################################################################
+# Endemic
+######################################################################################
 trait_endemic = {
 	cost = -4
 	potential_crossbreeding_chance = 0.5
@@ -1711,6 +1754,9 @@ trait_endemic = {
 	}
 }
 
+######################################################################################
+# Rapid Breeders
+######################################################################################
 trait_rapid_breeders = {
 	cost = 2
 	potential_crossbreeding_chance = 1
@@ -1719,7 +1765,7 @@ trait_rapid_breeders = {
 		"trait_fertile"
 		"trait_rapid_breeders_lithoid"
 		"trait_fungal_colony"
-		"trait_clones"
+		# "trait_clones"
 		"trait_plantoid_budding"
 		"trait_clone_soldier_infertile"
 		"trait_clone_soldier_infertile_full_potential"
@@ -1751,6 +1797,9 @@ trait_rapid_breeders = {
 	}
 }
 
+######################################################################################
+# Rapid Breeders (Lithoid)
+######################################################################################
 trait_rapid_breeders_lithoid = {
 	cost = 2
 	icon = "gfx/interface/icons/traits/trait_rapid_breeders.dds"
@@ -1763,7 +1812,7 @@ trait_rapid_breeders_lithoid = {
 		"trait_rapid_breeders"
 		"trait_fertile"
 		"trait_lithoid_crystal"
-		"trait_clones"
+		# "trait_clones"
 		"trait_plantoid_budding"
 		"trait_clone_soldier_infertile"
 		"trait_clone_soldier_infertile_full_potential"
@@ -1796,15 +1845,18 @@ trait_rapid_breeders_lithoid = {
 	}
 }
 
+######################################################################################
+# Slow Breeders
+######################################################################################
 trait_slow_breeders = {
 	cost = -2
 	potential_crossbreeding_chance = 1
 	opposites = {
 		"trait_rapid_breeders"
 		"trait_fertile"
-		"trait_rapid_breeders_lithoid"
 		"trait_fungal_colony"
-		"trait_clones"
+		# "trait_clones"
+		"trait_rapid_breeders_lithoid"
 		"trait_plantoid_budding"
 		"trait_clone_soldier_infertile"
 		"trait_clone_soldier_infertile_full_potential"
@@ -1831,6 +1883,9 @@ trait_slow_breeders = {
 	}
 }
 
+######################################################################################
+# Talented
+######################################################################################
 trait_talented = {
 	cost = 1
 	potential_crossbreeding_chance = 1
@@ -1895,6 +1950,9 @@ trait_talented = {
 	}
 }
 
+######################################################################################
+# Inept
+######################################################################################
 trait_inept = {
 	cost = -1
 	potential_crossbreeding_chance = 0.1
@@ -1925,6 +1983,9 @@ trait_inept = {
 	}
 }
 
+######################################################################################
+# Quick Learners
+######################################################################################
 trait_quick_learners = {
 	cost = 1
 	potential_crossbreeding_chance = 1
@@ -1988,6 +2049,9 @@ trait_quick_learners = {
 	}
 }
 
+######################################################################################
+# Slow Learners
+######################################################################################
 trait_slow_learners = {
 	cost = -1
 	potential_crossbreeding_chance = 1
@@ -2017,6 +2081,9 @@ trait_slow_learners = {
 	}
 }
 
+######################################################################################
+# Traditional
+######################################################################################
 trait_traditional = {
 	cost = 1
 	potential_crossbreeding_chance = 1
@@ -2156,6 +2223,9 @@ trait_traditional = {
 	}
 }
 
+######################################################################################
+# Quarrelsome
+######################################################################################
 trait_quarrelsome = {
 	cost = -1
 	potential_crossbreeding_chance = 1
@@ -2182,6 +2252,9 @@ trait_quarrelsome = {
 	}
 }
 
+######################################################################################
+# Docile
+######################################################################################
 trait_docile = {
 	cost = 2
 	potential_crossbreeding_chance = 1
@@ -2195,8 +2268,8 @@ trait_docile = {
 	}
 	modifier = {
 		species_empire_size_mult = -0.1
-		planet_crime_mult = -0.05
 	}
+	custom_tooltip_with_modifiers = trait_good_crime_effect
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -2233,6 +2306,9 @@ trait_docile = {
 	}
 }
 
+######################################################################################
+# Unruly
+######################################################################################
 trait_unruly = {
 	cost = -2
 	potential_crossbreeding_chance = 1
@@ -2246,8 +2322,8 @@ trait_unruly = {
 	}
 	modifier = {
 		species_empire_size_mult = 0.1
-		planet_crime_mult = 0.05
 	}
+	custom_tooltip_with_modifiers = trait_bad_crime_effect
 	ai_weight = {
 		weight = 6000
 		modifier = {
@@ -2261,6 +2337,9 @@ trait_unruly = {
 	}
 }
 
+######################################################################################
+# Clever
+######################################################################################
 trait_clever = {
 	potential_crossbreeding_chance = 1
 	cost = 1
@@ -2277,6 +2356,7 @@ trait_clever = {
 		"trait_syncretic_proles"
 		"trait_nerve_stapled"
 		"trait_presapient_docile_livestock"
+		# "trait_tree_caretaker"
 	}
 	slave_cost = {
 		energy = 25
@@ -2343,6 +2423,9 @@ trait_clever = {
 	}
 }
 
+######################################################################################
+# Very Strong
+######################################################################################
 trait_very_strong = {
 	cost = 3
 	potential_crossbreeding_chance = 1
@@ -2487,6 +2570,9 @@ trait_very_strong = {
 	}
 }
 
+######################################################################################
+# Strong
+######################################################################################
 trait_strong = {
 	cost = 1
 	potential_crossbreeding_chance = 1
@@ -2615,6 +2701,9 @@ trait_strong = {
 	}
 }
 
+######################################################################################
+# Weak
+######################################################################################
 trait_weak = {
 	cost = -1
 	potential_crossbreeding_chance = 1
@@ -2648,6 +2737,9 @@ trait_weak = {
 	}
 }
 
+######################################################################################
+# Nomadic
+######################################################################################
 trait_nomadic = {
 	cost = 1
 	potential_crossbreeding_chance = 1
@@ -2677,6 +2769,9 @@ trait_nomadic = {
 	}
 }
 
+######################################################################################
+# Sedentary
+######################################################################################
 trait_sedentary = {
 	cost = -1
 	potential_crossbreeding_chance = 1
@@ -2973,8 +3068,8 @@ trait_conformists = {
 	potential_crossbreeding_chance = 1
 	modifier = {
 		pop_government_ethic_attraction = 0.3
-		planet_crime_mult = -0.05
 	}
+	custom_tooltip_with_modifiers = trait_good_crime_effect
 	allowed_archetypes = {
 		BIOLOGICAL
 		LITHOID
@@ -3024,8 +3119,8 @@ trait_deviants = {
 	modifier = {
 		pop_government_ethic_attraction = -0.15
 		pop_ethics_shift_speed_mult = 0.15
-		planet_crime_mult = 0.05
 	}
+	custom_tooltip_with_modifiers = trait_bad_crime_effect
 	allowed_archetypes = {
 		BIOLOGICAL
 		LITHOID
@@ -3879,7 +3974,7 @@ trait_fertile = {
 	opposites = {
 		"trait_slow_breeders"
 		"trait_rapid_breeders"
-		"trait_clones"
+		# "trait_clones"
 		"trait_fungal_colony"
 		"trait_clone_soldier_infertile"
 		"trait_clone_soldier_infertile_full_potential"
@@ -3926,8 +4021,8 @@ trait_robust = {
 		"trait_nonadaptive"
 		"trait_adaptive"
 		"trait_extremely_adaptive"
-		"trait_endemic"
 		"trait_adaptive_lithoid"
+		"trait_endemic"
 	}
 	allowed_archetypes = {
 		BIOLOGICAL
@@ -4520,8 +4615,8 @@ trait_obedient = {
 		pop_government_ethic_attraction = 0.5
 		species_empire_size_mult = -0.15
 		pop_amenities_usage_mult = -0.1
-		planet_crime_mult = -0.1
 	}
+	custom_tooltip_with_modifiers = trait_very_good_crime_effect
 	ai_weight = {
 		weight = 10000
 		modifier = {
@@ -5136,7 +5231,6 @@ trait_sleepless = {
 	icon = "gfx/interface/icons/traits/leader_traits/trait_ruler_eye_for_talent.dds"
 	initial = no
 	randomized = no
-	randomized = no
 	opposites = {
 		"trait_low_metabolism"
 	}
@@ -5314,7 +5408,6 @@ trait_enigmatic_intelligence = {
 	advanced_trait = yes
 	opposites = {
 		"trait_nerve_stapled"
-		"trait_erudite"
 		"trait_slow_learners"
 	}
 	allowed_archetypes = {
@@ -5375,6 +5468,7 @@ trait_bioadaptability = {
 	cost = 0
 	potential_crossbreeding_chance = 0.33
 	initial = no
+	modification = no
 	randomized = no
 	allowed_archetypes = {
 		BIOLOGICAL
@@ -5402,6 +5496,7 @@ trait_social_pheromones = {
 	cost = 0
 	potential_crossbreeding_chance = 0.33
 	initial = no
+	modification = no
 	randomized = no
 	allowed_archetypes = {
 		BIOLOGICAL
@@ -5429,6 +5524,7 @@ trait_limited_regeneration = {
 	cost = 0
 	potential_crossbreeding_chance = 0.33
 	initial = no
+	modification = no
 	randomized = no
 	allowed_archetypes = {
 		BIOLOGICAL
@@ -5500,7 +5596,11 @@ trait_lithoid_gaseous_byproducts = {
 	}
 	allowed_archetypes = {
 		LITHOID
-		FUNGOID
+		BIOLOGICAL
+	}
+	species_class = {
+		LITHOID
+		FUN
 	}
 	custom_tooltip = TRAIT_LITHOID_GASEOUS_BYPRODUCTS_EFFECT
 	slave_cost = {
@@ -5667,13 +5767,8 @@ trait_plantoid_radiotrophic = {
 	triggered_planet_growth_modifier = {
 		potential = {
 			exists = planet
-			OR = {
-				planet = {
-					is_planet_class = pc_nuked
-				}
-				planet = {
-					is_planet_class = pc_irradiated
-				}
+			planet = {
+				tul_is_planet_nuked = yes
 			}
 		}
 		pop_growth_speed = 0.1

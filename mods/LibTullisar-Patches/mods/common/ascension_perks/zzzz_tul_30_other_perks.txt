@@ -213,7 +213,7 @@ ap_one_vision = {
 		pop_government_ethic_attraction = 0.5
 	}
 	potential = {
-		tul_is_machine_empire = no
+		tul_country_is_authority_machine = no
 		NOT = {
 			has_ascension_perk = ap_one_vision
 		}

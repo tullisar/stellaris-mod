@@ -1,0 +1,41 @@
+######################################################################################
+# Planet Classes (Modded, Cold)
+# Package: Patch
+######################################################################################
+#
+@planet_standard_scale = 11
+@habitable_planet_max_size = 25
+@habitable_planet_min_size = 12
+@habitable_moon_max_size = 15
+@habitable_moon_min_size = 10
+@habitable_min_distance = 60
+@habitable_max_distance = 100
+@habitable_spawn_odds = 0.5
+#
+######################################################################################
+# Source: Planetary Diversity (Placeholder)
+#
+# pc_snowball	(TODO - move to special)
+# pc_basalt
+# pc_duneforest
+# pc_aeolian
+# pc_antarctic
+# pc_snow
+# pc_glacial
+# pc_frozen_desert
+# pc_boreal
+# pc_highland
+# pc_mud
+# pc_swamp (Bog World)
+# pc_mushroom (Mycelium World)
+# 
+# Rare Planets
+# pc_lichen
+# pc_lanthanide
+# pc_glacio (Glaciovolcanic World)
+# pc_eyeball (Eyeball World)
+# pc_rogue (Rogue World)
+# pc_storm (Storm World)
+#
+######################################################################################
+

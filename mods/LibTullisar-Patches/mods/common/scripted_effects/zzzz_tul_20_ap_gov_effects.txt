@@ -1,0 +1,237 @@
+######################################################################################
+# Government Ascension Perk Effects
+######################################################################################
+
+######################################################################################
+# tul_remove_ap_gov_combo_bonus
+# 
+# Removes all combo bonus modifiers for government ascension perks if they're present.
+#
+######################################################################################
+tul_effect_remove_ap_gov_combo_bonus = {
+	tul_effect_remove_static_modifier_if_present = {
+		MODIFIER = "mod_tul_ap_executive_vigor_combo"
+	}
+	tul_effect_remove_static_modifier_if_present = {
+		MODIFIER = "mod_tul_ap_efficient_executive_combo"
+	}
+	tul_effect_remove_static_modifier_if_present = {
+		MODIFIER = "mod_tul_ap_transcendent_learning_combo"
+	}
+	tul_effect_remove_static_modifier_if_present = {
+		MODIFIER = "mod_tul_ap_limitless_combo"
+	}
+	tul_effect_remove_static_modifier_if_present = {
+		MODIFIER = "mod_tul_ap_imperial_prerogative_combo"
+	}
+	tul_effect_remove_static_modifier_if_present = {
+		MODIFIER = "mod_tul_ap_enforce_prerogative_combo"
+	}
+	tul_effect_remove_static_modifier_if_present = {
+		MODIFIER = "mod_tul_ap_beautiful_bureaucracy_combo"
+	}
+	tul_effect_remove_static_modifier_if_present = {
+		MODIFIER = "mod_tul_ap_beautiful_bureaucracy_combo_hive"
+	}
+	tul_effect_remove_static_modifier_if_present = {
+		MODIFIER = "mod_tul_ap_beautiful_bureaucracy_combo_machines"
+	}
+	tul_effect_remove_static_modifier_if_present = {
+		MODIFIER = "mod_tul_ap_ascendancy_of_the_state_combo"
+	}
+	tul_effect_remove_static_modifier_if_present = {
+		MODIFIER = "mod_tul_ap_efficient_executive_combo"
+	}
+}
+
+######################################################################################
+# tul_effect_calc_ap_gov_combo_bonus
+#
+# Calculates the combo bonus for government ascension perks.
+#
+######################################################################################
+tul_effect_calc_ap_gov_combo_bonus = {
+	hidden_effect = {
+		if = {
+			limit = {
+				tul_has_executive_vigor = yes
+			}
+			tul_effect_inc_ap_combo_bonus = {
+				TYPE = gov
+			}
+		}
+		if = {
+			limit = {
+				tul_has_efficient_executive = yes
+			}
+			tul_effect_inc_ap_combo_bonus = {
+				TYPE = gov
+			}
+		}
+		if = {
+			limit = {
+				tul_has_transcendent_learning = yes
+			}
+			tul_effect_inc_ap_combo_bonus = {
+				TYPE = gov
+			}
+		}
+		if = {
+			limit = {
+				tul_has_limitless = yes
+			}
+			tul_effect_inc_ap_combo_bonus = {
+				TYPE = gov
+			}
+		}
+		if = {
+			limit = {
+				tul_has_imperial_prerogative = yes
+			}
+			tul_effect_inc_ap_combo_bonus = {
+				TYPE = gov
+			}
+		}
+		if = {
+			limit = {
+				tul_has_enforce_prerogative = yes
+			}
+			tul_effect_inc_ap_combo_bonus = {
+				TYPE = gov
+			}
+		}
+		if = {
+			limit = {
+				tul_has_beautiful_bureaucracy = yes
+			}
+			tul_effect_inc_ap_combo_bonus = {
+				TYPE = gov
+			}
+		}
+		if = {
+			limit = {
+				tul_has_ascendancy_of_the_state = yes
+			}
+			tul_effect_inc_ap_combo_bonus = {
+				TYPE = gov
+			}
+		}
+		if = {
+			limit = {
+				tul_has_efficient_executive = yes
+			}
+			tul_effect_inc_ap_combo_bonus = {
+				TYPE = gov
+			}
+		}
+	}
+} 
+
+######################################################################################
+# tul_effect_apply_ap_gov_combo_bonus
+#
+######################################################################################
+tul_effect_apply_ap_gov_combo_bonus = {
+	if = {
+		limit = {
+			tul_has_executive_vigor = yes
+		}
+		tul_effect_check_combo_and_apply = {
+			TYPE = gov
+			MODIFIER = "mod_tul_ap_executive_vigor_combo"
+		}
+	}
+	if = {
+		limit = {
+			tul_has_efficient_executive = yes
+		}
+		tul_effect_check_combo_and_apply = {
+			TYPE = gov
+			MODIFIER = "mod_tul_ap_efficient_executive_combo"
+		}
+	}
+	if = {
+		limit = {
+			tul_has_transcendent_learning = yes
+		}
+		tul_effect_check_combo_and_apply = {
+			TYPE = gov
+			MODIFIER = "mod_tul_ap_transcendent_learning_combo"
+		}
+	}
+	if = {
+		limit = {
+			tul_has_limitless = yes
+		}
+		tul_effect_check_combo_and_apply = {
+			TYPE = gov
+			MODIFIER = "mod_tul_ap_limitless_combo"
+		}
+	}
+	if = {
+		limit = {
+			tul_has_imperial_prerogative = yes
+		}
+		tul_effect_check_combo_and_apply = {
+			TYPE = gov
+			MODIFIER = "mod_tul_ap_imperial_prerogative_combo"
+		}
+	}
+	if = {
+		limit = {
+			tul_has_enforce_prerogative = yes
+		}
+		tul_effect_check_combo_and_apply = {
+			TYPE = gov
+			MODIFIER = "mod_tul_ap_enforce_prerogative_combo"
+		}
+	}
+	if = {
+		limit = {
+			tul_has_beautiful_bureaucracy = yes
+		}
+		if = {
+			limit = {
+				tul_country_is_hive_authority = yes
+			}
+			tul_effect_check_combo_and_apply = {
+				TYPE = gov
+				MODIFIER = "mod_tul_ap_beautiful_bureaucracy_combo_hive"
+			}
+		}
+		else_if = {
+			limit = {
+				tul_country_is_authority_machine = yes
+			}
+			tul_effect_check_combo_and_apply = {
+				TYPE = gov
+				MODIFIER = "mod_tul_ap_beautiful_bureaucracy_combo_machines"
+			}
+		}
+		else = {
+			tul_effect_check_combo_and_apply = {
+				TYPE = gov
+				MODIFIER = "mod_tul_ap_beautiful_bureaucracy_combo"
+			}
+		}
+	}
+	if = {
+		limit = {
+			tul_has_ascendancy_of_the_state = yes
+		}
+		tul_effect_check_combo_and_apply = {
+			TYPE = gov
+			MODIFIER = "mod_tul_ap_ascendency_of_the_state_combo"
+		}
+	}
+	if = {
+		limit = {
+			tul_has_efficient_executive = yes
+		}
+		tul_effect_check_combo_and_apply = {
+			TYPE = gov
+			MODIFIER = "mod_tul_ap_efficient_executive_combo"
+		}
+	}
+
+}

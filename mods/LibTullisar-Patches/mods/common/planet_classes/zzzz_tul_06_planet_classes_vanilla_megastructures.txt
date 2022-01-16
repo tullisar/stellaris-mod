@@ -1,0 +1,326 @@
+######################################################################################
+# Planet Classes (Vanilla, Megastructures)
+######################################################################################
+#
+@planet_standard_scale = 11
+@habitable_planet_max_size = 25
+@habitable_planet_min_size = 12
+@habitable_moon_max_size = 15
+@habitable_moon_min_size = 10
+@habitable_min_distance = 60
+@habitable_max_distance = 100
+@habitable_spawn_odds = 0.5
+#
+######################################################################################
+# Habitable Ring World
+######################################################################################
+pc_ringworld_habitable = {
+	ringworld = yes
+	entity = "ringworld_habitable_entity"
+	preview_entity = "ringworld_01_damaged_full_entity"
+	picture = pc_ringworld
+	icon = GFX_planet_type_ringworld
+	entity_scale = 1.0
+	enable_tilt = no
+	fixed_entity_scale = yes
+	atmosphere_color		= hsv { 0.0 0.0 1.0 }		#DONE
+	atmosphere_intensity	= 1.0
+	atmosphere_width		= 0.5
+	show_city = yes
+	city_color_lut = "gfx/portraits/misc/colorcorrection_continental.dds"
+	extra_orbit_size = 0
+	extra_planet_count = 0
+	chance_of_ring = 0.0
+	planet_size = 10
+	moon_size = 1
+	colonizable = yes
+	district_set = ring_world
+	ideal = yes
+	starting_planet = no
+	orbit_lines = no
+	has_colonization_influence_cost = no		# applies when within own borders
+
+	is_artificial_planet = yes
+
+	modifier = {
+		planet_max_buildings_add = 12
+	}
+
+	carry_cap_per_free_district = @carry_cap_normal
+}
+
+######################################################################################
+# Habitable Ring World (Damaged)
+######################################################################################
+pc_ringworld_habitable_damaged = {
+	ringworld = yes
+	entity = "ringworld_habitable_damaged_entity"
+	preview_entity = "ringworld_01_damaged_full_entity"
+	picture = pc_ringworld_broken
+	icon = GFX_planet_type_ringworld
+	entity_scale = 1.0
+	enable_tilt = no
+	fixed_entity_scale = yes
+	atmosphere_color		= hsv { 0.50 0.2 0.8 }		#DONE
+	atmosphere_intensity	= 1.0
+	atmosphere_width		= 0.5
+	city_color_lut = "gfx/portraits/misc/colorcorrection_desert.dds"
+	extra_orbit_size = 0
+	extra_planet_count = 0
+	chance_of_ring = 0.0
+	planet_size = 10
+	moon_size = 1
+	colonizable = no
+	orbit_lines = no
+}
+
+######################################################################################
+# Ring World (Tech)
+######################################################################################
+pc_ringworld_tech = {
+	ringworld = yes
+	entity = "ringworld_tech_entity"
+	preview_entity = "ringworld_01_damaged_full_entity"
+	picture = pc_ringworld_section
+	icon = GFX_planet_type_ringworld
+	entity_scale = 1.0
+	enable_tilt = no
+	fixed_entity_scale = yes
+	atmosphere_color		= hsv { 0.50 0.2 0.8 }		#DONE
+	atmosphere_intensity	= 1.0
+	atmosphere_width		= 0.5
+	city_color_lut = "gfx/portraits/misc/colorcorrection_desert.dds"
+	extra_orbit_size = 0
+	extra_planet_count = 0
+	chance_of_ring = 0.0
+	planet_size = 10
+	moon_size = 1
+	colonizable = no
+	orbit_lines = no
+
+	is_artificial_planet = yes
+}
+
+######################################################################################
+# Ring World (Tech, Damaged)
+######################################################################################
+pc_ringworld_tech_damaged = {
+	ringworld = yes
+	entity = "ringworld_tech_damaged_entity"
+	preview_entity = "ringworld_01_damaged_full_entity"
+	picture = pc_ringworld_broken
+	icon = GFX_planet_type_ringworld
+	entity_scale = 1.0
+	enable_tilt = no
+	fixed_entity_scale = yes
+	atmosphere_color		= hsv { 0.50 0.2 0.8 }		#DONE
+	atmosphere_intensity	= 1.0
+	atmosphere_width		= 0.5
+	city_color_lut = "gfx/portraits/misc/colorcorrection_desert.dds"
+	extra_orbit_size = 0
+	extra_planet_count = 0
+	chance_of_ring = 0.0
+	planet_size = 10
+	moon_size = 1
+	colonizable = no
+	orbit_lines = no
+
+	is_artificial_planet = yes
+
+}
+
+######################################################################################
+# Ring World (Seam)
+######################################################################################
+pc_ringworld_seam = {
+	ringworld = yes
+	entity = "ringworld_seam_entity"
+	preview_entity = "ringworld_01_damaged_full_entity"
+	picture = pc_ringworld_section
+	icon = GFX_planet_type_ringworld
+	entity_scale = 1.0
+	enable_tilt = no
+	fixed_entity_scale = yes
+	atmosphere_color		= hsv { 0.50 0.2 0.8 }		#DONE
+	atmosphere_intensity	= 1.0
+	atmosphere_width		= 0.5
+	city_color_lut = "gfx/portraits/misc/colorcorrection_desert.dds"
+	extra_orbit_size = 0
+	extra_planet_count = 0
+	chance_of_ring = 0.0
+	planet_size = 10
+	moon_size = 1
+	colonizable = no
+	orbit_lines = no
+
+	is_artificial_planet = yes
+
+}
+
+######################################################################################
+# Ring World (Seam, Damaged)
+######################################################################################
+pc_ringworld_seam_damaged = {
+	ringworld = yes
+	entity = "ringworld_seam_damaged_entity"
+	preview_entity = "ringworld_01_damaged_full_entity"
+	picture = pc_ringworld_broken
+	icon = GFX_planet_type_ringworld
+	entity_scale = 1.0
+	enable_tilt = no
+	fixed_entity_scale = yes
+	atmosphere_color		= hsv { 0.50 0.2 0.8 }		#DONE
+	atmosphere_intensity	= 1.0
+	atmosphere_width		= 0.5
+	city_color_lut = "gfx/portraits/misc/colorcorrection_desert.dds"
+	extra_orbit_size = 0
+	extra_planet_count = 0
+	chance_of_ring = 0.0
+	planet_size = 10
+	moon_size = 1
+	colonizable = no
+	orbit_lines = no
+
+	is_artificial_planet = yes
+
+}
+
+######################################################################################
+# Shattered Ring World (Habitable)
+######################################################################################
+pc_shattered_ring_habitable = {
+	ringworld = yes
+	entity = "ringworld_habitable_entity"
+	preview_entity = "ringworld_01_damaged_full_entity"
+	picture = pc_ringworld
+	icon = GFX_planet_type_ringworld
+	entity_scale = 1.0
+	enable_tilt = no
+	fixed_entity_scale = yes
+	atmosphere_color		= hsv { 0.0 0.0 1.0 }		#DONE
+	atmosphere_intensity	= 1.0
+	atmosphere_width		= 0.5
+	show_city = yes
+	city_color_lut = "gfx/portraits/misc/colorcorrection_continental.dds"
+	extra_orbit_size = 0
+	extra_planet_count = 0
+	chance_of_ring = 0.0
+	planet_size = 25
+	moon_size = 1
+	colonizable = yes
+	district_set = shattered_ring_world
+	ideal = yes
+	starting_planet = no
+	orbit_lines = no
+	has_colonization_influence_cost = no		# applies when within own borders
+
+	is_artificial_planet = yes
+
+#	modifier = {
+#		planet_max_buildings_add = 12
+#	}
+
+	carry_cap_per_free_district = @carry_cap_normal
+}
+
+######################################################################################
+# Habitat
+######################################################################################
+pc_habitat = {
+	habitat = yes
+	entity = "orbital_habitat"
+	icon = GFX_planet_type_habitat
+	entity_scale = 1.0
+	enable_tilt = no
+	fixed_entity_scale = yes
+	place_entity_on_planet_plane = no
+	entity_face_object = no #disable rotation towards sun or planet we orbit around
+	atmosphere_color		= hsv { 0.0 0.0 1.0 }		#DONE
+	atmosphere_intensity	= 1.0
+	atmosphere_width		= 0.5
+	show_city = no
+	city_color_lut = "gfx/portraits/misc/colorcorrection_continental.dds"
+	extra_orbit_size = 0
+	extra_planet_count = 0
+	chance_of_ring = 0.0
+	planet_size = 6
+	moon_size = 1
+	colonizable = yes
+	district_set = habitat
+#	ideal = yes
+	starting_planet = no
+	orbit_lines = no
+	has_colonization_influence_cost = no			# applies when within own borders
+
+	is_artificial_planet = yes
+	default_planet_selection = yes
+
+	modifier = {
+		planet_colony_development_speed_mult = 2.0 # Habitats should be fast to colonize
+		pop_environment_tolerance = 0.70
+	}
+
+	carry_cap_per_free_district = @carry_cap_low
+}
+
+######################################################################################
+# Shielded Ring World Segment
+######################################################################################
+pc_ringworld_shielded = {
+	ringworld = yes
+	entity = "ringworld_habitable_entity"
+	picture = pc_ringworld
+	icon = GFX_planet_type_ringworld
+	entity_scale = 1.0
+	enable_tilt = no
+	fixed_entity_scale = yes
+	atmosphere_color		= hsv { 0.0 0.0 1.0 }		#DONE
+	atmosphere_intensity	= 1.0
+	atmosphere_width		= 0.5
+	show_city = no
+	city_color_lut = "gfx/portraits/misc/colorcorrection_continental.dds"
+	extra_orbit_size = 0
+	extra_planet_count = 0
+	chance_of_ring = 0.0
+	planet_size = 25
+	moon_size = 1
+	colonizable = no
+#	ideal = yes
+	starting_planet = no
+	orbit_lines = no
+	has_colonization_influence_cost = no		# applies when within own borders
+
+	spawn_odds = 0
+}
+
+######################################################################################
+# Shielded Habitat
+######################################################################################
+pc_habitat_shielded = {
+	habitat = yes
+	entity = "orbital_habitat"
+	picture = pc_habitat
+	icon = GFX_planet_type_habitat
+	entity_scale = 1.0
+	enable_tilt = no
+	fixed_entity_scale = yes
+	place_entity_on_planet_plane = no
+	entity_face_object = no #disable rotation towards sun or planet we orbit around
+	atmosphere_color		= hsv { 0.0 0.0 1.0 }		#DONE
+	atmosphere_intensity	= 1.0
+	atmosphere_width		= 0.5
+	show_city = no
+	city_color_lut = "gfx/portraits/misc/colorcorrection_continental.dds"
+	extra_orbit_size = 0
+	extra_planet_count = 0
+	chance_of_ring = 0.0
+	planet_size = 25
+	moon_size = 1
+	colonizable = no
+#	ideal = yes
+	starting_planet = no
+	orbit_lines = no
+	has_colonization_influence_cost = no			# applies when within own borders
+
+	spawn_odds = 0
+}

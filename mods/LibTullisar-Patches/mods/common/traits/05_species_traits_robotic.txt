@@ -1,0 +1,981 @@
+trait_robot_power_drills = {
+	cost = 2
+
+	allowed_archetypes = { ROBOT MACHINE }
+
+	modifier = {
+		planet_jobs_minerals_produces_mult = 0.15
+	}
+	ai_weight = {
+		weight = 200
+		modifier = {
+			factor = 2
+			is_lithoid_empire = yes
+		}
+		modifier = {
+			factor = 0.25
+			any_owned_species = {
+				OR = {
+					has_trait = trait_industrious
+					has_trait = trait_robot_power_drills
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			root = {
+				OR = {
+					has_trait = trait_robot_harvesters
+					has_trait = trait_robot_superconductive
+					has_trait = trait_robot_logic_engines
+					is_trait_traditional = yes
+					is_trait_charismatic = yes
+				}	
+			}
+		}
+	}
+}
+
+trait_robot_harvesters = {
+	cost = 2
+
+	allowed_archetypes = { ROBOT }
+
+	modifier = {
+		planet_jobs_food_produces_mult = 0.15
+	}
+	ai_weight = {
+		weight = 200
+		modifier = {
+			factor = 0.25
+			is_lithoid_empire = yes
+		}
+		modifier = {
+			factor = 0.25
+			any_owned_species = {
+				OR = {
+					has_trait = trait_agrarian
+					has_trait = trait_robot_harvesters
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			root = {
+				OR = {
+					has_trait = trait_robot_power_drills
+					has_trait = trait_robot_superconductive
+					has_trait = trait_robot_logic_engines
+					is_trait_traditional = yes
+					is_trait_charismatic = yes
+				}	
+			}
+		}
+		modifier = {
+			factor = 0.25
+			has_valid_civic = civic_agrarian_idyll	# agrarian idyll countries would rather keep having non-robotic farmers
+		}
+	}
+}
+
+trait_robot_superconductive = {
+	cost = 2
+
+	allowed_archetypes = { ROBOT MACHINE }
+
+	modifier = {
+		planet_jobs_energy_produces_mult = 0.15
+	}
+	ai_weight = {
+		weight = 200
+		modifier = {
+			factor = 0.25
+			any_owned_species = {
+				OR = {
+					has_trait = trait_ingenious
+					has_trait = trait_robot_superconductive
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			root = {
+				OR = {
+					has_trait = trait_robot_power_drills
+					has_trait = trait_robot_harvesters
+					has_trait = trait_robot_logic_engines
+					is_trait_traditional = yes
+					is_trait_charismatic = yes
+				}
+			}
+		}	
+		modifier = {
+			factor = 2
+			has_authority = auth_machine_intelligence
+		}
+	}
+}
+
+trait_robot_efficient_processors = {
+	cost = 3
+
+	allowed_archetypes = { ROBOT MACHINE }
+
+	modifier = {
+		planet_jobs_produces_mult = 0.05
+	}
+	ai_weight = {
+		weight = 100
+	}
+}
+
+trait_robot_logic_engines = {
+	cost = 2
+
+	allowed_archetypes = { ROBOT MACHINE }
+	opposites = { "trait_robot_uninventive" }
+	# Synth and Machine only
+	species_potential_add = {
+		exists = from
+		from = {
+			OR = {
+				has_authority = auth_machine_intelligence
+				has_technology = tech_synthetic_workers
+				has_technology = tech_sapient_ai
+				has_technology = tech_positronic_implants
+			}
+			NOT = { has_policy_flag = ai_outlawed }
+		}
+	}
+
+	modifier = {
+		planet_jobs_society_research_produces_mult = 0.10
+		planet_jobs_physics_research_produces_mult = 0.10
+		planet_jobs_engineering_research_produces_mult = 0.10
+	}
+	ai_weight = {
+		weight = 200
+		modifier = {
+			factor = 0.25
+			any_owned_species = {
+				NOT = { has_citizenship_type = { country = prev type = citizenship_slavery } }
+				OR = {
+					has_trait = trait_intelligent
+					has_trait = trait_natural_engineers
+					has_trait = trait_natural_physicists
+					has_trait = trait_natural_sociologists
+					has_trait = trait_robot_logic_engines
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			root = {
+				OR = {
+					has_trait = trait_robot_power_drills
+					has_trait = trait_robot_harvesters
+					has_trait = trait_robot_superconductive
+					is_trait_traditional = yes
+					is_trait_charismatic = yes
+				}	
+			}
+		}
+		modifier = {
+			factor = 2
+			any_owned_species = {
+				has_citizenship_type = { type = citizenship_slavery country = prev }
+			}
+		}
+		modifier = {
+			factor = 2
+			is_materialist = yes
+		}
+		modifier = {
+			factor = 2
+			is_civic_materialist = yes
+			root = {
+				OR = {
+					has_citizenship_type = { country = prev type = citizenship_full }
+					has_citizenship_type = { country = prev type = citizenship_full_machine }
+				}
+			}
+		}
+	}
+}
+
+trait_robot_uninventive = {
+	cost = -1
+	icon = "gfx/interface/icons/traits/trait_uninventive.dds"
+	allowed_archetypes = { ROBOT MACHINE }
+	opposites = { "trait_robot_logic_engines" }
+	# Synth and Machine only
+	species_potential_add = {
+		exists = from
+		from = {
+			OR = {
+				has_authority = auth_machine_intelligence
+				has_technology = tech_synthetic_workers
+				has_technology = tech_sapient_ai
+				has_technology = tech_positronic_implants
+			}
+			NOT = { has_policy_flag = ai_outlawed }
+		}
+	}
+
+	modifier = {
+		planet_jobs_society_research_produces_mult = -0.05
+		planet_jobs_physics_research_produces_mult = -0.05
+		planet_jobs_engineering_research_produces_mult = -0.05
+	}
+	ai_weight = {
+		weight = 400
+		modifier = {
+			factor = 0
+			NOT = {
+				has_country_flag = make_robot_uninventive
+			}
+		}
+	}
+}
+
+trait_robot_loyalty_circuits = {
+	cost = 2
+
+	allowed_archetypes = { ROBOT }
+
+	# Synth only
+	species_potential_add = {
+		exists = from
+		from = {
+			has_technology = tech_synthetic_workers
+			NOT = { has_policy_flag = ai_outlawed }
+		}
+	}
+
+	modifier = {
+		pop_happiness = 0.1
+	}
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 2
+			is_authoritarian = yes
+		}
+	}
+}
+
+trait_robot_domestic_protocols = {
+	cost = 2
+
+	initial = no
+	randomized = no
+
+	allowed_archetypes = { ROBOT }
+
+	# Synth and Droid only
+	species_potential_add = {
+		exists = from
+		from = {
+			has_technology = tech_droid_workers
+			NOT = { has_policy_flag = ai_outlawed }
+		}
+	}
+	ai_weight = {
+		weight = 200
+		modifier = {
+			factor = 0.25
+			root = {
+				NOT = {
+					is_trait_traditional = yes
+				}	
+			}
+			any_owned_species = {
+				has_citizenship_type = { country = prev type = citizenship_full }
+				OR = {
+					has_trait = trait_charismatic
+					is_trait_charismatic = yes
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			root = {
+				OR = {
+					has_trait = trait_robot_power_drills
+					has_trait = trait_robot_harvesters
+					has_trait = trait_robot_superconductive
+					has_trait = trait_robot_logic_engines
+					is_trait_traditional = yes
+				}	
+			}
+		}
+	}
+
+	custom_tooltip = TRAIT_DOMESTIC_PROTOCOLS_EFFECT
+}
+
+trait_robot_double_jointed = {
+	cost = 1
+	opposites = { "trait_robot_bulky" }
+
+	allowed_archetypes = { ROBOT MACHINE }
+
+	modifier = {
+		pop_housing_usage_mult = -0.1
+	}
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 4
+			is_civic_environmentalist = yes	# environmentalists want to minimize land usage
+		}
+		modifier = {
+			factor = 2
+			is_megacorp = yes	# convenience!
+		}
+		modifier = {
+			factor = 2
+			has_origin = origin_void_dwellers
+		}
+	}
+}
+
+trait_robot_bulky = {
+	cost = -1
+	opposites = { "trait_robot_double_jointed" }
+
+	allowed_archetypes = { ROBOT MACHINE }
+
+	modifier = {
+		pop_housing_usage_mult = 0.1
+	}
+	ai_weight = {
+		weight = 400
+		modifier = {
+			factor = 0
+			NOT = {
+				has_country_flag = make_robots_bulky
+			}
+		}
+	}
+}
+
+trait_robot_enhanced_memory = {
+	cost = 2
+	opposites = { "trait_robot_repurposed_hardware" }
+	allowed_archetypes = { ROBOT MACHINE }
+
+	# Synth and Machine only
+	species_potential_add = {
+		exists = from
+		from = {
+			OR = {
+				has_authority = auth_machine_intelligence
+				has_technology = tech_synthetic_leaders
+			}
+			NOT = { has_policy_flag = ai_outlawed }
+		}
+	}
+
+	modifier = {
+		leader_skill_levels = 2
+	}
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 2
+			has_valid_civic = civic_meritocracy
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_origin = origin_remnants
+				has_origin = origin_scion
+			}
+		}
+	}
+}
+
+trait_robot_emotion_emulators = {
+	cost = 1
+	opposites = { "trait_robot_uncanny" }
+	allowed_archetypes = { ROBOT MACHINE }
+	custom_tooltip = TRAIT_EMOTION_EMULATORS_EFFECT
+	# Free Synths only
+	species_potential_add = {
+		exists = from
+		from = {
+			OR = {
+				AND = {
+					has_policy_flag = ai_full_rights
+					has_technology = tech_synthetic_workers
+				}
+				has_country_flag = synthetic_empire
+				is_machine_empire = yes
+			}
+		}
+	}
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 4
+			has_valid_civic = civic_machine_servitor
+		}
+		modifier = {
+			factor = 4
+			OR = {
+				has_origin = origin_common_ground
+				has_origin = origin_hegemon
+			}
+		}
+		modifier = {
+			factor = 0.25
+			any_owned_species = {
+				has_citizenship_type = { country = prev type = citizenship_full }
+				is_trait_charismatic = yes
+			}
+		}
+	}
+}
+
+trait_robot_uncanny = {
+	cost = -1
+	opposites = { "trait_robot_emotion_emulators" }
+	allowed_archetypes = { ROBOT MACHINE }
+	custom_tooltip = TRAIT_UNCANNY_EFFECT
+	# Free Synths only
+	species_potential_add = {
+		exists = from
+		from = {
+			OR = {
+				AND = {
+					has_policy_flag = ai_full_rights
+					has_technology = tech_synthetic_workers
+				}
+				has_country_flag = synthetic_empire
+				is_machine_empire = yes
+			}
+		}
+	}
+	ai_weight = {
+		weight = 400
+		modifier = {
+			factor = 0
+			NOT = {
+				has_country_flag = make_robots_uncanny
+			}
+		}
+	}
+}
+
+trait_robot_durable = {
+	cost = 1
+	opposites = { "trait_robot_high_maintenance" }
+
+	allowed_archetypes = { ROBOT MACHINE }
+
+	modifier = {
+		planet_pops_robotics_upkeep_mult = -0.10
+	}
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 4
+			is_civic_environmentalist = yes	# environmentalists want to minimize energy usage
+		}
+	}
+}
+
+trait_robot_high_maintenance = {
+	cost = -1
+	opposites = { "trait_robot_durable" }
+
+	allowed_archetypes = { ROBOT MACHINE }
+
+	modifier = {
+		planet_pops_robotics_upkeep_mult = 0.10
+	}
+	ai_weight = {
+		weight = 400
+		modifier = {
+			factor = 0
+			NOT = {
+				has_country_flag = make_robots_high_maintenance
+			}
+		}
+	}
+}
+
+trait_robot_learning_algorithms = {
+	cost = 1
+	opposites = { "trait_robot_repurposed_hardware" }
+
+	allowed_archetypes = { ROBOT MACHINE }
+
+	# Synth and Machine only
+	species_potential_add = {
+		exists = from
+		from = {
+			OR = {
+				has_authority = auth_machine_intelligence
+				has_technology = tech_synthetic_leaders
+			}
+			NOT = { has_policy_flag = ai_outlawed }
+		}
+	}
+
+	modifier = {
+		species_leader_exp_gain = 0.25
+	}
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 4
+			has_valid_civic = civic_meritocracy
+		}
+	}
+}
+
+trait_robot_repurposed_hardware = {
+	cost = -2
+	opposites = { "trait_robot_learning_algorithms" "trait_robot_enhanced_memory" }
+
+	allowed_archetypes = { ROBOT MACHINE }
+
+	# Synth and Machine only
+	species_potential_add = {
+		exists = from
+		from = {
+			OR = {
+				has_authority = auth_machine_intelligence
+				has_technology = tech_synthetic_leaders
+			}
+			NOT = { has_policy_flag = ai_outlawed }
+		}
+	}
+
+	modifier = {
+		leader_skill_levels = -1
+		species_leader_exp_gain = -0.25
+	}
+	ai_weight = {
+		weight = 400
+		modifier = {
+			factor = 0
+			NOT = {
+				has_country_flag = make_robots_repurposed_hardware
+			}
+		}
+	}
+}
+
+trait_robot_mass_produced = {
+	cost = 1
+	opposites = { "trait_robot_custom_made" }
+
+	allowed_archetypes = { ROBOT MACHINE }
+
+	modifier = {
+		pop_assembly_speed = 0.15
+	}
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0.5
+			is_civic_environmentalist = yes	# environmentalists would rather have fewer, more efficient robots to save on energy and housing
+		}
+		modifier = {
+			factor = 2
+			has_ethic = ethic_egalitarian	# a robot for every household!
+		}
+		modifier = {
+			factor = 4
+			has_ethic = ethic_fanatic_egalitarian
+		}
+		modifier = {
+			factor = 0.5
+			has_ethic = ethic_authoritarian	# high-quality robots for the elites
+		}
+		modifier = {
+			factor = 0.25
+			has_ethic = ethic_fanatic_authoritarian
+		}
+	}
+}
+
+trait_robot_custom_made = {
+	cost = -1
+	opposites = { "trait_robot_mass_produced" }
+
+	allowed_archetypes = { ROBOT MACHINE }
+
+	modifier = {
+		pop_assembly_speed = -0.15
+	}
+	ai_weight = {
+		weight = 400
+		modifier = {
+			factor = 0
+			NOT = {
+				has_country_flag = make_robots_custom_made
+			}
+		}
+	}
+}
+
+trait_robot_recycled = {
+	cost = 2
+	opposites = { "trait_robot_luxurious" }
+
+	allowed_archetypes = { ROBOT MACHINE }
+
+	#assembling_modifier, declining_modifier, growing_modifier are applied to planet when pop is the one assembling/declining/growing
+	assembling_modifier = {
+		planet_pop_assemblers_upkeep_mult = -0.20
+	}
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 4
+			is_civic_environmentalist = yes	# environmentalists want to minimize alloy usage
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_origin = origin_remnants
+				has_origin = origin_shattered_ring
+				has_origin = origin_post_apocalyptic
+				has_origin = origin_void_dwellers
+			}
+		}
+	}
+}
+
+trait_robot_luxurious = {
+	cost = -2
+	opposites = { "trait_robot_recycled" }
+
+	allowed_archetypes = { ROBOT MACHINE }
+
+	#assembling_modifier, declining_modifier, growing_modifier are applied to planet when pop is the one assembling/declining/growing	
+	assembling_modifier = {
+		planet_pop_assemblers_upkeep_mult = 0.20
+	}
+	ai_weight = {
+		weight = 400
+		modifier = {
+			factor = 0
+			NAND = {
+				has_country_flag = make_robots_luxurious
+				root = { could_use_2_more_trait_points_robotic = yes }
+			}
+		}
+	}
+}
+
+trait_robot_propaganda_machines = {
+	cost = 1
+
+	allowed_archetypes = { ROBOT }
+
+	# Synth and Droid only
+	species_potential_add = {
+		exists = from
+		from = {
+			has_technology = tech_droid_workers
+			NOT = { has_policy_flag = ai_outlawed }
+		}
+	}
+
+	modifier = {
+		planet_jobs_unity_produces_mult = 0.15
+	}
+	ai_weight = {
+		weight = 150
+		modifier = {
+			factor = 0.25
+			any_owned_species = {
+				NOT = { has_citizenship_type = { country = prev type = citizenship_slavery } }
+				OR = {
+					has_trait = trait_traditional
+					is_trait_traditional = yes
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			OR = {
+				has_trait = trait_robot_power_drills
+				has_trait = trait_robot_harvesters
+				has_trait = trait_robot_superconductive
+				has_trait = trait_robot_logic_engines
+				is_trait_charismatic = yes
+			}
+		}
+		modifier = {
+			factor = 1.5
+			is_authoritarian = yes
+		}
+		modifier = {
+			factor = 0.65
+			has_ethic = ethic_egalitarian
+		}
+		modifier = {
+			factor = 0.25
+			has_ethic = ethic_fanatic_egalitarian
+		}
+		modifier = {
+			factor = 2
+			has_valid_civic = civic_media_conglomerate
+		}
+	}
+}
+
+trait_robot_streamlined_protocols = {
+	cost = 2
+	opposites = { "trait_robot_high_bandwidth" }
+	allowed_archetypes = { ROBOT MACHINE }
+	modifier = {
+		species_empire_size_mult = -0.10
+	}
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 2
+			is_megacorp = yes
+		}
+		modifier = {
+			factor = 2
+			is_civic_materialist = yes
+			root = {
+				OR = {
+					has_citizenship_type = { country = prev type = citizenship_full }
+					has_citizenship_type = { country = prev type = citizenship_full_machine }
+				}
+			}
+		}
+	}
+}
+
+trait_robot_high_bandwidth = {
+	cost = -2
+	opposites = { "trait_robot_streamlined_protocols" }
+	allowed_archetypes = { ROBOT MACHINE }
+	modifier = {
+		species_empire_size_mult = 0.10
+	}
+	ai_weight = {
+		weight = 400
+		modifier = {
+			factor = 0
+			NAND = {
+				has_country_flag = make_robots_high_bandwidth
+				root = { could_use_2_more_trait_points_robotic = yes }
+			}
+		}
+	}
+}
+
+### NEW ROBOT TRAITS ###
+trait_garrison_bot = {
+	cost = 1
+	icon = "gfx/interface/icons/governments/civics/civic_machine_warbots.dds"
+	allowed_archetypes = { ROBOT MACHINE }
+	modifier = {
+		army_defense_damage_mult = 0.5
+		army_damage_mult = 0.05
+	}
+	opposites = { "trait_delicate" }
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 2
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery }
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				is_militarist = yes
+				is_civic_militarist = yes
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_pacifist = yes
+		}
+	}
+}
+
+trait_delicate = {
+	cost = -1
+	icon = "gfx/interface/icons/traits/trait_weak.dds"
+	allowed_archetypes = { ROBOT MACHINE }
+	modifier = {
+		army_health = -0.20
+		planet_pops_robotics_upkeep_mult = 0.05
+	}
+	opposites = { "trait_garrison_bot" }
+	ai_weight = {
+		weight = 400
+		modifier = {
+			factor = 0
+			NOT = {
+				has_country_flag = make_delicate
+			}
+		}
+	}
+}
+
+trait_repeater = {
+	cost = 1
+	icon = "gfx/interface/icons/governments/civics/civic_machine_unitary_cohesion.dds"
+	allowed_archetypes = { ROBOT MACHINE }
+	modifier = {
+		planet_jobs_unity_produces_mult = 0.1
+	}
+	species_potential_add = {
+		exists = from
+		from = {
+			is_machine_empire = yes
+		}
+	}
+	opposites = { "trait_robot_quarrelsome" }
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 2
+			has_valid_civic = civic_machine_unitary_cohesion
+		}
+		modifier = {
+			factor = 0.5 # get them from biotrophies instead
+			has_valid_civic = civic_machine_servitor
+		}
+
+		modifier = {
+			factor = 0.25
+			any_owned_species = {
+				is_trait_traditional = yes
+			}
+		}
+		modifier = {
+			factor = 0.5
+			root = {
+				OR = {
+					has_trait = trait_robot_power_drills
+					has_trait = trait_robot_harvesters
+					has_trait = trait_robot_superconductive
+					has_trait = trait_thrifty_synth
+					has_trait = trait_robot_logic_engines
+					is_trait_charismatic = yes
+				}	
+			}
+			any_owned_species = {
+				NOR = {
+					has_trait = trait_robot_power_drills
+					has_trait = trait_robot_harvesters
+					has_trait = trait_robot_superconductive
+					AND = {
+						prev = { NOT = { has_policy_flag = ai_full_rights } }
+						OR = {
+							has_trait = trait_thrifty_synth
+							has_trait = trait_robot_logic_engines
+							is_trait_charismatic = yes
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+trait_robot_quarrelsome = {
+	cost = -1
+	icon = "gfx/interface/icons/traits/trait_quarrelsome.dds"
+	allowed_archetypes = { ROBOT MACHINE }
+	modifier = {
+		planet_jobs_unity_produces_mult = -0.1
+	}
+	species_potential_add = {
+		exists = from
+		from = {
+			is_machine_empire = yes
+		}
+	}
+	opposites = { "trait_repeater" }
+	ai_weight = {
+		weight = 400
+		modifier = {
+			factor = 0
+			NOT = {
+				has_country_flag = make_robot_quarrelsome
+			}
+		}
+	}
+}
+
+trait_thrifty_synth = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/trait_thrifty.dds"
+	allowed_archetypes = { ROBOT }
+	
+	# Synth only
+	species_potential_add = {
+		exists = from
+		from = {
+			has_technology = tech_synthetic_workers
+			NOT = { has_policy_flag = ai_outlawed }
+		}
+	}
+	
+	custom_tooltip = TRAIT_THRIFTY_EFFECT
+	
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 3
+			is_auth_corporate = yes
+		}
+
+		modifier = {
+			factor = 0.5
+			any_owned_species = {
+				is_trait_thrifty = yes
+			}
+		}
+		modifier = {
+			factor = 0.25
+			root = {
+				OR = {
+					has_trait = trait_robot_power_drills
+					has_trait = trait_robot_harvesters
+					has_trait = trait_robot_superconductive
+					has_trait = trait_robot_logic_engines
+					is_trait_charismatic = yes
+					is_trait_traditional = yes
+				}	
+			}
+			any_owned_species = {
+				NOR = {
+					has_trait = trait_robot_power_drills
+					has_trait = trait_robot_harvesters
+					has_trait = trait_robot_superconductive	
+					has_trait = trait_robot_logic_engines
+					is_trait_charismatic = yes
+					is_trait_traditional = yes
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			has_trait = trait_repugnant
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_organic_trophy }
+			}
+		}
+	}
+}

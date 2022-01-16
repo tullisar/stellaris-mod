@@ -1,0 +1,51 @@
+######################################################################################
+# Planet Classes (Modded, Uninhabitable)
+# Package: Patch
+######################################################################################
+
+######################################################################################
+# Source: Gigastructural Engineering (Placeholder)
+#
+# pc_strip_mined (Strip Mined World)
+# pc_core_mined (Depleted World)
+# pc_gigabrown_dwarf (Class L Brown Dwarf)
+# pc_melted_frozen (Panthalassic)
+#
+######################################################################################
+
+######################################################################################
+# Source: More Events Mod (Placeholder)
+#
+# pc_mem_destroyed_barren (Destroyed Barren World)
+# pc_mem_broken_city (Broken Eumencopolis)
+# pc_synthetic_sun (Synthetic Sun) 
+#
+######################################################################################
+
+######################################################################################
+# Source: Planetary Diversity
+#
+# pc_carbon
+# pc_iron
+# pc_subglacial
+# pc_hydrocarbon
+# pc_hothouse
+# pc_ethane_ocean
+# pc_diamond
+# pc_volcanic
+# pc_chthonian
+# pc_hot_gas_giant
+# pc_cloudless_gas_giant
+# pc_cold_gas_giant
+#
+#
+######################################################################################
+
+######################################################################################
+# Rare Planets (Placeholder)
+# Source: Planetary Diversity
+#
+# pc_rogue_barren
+# pc_tidallylocked_barren
+#
+######################################################################################

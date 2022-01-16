@@ -1,0 +1,304 @@
+######################################################################################
+# Scripted Triggers: Country
+######################################################################################
+
+# ====================================================================================
+#
+#
+# Corporate Government Checks
+#
+#
+# ====================================================================================
+
+######################################################################################
+# tul_country_is_authority_megacorp
+#
+# Determines whether a country uses an authority that is considered a type of 
+# megacorporation.
+#
+######################################################################################
+tul_country_is_authority_megacorp = {
+	is_scope_type = country
+	if = {
+		limit = {
+			has_megacorp = yes
+		}
+		OR = {
+			has_authority = auth_corporate
+			# Expanded Traits, Civics, Pops, and More
+			has_authority = auth_private
+			has_authority = auth_cooperative
+		}
+	}
+	else = {
+		always = no
+	}
+}
+
+######################################################################################
+# tul_country_is_civic_megacorp
+#
+# Determine whether a country has a civic that is equivalent to megacorporation 
+# functionality.
+#
+######################################################################################
+tul_country_is_civic_megacorp = {
+	is_scope_type = country
+	OR = {
+		has_valid_civic = civic_galactic_sovereign_megacorp
+		tul_country_is_gestalt_civic_megacorp = yes
+	}
+}
+
+######################################################################################
+# tul_country_has_corporate_civic_potential 
+#
+# Determine whether a country should have the corporate variants of civics as a
+# potential selection. This is for use in conditions outside of the special civics
+# condition syntax. 
+#
+######################################################################################
+tul_country_has_corporate_civic_potential = {
+	is_scope_type = country
+	OR = {
+		tul_country_is_authority_megacorp = yes
+		has_valid_civic = civic_galactic_sovereign_megacorp
+	}
+}
+
+######################################################################################
+# tul_country_has_megacorp_behavior
+#
+# Determine whether a country has megacorp behavior (branch officies, subsidiaries,
+# etc...). 
+#
+######################################################################################
+tul_country_has_megacorp_behavior = {
+	OR = {
+		tul_country_is_authority_megacorp = yes
+		tul_country_is_civic_megacorp = yes
+	}
+}
+
+######################################################################################
+# tul_country_is_mining_corporation
+#
+# Determine whether a country is a mining corporation for various effects such as
+# branch offices and policies.
+#
+######################################################################################
+tul_country_is_mining_corporation = {
+	if = {
+		limit = {
+			is_scope_type = country
+			exists = this
+		}
+		has_valid_civic = civic_mining_company
+	}
+	else = {
+		log = "invalid scope"
+		print_scope_trigger = yes
+	}
+}
+
+# ====================================================================================
+#
+#
+# General Gestalt Government Checks
+#
+#
+# ====================================================================================
+
+######################################################################################
+# tul_country_is_gestalt_civic_megacorp
+#
+# Determine whether a country is a gestalt empire that behaves like a megacorporation.
+#
+######################################################################################
+tul_country_is_gestalt_civic_megacorp = {
+	OR = {
+		tul_country_is_civic_hive_megacorp = yes
+		tul_country_is_civic_machine_megacorp = yes
+	}
+}
+
+# ====================================================================================
+#
+#
+# Hive Government Checks
+#
+#
+# ====================================================================================
+
+######################################################################################
+# tul_country_is_authority_hive
+#
+# Determines whether the scoped country is a hive mind empire or not.
+#
+######################################################################################
+tul_country_is_authority_hive = {
+	has_authority = auth_hive_mind
+}
+
+######################################################################################
+# tul_country_is_civic_hive_megacorp
+#
+# Determines whether the scoped country is a hive mind that behaves like a 
+# megacorporation.
+#
+######################################################################################
+tul_country_is_civic_hive_megacorp = {
+	has_valid_civic = civic_mutualistic_behavior
+}
+
+######################################################################################
+# tul_country_is_hive_with_organic_structures
+######################################################################################
+tul_country_is_hive_with_organic_structures = {
+	is_organic = yes
+}
+
+# ====================================================================================
+#
+#
+# Machine Government Checks
+#
+#
+# ====================================================================================
+
+######################################################################################
+# tul_country_is_authority_machine
+#
+# Determines whether the scoped country is a machine intelligence empire or not.
+#
+######################################################################################
+tul_country_is_authority_machine = {
+	OR = {
+		has_authority = auth_machine_intelligence
+		has_authority = auth_ancient_machine_intelligence
+	}
+}
+
+######################################################################################
+# tul_country_is_civic_machine_megacorp
+#
+# Determines whether the scoped country is a machine intelligence empire that behaves
+# like a megacorporation.
+#
+######################################################################################
+tul_country_is_civic_machine_megacorp = {
+	has_valid_civic = civic_machine_trading
+}
+
+######################################################################################
+# tul_is_cyborg_empire
+#
+######################################################################################
+tul_is_cyborg_empire = {
+	owner_species = {
+		has_trait = trait_cybernetic
+	}
+}
+
+######################################################################################
+# tul_is_mechanical_empire
+#
+######################################################################################
+tul_is_mechanical_empire = {
+	OR = {
+		owner_species = {
+			has_trait = trait_mechanical
+			has_trait = trait_machine_unit
+		}
+		has_country_flag = synthetic_empire
+		has_ascension_perk = ap_synthetic_evolution
+	}
+}
+
+######################################################################################
+# tul_is_robot_empire
+#
+######################################################################################
+tul_is_robot_empire = {
+	OR = {
+		owner_species = {
+			has_trait = trait_mechanical
+		}
+		has_country_flag = synthetic_empire
+		tul_country_is_authority_machine = yes
+	}
+}
+
+######################################################################################
+# tul_is_synthetic_empire
+#
+# Determines whether the scoped country is synthetic empire or not. 
+#
+######################################################################################
+tul_is_synthetic_empire = {
+	OR = {
+		tul_country_is_authority_machine = yes
+		tul_is_mechanical_empire = yes
+	}
+}
+
+######################################################################################
+# tul_is_special_tree_origin
+#
+######################################################################################
+tul_is_special_tree_origin = {
+	OR = {
+		has_origin = origin_tree_of_life
+		has_origin = origin_hive_cx_hive_world
+		has_origin = origin_pd_tree_of_life
+		# has_origin = origin_sacred_tree
+	}
+}
+
+tul_is_closed_empire = {
+	has_valid_civic = civic_inwards_perfection
+	has_valid_civic = civic_pompous_purists
+	has_valid_civic = civic_closed_collective
+	has_valid_civic = civic_closed_network
+}
+
+######################################################################################
+# tul_is_gestalt_with_individuals_empire
+#
+######################################################################################
+tul_is_gestalt_with_individuals_empire = {
+	exists = this
+	is_scope_type = country
+	this = {
+		is_gestalt = yes
+		NOR = {
+			has_valid_civic = civic_hive_devouring_swarm
+			has_valid_civic = civic_closed_collective
+			has_valid_civic = civic_machine_servitor
+			has_valid_civic = civic_machine_assimilator
+			has_valid_civic = civic_machine_terminator
+			has_valid_civic = civic_closed_network
+			has_valid_civic = civic_infestation
+			has_origin = origin_necrophage
+			has_valid_civic = civic_living_hosts
+			# Not sure what mod this is from
+			# has_valid_civic = civic_machine_consciousness
+		}
+	}
+}
+
+######################################################################################
+# tul_is_organic_loving_machine_empire
+#
+######################################################################################
+tul_is_organic_loving_machine_empire = {
+	exists = this
+	is_scope_type = country
+	this = {
+		OR = {
+			has_valid_civic = civic_machine_servitor
+			# Not sure what mod this is from
+			# has_valid_civic = civic_machine_consciousness
+		}
+	}
+}

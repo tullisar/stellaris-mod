@@ -1,7 +1,6 @@
 ######################################################################################
 # Government Buildings
 ######################################################################################
-
 ######################################################################################
 # Noble Estates
 ######################################################################################
@@ -1243,17 +1242,17 @@ building_clone_vats = {
 		# Org/Lith cost vanilla
 		cost = {
 			trigger = {
+				planet = {
+					NOR = {
+						has_building = building_plentiful_traditions_advanced_slave_processing
+						has_building = building_slave_processing
+					}
+				}
 				exists = owner
 				owner = {
 					is_lithoid_empire = no
-				}
-				NOT = {
-					owner = {
+					NOT = {
 						has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
-					}
-					OR = {
-						has_building = building_plentiful_traditions_advanced_slave_processing
-						has_building = building_slave_processing
 					}
 				}
 			}
@@ -1261,17 +1260,15 @@ building_clone_vats = {
 		}
 		cost = {
 			trigger = {
+				NOR = {
+					has_building = building_plentiful_traditions_advanced_slave_processing
+					has_building = building_slave_processing
+				}
 				exists = owner
 				owner = {
 					is_lithoid_empire = yes
-				}
-				NOT = {
-					owner = {
+					NOT = {
 						has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
-					}
-					OR = {
-						has_building = building_plentiful_traditions_advanced_slave_processing
-						has_building = building_slave_processing
 					}
 				}
 			}
@@ -1280,32 +1277,28 @@ building_clone_vats = {
 		# Org/Lith cost mit Perk etc.
 		cost = {
 			trigger = {
-				exists = owner
-				owner = {
-					is_lithoid_empire = no
-				}
-				owner = {
-					has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
-				}
 				OR = {
 					has_building = building_plentiful_traditions_advanced_slave_processing
 					has_building = building_slave_processing
+				}
+				exists = owner
+				owner = {
+					is_lithoid_empire = no
+					has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
 				}
 			}
 			food = 250
 		}
 		cost = {
 			trigger = {
-				exists = owner
-				owner = {
-					is_lithoid_empire = yes
-				}
-				owner = {
-					has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
-				}
 				OR = {
 					has_building = building_plentiful_traditions_advanced_slave_processing
 					has_building = building_slave_processing
+				}
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+					has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
 				}
 			}
 			energy = 250
@@ -1317,17 +1310,15 @@ building_clone_vats = {
 		# Org/Lith upkeep vanilla
 		upkeep = {
 			trigger = {
+				NOR = {
+					has_building = building_plentiful_traditions_advanced_slave_processing
+					has_building = building_slave_processing
+				}
 				exists = owner
 				owner = {
 					is_lithoid_empire = no
-				}
-				NOT = {
-					owner = {
+					NOT = {
 						has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
-					}
-					OR = {
-						has_building = building_plentiful_traditions_advanced_slave_processing
-						has_building = building_slave_processing
 					}
 				}
 			}
@@ -1335,17 +1326,15 @@ building_clone_vats = {
 		}
 		upkeep = {
 			trigger = {
+				NOR = {
+					has_building = building_plentiful_traditions_advanced_slave_processing
+					has_building = building_slave_processing
+				}
 				exists = owner
 				owner = {
 					is_lithoid_empire = yes
-				}
-				NOT = {
-					owner = {
+					NOT = {
 						has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
-					}
-					OR = {
-						has_building = building_plentiful_traditions_advanced_slave_processing
-						has_building = building_slave_processing
 					}
 				}
 			}
@@ -1355,31 +1344,27 @@ building_clone_vats = {
 		upkeep = {
 			trigger = {
 				exists = owner
-				owner = {
-					is_lithoid_empire = no
-				}
-				owner = {
-					has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
-				}
 				OR = {
 					has_building = building_plentiful_traditions_advanced_slave_processing
 					has_building = building_slave_processing
+				}
+				owner = {
+					is_lithoid_empire = no
+					has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
 				}
 			}
 			food = 15
 		}
 		upkeep = {
 			trigger = {
-				exists = owner
-				owner = {
-					is_lithoid_empire = yes
-				}
-				owner = {
-					has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
-				}
 				OR = {
 					has_building = building_plentiful_traditions_advanced_slave_processing
 					has_building = building_slave_processing
+				}
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+					has_ascension_perk = ap_plentiful_traditions_vast_slave_procreation
 				}
 			}
 			minerals = 15

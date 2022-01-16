@@ -61,17 +61,18 @@
 
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
         <configuration>
-            <annotationProcessors>
-                <annotationProcessor>org.inferred.freebuilder.processor.Processor</annotationProcessor>
-            </annotationProcessors>
-            <annotationProcessorPaths>
-                <path>
-                    <groupId>org.inferred</groupId>
-                    <artifactId>freebuilder</artifactId>
-                    <version>${freebuilder.version}</version>
-                </path>
-            </annotationProcessorPaths>
+          <annotationProcessors>
+            <annotationProcessor>org.inferred.freebuilder.processor.Processor</annotationProcessor>
+          </annotationProcessors>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.inferred</groupId>
+              <artifactId>freebuilder</artifactId>
+              <version>${freebuilder.version}</version>
+            </path>
+          </annotationProcessorPaths>
         </configuration>
       </plugin>
 

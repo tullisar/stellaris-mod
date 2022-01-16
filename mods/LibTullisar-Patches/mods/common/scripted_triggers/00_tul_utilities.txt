@@ -50,22 +50,6 @@ tul_is_habitat = {
 }
 
 ######################################################################################
-# tul_is_asteroid
-# Determine whether a planet is a type that is an asteroid.
-#
-######################################################################################
-tul_is_asteroid = {
-	OR = {
-		is_asteroid = yes
-		is_planet_class = pc_asteroid
-		is_planet_class = pc_pd_asteroid_hab
-		is_planet_class = pc_ice_asteroid
-		is_planet_class = pc_crystal_asteroid
-		is_planet_class = pc_rare_crystal_asteroid
-	}
-}
-
-######################################################################################
 # tul_is_isolationist
 #
 ######################################################################################

@@ -1,0 +1,2313 @@
+######################################################################################
+# Ethics & Civics Classics Specific Civics
+######################################################################################
+###################################################################
+# Anarchy Ideals
+###################################################################
+#Anarchy Ideals : §YForced Resettlement§!, §YPopulation Control§! are not allowed
+civic_anarchy_ideals = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			value = ethic_fanatic_egalitarian
+		}
+		authority = {
+			value = auth_direct_democratic
+		}
+	}
+	random_weight = {
+		base = 2
+	}
+	modifier = {
+		pop_citizen_happiness = 0.15
+		empire_size_penalty_mult = -0.5
+		pop_cat_ruler_political_power = -1
+		country_base_influence_produces_mult = -0.15
+		pop_ethic_authoritarian_attraction_mult = -0.3
+	}
+}
+
+###################################################################
+# Circular Economy
+###################################################################
+civic_circular_economy = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			value = ethic_fanatic_green
+		}
+	}
+	random_weight = {
+		base = 2
+	}
+	modifier = {
+		planet_structures_cost_mult = -0.1
+		planet_structures_upkeep_mult = -0.05
+		starbase_shipyard_build_cost_mult = -0.1
+		ships_upkeep_mult = -0.05
+		PLANET_BUILDING_REFUND_MULT = 0.25
+		trade_value_mult = -0.1
+		planet_building_build_speed_mult = -0.5
+		starbase_shipyard_build_speed_mult = -0.5
+	}
+}
+
+###################################################################
+# Defenders of Nature
+###################################################################	
+civic_eco_warfare = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+			OR = {
+				text = civic_tooltip_green
+				value = ethic_green
+				value = ethic_fanatic_green
+			}
+		}
+	}
+	random_weight = {
+		base = 2
+	}
+	modifier = {
+		army_health = 0.2
+		SHIP_HULL_REGEN_ADD_PERC = 0.2
+		SHIP_ARMOR_REGEN_ADD_PERC = 0.2
+		ships_upkeep_mult = -0.15
+		SHIP_ORBIT_UPKEEP_MULT = -0.25
+		ship_armor_mult = -0.05
+		SHIP_HULL_MULT = -0.05
+	}
+}
+
+###################################################################
+# War Industry -> Military Industry
+###################################################################
+civic_war_industry = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+			OR = {
+				text = civic_tooltip_industrial
+				value = ethic_industrial
+				value = ethic_fanatic_industrial
+			}
+		}
+	}
+	random_weight = {
+		base = 2
+	}
+	modifier = {
+		planet_jobs_alloys_produces_mult = 0.05
+		ship_weapon_damage = 0.05
+		ship_armor_mult = 0.1
+		SHIP_HULL_MULT = 0.15
+		SHIP_ORBIT_UPKEEP_MULT = -0.15
+		starbase_shipyard_build_speed_mult = 0.5
+		category_voidcraft_research_speed_mult = 0.2
+		category_materials_research_speed_mult = 0.1
+		ships_upkeep_mult = 0.2
+	}
+}
+
+###################################################################
+# Environmentalism
+###################################################################
+civic_naturalism = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_pacifist
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
+			}
+			OR = {
+				text = civic_tooltip_green
+				value = ethic_green
+				value = ethic_fanatic_green
+			}
+		}
+	}
+	random_weight = {
+		base = 2
+	}
+	modifier = {
+		planet_districts_cities_cost_mult = -0.25
+		planet_districts_cities_upkeep_mult = -0.25
+	}
+}
+
+###################################################################
+# Peaceful Urbanism
+###################################################################	
+civic_peaceful_urbanism = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_pacifist
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
+			}
+			OR = {
+				text = civic_tooltip_industrial
+				value = ethic_industrial
+				value = ethic_fanatic_industrial
+			}
+		}
+	}
+	random_weight = {
+		base = 2
+	}
+	modifier = {
+		job_urban_engineer_per_pop = 0.04
+		PLANET_HOUSING_MULT = 0.1
+		PLANET_MAX_BUILDINGS_ADD = 1
+		STARBASE_MODULE_CAPACITY_ADD = 2
+		planet_district_city_build_speed_mult = 0.5
+		planet_district_industrial_build_speed_mult = 0.5
+		STARBASE_MODULE_BUILD_SPEED_MULT = 0.5
+		planet_structures_cost_mult = 0.1
+		starbase_modules_cost_mult = 0.1
+	}
+}
+
+###################################################################
+# Military Industry -> War Engineers
+###################################################################
+civic_military_industry = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+			OR = {
+				text = civic_tooltip_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		SHIP_ACCURACY_ADD = 5
+		SHIP_SENSOR_RANGE_ADD = 1
+		ship_tracking_add = 10
+		ship_weapon_range_mult = 0.1
+		SHIP_SHIELD_MULT = 0.05
+		ship_speed_mult = 0.1
+		SHIP_EVASION_MULT = 0.1
+		category_propulsion_research_speed_mult = 0.25
+		category_particles_research_speed_mult = 0.25
+		starbase_shipyard_build_cost_mult = 0.15
+	}
+}
+
+###################################################################
+# Ruthless Capitalism
+###################################################################
+civic_state_monopoly = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_beacon_of_liberty
+				value = civic_merchant_guilds
+				value = civic_aristocratic_elite
+				value = civic_imperial_cult
+				value = civic_divine_council
+				value = civic_spiritual_democracy
+				value = civic_cyber_dictatorship
+				value = civic_science_directorate
+				value = civic_cyber_demos_cratos
+				value = civic_military_dictatorship
+				value = civic_military_junta
+				value = civic_citizen_service
+				value = civic_executive_committee
+				value = civic_philosopher_king
+				value = civic_peaceful_republic
+				value = civic_exalted_priesthood
+				value = civic_technocracy
+				value = civic_bureaucracy
+				value = civic_stratocracy
+				value = civic_meritocratic_capitalism
+				value = civic_pleasure_seekers
+			}
+		}
+		authority = {
+			NOR = {
+				value = auth_direct_democratic
+				value = auth_democratic
+			}
+		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_capitalism
+				value = ethic_capitalism
+				value = ethic_fanatic_capitalism
+			}
+		}
+	}
+	modifier = {
+		job_mogul_per_pop = 0.04
+		planet_jobs_slave_produces_mult = 0.1
+		slave_market_cost_mult = -0.25
+		pop_cat_ruler_political_power = 2
+		pop_cat_worker_political_power = -0.25
+		country_pop_enslaved_mult = 0.25
+		pop_cat_worker_happiness = -0.05
+		planet_crime_mult = 0.15
+	}
+	random_weight = {
+		base = 5
+	}
+}
+
+###################################################################
+# Keepers of Harmony
+###################################################################
+civic_keepers_harmony = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+			OR = {
+				text = civic_tooltip_green
+				value = ethic_green
+				value = ethic_fanatic_green
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		job_druid_per_pop = 0.04
+		planet_pops_organics_food_upkeep_mult = -0.15
+		planet_pops_minerals_upkeep_mult = -0.15
+		planet_pops_consumer_goods_upkeep_mult = -0.15
+		pop_amenities_usage_mult = -0.15
+		planet_max_districts_add = -1
+	}
+}
+
+###################################################################
+# Industrial Automation
+###################################################################
+civic_industrial_economy = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+			OR = {
+				text = civic_tooltip_industrial
+				value = ethic_industrial
+				value = ethic_fanatic_industrial
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		planet_jobs_robotic_produces_mult = 0.1
+		planet_pop_assembly_mult = 0.25
+		planet_building_build_speed_mult = 0.15
+		planet_clear_blocker_speed_mult = 0.15
+		STARBASE_SHIPYARD_BUILD_SPEED_MULT = 0.15
+		STARBASE_BUILDING_BUILD_SPEED_MULT = 0.15
+		planet_colony_development_speed_mult = 0.15
+		country_engineering_tech_research_speed = 0.05
+		country_society_tech_research_speed = -0.07
+	}
+}
+
+###################################################################
+# Natural Capitalism
+###################################################################
+civic_natural_capitalism = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_capitalism
+				value = ethic_capitalism
+				value = ethic_fanatic_capitalism
+			}
+			OR = {
+				text = civic_tooltip_green
+				value = ethic_green
+				value = ethic_fanatic_green
+			}
+		}
+	}
+	random_weight = {
+		base = 2
+	}
+	modifier = {
+	}
+}
+
+###################################################################
+# Wasteful Consumerism
+###################################################################
+civic_consumerism = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_capitalism
+				value = ethic_capitalism
+				value = ethic_fanatic_capitalism
+			}
+			OR = {
+				text = civic_tooltip_industrial
+				value = ethic_industrial
+				value = ethic_fanatic_industrial
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		job_artisan_per_pop = 0.06
+		job_entertainer_per_pop = 0.06
+		job_hedonist_per_pop = 0.06
+		planet_pops_consumer_goods_upkeep_mult = 0.1
+		pop_amenities_usage_mult = 0.1
+		planet_pops_organics_food_upkeep_mult = 0.1
+		planet_pops_minerals_upkeep_mult = 0.1
+	}
+}
+
+###################################################################
+# Land of Plenty
+###################################################################
+civic_land_of_plenty = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_socialism
+				value = ethic_socialism
+				value = ethic_fanatic_socialism
+			}
+			OR = {
+				text = civic_tooltip_industrial
+				value = ethic_industrial
+				value = ethic_fanatic_industrial
+			}
+		}
+	}
+	random_weight = {
+		base = 2
+	}
+	modifier = {
+		job_hedonist_per_pop = 0.06
+		planet_amenities_mult = 0.1
+		country_consumer_goods_produces_mult = 0.1
+		country_food_produces_mult = 0.1
+		country_resource_max_add = 5000
+		army_morale = -0.25
+	}
+}
+
+###################################################################
+# Harmonious Collective
+###################################################################
+civic_asceticism = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+			OR = {
+				text = civic_tooltip_socialism
+				value = ethic_socialism
+				value = ethic_fanatic_socialism
+			}
+		}
+		civics = {
+			NOT = {
+				value = civic_police_state
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		country_unity_produces_mult = 0.15
+		empire_size_pops_mult = -0.25
+		planet_crime_mult = -0.3
+		trade_value_mult = -0.05
+	}
+}
+
+###################################################################
+# Innovative Economy
+###################################################################
+civic_industrial_automatation = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_capitalism
+				value = ethic_capitalism
+				value = ethic_fanatic_capitalism
+			}
+			OR = {
+				text = civic_tooltip_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		ROBOT_species_trait_points_add = 1
+		planet_pops_robotics_upkeep_mult = -0.1
+		BIOLOGICAL_species_trait_points_add = 1
+		modify_species_cost_mult = -0.15
+		category_industry_research_speed_mult = 0.1
+		category_computing_research_speed_mult = 0.1
+		category_biology_research_speed_mult = 0.1
+		country_unity_produces_mult = -0.15
+	}
+}
+
+###################################################################
+# Peaceful Commonwealth
+###################################################################
+civic_enlightment = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		authority = {
+			NOR = {
+				value = auth_corporate
+				value = auth_private
+				value = auth_cooperative
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_socialism
+				value = ethic_socialism
+				value = ethic_fanatic_socialism
+			}
+			OR = {
+				text = civic_tooltip_pacifist
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		job_culture_worker_per_pop = 0.04
+		job_healthcare_per_pop = 0.04
+		job_artisan_per_pop = 0.04
+		planet_culture_workers_produces_mult = 0.1
+		country_energy_produces_mult = 0.15
+		country_admin_cap_mult = 0.2
+		army_damage_mult = -0.25
+	}
+}
+
+###################################################################
+# Ecological Engineers
+###################################################################
+civic_terraforming = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_green
+				value = ethic_green
+				value = ethic_fanatic_green
+			}
+			OR = {
+				text = civic_tooltip_materialist
+				value = ethic_fanatic_materialist
+				value = ethic_materialist
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		category_new_worlds_research_speed_mult = 0.25
+		category_biology_research_speed_mult = 0.25
+		deposit_blockers_cost_mult = -0.25
+		terraforming_cost_mult = -0.15
+	}
+}
+
+###################################################################
+# Evangelism
+###################################################################
+civic_evangelism = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	modifier = {
+		country_trust_growth = 0.5
+		COUNTRY_TRUST_CAP_ADD = 50
+		DIPLO_WEIGHT_POPS_MULT = 0.15
+		DIPLO_WEIGHT_ENVOYS_MULT = 0.15
+		PLANET_EMIGRATION_PUSH_MULT = 0.15
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_xenophile
+				value = ethic_xenophile
+				value = ethic_fanatic_xenophile
+			}
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
+		civics = {
+			NOT = {
+				value = civic_defenders_faith
+			}
+		}
+	}
+}
+
+###################################################################
+# Peacekeepers
+###################################################################
+civic_peacekeepers = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_pacifist
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
+			}
+			OR = {
+				text = civic_tooltip_xenophile
+				value = ethic_xenophile
+				value = ethic_fanatic_xenophile
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_diplomatic_corps
+				value = civic_public_relations_specialists
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		diplomacy_upkeep_mult = -0.15
+		diplo_weight_mult = 0.15
+		# FEDERATION_LEADER_DIPLO_WEIGHT_FROM_MEMBERS_MULT = 0.15		# TODO
+		envoys_add = 3
+		envoy_improve_relations_mult = 0.25
+		# FEDERATION_RESEARCH_SHARING_MULT = 0.2		# TODO
+		country_border_friction_mult = -0.25
+		ship_weapon_damage = -0.15
+	}
+}
+
+###################################################################
+# Interventionalism
+###################################################################
+civic_xeno_militarist = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_xenophile
+				value = ethic_xenophile
+				value = ethic_fanatic_xenophile
+			}
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+		civics = {
+			NOT = {
+				value = civic_nationalistic_zeal
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		federation_naval_cap_contribution_mult = 1
+		SHIP_FEDERATION_TERRITORY_SPEED_MULT = 0.2
+		# FEDERATION_FLEET_CAP_ADD = 25						# TODO
+		DIPLO_WEIGHT_NAVAL_MULT = 0.25
+		spy_network_daily_value_mult = 0.15
+		SPY_NETWORK_VALUE_MULT = 0.15
+		ESPIONAGE_OPERATION_SKILL_MULT = 0.15
+		country_claim_influence_cost_mult = 0.3
+	}
+}
+
+###################################################################
+# Star Settlers
+###################################################################
+civic_star_settlers = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_pacifist
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		pop_environment_tolerance = 0.05
+		starbase_outpost_cost_mult = -0.15
+		colony_start_num_pops_add = 1
+		ship_colonizer_cost_mult = -0.25
+		shipsize_colonizer_build_speed_mult = 0.33
+		planet_colony_development_speed_mult = 0.5
+		starbases_upkeep_mult = -0.1
+		category_new_worlds_research_speed_mult = 0.25
+		category_voidcraft_research_speed_mult = 0.15
+		PLANET_EMIGRATION_PUSH_MULT = 0.15
+	}
+}
+
+###################################################################
+# Interventionalism
+###################################################################
+civic_distributism = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		authority = {
+			NOR = {
+				value = auth_corporate
+				value = auth_private
+				value = auth_cooperative
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_capitalism
+				value = ethic_capitalism
+				value = ethic_fanatic_capitalism
+			}
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
+		civics = {
+			NOT = {
+				value = civic_consumerism
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		job_wealth_preacher_per_pop = 0.04
+		pop_cat_specialist_happiness = 0.1
+		pop_cat_specialist_political_power = 0.5
+		pop_cat_worker_happiness = 0.05
+		pop_cat_ruler_political_power = -0.5
+	}
+}
+
+###################################################################
+# Interventionalism
+###################################################################
+civic_martial_brotherhood = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		authority = {
+			NOR = {
+				value = auth_corporate
+				value = auth_cooperative
+				value = auth_private
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+			OR = {
+				text = civic_tooltip_socialism
+				value = ethic_socialism
+				value = ethic_fanatic_socialism
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		job_soldier_per_pop = 0.08
+		army_morale = 0.25
+		armies_upkeep_mult = -0.15
+		category_military_theory_research_speed_mult = 0.5
+	}
+}
+
+###################################################################
+# Societal Symbionts
+###################################################################
+civic_symbiotic_race = {
+	modification = no
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_xenophile
+				value = ethic_xenophile
+				value = ethic_fanatic_xenophile
+			}
+			OR = {
+				text = civic_tooltip_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_fanatic_purifiers
+				value = civic_agrarian_idyll
+				value = civic_shared_burden
+				value = civic_slaver_guilds
+				value = civic_divine_order
+				value = civic_reeducated_labor
+				value = civic_slave_race
+			}
+		}
+		origin = {
+			NOR = {
+				value = origin_syncretic_evolution
+				value = origin_void_dwellers
+				value = origin_mechanists
+			}
+		}
+	}
+	random_weight = {
+		base = 1		# Should be fairly rare
+	}
+	modifier = {
+		planet_jobs_unity_produces_mult = 0.15
+		BIOLOGICAL_species_trait_points_add = 1
+	}
+	has_secondary_species = {
+		title = civic_symbiotic_race_secondary_species
+		traits = {
+			trait = trait_symbiotic
+		}
+	}
+}
+
+###################################################################
+# Slave Race
+###################################################################
+civic_slave_race = {
+	modification = no
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_xenophobe
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+			}
+			OR = {
+				text = civic_tooltip_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_fanatic_purifiers
+				value = civic_agrarian_idyll
+				value = civic_shared_burden
+				value = civic_slaver_guilds
+				value = civic_divine_order
+				value = civic_reeducated_labor
+			}
+		}
+		origin = {
+			NOR = {
+				value = origin_syncretic_evolution
+				value = origin_void_dwellers
+				value = origin_mechanists
+			}
+		}
+	}
+	random_weight = {
+		base = 1		# Should be fairly rare
+	}
+	modifier = {
+		planet_jobs_society_research_produces_mult = 0.15
+		modify_species_cost_mult = -0.15
+	}
+	has_secondary_species = {
+		title = civic_slave_race_secondary_species
+		traits = {
+			trait = trait_slave_gene
+		}
+	}
+}
+
+###################################################################
+# Star Seekers
+###################################################################
+civic_exploration = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+			OR = {
+				text = civic_tooltip_pacifist
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		science_ship_survey_speed = 0.15
+		ship_anomaly_generation_chance_mult = 0.15
+		ship_anomaly_research_speed_mult = 0.25
+		ship_archaeological_site_excavation_speed_mult = 0.25
+		ship_archeaological_site_clues_add = 1
+		station_researchers_produces_mult = 0.15
+		ship_hyperlane_range_add = 1
+		station_researchers_upkeep_mult = 0.15
+		ship_armor_mult = -0.15
+	}
+}
+
+###################################################################
+# Spiritual Seekers
+###################################################################
+civic_spiritual_seekers = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		authority = {
+			NOR = {
+				value = auth_corporate
+				value = auth_private
+				value = auth_cooperative
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+			OR = {
+				text = civic_tooltip_pacifist
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		job_transcend_per_pop = 0.06
+		pop_citizen_happiness = 0.1
+		category_psionics_research_speed_mult = 1
+		rivalries_influence_produces_mult = -0.75
+	}
+}
+
+###################################################################
+# Private Militaries
+###################################################################
+civic_private_militaries = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		authority = {
+			NOR = {
+				value = auth_corporate
+				value = auth_cooperative
+				value = auth_private
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_capitalism
+				value = ethic_capitalism
+				value = ethic_fanatic_capitalism
+			}
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		job_mercenary_per_pop = 0.08
+		army_starting_experience_add = 200
+		planet_army_build_speed_mult = 0.5
+		armies_upkeep_mult = 0.05
+	}
+}
+
+###################################################################
+# Defenders of the Faith
+###################################################################
+civic_defenders_faith = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		authority = {
+			NOR = {
+				value = auth_corporate
+				value = auth_cooperative
+				value = auth_private
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_evangelism
+				value = civic_death_cult
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		job_templar_per_pop = 0.04
+		rivalries_influence_produces_mult = 0.25
+		army_attack_morale_mult = 0.25
+		army_attack_damage_mult = 0.25
+		ARMY_MORALE_DAMAGE_MULT = 0.25
+		ARMY_COLLATERAL_DAMAGE_MULT = 0.25
+		ARMY_ATTACK_HEALTH_MULT = 0.25
+		ARMY_DISENGAGE_CHANCE_MULT = -0.33
+		country_trust_growth = -0.5
+	}
+}
+
+###################################################################
+# Harmonious Hierarchy
+###################################################################
+civic_harmonious_hierarchy = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	modifier = {
+		governor_skill_levels = 2
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_socialism
+				value = ethic_socialism
+				value = ethic_fanatic_socialism
+			}
+			NOR = {
+				value = ethic_fanatic_egalitarian
+				value = ethic_fanatic_authoritarian
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_divine_order
+				value = civic_slaver_guilds
+				value = civic_imperial_cult
+				value = civic_divine_council
+				value = civic_spiritual_democracy
+				value = civic_cyber_dictatorship
+				value = civic_science_directorate
+				value = civic_cyber_demos_cratos
+				value = civic_military_dictatorship
+				value = civic_military_junta
+				value = civic_citizen_service
+				value = civic_executive_committee
+				value = civic_philosopher_king
+				value = civic_peaceful_republic
+				value = civic_exalted_priesthood
+				value = civic_technocracy
+				value = civic_bureaucracy
+				value = civic_stratocracy
+				value = civic_genetic_aristocracy
+				value = civic_aristocratic_elite
+				value = civic_meritocracy
+			}
+		}
+		authority = {
+			NOT = {
+				value = auth_direct_democratic
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+}
+
+###################################################################
+# Genetic Aristocracy
+###################################################################
+civic_genetic_aristocracy = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+			NOT = {
+				value = ethic_fanatic_egalitarian
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_aristocratic_elite
+				value = civic_harmonious_hierarchy
+				value = civic_meritocracy
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		leader_skill_levels = 1
+		leader_age = 10
+		species_leader_exp_gain = 0.25
+		planet_jobs_ruler_produces_mult = 0.05
+		pop_cat_specialist_political_power = -1.5
+		pop_cat_specialist_happiness = -0.05
+		country_leader_pool_size = -1
+		leaders_upkeep_mult = 0.3
+	}
+}
+
+###################################################################
+# Meritocratic Capitalism
+###################################################################
+civic_meritocratic_capitalism = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_capitalism
+				value = ethic_capitalism
+				value = ethic_fanatic_capitalism
+			}
+			NOR = {
+				text = civic_tooltip_not_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_meritocracy
+				value = civic_merchant_guilds
+				value = civic_state_monopoly
+				value = civic_genetic_aristocracy
+				value = civic_aristocratic_elite
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		job_merchant_per_pop = 0.04
+		trade_value_mult = 0.1
+		category_good_trading_research_speed_mult = 0.5
+		planet_jobs_specialist_produces_mult = 0.05
+		pop_cat_specialist_political_power = 1
+	}
+}
+
+###################################################################
+# Totalitairan Utopia
+###################################################################
+civic_ultimate_collective = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+			OR = {
+				text = civic_tooltip_socialism
+				value = ethic_socialism
+				value = ethic_fanatic_socialism
+			}
+		}
+		civics = {
+			NOT = {
+				value = civic_police_state
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		country_base_influence_produces_mult = 0.1
+		pop_government_ethic_attraction = 0.5
+		planet_stability_add = 15
+		pop_resettlement_cost_mult = -0.5
+		country_trade_fee = 0.1
+	}
+}
+
+###################################################################
+# Caste System
+###################################################################
+civic_divine_order = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+			NOR = {
+				value = ethic_fanatic_socialism
+				value = ethic_fanatic_capitalism
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_welfare_state
+				value = civic_slaver_guilds
+				value = civic_labour_unions
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		job_slave_master_per_pop = 0.04
+		pop_cat_ruler_happiness = 0.1
+		pop_cat_ruler_political_power = 1
+		planet_jobs_worker_produces_mult = 0.05
+		planet_jobs_slave_produces_mult = 0.15
+		slave_market_cost_mult = -0.15
+		country_pop_enslaved_mult = 0.4
+		pop_demotion_time_mult = 1
+		country_leader_pool_size = -1
+	}
+}
+
+###################################################################
+# Labor Unions
+###################################################################
+civic_labour_unions = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			NOR = {
+				value = ethic_fanatic_authoritarian
+				value = ethic_fanatic_capitalism
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_shared_burden
+				value = civic_divine_order
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		pop_cat_worker_happiness = 0.05
+		planet_jobs_worker_produces_mult = 0.1
+		pop_cat_worker_political_power = 1
+	}
+}
+
+###################################################################
+# Welfare State
+###################################################################
+civic_welfare_state = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			NOR = {
+				value = ethic_fanatic_egalitarian
+				value = ethic_fanatic_capitalism
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_slaver_guilds
+				value = civic_shared_burden
+				value = civic_beacon_of_liberty
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		country_society_tech_research_speed = 0.05
+		pop_growth_speed = 0.15
+		country_leader_pool_size = 1
+		pop_demotion_time_mult = -0.5
+		planet_pops_unemployed_consumer_goods_upkeep_add = 1
+		planet_districts_cities_upkeep_mult = 0.1
+	}
+}
+
+###################################################################
+# Machine Cult
+###################################################################
+civic_machine_cult = {
+	modification = no
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+			OR = {
+				text = civic_tooltip_industrial
+				value = ethic_industrial
+				value = ethic_fanatic_industrial
+			}
+		}
+		origin = {
+			NOR = {
+				value = origin_syncretic_evolution
+				value = origin_void_dwellers
+			}
+		}
+	}
+	random_weight = {
+		base = 0
+	}
+	modifier = {
+		job_techno_priest_per_pop = 0.04
+		COUNTRY_SYNTHETIC_TRUST_CAP_ADD = 100
+		planet_pop_assembly_mult = 0.25
+	}
+}
+
+###################################################################
+# Naval Traditions
+###################################################################
+civic_naval_traditions = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		authority = {
+			NOR = {
+				value = auth_corporate
+				value = auth_cooperative
+				value = auth_private
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		ship_fire_rate_mult = 0.1
+		SHIP_EXPERIENCE_GAIN_MULT = 0.15
+		country_command_limit_add = 10
+		ships_upkeep_mult = -0.1
+	}
+}
+
+###################################################################
+# Chosen People
+###################################################################
+civic_chosen_people = {
+	modification = no
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_xenophobe
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+			}
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
+	}
+	random_weight = {
+		base = 1000
+	}
+	modifier = {
+		country_unity_produces_mult = 0.2
+		pop_citizen_happiness = 0.1
+		ship_home_territory_fire_rate_mult = 0.15
+		POP_PURGE_SPEED = 0.5
+		country_insult_efficiency = 0.25
+		envoy_harm_relations_mult = 0.25
+		envoys_add = -1
+	}
+}
+
+###################################################################
+# Military Dictatorship
+###################################################################
+civic_military_dictatorship = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			value = ethic_fanatic_militarist
+		}
+		authority = {
+			OR = {
+				value = auth_dictatorial
+				value = auth_imperial
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_imperial_cult
+				value = civic_cyber_dictatorship
+				value = civic_aristocratic_elite
+				value = civic_merchant_guilds
+				value = civic_state_monopoly
+				value = civic_exalted_priesthood
+				value = civic_technocracy
+				value = civic_bureaucracy
+				value = civic_stratocracy
+			}
+		}
+	}
+	can_build_ruler_ship = yes
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		max_rivalries = 2
+		ship_piracy_suppression_add = 5
+		COUNTRY_STARBASE_INFLUENCE_COST_MULT = -0.15
+		category_statecraft_research_speed_mult = -0.5
+	}
+}
+
+###################################################################
+# Democratic Utopia
+###################################################################
+civic_peaceful_republic = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			value = ethic_fanatic_pacifist
+		}
+		authority = {
+			OR = {
+				value = auth_democratic
+				value = auth_direct_democratic
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_cyber_demos_cratos
+				value = civic_spiritual_democracy
+				value = civic_aristocratic_elite
+				value = civic_merchant_guilds
+				value = civic_state_monopoly
+				value = civic_exalted_priesthood
+				value = civic_technocracy
+				value = civic_bureaucracy
+				value = civic_stratocracy
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		pop_growth_speed = 0.1
+		planet_amenities_mult = 0.15
+		planet_crime_mult = -0.25
+		country_war_exhaustion_mult = 0.25
+	}
+}
+
+###################################################################
+# Theocratic Republic
+###################################################################
+civic_spiritual_democracy = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
+		authority = {
+			OR = {
+				value = auth_democratic
+				value = auth_direct_democratic
+			}
+		}
+		civics = {
+			nor = {
+				value = civic_slaver_guilds
+				value = civic_peaceful_republic
+				value = civic_citizen_service
+				value = civic_aristocratic_elite
+				value = civic_state_monopoly
+				value = civic_merchant_guilds
+				value = civic_exalted_priesthood
+				value = civic_technocracy
+				value = civic_bureaucracy
+				value = civic_stratocracy
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		planet_stability_add = 15
+		pop_government_ethic_attraction = 0.25
+		pop_ethics_shift_speed_mult = -0.25
+	}
+}
+
+###################################################################
+# Cyber Democracy
+###################################################################
+civic_cyber_demos_cratos = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			value = ethic_fanatic_materialist
+		}
+		authority = {
+			OR = {
+				value = auth_democratic
+				value = auth_direct_democratic
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_citizen_service
+				value = civic_peaceful_republic
+				value = civic_aristocratic_elite
+				value = civic_merchant_guilds
+				value = civic_state_monopoly
+				value = civic_exalted_priesthood
+				value = civic_technocracy
+				value = civic_bureaucracy
+				value = civic_stratocracy
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		pop_factions_produces_mult = 0.15
+		category_good_trading_research_speed_mult = 0.1
+		category_statecraft_research_speed_mult = 0.1
+		category_computing_research_speed_mult = 0.1
+		planet_crime_mult = 0.15
+	}
+}
+
+###################################################################
+# Divine Council
+###################################################################
+civic_divine_council = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
+		authority = {
+			value = auth_oligarchic
+		}
+		civics = {
+			NOR = {
+				value = civic_military_junta
+				value = civic_executive_committee
+				value = civic_aristocratic_elite
+				value = civic_merchant_guilds
+				value = civic_state_monopoly
+				value = civic_exalted_priesthood
+				value = civic_technocracy
+				value = civic_bureaucracy
+				value = civic_stratocracy
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		country_edict_cap_add = 2
+		tradition_cost_empire_size_mult = -0.25
+		job_high_priest_per_pop = 0.04
+		country_physics_tech_research_speed = -0.05
+	}
+}
+
+###################################################################
+# Military Council
+###################################################################
+civic_military_junta = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+		authority = {
+			OR = {
+				value = auth_oligarchic
+				value = auth_dictatorial
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_divine_council
+				value = civic_science_directorate
+				value = civic_aristocratic_elite
+				value = civic_merchant_guilds
+				value = civic_state_monopoly
+				value = civic_exalted_priesthood
+				value = civic_technocracy
+				value = civic_bureaucracy
+				value = civic_stratocracy
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		admiral_skill_levels = 3
+		general_skill_levels = 3
+		job_commandante_per_pop = 0.04
+		leader_admirals_upkeep_mult = 0.25
+		leader_generals_upkeep_mult = 0.25
+	}
+}
+
+###################################################################
+# Science Directorate
+###################################################################
+civic_science_directorate = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+		}
+		authority = {
+			value = auth_oligarchic
+		}
+		civics = {
+			NOR = {
+				value = civic_executive_committee
+				value = civic_military_junta
+				value = civic_aristocratic_elite
+				value = civic_merchant_guilds
+				value = civic_state_monopoly
+				value = civic_exalted_priesthood
+				value = civic_technocracy
+				value = civic_bureaucracy
+				value = civic_stratocracy
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		scientist_skill_levels = 3
+		job_head_researcher_per_pop = 0.04
+		leader_scientists_upkeep_mult = 0.25
+	}
+}
+
+###################################################################
+# Research Cooperatives
+###################################################################
+civic_innovative_economy = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+			OR = {
+				text = civic_tooltip_socialism
+				value = ethic_socialism
+				value = ethic_fanatic_socialism
+			}
+		}
+	}
+	random_weight = {
+		base = 1
+	}
+	modifier = {
+		num_tech_alternatives_add = 1
+		job_researcher_per_pop = 0.05
+		planet_researchers_produces_mult = 0.05
+		planet_researchers_upkeep_mult = 0.1
+	}
+}
+
+###################################################################
+# Philosophers Assembly
+###################################################################
+civic_executive_committee = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_pacifist
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
+			}
+		}
+		authority = {
+			OR = {
+				value = auth_oligarchic
+				value = auth_democratic
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_science_directorate
+				value = civic_divine_council
+				value = civic_aristocratic_elite
+				value = civic_merchant_guilds
+				value = civic_state_monopoly
+				value = civic_exalted_priesthood
+				value = civic_technocracy
+				value = civic_bureaucracy
+				value = civic_stratocracy
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		leader_skill_levels = 1
+		country_unity_produces_mult = 0.1
+		country_society_tech_research_speed = 0.1
+		job_supervisor_per_pop = 0.04
+		country_claim_influence_cost_mult = 0.5
+	}
+}
+
+###################################################################
+# Cyber Dictatorship
+###################################################################
+civic_cyber_dictatorship = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			value = ethic_fanatic_materialist
+		}
+		authority = {
+			OR = {
+				value = auth_dictatorial
+				value = auth_imperial
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_military_dictatorship
+				value = civic_philosopher_king
+				value = civic_political_pluralism
+				value = civic_aristocratic_elite
+				value = civic_state_monopoly
+				value = civic_merchant_guilds
+				value = civic_exalted_priesthood
+				value = civic_technocracy
+				value = civic_bureaucracy
+				value = civic_stratocracy
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		country_admin_cap_mult = 0.25
+		intel_encryption_mult = 0.25
+		COUNTRY_COUNTER_ESPIONAGE_MULT = 0.15
+		pop_factions_produces_mult = -0.25
+	}
+}
+
+###################################################################
+# Globalissm
+###################################################################
+civic_globalism = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_xenophile
+				value = ethic_xenophile
+				value = ethic_fanatic_xenophile
+			}
+			OR = {
+				text = civic_tooltip_capitalism
+				value = ethic_capitalism
+				value = ethic_fanatic_capitalism
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		country_trade_attractiveness = 0.5
+		country_trade_fee = -0.1
+		DIPLO_WEIGHT_ECONOMY_MULT = 0.25
+		DIPLO_WEIGHT_TECHNOLOGY_MULT = 0.15
+	}
+}
+
+###################################################################
+# Tribalism
+###################################################################
+civic_in_perfect = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_xenophobe
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+			}
+			OR = {
+				text = civic_tooltip_socialism
+				value = ethic_socialism
+				value = ethic_fanatic_socialism
+			}
+		}
+	}
+	random_weight = {
+		base = 1
+	}
+	modifier = {
+		pop_housing_usage_mult = -0.15
+		pop_government_ethic_attraction = 0.2
+		tradition_cost_empire_size_mult = -0.2
+		rivalries_influence_produces_mult = 0.25
+		COUNTRY_TRUST_CAP_ADD = -50
+	}
+}
+
+###################################################################
+# Ordered Stratocracy
+###################################################################
+civic_stratocracy = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		authority = {
+			NOR = {
+				value = auth_corporate
+				value = auth_cooperative
+				value = auth_private
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_merchant_guilds
+				value = civic_state_monopoly
+				value = civic_exalted_priesthood
+				value = civic_technocracy
+				value = civic_aristocratic_elite
+				value = civic_imperial_cult
+				value = civic_divine_council
+				value = civic_spiritual_democracy
+				value = civic_cyber_dictatorship
+				value = civic_science_directorate
+				value = civic_cyber_demos_cratos
+				value = civic_military_dictatorship
+				value = civic_military_junta
+				value = civic_citizen_service
+			}
+		}
+	}
+	random_weight = {
+		base = 0
+	}
+}
+
+###################################################################
+# Enlightened Bureaucracy
+###################################################################
+civic_bureaucracy = {
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		authority = {
+			NOR = {
+				value = auth_corporate
+				value = auth_cooperative
+				value = auth_private
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_pacifist
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_merchant_guilds
+				value = civic_state_monopoly
+				value = civic_exalted_priesthood
+				value = civic_technocracy
+				value = civic_aristocratic_elite
+				value = civic_imperial_cult
+				value = civic_divine_council
+				value = civic_spiritual_democracy
+				value = civic_cyber_dictatorship
+				value = civic_science_directorate
+				value = civic_cyber_demos_cratos
+				value = civic_executive_committee
+				value = civic_philosopher_king
+				value = civic_peaceful_republic
+			}
+		}
+	}
+	random_weight = {
+		base = 0
+	}
+}

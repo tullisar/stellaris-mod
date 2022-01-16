@@ -212,7 +212,7 @@ eap_transcendent_learning = {
 		}
 		OR = {
 			has_technology = tech_subdermal_stimulation
-			tul_is_hive_empire = yes
+			tul_country_is_hive_authority = yes
 		}
 	}
 	ai_weight = {
@@ -409,7 +409,7 @@ ap_esap_gov_4 = {
 		# Apply the appropriate base modifier.
 		if = {
 			limit = {
-				tul_is_hive_empire = yes
+				tul_country_is_hive_authority = yes
 			}
 			add_modifier = {
 				modifier = mod_tul_ap_beautiful_bureaucracy_base_hive
@@ -417,7 +417,7 @@ ap_esap_gov_4 = {
 		}
 		else_if = {
 			limit = {
-				tul_is_machine_empire = yes
+				tul_country_is_authority_machine = yes
 			}
 			add_modifier = {
 				modifier = mod_tul_ap_beautiful_bureaucracy_base_machines

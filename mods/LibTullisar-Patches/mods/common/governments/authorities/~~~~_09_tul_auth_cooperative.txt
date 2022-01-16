@@ -1,0 +1,70 @@
+######################################################################################
+# Authority: Cooperative
+# Source: Expanded Traits, Civics, Pops, and More
+######################################################################################
+auth_cooperative = {
+	election_term_years = 10
+	re_election_allowed = yes
+	election_type = democratic
+	uses_mandates = yes
+	can_have_emergency_elections = yes
+	emergency_election_cost = 500
+	localization_postfix = corporate
+
+	playable = {
+		host_has_dlc = "Megacorp"
+	}
+
+	# Possible
+	possible = {
+		ethics = {
+
+			# Cannot be gestalt, xenophobic, authoritarian, or fanatic competitive
+			NOR = {
+				value = ethic_gestalt_consciousness
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+				value = ethic_fanatic_capitalism
+			}
+
+			# Must be some degree of socialist (cooperative) or non-fanatic capitalist
+			# (competitive).
+			OR = {
+				value = ethic_socialism
+				value = ethic_fanatic_socialism
+				value = ethic_capitalism
+			}
+
+		}
+	}
+
+	random_weight = {
+		modifier = {
+			factor = 0.4
+			host_has_dlc = "Megacorp"
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				host_has_dlc = "Megacorp"
+			}
+		}
+	}
+
+	# Modifiers
+	country_modifier = {
+		planet_resettlement_unemployed_mult = 0.5
+		trade_value_mult = 0.1
+		diplo_weight_pops_mult = 0.2
+		country_admin_cap_add = 40
+		empire_size_systems_mult = 0.2
+		empire_size_penalty_mult = 0.4
+	}
+
+	# Tags
+	tags = {
+		AUTHORITY_ELECTION_DEMOCRATIC
+	}
+}

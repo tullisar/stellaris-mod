@@ -1,0 +1,268 @@
+######################################################################################
+# Authority Ideas
+#
+######################################################################################
+#
+######################################################################################
+# Hive Overmind (Imperial Type Hive Mind)
+#
+# Overmind hives might eschew immortal leaders in lieu of a genetic line of
+# overmind type creatures. Perhaps there is a syncretic style "overmind" 
+# species like the origin from Expanded Gestalts? Either way, that origin
+# will need to be-retuned now that an overmind is an authority option.
+#
+#
+# TODO: Machine equivalent. Powerful semi-autonomous program that writes its own
+# successor code, knowing that its code will become obsolete over time. 
+#
+######################################################################################
+auth_hive_overmind = {
+
+	has_heir = yes
+	has_agendas = yes
+	has_factions = no
+	election_type = none
+	can_reform = yes
+
+	playable = {
+		always = no
+		# host_has_dlc = "Utopia"
+	}
+
+	# Possible only for gestalt empires
+	possible = {
+		ethics = {
+			value = ethic_gestalt_consciousness
+		}
+
+		# TODO: Exclude civics that aren't appropriate.
+	}
+
+	# Temporarily disabled.
+	random_weight = {
+		base = 0
+		# modifier = {
+		# 	factor = 0
+		# 	NOT = {
+		# 		host_has_dlc = "Utopia"
+		# 	}
+		# }
+	}
+
+	# Required Traits
+	traits = {
+		trait = trait_hive_mind
+	}
+
+	# Modifiers
+	country_modifier = {
+	    # TODO
+	}
+
+	# Tags
+	tags = {
+		AUTHORITY_HAS_HEIR
+		AUTH_HIVE_MIND_AI_RESTRICTIONS
+		AUTH_HIVE_MIND_FOREIGN_POP_SURVIVAL
+		AUTH_HIVE_MIND_GENEMODDING
+	}
+
+}
+
+######################################################################################
+# Name TBD (Oligarchic Style Hive Mind)
+# 
+# Oligarchic hives use elections to cycle rulers in and out. TBD if they are immortal
+# or not. Instead of factions based on ethics, there are factions that are associated
+# with various hive government themes.
+#
+# TODO: Machine equivalent. Powerful factions of computational function groups that
+# vie for processing power. Rulers in charge increase output relevant to their factions.
+#
+######################################################################################
+auth_oligarchic_hive_mind = {
+
+	has_heir = no
+	has_agendas = yes
+	has_factions = yes
+	election_term_years = 20
+	election_type = oligarchic
+	re_election_allowed = yes
+	can_have_emergency_elections = yes
+	emergency_election_cost = 250
+	max_election_candidates = 4
+	
+	playable = {
+		always = no
+		# host_has_dlc = "Utopia"
+	}
+
+	# Possibly only for gestalt empires
+	possible = {
+		ethics = {
+			value = ethic_gestalt_consciousness
+		}
+
+		# TODO: Exclude civics that aren't appropriate.
+	}
+
+	# Temporarily disabled.
+	random_weight = {
+		base = 0
+		# modifier = {
+		# 	factor = 0
+		# 	NOR = {
+		# 		host_has_dlc = "Utopia"
+		# 	}
+		# }
+	}
+
+	# Required Traits
+	traits = {
+		trait = trait_hive_mind
+	}
+
+	# Modifiers
+	country_modifier = {
+		# TODO
+	}
+
+	# Tags
+	tags = {
+		AUTHORITY_ELECTION_OLIGARCHIC
+		AUTH_HIVE_MIND_AI_RESTRICTIONS
+		AUTH_HIVE_MIND_FOREIGN_POP_SURVIVAL
+		AUTH_HIVE_MIND_GENEMODDING
+	}
+}
+
+######################################################################################
+# Mutualistic Hive Mind
+#
+# Mutualistic hive minds operate like megacorporations. Likely standard hive mind
+# style immortal ruler, but factions may still be used (even without elections).
+# These factions might represent potential trade resources (mining, energy, etc...)
+#
+# TODO: Machine equivalent. Ancient business machine gestalt alternative. 
+#
+######################################################################################
+auth_mutualistic_hive_mind = {
+
+	# Should there be elections? Standard corporations are otherwise similar to
+	# oligarchies, and the expanded civics mod adds cooperative and private corps.
+	# How to set a hive mind corporation apart (as well as distinct from machine
+	# traders)
+	has_heir = no
+	has_factions = yes
+	has_agendas = yes
+	election_type = none
+	localization_postfix = corporate
+
+	playable = {
+		always = no
+		# host_has_dlc = "Utopia"
+		# host_has_dlc = "Megacorp"
+	}
+
+	# Possibly only for gestalt empires
+	possible = {
+		ethics = {
+			value = ethic_gestalt_consciousness
+		}
+
+		# TODO: Exclude civics that aren't appropriate.
+	}
+
+	# Temporarily disabled.
+	random_weight = {
+		base = 0
+		# modifier = {
+		# 	factor = 0
+		# 	NOR = {
+		# 		host_has_dlc = "Utopia"
+		#		host_has_dlc = "Megacorp"
+		# 	}
+		# }
+	}
+
+	# Required Traits
+	traits = {
+		trait = trait_hive_mind
+	}
+
+	# Modifiers
+	country_modifier = {
+		# TODO
+	}
+
+	tags = {
+		AUTH_HIVE_MIND_AI_RESTRICTIONS
+		AUTH_HIVE_MIND_FOREIGN_POP_SURVIVAL
+		AUTH_HIVE_MIND_GENEMODDING
+	}
+
+}
+
+######################################################################################
+# Cooperative Hive Mind (Direct Democratic Style)
+#
+# Name is WIP/TBD. Hive with individuals and drones. Elections are very frequent to
+# represent the collective deciding the overall driving force should shift dynamically
+# to adapt to changing situations. 
+#
+# TODO: Machine equivalent. Self governing semi-autonomous programs. 
+#
+######################################################################################
+auth_cooperative_hive_mind = {
+	has_heir = no
+	has_agendas = no
+	has_factions = yes
+	election_term_years = 5
+	re_election_allowed = yes
+	election_type = democratic
+	max_election_candidates = 12
+	uses_mandates = yes
+
+	playable = {
+		always = no
+		# host_has_dlc = "Utopia"
+	}
+
+	# Possibly only for gestalt empires
+	possible = {
+		ethics = {
+			value = ethic_gestalt_consciousness
+		}
+
+		# TODO: Exclude civics that aren't appropriate.
+	}
+
+	# Temporarily disabled.
+	random_weight = {
+		base = 0
+		# modifier = {
+		# 	factor = 0
+		# 	NOT = {
+		# 		host_has_dlc = "Utopia"
+		# 	}
+		# }
+	}
+
+	# Required Traits
+	traits = {
+		trait = trait_hive_mind
+	}
+
+	# Modifiers
+	country_modifier = {
+		# TODO
+	}
+
+	# Tags
+	tags = {
+		AUTHORITY_ELECTION_DEMOCRATIC
+		AUTH_HIVE_MIND_AI_RESTRICTIONS
+		AUTH_HIVE_MIND_FOREIGN_POP_SURVIVAL
+		AUTH_HIVE_MIND_GENEMODDING
+	}
+}

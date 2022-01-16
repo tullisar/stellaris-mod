@@ -1,23 +1,25 @@
 ######################################################################################
 # Scripted Triggers: Empires
 ######################################################################################
+
+
 ######################################################################################
-# tul_is_hive_empire
+# is_machine_empire
 #
-# Determines whether the scoped country is a hive mind empire or not.
+# Overridden to use tul_country_is_authority_machine
 #
 ######################################################################################
-tul_is_hive_empire = {
-	has_authority = auth_hive_mind
+is_machine_empire = {
+	tul_country_is_authority_machine = yes
 }
 
 ######################################################################################
-# tul_is_machine_empire
+# tul_country_is_authority_machine
 #
 # Determines whether the scoped country is a machine intelligence empire or not.
 #
 ######################################################################################
-tul_is_machine_empire = {
+tul_country_is_authority_machine = {
 	OR = {
 		has_authority = auth_machine_intelligence
 		has_authority = auth_ancient_machine_intelligence
@@ -42,6 +44,7 @@ tul_is_mechanical_empire = {
 	OR = {
 		owner_species = {
 			has_trait = trait_mechanical
+			has_trait = trait_machine_unit
 		}
 		has_country_flag = synthetic_empire
 		has_ascension_perk = ap_synthetic_evolution
@@ -58,7 +61,7 @@ tul_is_robot_empire = {
 			has_trait = trait_mechanical
 		}
 		has_country_flag = synthetic_empire
-		tul_is_machine_empire = yes
+		tul_country_is_authority_machine = yes
 	}
 }
 
@@ -70,7 +73,7 @@ tul_is_robot_empire = {
 ######################################################################################
 tul_is_synthetic_empire = {
 	OR = {
-		tul_is_machine_empire = yes
+		tul_country_is_authority_machine = yes
 		tul_is_mechanical_empire = yes
 	}
 }

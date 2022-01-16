@@ -1,0 +1,73 @@
+######################################################################################
+# Anomalies (GPM)
+######################################################################################
+#
+@distar_weight = 1
+#
+######################################################################################
+# Alluring Darkness
+######################################################################################
+GPM_BLACK_HOLE_CAT = {
+	desc = GPM_BLACK_HOLE_CAT_DESC
+	picture = GFX_evt_black_hole
+	level = 9
+	
+	null_spawn_chance = 0.50
+	
+	max_once = yes
+
+	spawn_chance = {
+		modifier = {
+			factor = 0
+			has_deposit = yes
+		}
+		modifier = {
+			add = 3
+			tul_is_star_black_hole = yes
+		}
+		modifier = {
+			factor = 0.25
+			FROM = {
+				owner = {
+					is_ai = yes
+				}
+			}
+		}
+	}
+
+	on_success = {
+		1 = gpm_anomaly.78877
+	}
+}
+
+######################################################################################
+# 
+######################################################################################
+GPM_CLOCK_CAT = {
+	desc = GPM_CLOCK_CAT_DESC
+	picture = GFX_evt_star_pulsar
+	level = 9
+	
+	null_spawn_chance = 0.50
+	
+	max_once = yes
+
+	spawn_chance = {
+		modifier = {
+			add = 3
+			tul_is_planet_pulsar = yes
+		}
+		modifier = {
+			factor = 0.25
+			FROM = {
+				owner = {
+					is_ai = yes
+				}
+			}
+		}
+	}
+
+	on_success = {
+		1 = gpm_anomaly.78881
+	}
+}

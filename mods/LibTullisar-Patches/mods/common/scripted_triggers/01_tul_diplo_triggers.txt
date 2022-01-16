@@ -1,0 +1,1923 @@
+######################################################################################
+# Scripted Triggers (Diplomacy)
+# Package: Patch
+######################################################################################
+#
+#
+######################################################################################
+# tul_country_not_purifying_from
+#
+# Determine whether the actor (this) of a diplomatic action for the current actor
+# (this) are valid when the actor is a fanatic purifier.
+#
+######################################################################################
+tul_country_not_purifying_from = {
+	custom_tooltip = {
+		fail_text = "requires_actor_not_fanatic_purifiers"
+		OR = {
+			is_same_species = from
+			NOT = {
+				has_valid_civic = civic_fanatic_purifiers
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_purifiable_from
+#
+# Determine whether the recipients (from) of a diplomatic action for the current 
+# actor (this) are valid when the recipients are fanatic purifiers.
+#
+######################################################################################
+tul_country_not_purifiable_from = {
+	custom_tooltip = {
+		fail_text = "requires_recipient_not_fanatic_purifiers"
+		OR = {
+			is_same_species = from
+			from = {
+				NOT = {
+					has_valid_civic = civic_fanatic_purifiers
+				}
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_devouring_from
+#
+# Determine whether the actor (this) of a diplomatic action for the current actor
+# (this) are valid when the actor is a devouring swarm.
+#
+######################################################################################
+tul_country_not_devouring_from = {
+	custom_tooltip = {
+		fail_text = "requires_actor_not_devouring_swarm"
+		NOT = {
+			has_valid_civic = civic_hive_devouring_swarm
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_devourable_from
+#
+# Determine whether the recipients (from) of a diplomatic action for the current 
+# actor (this) are valid when the recipients are a devouring swarm.
+#
+######################################################################################
+tul_country_not_devourable_from = {
+	custom_tooltip = {
+		fail_text = "requires_recipient_not_devouring_swarm"
+		from = {
+			NOT = {
+				has_valid_civic = civic_hive_devouring_swarm
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_terminating_from
+#
+# Determine whether the recipients (from) of a diplomatic action for the current 
+# actor (this) are valid when the actors are machine terminators.
+#
+######################################################################################
+tul_country_not_terminating_from = {
+	custom_tooltip = {
+		fail_text = "requires_actor_not_machine_terminator"
+		OR = {
+			is_same_species = from
+			NOT = {
+				has_civic = civic_machine_terminator
+			}
+			AND = {
+				has_civic = civic_machine_terminator
+				from = {
+					tul_is_synthetic_empire = yes
+				}
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_terminable_from
+#
+# Determine whether the recipients (from) of a diplomatic action for the current 
+# actor (this) are valid when the recipients are machine terminators.
+#
+######################################################################################
+tul_country_not_terminable_from = {
+	custom_tooltip = {
+		fail_text = "requires_recipient_not_machine_terminator"
+		OR = {
+			is_same_species = from
+			from = {
+				NOT = {
+					has_civic = civic_machine_terminator
+				}
+			}
+			AND = {
+				from = {
+					has_civic = civic_machine_terminator
+				}
+				tul_is_synthetic_empire = yes
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_assimilating_from
+#
+# Determine whether the recipients (from) of a diplomatic action for the current 
+# actor (this) are valid when the actor is a machine assimilator.
+#
+# Note: This trigger doesn't currently check from, but can be overridden if there
+# is a need for the from country to be checked.
+#
+######################################################################################
+tul_country_not_assimilating_from = {
+	custom_tooltip = {
+		fail_text = "requires_actor_not_machine_assimilator"
+		NOT = {
+			has_valid_civic = civic_machine_assimilator
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_inwards_ignoring_from
+#
+# Determine whether the recipients (from) of a diplomatic action for the current 
+# actor (this) are valid when the actor is focusing inwards.
+#
+# Note: This trigger doesn't currently check from, but can be overridden if there
+# is a need for the from country to be checked.
+#
+######################################################################################
+tul_country_not_inwards_ignoring_from = {
+	custom_tooltip = {
+		fail_text = "requires_actor_not_inward_perfection"
+		NOT = {
+			has_valid_civic = civic_inwards_perfection
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_ignored_inwards_from
+#
+# Determine whether the recipients (from) of a diplomatic action for the current 
+# actor (this) are valid when the actor is focusing inwards.
+#
+# Note: This trigger doesn't currently check from, but can be overridden if there
+# is a need for the from country to be checked.
+#
+######################################################################################
+tul_country_not_ignored_inwards_from = {
+	custom_tooltip = {
+		fail_text = "requires_recipient_not_inward_perfection"
+		NOT = {
+			from = {
+				has_valid_civic = civic_inwards_perfection
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_peacekeeping_from
+#
+# Determine whether the recipients (from) of a diplomatic action for the current 
+# actor (this) are valid when the actors are peacekeepers.
+#
+# Note: This trigger doesn't currently check from, but can be overridden if there
+# is a need for the from country to be checked.
+#
+######################################################################################
+tul_country_not_peacekeeping_from = {
+	custom_tooltip = {
+		NOT = {
+			has_valid_civic = civic_peacekeepers
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_closed_gestalt_by_from
+#
+# Determine whether the recipients (from) of a diplomatic action for the current 
+# actor (this) are valid when the actors some kind of a closed gestalt empire.
+#
+# Note: This trigger doesn't currently check from, but can be overridden if there
+# is a need for the from country to be checked.
+#
+######################################################################################
+tul_country_not_closed_gestalt_by_from = {
+	custom_tooltip = {
+		fail_text = "requires_recipient_not_closed_collective"
+		FROM = {
+			NOT = {
+				has_valid_civic = civic_closed_collective
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = "requires_recipient_not_closed_network"
+		FROM = {
+			NOT = {
+				has_valid_civic = civic_closed_network
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_closed_gestalt_for_from
+#
+# Determine whether the recipients (from) of a diplomatic action for the current 
+# actor (this) are valid when the actors some kind of a closed gestalt empire.
+#
+# Note: This trigger doesn't currently check from, but can be overridden if there
+# is a need for the from country to be checked.
+#
+######################################################################################
+tul_country_not_closed_gestalt_for_from = {
+	custom_tooltip = {
+		fail_text = "requires_actor_not_closed_collective"
+		NOT = {
+			has_valid_civic = civic_closed_collective
+		}
+	}
+	custom_tooltip = {
+		fail_text = "requires_actor_not_closed_network"
+		NOT = {
+			has_valid_civic = civic_closed_network
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_snubbed_by_from
+#
+# Ensure that the actor (this) of a diplomatic action is not being snubbed by
+# the recipient (from).
+#
+######################################################################################
+tul_country_not_snubbed_by_from = {
+	custom_tooltip = {
+		fail_text = "requires_recipient_not_pompous"
+		FROM = {
+			NOT = {
+				has_valid_civic = civic_pompous_purists
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_snubbing_from
+#
+# Ensure that the actor (this) of a diplomatic action is not snubbing the recipient
+# (from).
+#
+######################################################################################
+tul_country_not_snubbing_from = {
+	custom_tooltip = {
+		fail_text = "requires_actor_not_pompous"
+		NOT = {
+			has_valid_civic = civic_pompous_purists
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_federatoin_disallow_treaty_with_from
+#
+# Ensure that the actor (this) of a diplomatic action is not prevented from doing so
+# with the recipient (from) because of their federation membership.
+#
+######################################################################################
+tul_country_not_federation_disallow_treaty_with_from = {
+	custom_tooltip = {
+		fail_text = "federation_actor_no_separate_treaties"
+		NOT = {
+			AND = {
+				has_federation = yes
+				federation = {
+					has_federation_law = treaties_separate_no
+				}
+				NOT = {
+					federation = {
+						any_member = {
+							is_same_value = root.from
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_disallowed_by_federation_of_from
+#
+# Ensure that the recipient (from) of a diplomatic action is not prevented from doing
+# so with the actor (this) because of the recipient's federation membership.
+#
+######################################################################################
+tul_country_not_disallowed_by_federation_of_from = {
+	custom_tooltip = {
+		fail_text = "federation_recipient_no_separate_treaties"
+		from = {
+			NOT = {
+				AND = {
+					has_federation = yes
+					federation = {
+						has_federation_law = treaties_separate_no
+					}
+					NOT = {
+						federation = {
+							any_member = {
+								is_same_value = root
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# TODO
+tul_country_federation_can_associate_with_from = {
+	custom_tooltip = {
+		fail_text = "requires_actor_recipient_not_in_galactic_empire_2"
+		NAND = {
+			has_galactic_emperor = yes
+			from = {
+				is_galactic_community_member = yes
+			}
+		}
+	}
+}
+
+# TODO
+tul_country_can_associate_with_federation_of_from = {
+	custom_tooltip = {
+		fail_text = "requires_actor_recipient_not_in_galactic_empire_2"
+		NAND = {
+			has_galactic_emperor = yes
+			OR = {
+				is_galactic_community_member = yes
+				from = {
+					is_galactic_community_member = yes
+				}
+			}
+		}
+	}
+}
+
+# TODO
+tul_country_not_outside_of_galactic_empire_with_from = {
+	custom_tooltip = {
+		fail_text = "requires_not_in_galactic_empire"
+		OR = {
+			NAND = {
+				has_galactic_emperor = yes
+				is_galactic_community_member = no
+				from = {
+					is_galactic_community_member = yes
+				}
+			}
+			NAND = {
+				has_galactic_emperor = yes
+				is_galactic_community_member = yes
+				from = {
+					is_galactic_community_member = no
+				}
+			}
+		}
+	}
+}
+
+# TODO
+tul_country_not_demanding_subject_of_imperium_member_from = {
+	NAND = {
+		has_galactic_emperor = yes
+		is_galactic_community_member = no
+		from = {
+			is_galactic_community_member = yes
+		}
+	}
+}
+
+# TODO
+tul_country_not_demanding_subject_of_crisis_faction_from = {
+	custom_tooltip = {
+		fail_text = "requires_recipient_not_btc"
+		from = {
+			has_been_declared_crisis = no
+		}
+	}
+}
+
+# TODO
+tul_country_not_crisis_demanding_to_be_subject_of_from = {
+	custom_tooltip = {
+		fail_text = "requires_recipient_not_btc"
+		has_been_declared_crisis = no
+	}
+}
+
+######################################################################################
+# tul_country_not_automatic_federation_research_with_from
+#
+# Ensure that the recipient (from) of a diplomatic action is not prevented from doing
+# so with the actor (this) because they are both in the same federation that has
+# an automatic research agreement.
+#
+######################################################################################
+tul_country_not_automatic_federation_research_with_from = {
+	custom_tooltip = {
+		fail_text = "federation_automatic_research"
+		NOT = {
+			AND = {
+				has_federation = yes
+				federation = {
+					any_member = {
+						is_same_value = root.from
+					}
+				}
+				federation = {
+					has_federation_perk = research_federation_passive
+				}
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_automatic_federation_migration_with_from
+#
+# Ensure that the recipient (from) of a diplomatic action is not prevented from
+# doing so with the actor (this) because they are both in the same federation that
+# has an automatic migration agreement.
+#
+######################################################################################
+tul_country_not_automatic_federation_migration_with_from = {
+	custom_tooltip = {
+		fail_text = "federation_internal_migration"
+		NOT = {
+			AND = {
+				has_federation = yes
+				federation = {
+					any_member = {
+						is_same_value = root.from
+					}
+				}
+				federation = {
+					has_federation_law = free_migration_yes
+				}
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_country_hates_or_is_supremacist_towards_from
+#
+# Determine whether the recipients (from) of a diplomatic action for the current 
+# actor (this) are valid based on the actor's opinion of the recipient.
+#
+######################################################################################
+tul_country_hates_or_is_supremacist_towards_from = {
+	custom_tooltip = {
+		fail_text = "requires_terrible_opinion_or_supremacist"
+		OR = {
+			opinion_level = {
+				who = from
+				level <= terrible
+			}
+			is_harming_relations_with = from
+			from = {
+				is_at_war_with = prev
+			}
+			OR = {
+				has_policy_flag = "diplo_stance_supremacist"
+				from = {
+					has_policy_flag = "diplo_stance_supremacist"
+				}
+				is_fallen_empire = yes
+				from = {
+					is_fallen_empire = yes
+				}
+			}
+			from = {
+				is_rival = prev
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_country_is_improving_or_has_exellent_relations_with_from
+#
+# Ensure the actor (this) of a diplomatic action is improving relations with or
+# has exellent or better relations with the recipient (from).
+#
+######################################################################################
+tul_country_is_improving_or_has_exellent_relations_with_from = {
+	custom_tooltip = {
+		fail_text = "requires_excellent_or_better_opinion"
+		OR = {
+			opinion_level = {
+				who = from
+				level >= excellent
+			}
+			is_improving_relations_with = from
+		}
+	}
+}
+
+######################################################################################
+# tul_country_is_improving_or_has_neutral_relations_with_from
+#
+# Ensure the actor (this) of a diplomatic action is improving relations with or
+# has neutral or better relations with the recipient (from).
+#
+######################################################################################	
+tul_country_is_improving_or_has_neutral_relations_with_from = {
+	custom_tooltip = {
+		fail_text = "requires_neutral_or_better_opinion"
+		OR = {
+			opinion_level = {
+				who = from
+				level >= neutral
+			}
+			is_improving_relations_with = from
+		}
+	}
+}
+
+######################################################################################
+# tul_country_is_improving_or_has_good_relations_with_from
+#
+# Ensure the actor (this) of a diplomatic action is improving relations with or has
+# good or better relations with the recipient (from).
+#
+######################################################################################
+tul_country_is_improving_or_has_good_relations_with_from = {
+	custom_tooltip = {
+		fail_text = "requires_good_or_better_opinion"
+		OR = {
+			opinion_level = {
+				who = from
+				level >= good
+			}
+			is_improving_relations_with = from
+		}
+	}
+}
+
+# TODO
+tul_country_has_poor_or_worse_relations_with_from = {
+	custom_tooltip = {
+		fail_text = "requires_poor_or_worse_opinion"
+		OR = {
+			opinion_level = {
+				who = from
+				level <= poor
+			}
+			is_fallen_empire = yes
+			from = {
+				is_fallen_empire = yes
+			}
+			is_harming_relations_with = from
+			from = {
+				is_at_war_with = prev
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_country_has_potential_diplomacy_with_from
+#
+# Ensure that the actor (this) of a diplomatic action and the recipient (from) both
+# have the potential to have diplomatic interactions with each other.
+#
+######################################################################################
+tul_country_has_potential_diplomacy_with_from = {
+	hidden_trigger = {
+		merg_is_default_empire = yes
+		from = {
+			merg_is_default_empire = yes
+		}
+	}
+}
+
+######################################################################################
+# tul_country_has_potential_trade_with_from
+#
+# Ensure that the actor (this) of a diplomatic action and the recipient (from) both
+# have the potential to have trade interactions with each other.
+#
+######################################################################################
+tul_country_has_potential_trade_with_from = {
+	hidden_trigger = {
+		is_berserk_fallen_machine_empire = no
+		from = {
+			is_berserk_fallen_machine_empire = no
+		}
+	}
+}
+
+######################################################################################
+# tul_country_has_potential_rivalry_with_from
+#
+# Ensure that the actor (this) of a diplomatic action and the recipient (from) both
+# have the potential to have m
+#
+######################################################################################
+tul_country_has_potential_rivalry_with_from = {
+	hidden_trigger = {
+		is_fallen_machine_empire = no
+		from = {
+			is_fallen_machine_empire = no
+		}
+	}
+}
+
+######################################################################################
+# tul_country_has_potential_federation_with_from
+#
+# Ensure that the actor (this) of a diplomatic action and the recipient (from) both
+# have the potential to join a federation with each other.
+#
+######################################################################################
+tul_country_has_potential_federation_with_from = {
+	hidden_trigger = {
+		is_fallen_machine_empire = no
+		from = {
+			is_fallen_machine_empire = no
+		}
+	}
+}
+
+# TODO
+tul_contry_has_potential_to_leave_federation_with_from = {
+	hidden_trigger = {
+		has_federation = yes
+		federation = {
+			has_federation_type = hegemony_federation
+		}
+	}
+}
+
+# TODO: 
+tul_country_has_potential_to_demand_subject_of_from = {
+	tul_country_has_megacorp_behavior = no
+}
+
+# TODO
+tul_country_has_potential_to_ask_to_be_subject_of_from = {
+	FROM = {
+		tul_country_has_megacorp_behavior = no
+	}
+}
+
+# TODO
+tul_country_has_potential_to_demand_subsidiary_of_from = {
+	tul_country_has_megacorp_behavior = no
+}
+
+# TODO
+tul_country_has_potential_to_ask_to_be_subsidiary_of_from = {
+	FROM = {
+		tul_country_has_megacorp_behavior = yes
+	}
+}
+
+# TODO
+tul_country_has_potential_to_demand_fallen_empire_subject_of_from = {
+	NAND = {
+		has_galactic_emperor = yes
+		is_galactic_community_member = yes
+	}
+}
+
+# TODO
+tul_country_has_potential_to_integrate_subject_from = {
+	hidden_trigger = {
+		OR = {
+			is_ai = no
+			from = {
+				is_ai = yes
+			}
+		}
+		OR = {
+			is_ai = no
+			empire_sprawl_over_cap < 50
+		}
+		OR = {
+			is_ai = no
+			NOT = {
+				has_policy_flag = vassal_expansion_allowed
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_country_has_potential_to_guarantee_independence_of_from
+#
+# Determine whether the actor (this) of a diplomatic action has the potential to
+# guarantee independence of the recipient (from).
+#
+######################################################################################
+tul_country_has_potential_to_guarantee_independence_of_from = {
+	# Cannot guarantee if you are in an alliance
+	hidden_trigger = {
+		NOT = {
+			exists = alliance
+		}
+	}
+	# Cannot guarantee if they are in an alliance
+	hidden_trigger = {
+		exists = from
+		from = {
+			NOT = {
+				exists = alliance
+			}
+		}
+	}
+	# Already guaranteeing
+	hidden_trigger = {
+		exists = from
+		NOT = {
+			is_guaranteeing = from
+		}
+	}
+	# Defensive Pact
+	hidden_trigger = {
+		exists = from
+		NOT = {
+			has_defensive_pact = from
+		}
+	}
+}
+
+######################################################################################
+# tul_country_has_potential_to_support_independence_of_from
+#
+# Determine whether the actor (this) of a diplomatic action has the potential to
+# support independence of the recipient (from).
+#
+######################################################################################
+tul_country_has_potential_to_support_independence_of_from = {
+	hidden_trigger = {
+		exists = from
+		NOT = {
+			from = {
+				exists = overlord
+				overlord = {
+					is_same_value = root
+				}
+			}
+		}
+	}
+}
+
+# TODO
+tul_country_has_potential_to_vote_for_federation_law = {
+	custom_tooltip = {
+		fail_text = "IS_AT_WAR"
+		NOT = {
+			any_war = {
+				OR = {
+					using_war_goal = {
+						owner = root
+						type = wg_leave_hegemony
+					}
+					using_war_goal = {
+						owner = root
+						type = wg_assert_hegemony
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+######################################################################################
+# tul_country_not_warring_with_from
+#
+# Ensure that the actor (this) of a diplomatic action is not at war with the
+# recipient (from).
+#
+######################################################################################
+tul_country_not_warring_with_from = {
+	custom_tooltip = {
+		fail_text = "DIPLOMACY_STATUS_WAR"
+		NOT = {
+			is_at_war_with = from
+		}
+	}
+}
+
+# TODO
+tul_country_not_rival_with_from = {
+	custom_tooltip = {
+		fail_text = "HAS_RIVALRY"
+		NOR = {
+			is_rival = from
+			from = {
+				is_rival = prev
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_country_is_independent
+#
+# Ensure that the actor (this) of a diplomatic action is independent. 
+#
+######################################################################################
+tul_country_is_independent = {
+	custom_tooltip = {
+		fail_text = "ACTION_ACTOR_MUST_BE_INDEPENDENT"
+		OR = {
+			is_subject = no
+			is_scion_subject = yes
+		}
+	}
+}
+
+######################################################################################
+# tul_from_country_is_independent
+#
+# Ensure that the recipient (from) of a diplomatic action is independent. 
+#
+######################################################################################
+tul_from_country_is_independent = {
+	custom_tooltip = {
+		fail_text = "ACTION_RECIPIENT_MUST_BE_INDEPENDENT"
+		FROM = {
+			OR = {
+				is_subject = no
+				is_scion_subject = yes
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_harming_relations_with_from
+#
+# Ensure that the actor (this) of a diplomatic action is not actively harming 
+# relations with the recipient (from). 
+#
+######################################################################################
+tul_country_not_harming_relations_with_from = {
+	custom_tooltip = {
+		fail_text = "requires_envoy_not_harming_relations"
+		NOT = {
+			is_harming_relations_with = from
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_improving_relations_with_from
+#
+# Ensure that the actor (this) of a diplomatic action is not actively improving 
+# relations with the recipient (from). 
+#
+######################################################################################
+tul_country_not_improving_relations_with_from = {
+	custom_tooltip = {
+		fail_text = "requires_envoy_not_improving_relations"
+		NOT = {
+			is_improving_relations_with = from
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_criminalized_by_from
+#
+# Ensure that the actor (this) of a diplomatic action is not considered criminals
+# by the recipients (from).
+#
+######################################################################################
+tul_country_not_criminalized_by_from = {
+	custom_tooltip = {
+		fail_text = "requires_actor_not_criminal_heritage"
+		OR = {
+			is_criminal_syndicate = no
+			has_valid_civic = civic_shadow_council_megacorp
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_criminals_for_from
+#
+# Ensure that the actor (this) of a diplomatic action does not consider the
+# recipients (from) criminals.
+#
+######################################################################################
+tul_country_not_criminalizing_from = {
+	custom_tooltip = {
+		fail_text = "requires_recipient_not_criminal_heritage"
+		FROM = {
+			OR = {
+				is_criminal_syndicate = yes
+				has_valid_civic = civic_shadow_council_megacorp
+			}
+		}
+	}
+}
+
+# TODO
+tul_country_not_despoilers_towards_from = {
+	custom_tooltip = {
+		fail_text = "requires_actor_not_barbaric_despoilers"
+		NOT = { 
+			has_valid_civic = civic_barbaric_despoilers 
+		}
+	}
+}
+
+# TODO
+tul_country_not_despoiled_by_from = {
+	custom_tooltip = {
+		fail_text = "requires_recipient_not_barbaric_despoilers"
+		FROM = {
+			NOT = {
+				has_valid_civic = civic_barbaric_despoilers
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_country_gestalt_can_trade_with_from
+#
+# Ensure that the actor (this) of a diplomatic action can trade with the recipient
+# (from) when the actors are a gestalt consciousness.
+#
+######################################################################################
+tul_country_gestalt_can_trade_with_from = {
+	custom_tooltip = {
+		fail_text = "requires_actor_not_gestalt_consciousness"
+		OR = {
+			is_gestalt = no
+			has_valid_civic = civic_mutualistic_behavior
+			has_valid_civic = civic_machine_trading
+		}
+	}
+}
+
+######################################################################################
+# tul_country_can_trade_with_gestalt_from
+#
+# Ensure that the recipients (from) of a diplomatic action can trade with the actor
+# (from) when the recipients are a gestalt consciousness.
+#
+######################################################################################
+tul_country_can_trade_with_gestalt_from = {
+	custom_tooltip = {
+		fail_text = "requires_recipient_not_gestalt_consciousness"
+		from = {
+			OR = {
+				is_gestalt = no
+				has_valid_civic = civic_mutualistic_behavior
+				has_valid_civic = civic_machine_trading
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_country_gestalt_can_migrate_from
+#
+# Ensure that the actor (this) of a diplomatic action can migrate to the recipient
+# when the actor is a gestalt consciousness.
+#
+######################################################################################
+tul_country_gestalt_can_migrate_from = {
+	custom_tooltip = {
+		fail_text = "requires_actor_not_gestalt_consciousness"
+		OR = {
+			NOT = {
+				has_ethic = ethic_gestalt_consciousness
+			}
+			has_valid_civic = civic_mutualistic_behavior
+		}
+	}
+}
+
+######################################################################################
+# tul_country_can_migrate_with_gestalt_from
+#
+# Ensure that the actor (this) of a diplomatic action can migrate to the recipient
+# (from), when the recipients are a gestalt consciousness.
+#
+######################################################################################
+tul_country_can_migrate_with_gestalt_from = {
+	custom_tooltip = {
+		fail_text = "requires_recipient_not_gestalt_consciousness"
+		from = {
+			OR = {
+				NOT = {
+					has_ethic = ethic_gestalt_consciousness
+				}
+				has_valid_civic = civic_mutualistic_behavior
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_xenophobic_preventing_action_with_from
+#
+# Ensure that the actors (this) of a diplomatic action are not anti-migration 
+# xenophobes towards the recipients (from).
+#
+# Note: This trigger doesn't currently check from, but can be overridden if there
+# is a need for the recipient country to be checked.
+#
+######################################################################################
+tul_country_not_xenophobic_preventing_action_with_from = {
+	custom_tooltip = {
+		fail_text = "ariphaos_patch_requires_actor_not_fanatic_xenophobe"
+		NOT = {
+			has_ethic = ethic_fanatic_xenophobe
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_prevented_from_action_with_xenophobic_from
+#
+# Ensure that the actors (this) of a diplomatic action are not prevented from 
+# interacting with the recipients (from) because they are xenophobic.
+#
+# Note: This trigger doesn't currently check this, but can be overridden if there
+# is a need for the actor country to be checked.
+#
+######################################################################################
+tul_country_not_prevented_from_action_with_xenophobic_from = {
+	custom_tooltip = {
+		fail_text = "ariphaos_patch_requires_recipient_not_fanatic_xenophobe"
+		from = {
+			NOT = {
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_xenophobic_preventing_action_with_from
+#
+# Ensure that the actors (this) of a diplomatic action are not authoritarian towards
+# the recipients (from).
+#
+# Note: This trigger doesn't currently check from, but can be overridden if there
+# is a need for the recipient country to be checked.
+#
+######################################################################################
+tul_country_not_authoritarian_preventing_action_with_from = {
+	custom_tooltip = {
+		fail_text = "ariphaos_patch_requires_actor_not_fanatic_authoritarian"
+		NOT = {
+			has_ethic = ethic_fanatic_authoritarian
+		}
+	}
+}
+
+######################################################################################
+# tul_country_not_prevented_from_action_with_authoritarian_from
+#
+# Ensure that the actors (this) of a diplomatic action are not prevented from 
+# interacting with the recipients (from) because they are authoritarian.
+#
+# Note: This trigger doesn't currently check this, but can be overridden if there
+# is a need for the actor country to be checked.
+#
+######################################################################################
+tul_country_not_prevented_from_action_with_authoritarian_from = {
+	custom_tooltip = {
+		fail_text = "ariphaos_patch_requires_recipient_not_fanatic_authoritarian"
+		from = {
+			NOT = {
+				has_ethic = ethic_fanatic_authoritarian
+			}
+		}
+	}
+}
+
+# TODO
+tul_country_not_demanding_subect_of_galactic_leader_from = {
+	if = {
+		limit = {
+			has_galactic_custodian = yes
+		}
+		custom_tooltip = {
+			fail_text = "requires_recipient_not_custodian"
+			from = {
+				is_galactic_custodian = no
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_galactic_emperor = yes
+		}
+		custom_tooltip = {
+			fail_text = "requires_recipient_not_gal_emperor"
+			from = {
+				is_galactic_emperor = no
+			}
+		}
+	}
+}
+
+# TODO
+tul_country_not_galactic_leader_demanding_to_be_subject_of_from = {
+	custom_tooltip = {
+		fail_text = "requires_recipient_not_custodian"
+		is_galactic_custodian = no
+	}
+	custom_tooltip = {
+		fail_text = "requires_recipient_not_gal_emperor"
+		is_galactic_emperor = no
+	}
+}
+
+# TODO
+tul_country_relative_power_is_superior_to_from = {
+	relative_power = {
+		who = from
+		value >= superior
+	}
+}
+
+######################################################################################
+# tul_country_not_genocidal_towards_from
+#
+# Ensure that the actor (this) of a diplomatic action is not homicidal towards
+# the recipient (from). 
+#
+######################################################################################
+tul_country_not_genocidal_towards_from = {
+	tul_country_not_purifying_from = yes
+	tul_country_not_devouring_from = yes
+	tul_country_not_terminating_from = yes
+}
+
+######################################################################################
+# tul_country_not_genocide_target_of_from
+#
+# Ensure that the recipient (from) of a diplomatic action is not homicidal towards
+# the actor (this).
+#
+######################################################################################
+tul_country_not_genocide_target_of_from = {
+	tul_country_not_purifiable_from = yes
+	tul_country_not_devourable_from = yes
+	tul_country_not_terminable_from = yes
+}
+
+######################################################################################
+# tul_country_can_form_defensive_pact_with_from
+#
+# Ensure that the recipient (from) of a diplomatic action is a country with which
+# the actor (this) is interested in a friendly pact.
+#
+######################################################################################
+tul_country_can_form_defensive_pact_with_from = {
+	tul_country_not_genocidal_towards_from = yes
+	tul_country_not_inwards_ignoring_from = yes
+	tul_country_not_closed_gestalt_for_from = yes
+	tul_country_wanted_for_friendly_pact_with_from = yes
+	tul_country_is_improving_or_has_exellent_relations_with_from = yes
+}
+
+######################################################################################
+# tul_country_wanted_for_friendly_pact_based_on_civics_from
+#
+# Ensure that the recipient (from) of a diplomatic action wants anything to do
+# with a friendly pact with the actor (this).
+#
+######################################################################################
+tul_country_wanted_for_friendly_pact_based_on_civics_from = {
+	tul_country_not_closed_gestalt_by_from = yes
+	tul_country_not_snubbed_by_from = yes
+	tul_country_not_ignored_inwards_from = yes
+}
+
+######################################################################################
+# tul_country_wanted_for_friendly_pact_with_from
+#
+# Ensure that the recipient (from) of a diplomatic action wants anything to do
+# with a friendly pact with the actor (this).
+#
+# If the actor does not have enough intel for civics of the recipient, and they
+# are the the tooltip obscures the reason why.
+#
+######################################################################################
+tul_country_wanted_for_friendly_pact_with_from = {
+	tul_country_not_genocide_target_of_from = yes
+	if = {
+		limit = {
+			NOR = {
+				has_intel = {
+					who = from
+					intel = civics
+				}
+				tul_country_wanted_for_friendly_pact_based_on_civics_from = yes
+			}
+		}
+		custom_tooltip = {
+			fail_text = diplo_action_no_low_intel
+			always = no
+		}
+	}
+	else = {
+		tul_country_wanted_for_friendly_pact_based_on_civics_from = yes
+	}
+}
+
+######################################################################################
+# tul_country_can_form_non_agression_pact_with_from
+#
+# Ensure that the recipient (from) of a diplomatic action is a country with which
+# the actor (this) is interested in a non-agression pact.
+#
+######################################################################################
+tul_country_can_form_non_agression_pact_with_from = {
+	tul_country_not_genocidal_towards_from = yes
+	tul_country_wanted_for_neutral_pact_with_from = yes
+	tul_country_is_improving_or_has_neutral_relations_with_from = yes
+}
+
+######################################################################################
+# tul_country_wanted_for_neutral_pact_based_on_civics_from
+#
+# Ensure that the recipient (from) of a diplomatic action wants anything to do
+# with a non-aggression pact with the actor (this).
+#
+######################################################################################
+tul_country_wanted_for_neutral_pact_based_on_civics_from = {
+	tul_country_not_snubbed_by_from = yes
+}
+
+######################################################################################
+# tul_country_wanted_for_neutral_pact_with_from
+#
+# Ensure that the recipient (from) of a diplomatic action wants anything to do
+# with a non-agression pact with the actor (this).
+#
+# If the actor does not have enough intel for civics of the recipient, and they
+# are the the tooltip obscures the reason why.
+#
+######################################################################################
+tul_country_wanted_for_neutral_pact_with_from = {
+	tul_country_not_genocide_target_of_from = yes
+	if = {
+		limit = {
+			NOR = {
+				has_intel = {
+					who = from
+					intel = civics
+				}
+				tul_country_wanted_for_friendly_pact_based_on_civics_from = yes
+			}
+		}
+		custom_tooltip = {
+			fail_text = diplo_action_no_low_intel
+			always = no
+		}
+	}
+	else = {
+		tul_country_wanted_for_friendly_pact_based_on_civics_from = yes
+	}
+}
+
+######################################################################################
+# tul_country_can_form_commercial_pact_with_from
+#
+# Ensure that an actor (this) of a diplomatic action can form a commercial pact
+# with the recipient (this).
+#
+######################################################################################
+tul_country_can_form_commercial_pact_with_from = {
+	tul_country_is_independent = yes
+	tul_country_not_genocidal_towards_from = yes
+	tul_country_not_closed_gestalt_for_from = yes
+	tul_country_not_inwards_ignoring_from = yes
+	tul_country_not_criminalized_by_from = yes
+	tul_country_gestalt_can_trade_with_from = yes
+	tul_country_not_federation_disallow_treaty_with_from = yes
+	tul_country_wanted_for_commercial_pact_with_from = yes
+	tul_country_not_automatic_federation_migration_with_from = yes
+	tul_country_is_improving_or_has_good_relations_with_from = yes
+}
+
+######################################################################################
+# tul_country_wanted_for_commerical_pact_based_on_civics_from
+#
+# Ensure that the recipient (from) of a diplomatic action can form a commercial
+# pact with the actor (this) based on the recipient's civics.
+#
+######################################################################################
+tul_country_wanted_for_commerical_pact_based_on_civics_from = {
+	tul_country_not_snubbed_by_from = yes
+	tul_country_not_ignored_inwards_from = yes
+	tul_country_not_criminalizing_from = yes
+}
+
+######################################################################################
+# tul_country_wanted_for_commercial_pact_with_from
+#
+# Ensure that the recipient (from) of a diplomatic action wants anything to do
+# with a commercial pact with the actor (this).
+#
+# If the actor does not have enough intel for civics of the recipient, and they
+# are the the tooltip obscures the reason why.
+#
+######################################################################################
+tul_country_wanted_for_commercial_pact_with_from = {
+	tul_from_country_is_independent = yes
+	tul_country_not_genocide_target_of_from = yes
+	tul_country_not_closed_gestalt_by_from = yes
+	tul_country_can_trade_with_gestalt_from = yes
+	tul_country_not_disallowed_by_federation_of_from = yes
+	if = {
+		limit = {
+			NOR = {
+				has_intel = {
+					who = from
+					intel = civics
+				}
+				tul_country_wanted_for_commerical_pact_based_on_civics_from = yes
+			}
+		}
+		custom_tooltip = {
+			fail_text = diplo_action_no_low_intel
+			always = no
+		}
+	}
+	else = {
+		tul_country_wanted_for_commerical_pact_based_on_civics_from = yes
+	}
+}
+
+# TODO
+tul_country_can_form_research_pact_with_from = {
+	tul_country_is_independent = yes
+	tul_country_not_genocidal_towards_from = yes
+	tul_country_not_closed_gestalt_for_from = yes
+	tul_country_not_inwards_ignoring_from = yes
+	tul_country_not_automatic_federation_research_with_from = yes
+	tul_country_wanted_for_research_pact_with_from = yes
+	tul_country_is_improving_or_has_good_relations_with_from = yes
+}
+
+# TODO
+tul_country_wanted_for_research_pact_based_on_civics_from = {
+	tul_country_not_snubbed_by_from = yes
+	tul_country_not_closed_gestalt_by_from = yes
+	tul_country_not_ignored_inwards_from = yes
+	tul_country_not_federation_disallow_treaty_with_from = yes
+}
+
+######################################################################################
+# tul_country_wanted_for_research_pact_with_from
+#
+# Ensure that the recipient (from) of a diplomatic action wants anything to do
+# with a research pact with the actor (this).
+#
+# If the actor does not have enough intel for civics of the recipient, and they
+# are the the tooltip obscures the reason why.
+#
+######################################################################################
+tul_country_wanted_for_research_pact_with_from = {
+	tul_from_country_is_independent = yes
+	tul_country_not_genocide_target_of_from = yes
+	tul_country_not_disallowed_by_federation_of_from = yes
+	if = {
+		limit = {
+			NOR = {
+				has_intel = {
+					who = from
+					intel = civics
+				}
+				tul_country_wanted_for_research_pact_based_on_civics_from = yes
+			}
+		}
+		custom_tooltip = {
+			fail_text = diplo_action_no_low_intel
+			always = no
+		}
+	}
+	else = {
+		tul_country_wanted_for_research_pact_based_on_civics_from = yes
+	}
+}
+
+# TODO
+tul_country_can_guarantee_independence_of_from = {
+	tul_country_not_genocidal_towards_from = yes
+	tul_country_not_inwards_ignoring_from = yes
+	tul_country_not_closed_gestalt_for_from = yes
+	tul_country_independence_guarantee_matters_to_from = yes
+	tul_country_is_improving_or_has_neutral_relations_with_from = yes
+}
+
+# TODO
+tul_country_independence_guarantee_matters_based_on_civics_from = {
+	tul_country_not_snubbed_by_from = yes
+	tul_country_not_closed_gestalt_by_from = yes
+	tul_country_not_ignored_inwards_from = yes
+}
+
+######################################################################################
+# tul_country_independence_guarantee_matters_to_from
+#
+# Ensure that the recipient (from) of a diplomatic action cares about the actor
+# (this) guaranteeing the recipient's independence.
+#
+# If the actor does not have enough intel for civics of the recipient, and they
+# are the the tooltip obscures the reason why.
+#
+######################################################################################
+tul_country_independence_guarantee_matters_to_from = {
+	tul_country_not_genocide_target_of_from = yes
+	if = {
+		limit = {
+			NOR = {
+				has_intel = {
+					who = from
+					intel = civics
+				}
+				tul_country_independence_guarantee_matters_based_on_civics_from = yes
+			}
+		}
+		custom_tooltip = {
+			fail_text = diplo_action_no_low_intel
+			always = no
+		}
+	}
+	else = {
+		tul_country_independence_guarantee_matters_based_on_civics_from = yes
+	}
+}
+
+# TODO
+tul_country_can_support_independence_of_from = {
+	tul_country_not_genocidal_towards_from = yes
+	tul_country_not_inwards_ignoring_from = yes
+	tul_country_not_closed_gestalt_for_from = yes
+	tul_country_independence_support_matters_to_from = yes
+}
+
+# TODO
+tul_country_independence_support_matters_based_on_civics_from = {
+	always = yes
+}
+
+######################################################################################
+# tul_country_independence_support_matters_to_from
+#
+# Ensure that the recipient (from) of a diplomatic action cares about the actor
+# (this) supporting the recipient's independence.
+#
+# If the actor does not have enough intel for civics of the recipient, and they
+# are the the tooltip obscures the reason why.
+#
+######################################################################################
+tul_country_independence_support_matters_to_from = {
+	tul_country_not_genocide_target_of_from = yes
+	if = {
+		limit = {
+			NOR = {
+				has_intel = {
+					who = from
+					intel = civics
+				}
+				tul_country_independence_support_matters_based_on_civics_from = yes
+			}
+		}
+		custom_tooltip = {
+			fail_text = diplo_action_no_low_intel
+			always = no
+		}
+	}
+	else = {
+		tul_country_independence_support_matters_based_on_civics_from = yes
+	}
+}
+
+# TODO
+tul_country_can_form_migration_pact_with_from = {
+	tul_country_not_ethics_disallow_migration_pact_with_from = yes
+	tul_country_not_genocidal_towards_from = yes
+	tul_country_not_inwards_ignoring_from = yes
+	tul_country_not_snubbing_from = yes
+	tul_country_not_closed_gestalt_for_from = yes
+	tul_country_not_despoilers_towards_from = yes
+	tul_country_not_federation_disallow_treaty_with_from = yes
+	tul_country_wanted_for_migration_pact_with_from = yes
+	tul_country_is_improving_or_has_good_relations_with_from = yes
+
+}
+
+# TODO
+tul_country_not_ethics_disallow_migration_pact_with_from = {
+	tul_country_not_xenophobic_preventing_action_with_from = yes
+	tul_country_not_authoritarian_preventing_action_with_from = yes
+	tul_country_gestalt_can_migrate_from = yes
+}
+
+# TODO
+tul_country_wanted_for_migration_pact_based_on_civics_from = {
+	tul_country_not_snubbed_by_from = yes
+	tul_country_not_closed_gestalt_by_from = yes
+	tul_country_not_ignored_inwards_from = yes
+	tul_country_not_despoiled_by_from = yes
+}
+
+# TODO
+tul_country_wanted_for_migration_pact_based_on_ethics_from = {
+	tul_country_not_prevented_from_action_with_xenophobic_from = yes
+	tul_country_not_prevented_from_action_with_authoritarian_from = yes
+	tul_country_can_migrate_with_gestalt_from = yes
+}
+
+######################################################################################
+# tul_country_wanted_for_migration_pact_with_from
+#
+# Ensure that the recipient (from) of a diplomatic action wants anything to do
+# with a migration pact with the actor (this).
+#
+# If the actor does not have enough intel for civics of the recipient, and they
+# are the the tooltip obscures the reason why.
+#
+######################################################################################
+tul_country_wanted_for_migration_pact_with_from = {
+	tul_country_not_genocide_target_of_from = yes
+	tul_country_wanted_for_migration_pact_based_on_ethics_from = yes
+	tul_country_not_disallowed_by_federation_of_from = yes
+	if = {
+		limit = {
+			NOR = {
+				has_intel = {
+					who = from
+					intel = civics
+				}
+				tul_country_wanted_for_migration_pact_based_on_civics_from = yes
+			}
+		}
+		custom_tooltip = {
+			fail_text = diplo_action_no_low_intel
+			always = no
+		}
+	}
+	else = {
+		tul_country_wanted_for_migration_pact_based_on_civics_from = yes
+	}
+}
+
+# TODO
+tul_country_can_offer_federation_association_to_from = {
+	tul_country_not_genocidal_towards_from = yes
+	tul_country_federation_can_associate_with_from = yes
+	tul_country_is_improving_or_has_good_relations_with_from = yes
+}
+
+# TODO
+tul_country_federation_association_offer_wanted_by_based_on_civics_from = {
+	tul_country_not_snubbed_by_from = yes
+	tul_country_not_closed_gestalt_by_from = yes
+	tul_country_not_ignored_inwards_from = yes
+}
+
+# TODO
+tul_country_federation_association_offer_wanted_by_from = {
+	tul_country_not_genocide_target_of_from = yes
+	if = {
+		limit = {
+			NOR = {
+				has_intel = {
+					who = from
+					intel = civics
+				}
+				tul_country_federation_association_offer_wanted_by_based_on_civics_from = yes
+			}
+		}
+		custom_tooltip = {
+			fail_text = diplo_action_no_low_intel
+			always = no
+		}
+	}
+	else = {
+		tul_country_federation_association_offer_wanted_by_based_on_civics_from = yes
+	}
+}
+
+# TODO
+tul_country_can_request_federation_association_from = {
+	tul_country_not_genocidal_towards_from = yes
+	tul_country_not_genocide_target_of_from = yes
+	tul_country_can_associate_with_federation_of_from = yes
+	tul_country_is_improving_or_has_good_relations_with_from = yes
+}
+
+# TODO
+tul_country_can_send_federation_invite_to_from = {
+	
+	# Check whether the country is genocidal towards the target first. This is
+	# generally the most common reason a country couldn't invite someone to
+	# a federation.
+	tul_country_not_genocidal_towards_from = yes
+	
+	# When not in a federation, a default empire has an additional requirement of 
+	# the federation diplomacy tradition.
+	if = {
+		limit = {
+			has_federation = no
+			merg_is_default_empire = yes
+		}
+		custom_tooltip = {
+			fail_text = "requires_tradition_the_federation"
+			has_tradition = tr_diplomacy_the_federation
+		}
+	}
+
+	# Other restrictions for inviting to a federation apply regardless
+	tul_country_federation_invite_interesting_to_from = yes
+	tul_country_is_improving_or_has_exellent_relations_with_from = yes
+	tul_country_can_associate_with_federation_of_from = yes
+
+	if = {
+		limit = {
+			has_federation = yes
+			federation = {
+				has_federation_law = invite_members_president_vote_hegemony
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_to_be_federation_leader"
+			is_federation_leader = yes
+		}
+	}
+
+}
+
+# TODO
+tul_country_federation_invite_interesting_based_on_civics_from = {
+	tul_country_not_snubbed_by_from = yes
+	tul_country_not_closed_gestalt_by_from = yes
+	tul_country_not_ignored_inwards_from = yes
+}
+
+# TODO
+tul_country_federation_invite_interesting_to_from = {
+	tul_country_not_genocide_target_of_from = yes
+	if = {
+		limit = {
+			NOR = {
+				has_intel = {
+					who = from
+					intel = civics
+				}
+				tul_country_federation_invite_interesting_based_on_civics_from = yes
+			}
+		}
+		custom_tooltip = {
+			fail_text = diplo_action_no_low_intel
+			always = no
+		}
+	}
+	else = {
+		tul_country_federation_invite_interesting_based_on_civics_from = yes
+	}
+}
+
+# TODO
+tul_country_can_ask_to_join_federation_from = {
+	tul_country_not_genocidal_towards_from = yes
+	tul_country_not_genocide_target_of_from = yes
+	tul_country_can_associate_with_federation_of_from = yes
+	tul_country_is_improving_or_has_good_relations_with_from = yes
+	if = {
+		limit = {
+			from = {
+				has_federation = yes
+				federation = {
+					has_federation_law = invite_members_president_vote_hegemony
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_to_be_federation_leader"
+			FROM = {
+				is_federation_leader = yes
+			}
+		}
+	}
+}
+
+# TODO
+tul_country_can_ask_to_leave_federation_with_from = {
+	custom_tooltip = {
+		fail_text = "requires_actor_not_already_asked"
+		NOT = {
+			has_country_flag = asked_to_leave_hegemony
+		}
+	}
+	custom_tooltip = {
+		fail_text = "requires_actor_not_rebelled"
+		NOT = {
+			has_country_flag = failed_hegemony_rebellion
+		}
+	}
+}
+
+# TODO
+tul_country_can_open_borders_with_from = {
+	tul_country_not_genocidal_towards_from = yes
+	tul_country_not_genocide_target_of_from = yes
+}
+
+tul_country_can_close_borders_based_on_civics_with_from = {
+	tul_country_not_snubbed_by_from = yes
+}
+
+# TODO
+tul_country_can_close_borders_with_from = {
+	can_control_access_for = from
+	if = {
+		limit = {
+			NOR = {
+				has_intel = {
+					who = from
+					intel = civics
+				}
+				tul_country_can_close_borders_based_on_civics_with_from = yes
+			}
+		}
+		custom_tooltip = {
+			fail_text = diplo_action_no_low_intel
+			always = no
+		}
+	}
+	else = {
+		tul_country_can_close_borders_based_on_civics_with_from = yes
+	}
+}
+
+# TODO
+tul_country_can_demand_subject_of_from = {
+	tul_country_not_genocidal_towards_from = yes
+	tul_country_not_inwards_ignoring_from = yes
+	tul_country_not_closed_gestalt_for_from = yes
+	tul_country_not_demanding_subect_of_galactic_leader_from = yes
+	tul_country_not_demanding_subject_of_imperium_member_from = yes
+	tul_country_not_demanding_subject_of_crisis_faction_from = yes
+}
+
+# TODO
+tul_country_can_propose_subject_demand_of_from = {
+	# Awakened Fallen Empires are allowed to bypass any other requirements
+	# for demand when the $FALLEN_ALLOWED$
+	if = {
+		limit = {
+			hidden_trigger = {
+				from = {
+					is_country_type = awakened_fallen_empire
+				}
+			}
+		}
+		hidden_trigger = {
+			always = $FALLEN_ALLOWED$
+		}
+	}
+	else = {
+		tul_country_relative_power_is_superior_to_from = yes
+	}
+}
+
+# TODO
+tul_country_can_demand_fallen_empire_subject_of_from = {
+	tul_country_not_demanding_subject_of_crisis_faction_from = yes
+}
+
+# TODO
+tul_country_can_ask_to_be_subject_of_from = {
+	tul_country_not_genocidal_towards_from = yes
+	tul_country_not_inwards_ignoring_from = yes
+	tul_country_not_closed_gestalt_for_from = yes
+	tul_country_not_snubbing_from = yes
+	tul_country_not_federation_disallow_treaty_with_from = yes
+	tul_country_not_galactic_leader_demanding_to_be_subject_of_from = yes
+	tul_country_not_crisis_demanding_to_be_subject_of_from = yes
+	tul_country_not_outside_of_galactic_empire_with_from = yes
+	tul_country_subject_request_will_be_heard_by_from = yes
+}
+
+tul_country_subject_request_will_be_heard_by_based_on_civics_from = {
+	tul_country_not_snubbed_by_from = yes
+	tul_country_not_closed_gestalt_by_from = yes
+	tul_country_not_ignored_inwards_from = yes
+}
+
+tul_country_subject_request_will_be_heard_by_from = {
+	tul_country_not_genocide_target_of_from = yes
+	tul_country_not_disallowed_by_federation_of_from = yes
+	if = {
+		limit = {
+			NOR = {
+				has_intel = {
+					who = from
+					intel = civics
+				}
+				tul_country_subject_request_will_be_heard_by_based_on_civics_from = yes
+			}
+		}
+		custom_tooltip = {
+			fail_text = diplo_action_no_low_intel
+			always = no
+		}
+	}
+	else = {
+		tul_country_subject_request_will_be_heard_by_based_on_civics_from = yes
+	}
+}
+
+# TODO
+tul_country_can_ask_to_be_fallen_empire_subject_of_from = {
+	tul_country_not_galactic_leader_demanding_to_be_subject_of_from = yes
+	tul_country_not_crisis_demanding_to_be_subject_of_from = yes
+	tul_country_not_snubbing_from = yes
+	custom_tooltip = {
+		fail_text = "requires_not_in_galactic_empire"
+		NAND = {
+			has_galactic_emperor = yes
+			is_galactic_community_member = yes
+		}
+	}
+}
+
+# TODO
+tul_country_can_insult_from = {
+	tul_country_has_poor_or_worse_relations_with_from = yes
+}
+
+# TODO
+tul_country_can_establish_embassy_with_from = {
+	tul_country_not_genocidal_towards_from = yes
+	tul_country_not_inwards_ignoring_from = yes
+	tul_country_not_warring_with_from = yes
+	tul_country_not_rival_with_from = yes
+	tul_country_embassy_request_will_be_heard_by_from = yes
+}
+
+# TODO
+tul_country_embassy_request_wll_be_heard_based_on_civics_from = {
+	tul_country_not_snubbed_by_from = yes
+}
+
+# TODO
+tul_country_embassy_request_will_be_heard_by_from = {
+	if = {
+		limit = {
+			NOR = {
+				has_intel = {
+					who = from
+					intel = civics
+				}
+				tul_country_embassy_request_wll_be_heard_based_on_civics_from = yes
+			}
+		}
+		custom_tooltip = {
+			fail_text = diplo_action_no_low_intel
+			always = no
+		}
+	}
+	else = {
+		tul_country_embassy_request_wll_be_heard_based_on_civics_from = yes
+	}
+}

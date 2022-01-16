@@ -1,0 +1,14 @@
+######################################################################################
+# Traits To Do List
+######################################################################################
+#
+# Since traits are entire file override only, look into either creating static 
+# modifiers and triggers that can be used to alter the valid conditions, or break
+# them each out into their own file, so that they can be overridden by other mods
+# with fewer conflits.
+#
+# 
+#
+#
+#
+#

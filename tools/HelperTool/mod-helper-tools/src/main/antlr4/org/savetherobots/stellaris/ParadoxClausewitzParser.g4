@@ -51,17 +51,19 @@ tokens {
 
 // Modules are made of one or more elements or random lists. Random lists are special top level
 // elements that do not have an identifier as their key.
-module: (randomListDeclaration | element)*;
+module: (constantDeclaration | randomListDeclaration | objectDeclaration)*;
 equals: EQUALS;
 key: IDENTIFIER;
 randomListDeclaration: RANDOM_LIST equals randomList;
-element: key equals object;
+objectDeclaration: key equals objectDefinition;
+constantDeclaration: AT identifier equals numberLiteral;
 
 // Each object is similar to another dictionary, containing a set of keys and values, where the
 // values can be objects as well as other types.
-randomList: object;
-object: map;
-map: blockBegin (property | comparison)+ blockEnd;
+randomList: objectDefinition;
+objectDefinition: map;
+mapEntry: (property | comparison);
+map: blockBegin mapEntry+ blockEnd;
 blockBegin: LEFT_BRACE;
 blockEnd: RIGHT_BRACE;
 propertyKey: (
@@ -77,7 +79,7 @@ comparison:
 		| variableReference
 		| constantReference
 		| macroExpansion
-		| object
+		| objectDefinition
 	);
 relationalOperator: (
 		EQUALS
@@ -150,19 +152,19 @@ literal: booleanLiteral | numberLiteral | stringLiteral;
 
 numberLiteral: SIGN? NUMBER;
 booleanLiteral: YES | NO;
-stringLiteral:
-	STRING_BEGIN (
+stringContents: (
 		STRING_VALUE
 		| inlineLocalizerCommand
 		| inlineMathReference
-	)* STRING_END;
+	)*;
+stringLiteral: STRING_BEGIN stringContents STRING_END;
 
 // Inline localizer command
 inlineLocalizerCommand:
 	LOCALIZER_COMMAND_BEGIN (IDENTIFIER (DOT IDENTIFIER)*) LOCALIZER_COMMAND_END;
 
 // Containers are values which are enclosed in braces, such as object definitions and collections.
-container: emptyContainer | object | collection;
+container: emptyContainer | objectDefinition | collection;
 
 // Collections are a type of value which represent a group of values
 collection: LEFT_BRACE collectionValue+ RIGHT_BRACE;

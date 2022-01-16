@@ -1,0 +1,1427 @@
+######################################################################################
+# Anomalies (More Events Mod)
+# Package: Patch
+######################################################################################
+#
+######################################################################################
+# Unusual Structure (Abandoned Mecha)
+######################################################################################
+mem_abandoned_mecha_category = {
+	picture = GFX_evt_city_ruins
+	level = 4
+	max_once_global = yes
+	spawn_chance = {
+		modifier = {
+			tul_is_planet_nuked = yes
+			add = 5
+		}
+	}
+	on_spawn = {
+	}
+	on_success = mem_abandoned_mecha.10
+}
+
+######################################################################################
+# Unusual Structure (Ancient Factory)
+######################################################################################
+mem_ancient_factory_category = {
+	picture = GFX_evt_alien_planet
+	level = 2
+	should_ai_and_humans_use = yes
+	spawn_chance = {
+		modifier = {
+			OR = {
+				is_asteroid = yes
+				tul_is_planet_barren = yes
+			}
+			has_any_strategic_resource = no
+			add = 1
+		}
+	}
+	max_once = yes
+	on_spawn = {
+	}
+	on_success = mem_ancient_factory.10
+}
+
+######################################################################################
+# Ancient Graveyard
+######################################################################################
+mem_ancient_graveyard_category = {
+	picture = GFX_evt_warm_barren
+	level = 1
+	should_ai_and_humans_use = yes
+	spawn_chance = {
+		modifier = {
+			add = 1
+			tul_is_planet_barren = yes
+		}
+	}
+	on_spawn = {
+	}
+	on_success = mem_ancient_graveyard.1
+	#	on_fail = {
+	#		ship_event = { id = mem_ancient_graveyard.2 }
+	#	}
+}
+
+######################################################################################
+# Ancient Satellite
+######################################################################################
+mem_ancient_satellite_category = {
+	picture = GFX_evt_star_white
+	level = 4
+	should_ai_and_humans_use = yes
+	spawn_chance = {
+		modifier = {
+			add = 2
+			is_star = yes
+			tul_is_star_black_hole = no
+		}
+	}
+	null_spawn_chance = 0.5
+	on_spawn = {
+	}
+	on_success = mem_ancient_satellite.1
+	#	on_fail = {
+	#		ship_event = { id = mem_ancient_satellite.100 }
+	#	}
+	#	
+	#	on_critical_fail = {
+	#		ship_event = { id = mem_ancient_satellite.150 }
+	#	}
+}
+
+######################################################################################
+# Among the Ashes
+######################################################################################
+mem_ashes_category = {
+	picture = GFX_evt_warm_barren
+	level = 7
+	should_ai_and_humans_use = yes
+	max_once_global = yes
+	null_spawn_chance = 0.3	#Does not belong in every game
+	spawn_chance = {
+		modifier = {
+			tul_is_planet_barren = yes
+			add = 3
+		}
+		modifier = {
+			FROM.owner = {
+				is_ai = yes
+			}
+			factor = 0.1
+		}
+	}
+	on_success = {
+		1 = mem_ashes.1
+	}
+}
+
+######################################################################################
+# Black Hole Anomaly 1
+######################################################################################
+mem_black_hole_1_category = {
+	picture = "GFX_evt_black_hole"
+	level = 3
+	spawn_chance = {
+		modifier = {
+			tul_is_planet_black_hole = yes
+			add = 5
+		}
+	}
+	null_spawn_chance = 0.5
+	on_spawn = {
+	}
+	on_success = mem_black_hole_1.1
+	#	on_fail = {
+	#		ship_event = { id = mem_black_hole_1.4 }
+	#	}
+	#	on_critical_fail = {
+	#		ship_event = { id = mem_black_hole_1.5 }	
+	#	}
+}
+
+######################################################################################
+# Boiling Planet
+######################################################################################
+#Boiling Planet
+boiling_planet_category = {
+	picture = GFX_evt_frozen
+	level = 1
+	should_ai_and_humans_use = yes
+	spawn_chance = {
+		modifier = {
+			add = 3
+			tul_is_planet_frozen = yes
+		}
+	}
+	on_success = mem_boiling.1
+	#	on_fail = {
+	#		ship_event = { id = mem_boiling.2 }
+	#	}
+}
+
+######################################################################################
+# Borehole
+######################################################################################
+mem_borehole_category = {
+	max_once = yes
+	picture = GFX_evt_warm_barren
+	level = 2
+	should_ai_and_humans_use = yes
+	spawn_chance = {
+		modifier = {
+			add = 3
+			tul_is_planet_barren = yes
+			has_any_strategic_resource = no
+		}
+	}
+	on_success = {
+		2 = mem_borehole.1
+		1 = mem_borehole.2
+		2 = mem_borehole.3
+		2 = mem_borehole.4
+		2 = mem_borehole.5
+		2 = mem_borehole.6
+	}
+}
+
+######################################################################################
+# Catacombs
+######################################################################################
+mem_catacombs_category = {
+	picture = GFX_evt_archaeological_dig
+	level = 3
+	spawn_chance = {
+		modifier = {
+			tul_is_planet_barren = yes
+			add = 2
+		}
+	}
+	on_spawn = {
+	}
+	on_success = mem_catacombs.10
+	#	on_fail = {
+	#		ship_event = {
+	#			id = mem_catacombs.11
+	#		}
+	#	}
+	#	on_critical_fail = {
+	#		ship_event = {
+	#			id = mem_catacombs.12
+	#		}
+	#	}
+}
+
+######################################################################################
+# Seismic Readings 
+######################################################################################
+mem_command_system_category = {
+	picture = GFX_evt_nuclear_explosion
+	level = 3
+	max_once_global = yes
+	spawn_chance = {
+		modifier = {
+			add = 5
+			tul_is_planet_nuked = yes
+		}
+	}
+	on_spawn = {
+	}
+	on_success = mem_command_system.1
+}
+
+######################################################################################
+# Crash Landing
+######################################################################################
+mem_convict_category = {
+	desc = mem_convict_category_desc
+	level = 4
+	max_once_global = yes
+	picture = GFX_evt_mem_crashed_ship
+	spawn_chance = {
+		modifier = {
+			add = 10			# The requirements are pretty esotherical here.
+			tul_is_planet_barren = yes
+			from.owner = {
+				# They can't advance quest obviously, so maybe it's not worth bothering them.
+				is_gestalt = no
+			}
+			solar_system = {
+				any_system_planet = {
+					tul_is_planet_gas_giant = yes
+					any_moon = {
+						is_same_value = prevprevprev
+					}
+				}
+			}
+		}
+	}
+	on_success = {
+		1 = mem_convict.1
+		1 = mem_convict.10
+	}
+}
+
+######################################################################################
+# Crystal Pyramid
+######################################################################################
+mem_crystal_pyramid_category = {
+	picture = GFX_evt_ship_in_orbit
+	level = 4
+	spawn_chance = {
+		modifier = {
+			add = 2
+			tul_is_planet_frozen = yes
+		}
+	}
+	max_once_global = yes
+	on_success = mem_crystal_pyramid.1
+}
+
+######################################################################################
+# Dead Star / Missing Star
+######################################################################################
+mem_dead_star_category = {
+	picture = GFX_evt_black_hole
+	level = 1
+	max_once = yes
+	spawn_chance = {
+		modifier = {
+			AND = {
+				tul_is_planet_black_hole = yes
+				has_strategic_resource = no
+				from = {
+					#Ensures the black hole is reasonably close to homeworld
+					owner = {
+						capital_scope = {
+							distance = {
+								source = FROM
+								type = euclidean
+								max_distance <= 250
+								min_distance >= 1
+							}
+						}
+					}
+				}
+			}
+			add = 15
+		}
+	}
+	null_spawn_chance = 0.2
+	on_success = mem_dead_star.6
+}
+
+######################################################################################
+# Defying Gravity
+######################################################################################
+mem_defying_gravity_category = {
+	picture = GFX_evt_asteroid_approaching_planet
+	level = 3
+	should_ai_and_humans_use = yes
+	max_once = yes
+	spawn_chance = {
+		modifier = {
+			add = 2
+			habitable_planet = yes
+			NOR = {
+				is_ringworld = yes
+				tul_is_planet_nuked = yes
+				tul_is_planet_habitat = yes
+			}
+		}
+	}
+	on_spawn = {
+	}
+	on_success = {
+		1 = mem_defying_gravity.100		#Something generic
+		2 = {
+			#Advert
+			anomaly_event = mem_defying_gravity.200
+			max_once_global = yes
+		}
+		2 = {
+			#Frozen asteroid
+			anomaly_event = mem_defying_gravity.300
+			max_once_global = yes
+		}
+		2 = {
+			#Reflection
+			anomaly_event = mem_defying_gravity.400
+			max_once_global = yes
+		}
+	}
+}
+
+######################################################################################
+# Demon Ship
+######################################################################################
+mem_demon_ship_category = {
+	picture = "GFX_evt_gas_giant"
+	level = 3
+	spawn_chance = {
+		modifier = {
+			tul_is_planet_gas_giant = yes
+			from.owner = {
+				is_gestalt = no
+			}
+			add = 2
+		}
+	}
+	max_once = yes
+	on_spawn = {
+	}
+	on_success = mem_demon_ship.1
+}
+
+######################################################################################
+# Disguised Planet
+######################################################################################
+mem_disguised_planet_category = {
+	picture = GFX_evt_toxic
+	level = 5
+	max_once = yes
+	should_ai_and_humans_use = yes
+	spawn_chance = {
+		modifier = {
+			tul_is_planet_toxic = yes
+			planet_size > 12
+			planet_size < 26
+			add = 3
+		}
+	}
+	on_success = {
+		3 = mem_disguised_planet.1
+		2 = mem_disguised_planet.2
+		1 = mem_disguised_planet.3
+	}
+}
+
+######################################################################################
+# Dwarf Fortress
+######################################################################################
+mem_dwarf_fortress_category = {
+	picture = GFX_evt_molten
+	level = 5
+	spawn_chance = {
+		modifier = {
+			tul_is_planet_molten = yes
+			from.owner = {
+				is_gestalt = no
+			}
+			add = 3
+		}
+	}
+	max_once = yes
+	on_success = {
+		10 = mem_dwarf_fortress.3
+		5 = mem_dwarf_fortress.1
+	}
+}
+
+######################################################################################
+# Ancient Ruins
+######################################################################################
+mem_enterprise_fallen_category = {
+	picture = GFX_evt_ship_in_orbit
+	level = 3
+	max_once_global = yes
+	spawn_chance = {
+		modifier = {
+			add = 5
+			tul_is_planet_nuked = yes
+		}
+	}
+	on_spawn = {
+	}
+	on_success = mem_enterprise_fallen.1
+}
+
+######################################################################################
+# Extinct Abductors
+######################################################################################
+mem_extinct_abductors_category = {
+	picture = GFX_evt_alien_ruins
+	level = 3
+	spawn_chance = {
+	}
+	on_spawn = {
+		FROM.owner = {
+			country_event = {
+				id = story.5
+				days = 30
+			}
+		}
+	}
+	on_success = {
+		0 = {
+			modifier = {
+				add = 1
+				owner = {
+					is_gestalt = no
+				}
+			}
+			anomaly_event = mem_extinct_abductors.3
+		}
+		0 = {
+			max_once_global = yes
+			modifier = {
+				add = 5
+				owner = {
+					is_ai = no
+					NOR = {
+						is_gestalt = yes
+						is_megacorp = yes
+						has_civic = civic_barbaric_despoilers
+						has_civic = civic_fanatic_purifiers
+					}
+				}
+			}
+			anomaly_event = mem_ea_uplifter.100
+		}
+		0 = {
+			modifier = {
+				add = 5
+				owner = {
+					is_ai = no
+					is_gestalt = no
+				}
+			}
+			anomaly_event = mem_extinct_abductors.2
+		}
+		0 = {
+			modifier = {
+				add = 5
+				owner = {
+					is_ai = no
+					is_gestalt = no
+				}
+			}
+			anomaly_event = mem_lotc.1
+		}
+		0 = {
+			modifier = {
+				add = 1
+				owner = {
+					is_ai = yes
+				}
+			}
+			anomaly_event = mem_extinct_abductors.47
+		}
+	}
+	#	on_fail = {
+	#		ship_event = { id = mem_extinct_abductors.2 }
+	#	}
+	#	on_critical_fail = {
+	#		ship_event = { id = mem_extinct_abductors.3 }
+	#	}
+}
+
+######################################################################################
+# Strange Hulks
+######################################################################################
+mem_giant_tank_category = {
+	picture = GFX_evt_dead_city
+	level = 4
+	max_once_global = yes
+	spawn_chance = {
+		modifier = {
+			add = 5
+			tul_is_planet_nuked = yes
+		}
+	}
+	on_spawn = {
+	}
+	on_success = mem_giant_tank.2
+}
+
+######################################################################################
+# Hidden Tundra
+######################################################################################
+mem_hidden_tundra_category = {
+	picture = GFX_evt_ship_in_orbit
+	level = 2
+	spawn_chance = {
+		modifier = {
+			add = 1
+			tul_is_planet_barren = yes
+			planet_size < 26
+			planet_size > 9
+		}
+	}
+	max_once = yes
+	on_success = mem_hidden_tundra.1
+}
+
+######################################################################################
+# Hollow Asteroid
+######################################################################################
+mem_hollow_asteroid_category = {
+	picture = GFX_evt_mem_big_asteroid
+	level = 3
+	should_ai_and_humans_use = yes
+	spawn_chance = {
+		modifier = {
+			is_asteroid = yes
+			add = 3
+		}
+	}
+	on_spawn = {
+	}
+	on_success = {
+		2 = {
+			max_once = yes
+			anomaly_event = mem_hollow_asteroid.10
+		}
+		2 = {
+			max_once = yes
+			anomaly_event = mem_hollow_asteroid.20
+		}
+		2 = {
+			max_once = yes
+			anomaly_event = mem_hollow_asteroid.30
+		}
+		2 = {
+			max_once = yes
+			anomaly_event = mem_hollow_asteroid.40
+		}
+		# 1 = { Project stalled until we have an asset for the space kraken
+		# anomaly_event = mem_hollow_asteroid.50
+		# max_once_global = yes
+		# modifier = {
+		# factor = 0
+		# owner = { is_ai = yes }
+		# }
+		# }
+		1 = {
+			max_once = yes
+			anomaly_event = mem_hollow_asteroid.100
+			modifier = {
+				factor = 0
+				owner = {
+					is_gestalt = yes
+				}
+			}
+		}
+	}
+}
+
+######################################################################################
+# Rogue Planet
+######################################################################################
+mem_rogue_planet_anomaly_category = {
+	desc = mem_rogue_planet_anomaly_category_desc
+	picture = GFX_evt_gas_giant
+	level = 4
+	spawn_chance = {
+		modifier = {
+			add = 10
+			is_moon = yes
+			uninhabitable_regular_planet = yes
+			solar_system = {
+				any_system_planet = {
+					tul_is_planet_gas_giant = yes
+					any_moon = {
+						is_same_value = prevprevprev
+					}
+				}
+			}
+		}
+	}
+	on_success = mem_anomalies_june_19.1
+}
+
+######################################################################################
+# Left for Dead
+######################################################################################
+mem_left_for_dead_category = {
+	picture = GFX_evt_outpost
+	level = 3
+	null_spawn_chance = 0.5	#potentially big impact...
+	spawn_chance = {
+		modifier = {
+			OR = {
+				tul_is_planet_continental = yes
+				tul_is_planet_tropical = yes
+				tul_is_planet_desert = yes
+				tul_is_planet_ocean = yes
+				tul_is_planet_arid = yes
+				tul_is_planet_alpine = yes
+				tul_is_planet_arctic = yes
+				tul_is_planet_tundra = yes
+				tul_is_planet_savannah = yes
+			}
+			add = 3
+		}
+		modifier = {
+			#useless for machines
+			factor = 0
+			from.owner = {
+				tul_is_mechanical_empire = yes
+			}
+		}
+		modifier = {
+			#not so great for cyborgs
+			factor = 0.5
+			from.owner = {
+				tul_is_cyborg_empire = yes
+			}
+		}
+	}
+	max_once = yes
+	max_once_global = yes
+	on_success = mem_left_for_dead.1
+}
+
+######################################################################################
+# Mysterious Planetary Ring
+######################################################################################
+mem_llayids_category = {
+	picture = GFX_evt_gas_giant
+	level = 3
+	spawn_chance = {
+		modifier = {
+			tul_is_planet_barren = yes
+			has_ring = yes
+			add = 4
+		}
+		modifier = {
+			years_passed > 75
+			factor = 0
+		}
+	}
+	max_once_global = yes
+	on_success = mem_llayids.1
+}
+
+######################################################################################
+# Barren Life
+######################################################################################
+mem_life_barren_category = {
+	desc = "life_barren_category_desc"
+	picture = GFX_evt_microscopic_life
+	level = 2
+	#risk = 30
+	spawn_chance = {
+		modifier = {
+			add = 3
+			tul_is_planet_barren = yes
+			has_any_strategic_resource = no
+		}
+	}
+	on_success = mem_lost_zoo.8
+	#on_fail = anomaly_failure.21
+	#
+	#on_critical_fail = {
+	#	1 = anomaly_failure.1400
+	#	1 = anomaly_failure.1401
+	#	1 = anomaly_failure.1402
+	#	1 = anomaly_failure.1403
+	#	1 = anomaly_failure.1404
+	#	1 = anomaly_failure.1405
+	#}
+}
+
+######################################################################################
+# Tomb World Matrix
+######################################################################################
+mem_matrix_category = {
+	picture = GFX_evt_dead_city
+	level = 5
+	max_once_global = yes
+	spawn_chance = {
+		modifier = {
+			add = 5
+			tul_is_planet_nuked = yes
+		}
+	}
+	on_spawn = {
+	}
+	on_success = mem_matrix.1
+}
+
+######################################################################################
+# Molten Core
+######################################################################################
+mem_molten_core_category = {
+	picture = GFX_evt_molten
+	level = 2
+	spawn_chance = {
+		modifier = {
+			add = 2
+			tul_is_planet_molten = yes
+		}
+	}
+	on_success = mem_molten_core.1
+}
+
+######################################################################################
+# Mysterious Pyramids
+######################################################################################
+mem_mysterious_pyramids_category = {
+	picture = GFX_evt_toxic
+	level = 2
+	spawn_chance = {
+		modifier = {
+			tul_is_planet_toxic = yes
+			add = 2
+		}
+	}
+	max_once = yes
+	on_spawn = {
+	}
+	on_success = {
+		2 = mem_mysterious_pyramids.102
+		2 = mem_mysterious_pyramids.103
+		1 = mem_ancient_factory.10
+	}
+}
+
+######################################################################################
+# Unique Mining Outpost
+######################################################################################
+mem_nanobot_room_category = {
+	picture = GFX_evt_ship_in_orbit
+	level = 2
+	should_ai_and_humans_use = yes
+	spawn_chance = {
+		modifier = {
+			OR = {
+				is_asteroid = yes
+				tul_is_planet_barren = yes
+				tul_is_planet_frozen = yes
+			}
+			add = 2
+		}
+	}
+	max_once = yes
+	on_success = mem_nanobot_room.1
+}
+
+######################################################################################
+# Poisoned World
+######################################################################################
+mem_poisoned_world_category = {
+	picture = GFX_evt_dead_city
+	level = 2
+	spawn_chance = {
+		modifier = {
+			tul_is_planet_toxic = yes
+			add = 2
+		}
+	}
+	on_success = {
+		1 = mem_poisoned_world.200
+		2 = {
+			modifier = {
+				factor = 0
+				NOT = {
+					orbit = {
+						has_deposit = d_null_deposit
+					}
+				}
+			}
+			anomaly_event = mem_poisoned_world.100
+		}
+		2 = mem_poisoned_world.100
+	}
+}
+
+######################################################################################
+# Premature Aging
+######################################################################################
+mem_premature_ageing_category = {
+	desc = "mem_premature_ageing_category_desc"
+	picture = GFX_evt_star_yellow
+	level = 4
+	spawn_chance = {
+		modifier = {
+			add = 2
+			is_star = yes
+			tul_is_star_singularity = no
+		}
+	}
+	max_once = yes
+	max_once_global = yes
+	on_success = mem_premature_ageing.2
+}
+
+######################################################################################
+# Refueling Station
+######################################################################################
+mem_refuel_category = {
+	picture = GFX_evt_gas_giant
+	level = 2
+	should_ai_and_humans_use = yes
+	spawn_chance = {
+		modifier = {
+			tul_is_planet_gas_giant = yes
+			add = 3
+		}
+	}
+	max_once = yes
+	on_success = {
+		5 = mem_refuel.1
+		1 = {
+			anomaly_event = mem_refuel.20
+			modifier = {
+				factor = 2
+				root.leader = {
+					has_skill = 1
+				}
+			}
+			modifier = {
+				factor = 0.5
+				root.leader = {
+					has_skill > 2
+				}
+			}
+			modifier = {
+				factor = 0.5
+				root.leader = {
+					has_skill > 3
+				}
+			}
+			modifier = {
+				factor = 0
+				root.leader = {
+					has_skill > 4
+				}
+			}
+		}
+	}
+}
+
+######################################################################################
+# Through the Fog
+######################################################################################
+mem_sadrell_toxic_terraform_category = {
+	picture = GFX_evt_toxic
+	level = 3
+	should_ai_and_humans_use = yes
+	max_once_global = yes
+	spawn_chance = {
+		modifier = {
+			add = 1000
+			tul_is_planet_toxic = yes
+			solar_system = {
+				has_star_flag = mem_sadrell_home_cluster
+			}
+		}
+	}
+	on_spawn = {
+		clear_deposits = yes
+	}
+	on_success = mem_sadrell.1000
+}
+
+######################################################################################
+# Old Battlefiefld
+######################################################################################
+mem_sadrell_fleet_engagement_category = {
+	picture = GFX_evt_small_space_battle
+	level = 3
+	should_ai_and_humans_use = yes
+	max_once_global = yes
+	spawn_chance = {
+		modifier = {
+			add = 1000
+			is_star = yes
+			tul_is_planet_black_hole = no
+			solar_system = {
+				has_star_flag = mem_sadrell_home_cluster
+			}
+		}
+	}
+	on_spawn = {
+		clear_deposits = yes
+	}
+	on_success = mem_sadrell.1001
+}
+
+######################################################################################
+# Desolate Station
+######################################################################################
+mem_sadrell_gas_giant_station_category = {
+	picture = GFX_evt_space_station
+	level = 3
+	should_ai_and_humans_use = yes
+	max_once_global = yes
+	spawn_chance = {
+		modifier = {
+			add = 1000
+			tul_is_planet_gas_giant = yes
+			solar_system = {
+				has_star_flag = mem_sadrell_home_cluster
+			}
+		}
+	}
+	on_spawn = {
+		clear_deposits = yes
+	}
+	on_success = mem_sadrell.1002
+}
+
+######################################################################################
+# Satellite
+######################################################################################
+mem_sadrell_gas_giant_satellite_category = {
+	picture = GFX_evt_space_station
+	level = 3
+	should_ai_and_humans_use = yes
+	max_once_global = yes
+	spawn_chance = {
+		modifier = {
+			add = 1000
+			tul_is_planet_gas_giant = yes
+			solar_system = {
+				has_star_flag = mem_sadrell_home_cluster
+			}
+		}
+	}
+	on_spawn = {
+		clear_deposits = yes
+	}
+	on_success = mem_sadrell.1003
+}
+
+######################################################################################
+# Crashed Ship
+######################################################################################
+mem_sadrell_crashed_liner_category = {
+	picture = GFX_evt_space_debris
+	level = 3
+	should_ai_and_humans_use = yes
+	max_once_global = yes
+	spawn_chance = {
+		modifier = {
+			add = 1000
+			tul_is_planet_asteroid = yes
+			solar_system = {
+				has_star_flag = mem_sadrell_home_cluster
+			}
+		}
+	}
+	on_spawn = {
+		clear_deposits = yes
+	}
+	on_success = mem_sadrell.1004
+}
+
+######################################################################################
+# Bits and Pieces
+######################################################################################
+mem_sadrell_museum_category = {
+	picture = GFX_evt_ship_in_orbit_2
+	level = 3
+	should_ai_and_humans_use = yes
+	max_once_global = yes
+	spawn_chance = {
+		modifier = {
+			add = 1000
+			tul_is_planet_barren = yes
+			solar_system = {
+				has_star_flag = mem_sadrell_home_cluster
+			}
+		}
+	}
+	on_spawn = {
+		clear_deposits = yes
+	}
+	on_success = mem_sadrell.1005
+}
+
+######################################################################################
+# Satellite Cloud
+######################################################################################
+mem_satellite_cloud_category = {
+	picture = GFX_evt_ship_in_orbit
+	level = 4
+	should_ai_and_humans_use = yes
+	spawn_chance = {
+		modifier = {
+			add = 3
+			is_star = yes
+			tul_is_star_singularity = no
+		}
+	}
+	null_spawn_chance = 0.5
+	on_success = {
+		1 = mem_satellite_cloud.1
+		1 = mem_satellite_cloud.2
+		1 = mem_satellite_cloud.3
+		1 = mem_satellite_cloud.4
+		1 = mem_satellite_cloud.5
+		1 = mem_satellite_cloud.6
+		1 = mem_satellite_cloud.7
+		1 = mem_satellite_cloud.8
+	}
+}
+
+######################################################################################
+# Mysterious Shapes
+######################################################################################
+mem_shapes_under_ice_category = {
+	picture = GFX_evt_frozen
+	level = 3
+	spawn_chance = {
+		modifier = {
+			tul_is_planet_frozen = yes
+			add = 2
+		}
+	}
+	max_once = yes
+	on_spawn = {
+	}
+	on_success = mem_shapes_under_ice.1
+}
+
+######################################################################################
+# Sight Unseen
+######################################################################################
+mem_sight_unseen_anomaly = {
+	picture = GFX_evt_mem_big_asteroid
+	level = 6
+	spawn_chance = {
+		modifier = {
+			add = 1
+			tul_is_planet_asteroid = yes
+			FROM.owner = {
+				is_gestalt = no
+			}
+		}
+	}
+	null_spawn_chance = 0.5
+	max_once_global = yes
+	on_success = mem_sight_unseen.1
+}
+
+######################################################################################
+# Snowed In
+######################################################################################
+mem_snowed_in_category = {
+	picture = GFX_evt_outpost
+	level = 4
+	should_ai_and_humans_use = yes
+	spawn_chance = {
+		modifier = {
+			tul_is_planet_frozen = yes
+			is_moon = no			#Better for lore reasons
+			solar_system = {
+				tul_is_star_singularity = no
+			}
+			add = 3
+		}
+		modifier = {
+			from.owner = {
+				is_ai = no
+			}
+			factor = 0.5
+		}
+	}
+	null_spawn_chance = 0.5
+	max_once_global = yes
+	on_success = {
+		1 = mem_snowed_in.1
+	}
+}
+
+######################################################################################
+# Solar Iches
+######################################################################################
+mem_solar_riches_category = {
+	picture = "GFX_evt_star_yellow"
+	level = 2
+	spawn_chance = {
+		modifier = {
+			add = 2
+			is_star = yes
+			tul_is_star_singularity = no
+		}
+	}
+	null_spawn_chance = 0.5
+	on_success = mem_solar_riches.1
+}
+
+######################################################################################
+# Splinter Colony
+######################################################################################
+mem_splinter_colony_category = {
+	picture = GFX_evt_ship_in_orbit
+	level = 3
+	max_once = yes
+	spawn_chance = {
+		modifier = {
+			OR = {
+				tul_is_planet_barren = yes
+				tul_is_planet_frozen = yes
+			}
+			add = 1
+		}
+		modifier = {
+			AND = {
+				habitable_planet = yes
+				tul_is_planet_city = no
+			}
+			add = 5
+		}
+	}
+	on_success = mem_splinter_colony.1
+}
+
+######################################################################################
+# Strange Colors
+######################################################################################
+mem_star_colors_category = {
+	picture = GFX_evt_star_neutron
+	level = 2
+	should_ai_and_humans_use = yes
+	spawn_chance = {
+		modifier = {
+			add = 2
+			is_star = yes
+			tul_is_star_singularity = no
+		}
+	}
+	max_once = yes
+	null_spawn_chance = 0.5
+	on_spawn = {
+	}
+	on_success = {
+		1 = mem_star_colors.1
+	}
+}
+
+######################################################################################
+# Stuck in Glacier
+######################################################################################
+mem_stuck_in_glacier_category = {
+	desc = "mem_stuck_in_glacier_desc"
+	picture = GFX_evt_frozen
+	level = 3
+	should_ai_and_humans_use = yes
+	max_once = yes	#Out of consideration for possible misses
+	spawn_chance = {
+		modifier = {
+			add = 3
+			tul_is_planet_frozen = yes
+		}
+	}
+	on_success = {
+		#Kinetic projectile
+		2 = {
+			max_once = yes
+			anomaly_event = mem_stuck_in_glacier.10
+		}
+		#Robot
+		3 = {
+			# max_once_global = yes
+			anomaly_event = mem_stuck_in_glacier.20
+		}
+		#Dead explorer
+		2 = {
+			max_once = yes
+			anomaly_event = mem_stuck_in_glacier.30
+		}
+		#Crashed shuttle
+		2 = {
+			max_once = yes
+			anomaly_event = mem_stuck_in_glacier.40
+		}
+		#Meteorite
+		1 = {
+			max_once = yes
+			anomaly_event = mem_stuck_in_glacier.50
+		}
+		#Data cache
+		1 = {
+			max_once_global = yes
+			anomaly_event = mem_stuck_in_glacier.60
+		}
+		# Silver Knight
+		1 = {
+			max_once_global = yes
+			anomaly_event = mem_rebel_yell.9
+		}
+	}
+}
+
+######################################################################################
+# The Ancient Signal
+######################################################################################
+mem_the_ancient_signal_category = {
+	desc = "mem_the_ancient_signal_desc"
+	picture = GFX_evt_ship_in_orbit
+	level = 2
+	spawn_chance = {
+		modifier = {
+			tul_is_planet_tropical = yes
+			add = 3
+		}
+	}
+	max_once = yes
+	on_success = mem_the_ancient_signal.1
+}
+
+######################################################################################
+# Towers in the Mist
+######################################################################################
+mem_towers_category = {
+	picture = GFX_evt_toxic
+	level = 4
+	spawn_chance = {
+		modifier = {
+			add = 3
+			tul_is_planet_toxic = yes
+		}
+	}
+	on_spawn = {
+	}
+	on_success = {
+		1 = mem_towers.100		#Sulfuric Forest
+		1 = mem_towers.200		#Trash of the Titans
+	}
+	#	on_fail = {
+	#		ship_event = { id = mem_ancient_graveyard.2 }
+	#	}
+}
+
+######################################################################################
+# Vazuran Menace
+######################################################################################
+mem_vazurans_category_1 = {
+	picture = GFX_evt_warm_barren
+	level = 3
+	spawn_chance = {
+		modifier = {
+			FROM = {
+				owner = {
+					NOR = {
+						has_country_flag = mem_vazurans_anomaly_3
+						AND = {
+							has_country_flag = mem_vazurans_anomaly_2
+							is_gestalt = yes
+						}
+					}
+				}
+			}
+			has_global_flag = mem_vazurans_enabled
+			tul_is_planet_barren = yes
+			add = 6
+		}
+	}
+	on_spawn = {
+		FROM = {
+			owner = {
+				set_country_flag = mem_vazurans_destroyed_world_found
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = mem_vazurans_anomaly_1
+						}
+					}
+					set_country_flag = mem_vazurans_anomaly_1
+				}
+				else_if = {
+					limit = {
+						NOT = {
+							has_country_flag = mem_vazurans_anomaly_2
+						}
+					}
+					set_country_flag = mem_vazurans_anomaly_2
+				}
+				else = {
+					set_country_flag = mem_vazurans_anomaly_3
+				}
+			}
+		}
+	}
+	on_success = {
+		1 = {
+			anomaly_event = mem_vazurans.202
+			modifier = {
+				factor = 0
+				owner = {
+					has_country_flag = mem_vazurans_202
+				}
+			}
+		}
+		1 = {
+			anomaly_event = mem_vazurans.203
+			modifier = {
+				factor = 0
+				owner = {
+					has_country_flag = mem_vazurans_203
+				}
+			}
+		}
+		1 = {
+			anomaly_event = mem_vazurans.204
+			modifier = {
+				factor = 0
+				owner = {
+					OR = {
+						has_ethic = ethic_gestalt_consciousness
+						has_country_flag = mem_vazurans_204
+					}
+				}
+			}
+		}
+	}
+}
+
+mem_vazurans_category_2 = {
+	picture = GFX_evt_warm_barren
+	level = 3
+	max_once = yes
+	spawn_chance = {
+		modifier = {
+			has_global_flag = mem_vazurans_enabled
+			FROM = {
+				owner = {
+					has_country_flag = mem_vazurans_destroyed_world_found
+				}
+			}
+			tul_is_planet_barren = yes
+			has_moon = yes
+			add = 6
+		}
+	}
+	on_spawn = {
+	}
+	on_success = mem_vazurans.205
+}
+
+# Damper field generator anomaly 1
+mem_vazurans_category_3 = {
+	picture = GFX_evt_mem_horror_corridor
+	level = 3
+	spawn_chance = {
+	}
+	on_spawn = {
+	}
+	on_success = mem_vazurans.252
+}
+
+# Damper field generator anomaly 2
+mem_vazurans_category_4 = {
+	picture = GFX_evt_mem_horror_corridor
+	level = 3
+	spawn_chance = {
+	}
+	on_spawn = {
+	}
+	on_success = mem_vazurans.252
+}
+
+# Fainthearted Backwater anomaly
+mem_vazurans_category_5 = {
+	picture = GFX_evt_city_ruins
+	level = 1
+	spawn_chance = {
+	}
+	on_spawn = {
+	}
+	on_success = mem_fainthearted.5
+}

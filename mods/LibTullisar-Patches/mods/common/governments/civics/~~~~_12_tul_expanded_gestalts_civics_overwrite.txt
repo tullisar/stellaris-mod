@@ -1,0 +1,83 @@
+######################################################################################
+# Civics (Expanded Gestalts: Forgotten Queens)
+# Package: Patch
+######################################################################################
+#
+#
+######################################################################################
+# Mutualistic Behavior
+######################################################################################
+civic_mutualistic_behavior = {
+	description = civic_tooltip_mutualistic_behavior_effects
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_hive_mutualistic.dds"
+	potential = {
+		authority = {
+			value = auth_hive_mind
+		}
+	}
+	possible = {
+		# TODO(tullisar): Rule out other origins
+		origin = {
+			NOR = {
+				value = origin_hive_overmind
+				value = origin_necrophage
+			}
+		}
+		# TODO(tullisar): Rule out other civics
+		civics = {
+			NOR = {
+				value = civic_hive_devouring_swarm
+				value = civic_hive_parasitic
+			}
+		}
+	}
+	modifier = {
+		envoys_add = 1
+	}
+	random_weight = {
+		base = 0
+	}
+}
+
+######################################################################################
+# Currency Conversion Intelligence
+#
+# This was deactivated in Expanded Gestalts, but this re-enables the feature in
+# this patch only.
+#
+######################################################################################
+civic_machine_trading = {
+	description = civic_tooltip_machine_trading_effects
+	icon = "gfx/interface/icons/governments/civics/civic_machine_trading.dds"
+	modification = no
+	potential = {
+		authority = {
+			value = auth_machine_intelligence
+		}
+	}
+	possible = {
+
+		# TODO(tullisar): Rule out any other origins
+		origin = {
+			NOT = {
+				value = origin_machine
+			}
+		}
+
+		# TODO(tullisar): Rule out other civics.
+		civics = {
+			NOR = {
+				value = civic_machine_assimilator
+				value = civic_machine_terminator
+			}
+		}
+	}
+	modifier = {
+		envoys_add = 1
+		planet_technician_energy_produces_add = -1
+	}
+	random_weight = {
+		base = 0
+	}
+}

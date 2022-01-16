@@ -1,0 +1,31 @@
+######################################################################################
+# Anomalies (Planetary Diversity)
+######################################################################################
+
+######################################################################################
+# Ancient Signs of Life
+######################################################################################
+pdterraforming_candidate_category = {
+	desc = "pdterraforming_candidate_category_desc"
+	picture = GFX_evt_drilling_for_gas
+	level = 2
+	#risk = 0
+	spawn_chance = {
+		modifier = {
+			add = 5
+			tul_is_planet_terraforming_candidate = no
+			tul_is_planet_hothouse = yes
+			planet_size > 9
+			planet_size < 26
+			solar_system = {
+				tul_is_star_singularity = no
+			}
+		}
+	}
+	on_success = {
+		1 = {
+			anomaly_event = pdanomaly.01
+			max_once = no
+		}
+	}
+}

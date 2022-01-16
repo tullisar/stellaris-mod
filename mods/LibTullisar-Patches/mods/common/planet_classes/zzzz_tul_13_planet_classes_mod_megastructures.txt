@@ -1,0 +1,179 @@
+######################################################################################
+# Planet Classes (Modded, Megastructures)
+# Package: Patch
+######################################################################################
+#
+
+#
+######################################################################################
+# Freebooters' Habitat
+# Source: NSC2 Season 6
+######################################################################################
+pc_nsc_freebooter_habitat = {
+	habitat = yes
+	entity = "orbital_habitat"
+	icon = GFX_planet_type_habitat
+	entity_scale = 1.0
+	enable_tilt = no
+	fixed_entity_scale = yes
+	place_entity_on_planet_plane = no
+	entity_face_object = no #disable rotation towards sun or planet we orbit around
+	atmosphere_color 		= hsv { 0.0 0.0 1.0 }		#DONE
+	atmosphere_intensity 	= 1.0
+	atmosphere_width 		= 0.5
+	show_city = no
+	city_color_lut = "gfx/portraits/misc/colorcorrection_continental.dds"
+	extra_orbit_size = 0
+	extra_planet_count = 0
+	chance_of_ring = 0.0
+	planet_size = 6
+	moon_size = 1
+	colonizable = yes
+	district_set = nsc_freebooter_habitat
+#	ideal = yes
+	starting_planet = no
+	orbit_lines = no
+	has_colonization_influence_cost = no			# applies when within own borders
+
+	is_artificial_planet = yes
+	default_planet_selection = yes
+
+	modifier = {
+		planet_colony_development_speed_mult = 2.0 # Habitats should be fast to colonize
+		planet_max_buildings_add = 12
+	}
+
+	carry_cap_per_free_district = @carry_cap_low
+}
+
+######################################################################################
+# Alderson Disc (Placeholder)
+# Source: Gigastructural Engineering
+#
+# pc_alderson_slice_gaia
+# pc_alderson_slice_gaia_shattered
+# pc_alderson_slice_ecu
+# pc_alderson_slice_hive
+# pc_alderson_slice_machine
+# pc_alderson_slice_pc
+#
+######################################################################################
+
+######################################################################################
+# Artillery (Placeholder)
+# Source: Gigastructural Engineering
+#
+# pc_giga_asteroid_artillery
+#
+######################################################################################
+
+######################################################################################
+# Ringworld Segments (Placeholder)
+# Source: Gigastructural Engineering
+#
+# pc_ringworld_city
+# pc_ringworld_machine
+# pc_ringworld_hive
+#
+######################################################################################
+
+######################################################################################
+# Habitable Megastructures (Placeholder)
+# Source: Gigastructural Engineering
+#
+# pc_equatorial_shipyard (Equatorial Shipyard)
+# pc_squareworld_habitable (Square World)
+# pc_giga_penrose_habitable (Penrose Sphere Ringworld)
+# pc_gigaorbital_ring (Orbital Elysium)
+# pc_interstellar_habitat (Interstellar Habitat)
+# pc_interstellar_ringworld_habitable (Interstellar Ring-world)
+#
+######################################################################################
+
+######################################################################################
+# Uninhabitable Megastructures (Placeholder)
+# Source: Gigastructural Engineering
+#
+# pc_disco_moon
+# pc_metallic_hydrogen (Metallic H. Giant)
+# pc_food_giant (Yggdrasil Orchid)
+# pc_gigaorbital_ring_ruined (Ruined Orbital Elysium)
+#
+#
+######################################################################################
+
+######################################################################################
+# Event Horizon Offset Facility (Placeholder)
+# Source: Gigastructural Engineering
+#
+# pc_ehof_planet (Dark Matter Orb)
+# pc_ehof_cplanet (The Sphere)
+# pc_ehof_habitat (Asteroid Habitat)
+# pc_ehof_uhabitat (???)
+#
+######################################################################################
+
+######################################################################################
+# Matryoshka Brain (Placeholder)
+# Source: Gigastructural Engineering
+#
+# pc_virtual_reality
+# pc_virtual_industry
+# pc_virtual_stellar_industry
+#
+######################################################################################
+
+######################################################################################
+# Birch World (Placeholder)
+# Source: Gigastructural Engineering
+#
+# pc_void_birch
+#
+######################################################################################
+
+######################################################################################
+# Maginot World (Placeholder)
+# Source: Gigastructural Engineering
+#
+# pc_giga_maginot_world
+# pc_giga_maginot_gas_giant
+#
+######################################################################################
+
+######################################################################################
+# Source: More Events Mod (Placeholder)
+#
+# pc_mem_vazuran_habitat
+#
+######################################################################################
+
+######################################################################################
+# Planetary Habitats (Placeholder)
+# Source: Planetary Diversity
+# 
+# pc_aquatichab
+# pc_aquatichothab
+# pc_aquaticcoldhab
+# pc_pd_gas_giant_hab
+# pc_pd_barren_hab
+# pc_pd_barren_cold_hab
+# pc_pd_molten_hab
+# pc_pd_frozen_hab
+# pc_pd_hothouse_hab
+# pc_pd_toxic_hab
+# pc_pd_asteroid_hab
+#
+######################################################################################
+
+######################################################################################
+# Exotic Habitable Megastructures (Placeholder)
+# Source: Planetary Diversity
+# 
+# These use the "exotic" climate type
+#
+# pc_ammoniaring
+# pc_sulfurring
+# pc_methanering
+# pc_ashring
+#
+######################################################################################

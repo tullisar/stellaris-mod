@@ -1,0 +1,532 @@
+######################################################################################
+# Megastructurse
+# Package: Patch
+######################################################################################
+#
+######################################################################################
+# Barren Habitat
+######################################################################################
+pd_barren_hab_0 = {
+	entity = ""
+	construction_entity = ""
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = yes
+	build_time = 900
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 750
+			influence = 75
+		}
+	}
+	construction_blocks_others = no
+	construction_blocked_by_others = no
+	potential = {
+		#has_technology = tech_pdhabitat_1
+		has_global_flag = planetarydiversityhabitats
+	}
+	possible = {
+		exists = starbase
+		custom_tooltip = {
+			fail_text = "requires_inside_border"
+			is_inside_border = from
+		}
+	}
+	placement_rules = {
+		planet_possible = {
+			tul_can_build_planetary_habitat = yes
+			tul_is_planet_barren = yes
+		}
+	}
+	# root = system
+	# from = country	
+	ai_weight = {
+		factor = 1
+		modifier = {
+			factor = 3
+			solar_system = {
+				exists = owner
+				is_same_value = owner.capital_scope.solar_system
+			}
+		}
+		modifier = {
+			factor = 2
+			any_neighbor_system = {
+				exists = owner
+				is_same_value = owner.capital_scope.solar_system
+			}
+		}
+		modifier = {
+			factor = 0.1
+			any_neighbor_system = {
+				exists = owner
+				owner = {
+					NOT = {
+						is_same_value = from
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			tul_is_planet_habitat_ai_disallowed = yes
+		}
+	}
+	on_build_start = {
+	}
+	on_build_cancel = {
+	}
+	on_build_complete = {
+		fromfrom.planet = {
+			tul_create_planetary_habitat = yes
+		}
+		remove_megastructure = fromfrom
+		from = {
+			country_event = {
+				id = moonbase.00
+			}
+		}
+	}
+}
+
+######################################################################################
+# Frozen Habitat
+######################################################################################
+pd_frozen_hab_0 = {
+	entity = ""
+	construction_entity = ""
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = yes
+	build_time = 900
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 1000
+			influence = 100
+		}
+	}
+	construction_blocks_others = no
+	construction_blocked_by_others = no
+	potential = {
+		AND = {
+			has_technology = tech_pdhabitat_1
+			has_global_flag = planetarydiversityhabitats
+		}
+	}
+	possible = {
+		exists = starbase
+		custom_tooltip = {
+			fail_text = "requires_inside_border"
+			is_inside_border = from
+		}
+	}
+	placement_rules = {
+		planet_possible = {
+			tul_can_build_planetary_habitat = yes
+			tul_can_build_frozen_planet_habitat = yes
+		}
+	}
+	# root = system
+	# from = country	
+	ai_weight = {
+		factor = 1
+		modifier = {
+			factor = 3
+			solar_system = {
+				exists = owner
+				is_same_value = owner.capital_scope.solar_system
+			}
+		}
+		modifier = {
+			factor = 2
+			any_neighbor_system = {
+				exists = owner
+				is_same_value = owner.capital_scope.solar_system
+			}
+		}
+		modifier = {
+			factor = 0.1
+			any_neighbor_system = {
+				exists = owner
+				owner = {
+					NOT = {
+						is_same_value = from
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			tul_is_planet_habitat_ai_disallowed = yes
+		}
+	}
+	on_build_start = {
+	}
+	on_build_cancel = {
+	}
+	on_build_complete = {
+		fromfrom.planet = {
+			tul_create_planetary_habitat = yes
+		}
+		remove_megastructure = fromfrom
+		from = {
+			country_event = {
+				id = moonbase.00
+			}
+		}
+	}
+}
+
+######################################################################################
+# Gas Giant Habitat
+######################################################################################
+# see README.txt for example
+pd_gas_giant_hab_0 = {
+	entity = ""
+	construction_entity = ""
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = yes
+	build_time = 900
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 1500
+			influence = 150
+		}
+	}
+	construction_blocks_others = no
+	construction_blocked_by_others = no
+	potential = {
+		AND = {
+			has_technology = tech_pdhabitat_2
+			has_global_flag = planetarydiversityhabitats
+		}
+	}
+	possible = {
+		exists = starbase
+		custom_tooltip = {
+			fail_text = "requires_inside_border"
+			is_inside_border = from
+		}
+	}
+	placement_rules = {
+		planet_possible = {
+			tul_can_build_planetary_habitat = yes
+			tul_is_planet_gas_giant = yes
+		}
+	}
+	# root = system
+	# from = country	
+	ai_weight = {
+		factor = 1
+		modifier = {
+			factor = 3
+			solar_system = {
+				exists = owner
+				is_same_value = owner.capital_scope.solar_system
+			}
+		}
+		modifier = {
+			factor = 2
+			any_neighbor_system = {
+				exists = owner
+				is_same_value = owner.capital_scope.solar_system
+			}
+		}
+		modifier = {
+			factor = 0.1
+			any_neighbor_system = {
+				exists = owner
+				owner = {
+					NOT = {
+						is_same_value = from
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			tul_is_planet_habitat_ai_disallowed = yes
+		}
+	}
+	on_build_start = {
+	}
+	on_build_cancel = {
+	}
+	on_build_complete = {
+		fromfrom.planet = {
+			set_planet_flag = used_to_be_gasgiant
+			tul_create_planetary_habitat = yes
+		}
+		remove_megastructure = fromfrom
+		from = {
+			country_event = {
+				id = moonbase.00
+			}
+		}
+	}
+}
+
+######################################################################################
+# Hothouse Habitat
+######################################################################################
+pd_hothouse_hab_0 = {
+	entity = ""
+	construction_entity = ""
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = yes
+	build_time = 900
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 1500
+			influence = 150
+		}
+	}
+	construction_blocks_others = no
+	construction_blocked_by_others = no
+	potential = {
+		AND = {
+			has_technology = tech_pdhabitat_2
+			has_global_flag = planetarydiversityhabitats
+		}
+	}
+	possible = {
+		exists = starbase
+		custom_tooltip = {
+			fail_text = "requires_inside_border"
+			is_inside_border = from
+		}
+	}
+	placement_rules = {
+		planet_possible = {
+			tul_can_build_planetary_habitat = yes
+			tul_is_planet_hothouse = yes
+		}
+	}
+	# root = system
+	# from = country	
+	ai_weight = {
+		factor = 1
+		modifier = {
+			factor = 3
+			solar_system = {
+				exists = owner
+				is_same_value = owner.capital_scope.solar_system
+			}
+		}
+		modifier = {
+			factor = 2
+			any_neighbor_system = {
+				exists = owner
+				is_same_value = owner.capital_scope.solar_system
+			}
+		}
+		modifier = {
+			factor = 0.1
+			any_neighbor_system = {
+				exists = owner
+				owner = {
+					NOT = {
+						is_same_value = from
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			tul_is_planet_habitat_ai_disallowed = yes
+		}
+	}
+	on_build_start = {
+	}
+	on_build_cancel = {
+	}
+	on_build_complete = {
+		fromfrom.planet = {
+			tul_create_planetary_habitat = yes
+		}
+		remove_megastructure = fromfrom
+		from = {
+			country_event = {
+				id = moonbase.00
+			}
+		}
+	}
+}
+
+######################################################################################
+# Molten Habitat
+######################################################################################
+pd_molten_hab_0 = {
+	entity = ""
+	construction_entity = ""
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = yes
+	build_time = 900
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 1000
+			influence = 100
+		}
+	}
+	construction_blocks_others = no
+	construction_blocked_by_others = no
+	potential = {
+		AND = {
+			has_technology = tech_pdhabitat_1
+			has_global_flag = planetarydiversityhabitats
+		}
+	}
+	possible = {
+		exists = starbase
+		custom_tooltip = {
+			fail_text = "requires_inside_border"
+			is_inside_border = from
+		}
+	}
+	placement_rules = {
+		planet_possible = {
+			tul_can_build_planetary_habitat = yes
+			tul_is_planet_molten = yes
+		}
+	}
+	# root = system
+	# from = country	
+	ai_weight = {
+		factor = 1
+		modifier = {
+			factor = 3
+			solar_system = {
+				exists = owner
+				is_same_value = owner.capital_scope.solar_system
+			}
+		}
+		modifier = {
+			factor = 2
+			any_neighbor_system = {
+				exists = owner
+				is_same_value = owner.capital_scope.solar_system
+			}
+		}
+		modifier = {
+			factor = 0.1
+			any_neighbor_system = {
+				exists = owner
+				owner = {
+					NOT = {
+						is_same_value = from
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			tul_is_planet_habitat_ai_disallowed = yes
+		}
+	}
+	on_build_start = {
+	}
+	on_build_cancel = {
+	}
+	on_build_complete = {
+		fromfrom.planet = {
+			tul_create_planetary_habitat = yes
+		}
+		remove_megastructure = fromfrom
+		from = {
+			country_event = {
+				id = moonbase.00
+			}
+		}
+	}
+}
+
+######################################################################################
+# Toxic Habitat
+######################################################################################
+pd_toxic_hab_0 = {
+	entity = ""
+	construction_entity = ""
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = yes
+	build_time = 900
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 1500
+			influence = 150
+		}
+	}
+	construction_blocks_others = no
+	construction_blocked_by_others = no
+	potential = {
+		AND = {
+			has_technology = tech_pdhabitat_2
+			has_global_flag = planetarydiversityhabitats
+		}
+	}
+	possible = {
+		exists = starbase
+		custom_tooltip = {
+			fail_text = "requires_inside_border"
+			is_inside_border = from
+		}
+	}
+	placement_rules = {
+		planet_possible = {
+			tul_can_build_planetary_habitat = yes
+			tul_can_build_toxic_habitat = yes
+		}
+	}
+	# root = system
+	# from = country	
+	ai_weight = {
+		factor = 1
+		modifier = {
+			factor = 3
+			solar_system = {
+				exists = owner
+				is_same_value = owner.capital_scope.solar_system
+			}
+		}
+		modifier = {
+			factor = 2
+			any_neighbor_system = {
+				exists = owner
+				is_same_value = owner.capital_scope.solar_system
+			}
+		}
+		modifier = {
+			factor = 0.1
+			any_neighbor_system = {
+				exists = owner
+				owner = {
+					NOT = {
+						is_same_value = from
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			tul_is_planet_habitat_ai_disallowed = yes
+		}
+	}
+	on_build_start = {
+	}
+	on_build_cancel = {
+	}
+	on_build_complete = {
+		fromfrom.planet = {
+			tul_create_planetary_habitat = yes
+		}
+		remove_megastructure = fromfrom
+		from = {
+			country_event = {
+				id = moonbase.00
+			}
+		}
+	}
+}

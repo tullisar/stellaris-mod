@@ -779,7 +779,7 @@ default = {
 		}
 		produces = {
 			trigger = {
-				tul_is_hive_empire = yes
+				tul_country_is_hive_authority = yes
 				is_lithoid_empire = no
 			}
 			food = 30

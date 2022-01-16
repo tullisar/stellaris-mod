@@ -1,0 +1,52 @@
+﻿l_english:
+
+# General Purpose
+tul_is_barren_planet:0 "Planet must be a type of $pc_barren$ world."
+tul_is_barren_planet_pass:0 "$TRIGGER_PASS$$tul_is_barren_planet$"
+tul_is_barren_planet_fail:0 "$TRIGGER_FAIL$$tul_is_barren_planet$"
+tul_is_frozen_planet:0 "Planet must be a type of $pc_frozen$ world."
+tul_is_frozen_planet_pass:0 "$TRIGGER_PASS$$tul_is_frozen_planet$"
+tul_is_frozen_planet_fail:0 "$TRIGGER_FAIL$$tul_is_frozen_planet$"
+tul_is_frozen_hab_planet:0 "Planet must be a type of $pc_frozen$ world (excluding $pc_ammonia$s and $pc_methane$s)."
+tul_is_frozen_hab_planet_pass:0 "$TRIGGER_PASS$$tul_is_frozen_hab_planet$"
+tul_is_frozen_hab_planet_fail:0 "$TRIGGER_FAIL$$tul_is_frozen_hab_planet$"
+tul_is_gas_giant:0 "Planet must be a type of $pc_gas_giant$ world."
+tul_is_gas_giant_pass:0 "$TRIGGER_PASS$$tul_is_gas_giant$"
+tul_is_gas_giant_fail:0 "$TRIGGER_FAIL$$tul_is_gas_giant$"
+tul_is_hothouse_planet:0 "Planet must be a type of $pc_hothouse$ world."
+tul_is_hothouse_planet_pass:0 "$TRIGGER_PASS$$tul_is_hothouse_planet$"
+tul_is_hothouse_planet_fail:0 "$TRIGGER_FAIL$$tul_is_hothouse_planet$"
+tul_is_toxic_planet:0 "Planet must be a type of $pc_toxic$ world."
+tul_is_toxic_planet_pass:0 "$TRIGGER_PASS$$tul_is_toxic_planet$"
+tul_is_toxic_planet_fail:0 "$TRIGGER_FAIL$$tul_is_toxic_planet$"
+tul_is_toxic_hab_planet:0 "Planet must be a type of $pc_toxic$ world (excluding $pc_toxic$s)."
+tul_is_toxic_hab_planet_pass:0 "$TRIGGER_PASS$$tul_is_toxic_habn_planet$"
+tul_is_toxic_hab_planet_fail:0 "$TRIGGER_FAIL$$tul_is_toxic_hab_planet$"
+tul_is_molten_planet:0 "Planet must be a type of $pc_molten$ world."
+tul_is_molten_planet_pass:0 "$TRIGGER_PASS$$tul_is_molten_planet$"
+tul_is_molten_planet_fail:0 "$TRIGGER_FAIL$$tul_is_molten_planet$"
+
+# Forgotten Queens
+pc_hollow:0 "Hollow Planet"
+pc_hollow_desc:0 "Caves and caverns run throughout this planet's crust and a significant part of the mantle. The planet's inner core can be used as a heat and energy source to support life in the lower levels."
+pc_hollow_adj:0 "hollow"
+pc_matryoshka_adj:0 "matryoshka"
+
+# Gigastructural Engineering
+pc_t_star_big:0 "Class T Brown Dwarf"
+pc_t_star_big_desc:0 "Brown dwarfs are substellar objects that lack the mass to sustain hydrogen fusion. Roughly the size of large gas giants, they have a much greater density. Their low luminosity and comparatively small heat generation means that planets orbiting them are unlikely to support life. This particular Brown Dwarf appears to be larger and denser than average, and could potentially be ignited with relative ease."
+
+# Planetary Diversity
+pc_subglacial_adj:0 "subglacial"
+trait_pc_subglacial_preference:0 "Subglacial Preference"
+trait_pc_subglacial_preference_desc:0 "TBD"
+pc_aquaticbio_uw_adj:0 "aquaticbio_uw"
+pc_aquaticshroud_uw_adj:0 "aquaticshroud_uw"
+pc_aquatickarst_uw_adj:0 "aquatickarst_uw"
+pc_reef_adj:0 "reef"
+
+# Reworked Advanced Ascension
+nnn_terraforming_candidate:0 "Barren Transformation Mastery Candidate"
+nnn_terraforming_candidate2:0 "$nnn_terraforming_candidate$"
+nnn_terraforming_candidate_desc:0 "With the £society£ §H$tech_world_shaper$§!,\nthis planet can be transformed directly into a $pc_gaia$ world."
+nnn_terraforming_candidate_desc2:0 "With the £society£ §H$tech_world_shaper$§!,\nthis planet can be transformed directly into a $pc_hive$ world."

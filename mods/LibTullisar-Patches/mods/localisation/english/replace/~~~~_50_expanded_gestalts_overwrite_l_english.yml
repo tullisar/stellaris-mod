@@ -1,0 +1,11 @@
+﻿l_english:
+
+ MUTUALISTIC_BAHAVIOUR_CANNOT_ENSLAVE: "$TRIGGER_FAIL$§Y$civic_mutualistic_behavior$§! cannot enslave species."
+ civic_mutualistic_behavior:0 "Mutualistic Behavior"
+ civic_mutualistic_behavior_desc:1 "Mutualism plays a key part in ecology, and so this hive Hive has learned to thrive by cooperating with other species from its home planet. Now as it looks to  the stars, it seeks out new species to cooperate with."
+ civic_tooltip_mutualistic_behavior_effects:0 "§ECan form §YCommercial Pacts§!§!\n§ECan establish §YBranch Offices§!\n§ECannot use §HUnrestricted Wars§! policy§!\n§ECannot engage in §HIndiscriminate§! Orbital Bombardment§!\n§HRefugees§! §Eare always welcome§!\n§ECan always §HAssimilate§! biological pops§!\n§ECan form §HMigration Pacts§!§!\n§ECan not §HPurge§! nor §HEnslave§! pops§!\n\n"
+
+ MACHINE_TRADERS_CANNOT_ENSLAVE: "$TRIGGER_FAIL$§Y$civic_machine_trading$§! cannot enslave species."
+ civic_machine_trading:0 "Currency Conversion Intelligence"
+civic_machine_trading_desc:1 "Commerce can be an efficient mechanism by which to acquire resources. As the organics say, \"Peace is good for business\". This machine intelligence has developed highly focused business algorithms for trade with other species. "
+ civic_tooltip_machine_trading_effects:0 "§ECan form §YCommercial Pacts§!§!\n§ECan establish §YBranch Offices§!\n§ECannot use §HUnrestricted Wars§! policy§!\n§ECannot engage in §HIndiscriminate§! Orbital Bombardment§!\n§HRefugees§! §Eare always welcome§!\n§ECan always §HAssimilate§! biological pops§!\n§ECan form §HMigration Pacts§!§!\n§ECan not §HPurge§! nor §HEnslave§! pops§!\n\n"

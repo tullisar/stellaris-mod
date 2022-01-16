@@ -102,7 +102,7 @@ WHITESPACE: WHITESPACE_SET+ -> channel(HIDDEN);
 // Comments are only allowed in the default mode
 COMMENT: '#' .*? (NEWLINE | EOF) -> channel(COMMENT_CHANNEL);
 
-// Tokenize the various operators and braces that are availble in the default mode
+// Operator tokens
 NOT_EQUALS: '!=';
 EQUALS: '=';
 GREATER_EQUAL_THAN: '>=';
@@ -116,8 +116,8 @@ DOT: '.';
 AT: '@';
 
 // Boolean literals
-NO: 'no';
-YES: 'yes';
+NO: N O;
+YES: Y E S;
 
 // Color type literals
 COLOR_TYPE: 'hsv' | 'rgb';
@@ -125,8 +125,10 @@ COLOR_TYPE: 'hsv' | 'rgb';
 // Event target references are special tokens on their own
 EVENT_TARGET: 'event_target';
 GLOBAL_EVENT_TARGET: 'global_event_target';
-TRIGGER: 'trigger';
-RANDOM_LIST: 'random_list';
+
+// Special property keywords that are reserved
+TRIGGER: T R I G G E R;
+RANDOM_LIST: R A N D O M UNDERSCORE L I S T;
 
 // In the default mode, the set of allowed tokens is fairly restrictive. Identifiers are the most
 // common type of token, and are represented by a sequence of valid ASCII letters, digits, and
@@ -190,8 +192,8 @@ IDENTIFIER_GREATER_EQUAL_THAN: GREATER_EQUAL_THAN -> type(GREATER_EQUAL_THAN), p
 IDENTIFIER_LESS_EQUAL_THAN: LESS_EQUAL_THAN -> type(LESS_EQUAL_THAN), popMode;
 IDENTIFIER_GREATER_THAN: GREATER_THAN -> type(GREATER_THAN), popMode;
 IDENTIFIER_LESS_THAN: LESS_THAN -> type(LESS_THAN), popMode;
+IDENTIFIER_RIGHT_BRACE: RIGHT_BRACE -> type(RIGHT_BRACE), popMode;
 // IDENTIFIER_LEFT_BRACE: LEFT_BRACE -> type(LEFT_BRACE), popMode;
-// IDENTIFIER_RIGHT_BRACE: RIGHT_BRACE -> type(RIGHT_BRACE), popMode;
 
 // @ characters encountered within an identifier generally indicate a dynamic flag assignment
 // (such as is_friend_of_@ROOT). The @ will be tokenized, but the lexer remains in identifier

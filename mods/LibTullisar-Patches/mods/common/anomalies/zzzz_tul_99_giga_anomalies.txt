@@ -1,0 +1,275 @@
+######################################################################################
+# Anomalies (Gigastructural Engineering)
+# Package: Patch
+######################################################################################
+#
+######################################################################################
+# Tremendous Ring System
+######################################################################################
+tremendous_ring_system_category = {
+	desc = tremendous_ring_system_category_desc
+	picture = GFX_evt_gas_giant
+	level = 6
+	spawn_chance = {
+		modifier = {
+			add = 10
+			tul_is_planet_gas_giant = yes
+			has_ring = yes
+		}
+		modifier = {
+			factor = 0
+			from.owner = {
+				is_ai = yes
+			}
+		}
+		modifier = {
+			factor = 0
+			solar_system = {
+				cohesive_system = no
+			}
+		}
+	}
+	on_success = {
+		1 = ehof_anomaly.01
+	}
+}
+
+######################################################################################
+# Methane Oceans
+######################################################################################
+methane_oceans_category = {
+	desc = methane_oceans_category_desc
+	picture = GFX_evt_cold_barren
+	level = 6
+	spawn_chance = {
+		modifier = {
+			add = 10
+			tul_is_planet_cold_barren = yes
+		}
+		modifier = {
+			factor = 0
+			from.owner = {
+				is_ai = yes
+			}
+		}
+		modifier = {
+			factor = 0
+			solar_system = {
+				cohesive_system = no
+			}
+		}
+	}
+	on_success = {
+		1 = ehof_anomaly.02
+	}
+}
+
+######################################################################################
+# Strange Deserts
+######################################################################################
+nanite_deserts_category = {
+	desc = nanite_deserts_category_desc
+	picture = GFX_evt_desert
+	level = 7
+	spawn_chance = {
+		modifier = {
+			add = 10
+			tul_is_planet_desert = yes
+		}
+		modifier = {
+			factor = 0
+			from.owner = {
+				is_ai = yes
+			}
+		}
+		modifier = {
+			factor = 0
+			solar_system = {
+				cohesive_system = no
+			}
+		}
+	}
+	on_success = {
+		1 = ehof_anomaly.03
+	}
+}
+
+######################################################################################
+# Coreless Planet
+######################################################################################
+coreless_planet_category = {
+	desc = coreless_planet_category_desc
+	picture = GFX_evt_warm_barren
+	level = 6
+	spawn_chance = {
+		modifier = {
+			add = 10
+			tul_is_planet_barren = yes
+		}
+		modifier = {
+			factor = 0
+			from.owner = {
+				is_ai = yes
+			}
+		}
+		modifier = {
+			factor = 0
+			solar_system = {
+				cohesive_system = no
+			}
+		}
+	}
+	on_success = {
+		1 = ehof_anomaly.04
+	}
+}
+
+######################################################################################
+# Anomalous Frozen Planet
+######################################################################################
+oxygen_world_category = {
+	desc = oxygen_world_category_desc
+	picture = GFX_evt_frozen
+	level = 8
+	spawn_chance = {
+		modifier = {
+			add = 10
+			tul_is_planet_frozen = yes
+		}
+		modifier = {
+			factor = 0
+			from.owner = {
+				is_ai = yes
+			}
+		}
+		modifier = {
+			factor = 0
+			solar_system = {
+				cohesive_system = no
+			}
+		}
+	}
+	on_success = {
+		1 = ehof_anomaly.06
+	}
+}
+
+######################################################################################
+# Devastated World
+######################################################################################
+abandoned_seat_category = {
+	desc = abandoned_seat_category_desc
+	picture = GFX_evt_tomb_world
+	level = 6
+	spawn_chance = {
+		modifier = {
+			add = 10
+			tul_is_planet_nuked = yes
+		}
+		modifier = {
+			factor = 0
+			from.owner = {
+				is_ai = yes
+			}
+		}
+		modifier = {
+			factor = 0
+			solar_system = {
+				cohesive_system = no
+			}
+		}
+	}
+	on_success = {
+		1 = ehof_anomaly.07
+	}
+}
+
+######################################################################################
+# Thinking Planet?
+######################################################################################
+natural_network_category = {
+	desc = natural_network_category_desc
+	picture = GFX_evt_tropical
+	level = 7
+	spawn_chance = {
+		modifier = {
+			add = 10
+			tul_is_planet_tropical = yes
+		}
+		modifier = {
+			factor = 0
+			from.owner = {
+				is_ai = yes
+			}
+		}
+		modifier = {
+			factor = 0
+			solar_system = {
+				cohesive_system = no
+			}
+		}
+	}
+	on_success = {
+		1 = ehof_anomaly.08
+	}
+}
+
+######################################################################################
+# Inhabited Molten Planet
+######################################################################################
+hot_society_category = {
+	desc = hot_society_category_desc
+	picture = GFX_evt_molten
+	level = 8
+	spawn_chance = {
+		modifier = {
+			add = 10
+			tul_is_planet_molten = yes
+		}
+		modifier = {
+			factor = 0
+			from.owner = {
+				is_ai = yes
+			}
+		}
+		modifier = {
+			factor = 0
+			solar_system = {
+				cohesive_system = no
+			}
+		}
+	}
+	on_success = {
+		1 = ehof_anomaly.10
+	}
+}
+
+######################################################################################
+# The Scar
+######################################################################################
+scarred_planet_category = {
+	desc = scarred_planet_category_desc
+	picture = GFX_evt_asteroid_field
+	level = 8
+	spawn_chance = {
+		modifier = {
+			add = 10
+			tul_is_planet_barren = yes
+		}
+		modifier = {
+			factor = 0
+			from.owner = {
+				is_ai = yes
+			}
+		}
+		modifier = {
+			factor = 0
+			solar_system = {
+				cohesive_system = no
+			}
+		}
+	}
+	on_success = {
+		1 = ehof_anomaly.12
+	}
+}

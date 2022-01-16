@@ -1,0 +1,56 @@
+######################################################################################
+# Authority: Direct Democratic
+#
+# This authority originated in Ethics & Civics Classic.
+#
+######################################################################################
+auth_direct_democratic = {
+	election_term_years = 5
+	re_election_allowed = yes
+	max_election_candidates = 12
+	election_type = democratic
+	uses_mandates = yes
+
+	possible = {
+		ethics = {
+
+			# Gestalt consciousness and authoritarian empires cannot take this
+			# authority at all.
+			NOR = {
+				value = ethic_gestalt_consciousness
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+
+			# The empire must be some degree of egalitarian (libertarian) or
+			# socialist (cooperative). Change to allow socialist ethics without
+			# egalitarian ethics. 
+			OR = {
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+				value = ethic_socialism
+				value = ethic_fanatic_socialism
+			}
+		}
+
+	}
+
+	# Modifiers
+	country_modifier = {
+		country_admin_cap_mult = 0.2
+		decisions_cost_mult = -0.15
+		PLANET_DECISION_ENACT_SPEED_MULT = 0.15
+		pop_cat_worker_political_power = 5
+		pop_cat_specialist_political_power = 5
+		pop_cat_ruler_political_power = 4
+		planet_resettlement_unemployed_mult = 0.5
+		diplo_weight_pops_mult = 0.2
+		empire_size_pops_mult = -0.2
+		empire_size_systems_mult = 0.2
+	}
+
+	# Tags
+	tags = {
+		AUTHORITY_ELECTION_DIRECT_DEMOCRATIC
+	}
+}

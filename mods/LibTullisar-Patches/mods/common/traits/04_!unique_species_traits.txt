@@ -1,26 +1,245 @@
-######################################################################################
-# Exoskeleton
-#
-# Patches:
-# - Forces the exoskeleton trait from Expanded Traits, Civics, Pops and More to 
-#   have priority in the event another mod overrides things. 
-#
-######################################################################################
-trait_exoskeleton = {
+### NEW PORTRAIT-SPECIFIC TRAITS ###
+trait_shrewd = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_maniacal.dds"
+	potential_crossbreeding_chance = 0.25
+	custom_tooltip_with_modifiers = TRAIT_SHREWD_EFFECTS
+	opposites = { "trait_slow_learners" "trait_nerve_stapled" "trait_inept" }
+	allowed_archetypes = { BIOLOGICAL }
+	species_class = { HUM MAM AVI MOL AQUATIC }
+	modifier = {
+		species_leader_exp_gain = 0.25
+		leader_skill_levels = 1
+	}
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0
+			root = {
+				NOR = {
+					has_citizenship_type = { country = prev type = citizenship_full }
+					has_military_service_type = { country = prev type = military_service_full }
+				}	
+			}
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					has_citizenship_type = { country = prev type = citizenship_full }
+					has_military_service_type = { country = prev type = military_service_full }
+				}	
+			}
+			pop_percentage = {
+				percentage < 0.5
+				limit = {
+					OR = {
+						has_citizenship_type = { country = prev type = citizenship_full }
+						has_military_service_type = { country = prev type = military_service_full }
+					}	
+				}
+			}
+		}
+	}
+}
+
+trait_amphibious = {
+	potential_crossbreeding_chance = 0.33
+	cost = 1
+	modification = no
+	icon = "gfx/interface/icons/traits/trait_amphibious.dds"
+	allowed_archetypes = { BIOLOGICAL }
+	species_class = { REP }
+	modifier = {
+		pc_ocean_habitability = 0.2
+		pc_continental_habitability = 0.2
+		pc_tropical_habitability = 0.2
+		pc_desert_habitability = -0.1
+		pc_arid_habitability = -0.1
+		pc_savannah_habitability = -0.1
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				has_climate = wet
+				NOR = {
+					is_planet_class = pc_ocean
+					is_planet_class = pc_continental
+					is_planet_class = pc_tropical
+				}
+			}
+		}
+		pop_environment_tolerance = 0.2
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				has_climate = dry
+				NOR = {
+					is_planet_class = pc_desert
+					is_planet_class = pc_arid
+					is_planet_class = pc_savannah
+				}
+			}
+		}
+		pop_environment_tolerance = -0.1
+	}
+	custom_tooltip = TRAIT_AMPHIBIOUS_EFFECTS
+	opposites = { "trait_desert_reptile" }
+	ai_weight = {
+		weight = 90
+		modifier = {
+			factor = 2
+			root = {
+				NOR = {
+					has_trait = trait_survivor
+					has_trait = trait_pc_nuked_preference
+				}	
+			}
+			any_owned_planet = { is_planet_class = pc_nuked }
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_ascension_perk = ap_voidborn
+				has_ascension_perk = ap_world_shaper
+				has_ascension_perk = ap_galactic_wonders_utopia
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality_behaviour = purger
+				has_ai_personality_behaviour = displacer
+			}
+			is_same_species = root
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					is_trait_rapid_breeders = yes
+					has_trait = trait_nomadic
+				}
+				root = {
+					has_citizenship_type = {
+						country = prev
+						type = citizenship_full
+					}	
+				}
+			}
+		}
+	}
+}
+
+trait_desert_reptile = {
+	potential_crossbreeding_chance = 0.33
+	cost = 1
+	modification = no
+	icon = "gfx/interface/icons/traits/trait_desert_reptile.dds"
+	allowed_archetypes = { BIOLOGICAL }
+	species_class = { REP }
+	modifier = {
+		pc_desert_habitability = 0.2
+		pc_arid_habitability = 0.2
+		pc_savannah_habitability = 0.2
+		pc_tundra_habitability = -0.1
+		pc_arctic_habitability = -0.1
+		pc_alpine_habitability = -0.1
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				has_climate = dry
+				NOR = {
+					is_planet_class = pc_desert
+					is_planet_class = pc_arid
+					is_planet_class = pc_savannah
+				}
+			}
+		}
+		pop_environment_tolerance = 0.2
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				has_climate = cold
+				NOR = {
+					is_planet_class = pc_arctic
+					is_planet_class = pc_tundra
+					is_planet_class = pc_alpine
+				}
+			}
+		}
+		pop_environment_tolerance = -0.1
+	}
+	
+	custom_tooltip = TRAIT_DESERT_REPTILE_EFFECTS
+	opposites = { "trait_amphibious" }
+	ai_weight = {
+		weight = 90
+		modifier = {
+			factor = 2
+			root = {
+				NOR = {
+					has_trait = trait_survivor
+					has_trait = trait_pc_nuked_preference
+				}	
+			}
+			any_owned_planet = { is_planet_class = pc_nuked }
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_ascension_perk = ap_voidborn
+				has_ascension_perk = ap_world_shaper
+				has_ascension_perk = ap_galactic_wonders_utopia
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality_behaviour = purger
+				has_ai_personality_behaviour = displacer
+			}
+			is_same_species = root
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					is_trait_rapid_breeders = yes
+					has_trait = trait_nomadic
+				}
+				root = {
+					has_citizenship_type = {
+						country = prev
+						type = citizenship_full
+					}	
+				}
+			}
+		}
+	}
+}
+
+trait_scales = {
 	cost = 1
 	potential_crossbreeding_chance = 0.25
-	icon = "gfx/interface/icons/traits/trait_exoskeleton.dds"
-	allowed_archetypes = {
-		BIOLOGICAL
-	}
-	species_class = {
-		ART
-	}
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_restrained.dds"
+	allowed_archetypes = { BIOLOGICAL }
+	species_class = { REP AQUATIC }
 	modifier = {
 		army_health = 0.25
 		army_morale = 0.25
 		army_defense_damage_mult = 0.25
 	}
+
 	slave_cost = {
 		energy = 25
 	}
@@ -29,10 +248,7 @@ trait_exoskeleton = {
 		modifier = {
 			factor = 2
 			root = {
-				has_citizenship_type = {
-					country = prev
-					type = citizenship_slavery
-				}
+				has_citizenship_type = { country = prev type = citizenship_slavery }
 			}
 		}
 		modifier = {
@@ -57,48 +273,1350 @@ trait_exoskeleton = {
 		modifier = {
 			factor = 0
 			root = {
-				has_citizenship_type = {
-					country = prev
-					type = citizenship_organic_trophy
-				}
+				has_citizenship_type = { country = prev type = citizenship_organic_trophy }
 			}
 		}
 		modifier = {
 			factor = 0
 			root = {
-				has_military_service_type = {
-					country = prev
-					type = military_service_none
+				has_military_service_type = { country = prev type = military_service_none }
+			}
+		}
+	}
+}
+
+trait_regeneration = {
+	potential_crossbreeding_chance = 0.33
+	cost = 1
+	icon = "gfx/interface/icons/traits/trait_limited_regeneration.dds"
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	species_class = { REP ART MOL FUN PLANT NECROID AQUATIC }
+	modifier = {
+		army_damage_mult = 0.15
+		leader_age = 15
+	}
+	slave_cost = {
+		energy = 30
+	}
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 2
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery }
+			}
+		}
+		modifier = {
+			factor = 4
+			exists = root.home_planet
+			root.home_planet = {
+				has_designation = col_fortress
+				is_owned_by = prev
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				is_militarist = yes
+				is_civic_militarist = yes
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_pacifist = yes
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_organic_trophy }
+			}
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_military_service_type = { country = prev type = military_service_none }
+			}
+		}
+		modifier = {
+			factor = 0.25
+			root = {
+				NOT = { has_slavery_type = { country = prev type = slavery_military } }
+				NOR = {
+					has_citizenship_type = { country = prev type = citizenship_full }
+					has_military_service_type = { country = prev type = military_service_full }
+				}	
+			}
+		}
+	}
+}
+
+trait_flighted = {
+	cost = 2
+	potential_crossbreeding_chance = 0.25
+	opposites = { "trait_burrowing" "trait_burrowing_origin" }
+	allowed_archetypes = { BIOLOGICAL }
+	species_class = { AVI ART MAM }
+	
+	random_weight = {
+		AVI = 2
+		ART = 2
+		MAM = 0.1
+	}
+	
+	modifier = {
+		pop_housing_usage_mult = -0.1
+		planet_jobs_engineering_research_produces_mult = 0.1
+		planet_pops_organics_food_upkeep_mult = 0.1
+	}
+	ai_weight = {
+		weight = 50
+		modifier = {
+			factor = 4
+			is_civic_environmentalist = yes
+		}
+		modifier = {
+			factor = 4
+			is_civic_shared_burden = yes
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				is_pacifist = yes
+				is_xenophile = yes
+			}
+		}
+		modifier = {
+			factor = 2
+			is_materialist = yes
+		}
+		modifier = {
+			factor = 2
+			is_civic_materialist = yes
+			root = {
+				OR = {
+					has_citizenship_type = { country = prev type = citizenship_full }
+					has_citizenship_type = { country = prev type = citizenship_full_machine }
+				}
+			}
+		}
+		modifier = {
+			factor = 0.75
+			root = {
+				NOT = { has_trait = trait_intelligent }
+			}
+			any_owned_species = {
+				NOT = { has_citizenship_type = { country = prev type = citizenship_slavery } }
+				OR = {
+					has_trait = trait_intelligent
+					has_trait = trait_natural_engineers
+					has_trait = trait_natural_physicists
+					has_trait = trait_natural_sociologists
+					has_trait = trait_robot_logic_engines
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			has_origin = origin_void_dwellers
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					is_trait_rapid_breeders = yes
+					has_trait = trait_fertile
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			root = { is_mammalian = yes }
+		}
+	}
+}
+
+trait_melodic = {
+	cost = 2
+	potential_crossbreeding_chance = 0.25
+	allowed_archetypes = { BIOLOGICAL }
+	species_class = { AVI AQUATIC }
+	
+	modifier = {
+	}
+	custom_tooltip = TRAIT_MELODIC_EFFECTS
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 4
+			has_valid_civic = civic_media_conglomerate
+		}
+		modifier = {
+			factor = 2
+			is_civic_diplomatic_corps = yes
+		}
+		modifier = {
+			factor = 2
+			has_ascension_perk = ap_xeno_compatibility
+		}
+		modifier = {
+			factor = 2
+			is_xenophile = yes
+		}
+		modifier = {
+			factor = 0.25
+			root = {
+				NOR = {
+					is_trait_thrifty = yes
+					is_trait_traditional = yes
+				}	
+			}
+			any_owned_species = {
+				has_citizenship_type = { country = prev type = citizenship_full }
+				is_trait_charismatic = yes
+			}
+		}
+		modifier = {
+			factor = 0.5
+			root = {
+				OR = {
+					AND = {
+						OR = {
+							has_trait = trait_industrious
+							has_trait = trait_ingenious
+							has_trait = trait_agrarian		
+						}
+						NOT = {
+							prev = {
+								any_owned_species = {
+									has_citizenship_type = { country = prev type = citizenship_slavery }
+								}	
+							}
+						}
+					}
+					AND = {
+						NOT = { has_citizenship_type = { country = prev type = citizenship_slavery } }
+						OR = {
+							is_trait_thrifty = yes
+							has_trait = trait_intelligent
+							is_trait_traditional = yes
+						}
+					}
+				}	
+			}
+			any_owned_species = {
+				NOR = {
+					has_trait = trait_industrious
+					has_trait = trait_ingenious
+					has_trait = trait_agrarian
+					AND = {
+						NOT = { has_citizenship_type = { country = prev type = citizenship_slavery } }
+						OR = {
+							is_trait_thrifty = yes
+							has_trait = trait_intelligent
+							is_trait_traditional = yes
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 4
+			exists = root.home_planet
+			root.home_planet = {
+				has_designation = col_resort
+				is_owned_by = prev
+			}
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_organic_trophy }
+			}
+		}
+		modifier = {
+			factor = 0.1
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery }
+				NOT = { has_slavery_type = { country = prev type = slavery_domestic } }
+			}
+		}
+		modifier = {
+			factor = 4
+			root = {
+				has_slavery_type = { country = prev type = slavery_domestic }
+			}
+		}
+	}
+}
+
+trait_peacockish = {
+	cost = -2
+	potential_crossbreeding_chance = 0.25
+	opposites = { "trait_conservational" "trait_wasteful" "trait_ecologists" "trait_hive_mind" }
+	allowed_archetypes = { BIOLOGICAL }
+	species_class = { AVI }
+	modifier = {
+		planet_pops_consumer_goods_upkeep_mult = 0.10
+		pop_amenities_usage_mult = 0.05
+	}
+	ai_weight = {
+		weight = 6000
+		modifier = {
+			factor = 0
+			root = {
+				NOT = {
+					has_species_flag = make_peacockish@prev
 				}
 			}
 		}
 	}
 }
 
-######################################################################################
-# Exoskeleton (Forgotten Queens)
-#
-# Patches:
-# - Separates the exoskeleton trait from Forgotten Queens into a separate ID. 
-#   Forgotten queens will be overridden by the Expanded Traits, Civics, Pops, and
-#   More mod with the suggested load order. This trait seems to serve an entirely
-#   separate purpose and I've decided not to merge it.
-#
-######################################################################################
-trait_queens_exoskeleton = {
-    cost = 0
-    sorting_priority = 19
-    initial = no
-    randomized = no
-    modification = no
-    modifier = {
-        planet_jobs_minerals_produces_mult = 0.1
-        planet_jobs_food_produces_mult = 0.1
-    }
-    potential_crossbreeding_chance = 1
-    icon = "gfx/interface/icons/traits/trait_exoskeleton.dds"
-    allowed_archetypes = {
-        BIOLOGICAL
-        LITHOID
-    }
+trait_exoskeleton = {
+	cost = 1
+	potential_crossbreeding_chance = 0.25
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_restrained.dds"
+	allowed_archetypes = { BIOLOGICAL }
+	species_class = { ART }
+	modifier = {
+		army_health = 0.25
+		army_morale = 0.25
+		army_defense_damage_mult = 0.25
+	}
+
+	slave_cost = {
+		energy = 25
+	}
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 2
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery }
+			}
+		}
+		modifier = {
+			factor = 4
+			exists = root.home_planet
+			root.home_planet = {
+				has_designation = col_fortress
+				is_owned_by = prev
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				is_militarist = yes
+				is_civic_militarist = yes
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_pacifist = yes
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_organic_trophy }
+			}
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_military_service_type = { country = prev type = military_service_none }
+			}
+		}
+	}
+}
+
+trait_burrowing = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/leader_traits/trait_ruler_industrialist.dds"
+	potential_crossbreeding_chance = 0.25
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	species_class = { ART HUM MAM AVI REP }
+	modifier = {
+		planet_jobs_minerals_produces_mult = 0.05
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				has_deposit = d_trait_burrow
+			}
+		}
+		pop_environment_tolerance = -0.05
+	}
+	opposites = { "trait_void_dweller_1" "trait_burrowing_origin" "trait_flighted" }
+	custom_tooltip_with_modifiers = TRAIT_BURROWING_EFFECT
+
+	ai_weight = {
+		weight = 95
+		modifier = {
+			factor = 4
+			is_civic_environmentalist = yes
+		}
+		modifier = {
+			factor = 4
+			is_civic_shared_burden = yes
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				is_pacifist = yes
+				is_xenophile = yes
+			}
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					is_trait_rapid_breeders = yes
+					has_trait = trait_fertile
+				}
+			}
+		}
+	}
+}
+
+trait_art_irradiated = {
+	cost = 3
+	potential_crossbreeding_chance = 0.33
+	icon = "gfx/interface/icons/traits/trait_survivor.dds"
+	opposites = { "trait_survivor" }
+	allowed_archetypes = { BIOLOGICAL }
+	species_class = { ART NECROID }
+	modifier = {
+		pc_nuked_habitability = 1.0
+		pop_environment_tolerance = 0.05
+		leader_age = 30
+	}
+	slave_cost = {
+		energy = 50
+	}
+	ai_weight = {
+		weight = 90
+		modifier = {
+			factor = 0
+			NOT = {
+				any_planet_within_border = { is_planet_class = pc_nuked }
+			}
+		}
+		modifier = {
+			factor = 2
+			root = {
+				NOR = {
+					has_trait = trait_survivor
+					has_trait = trait_pc_nuked_preference
+				}	
+			}
+			any_owned_planet = { is_planet_class = pc_nuked }
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_ascension_perk = ap_voidborn
+				has_ascension_perk = ap_world_shaper
+				has_ascension_perk = ap_galactic_wonders_utopia
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality_behaviour = purger
+				has_ai_personality_behaviour = displacer
+			}
+			is_same_species = root
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					is_trait_rapid_breeders = yes
+					has_trait = trait_nomadic
+				}
+				has_citizenship_type = {
+					country = prev
+					type = citizenship_full
+				}
+			}
+		}
+	}
+}
+
+trait_voracious = {
+	potential_crossbreeding_chance = 0
+	cost = -2
+	icon = "gfx/interface/icons/traits/trait_fleeting.dds"
+	allowed_archetypes = { BIOLOGICAL }
+	species_class = { ART }
+	modifier = {
+		planet_pops_organics_food_upkeep_mult = 0.2
+	}
+	opposites = { "trait_low_metabolism" "trait_high_metabolism" }
+	ai_weight = {
+		weight = 6000
+		modifier = {
+			factor = 0
+			root = {
+				NOT = {
+					has_species_flag = make_voracious@prev
+				}
+			}
+		}
+	}
+}
+
+trait_pearlescent = {
+	cost = 2
+	potential_crossbreeding_chance = 0.25
+
+	allowed_archetypes = { BIOLOGICAL }
+	species_class = { MOL AQUATIC }
+	custom_tooltip = TRAIT_LITHOID_SCINTILLATING_EFFECT
+
+	slave_cost = {
+		energy = 100
+	}
+	ai_weight = {
+		weight = 250
+		modifier = {
+			factor = 0
+			root = {
+				OR = {
+					has_citizenship_type = { country = prev type = citizenship_assimilation }
+					has_citizenship_type = { country = prev type = citizenship_purge }
+				}
+			}
+		}
+	}
+}
+
+trait_shelled = {
+	cost = 1
+	potential_crossbreeding_chance = 0.25
+	allowed_archetypes = { BIOLOGICAL }
+	species_class = { MOL }
+	modifier = {
+		army_health = 0.25
+		army_morale = 0.25
+		army_defense_damage_mult = 0.25
+	}
+
+	slave_cost = {
+		energy = 25
+	}
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 2
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery }
+			}
+		}
+		modifier = {
+			factor = 4
+			exists = root.home_planet
+			root.home_planet = {
+				has_designation = col_fortress
+				is_owned_by = prev
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				is_militarist = yes
+				is_civic_militarist = yes
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_pacifist = yes
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_organic_trophy }
+			}
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_military_service_type = { country = prev type = military_service_none }
+			}
+		}
+	}
+}
+
+trait_fungal_colony = {
+	potential_crossbreeding_chance = 0
+	cost = 2
+	modification = no
+	allowed_archetypes = { BIOLOGICAL }
+	species_class = { FUN }
+	custom_tooltip_with_modifiers = TRAIT_FUNGAL_COLONY_EFFECT
+	modifier = {
+		leader_age = 500
+		pop_growth_speed = -0.25
+	}
+	opposites = { "trait_venerable" "trait_enduring" "trait_fleeting" "trait_slow_breeders" "trait_rapid_breeders" "trait_fertile" "trait_clones" "trait_hive_mind" "trait_clone_soldier_infertile" "trait_clone_soldier_infertile_full_potential" }
+}
+
+trait_ancient = {
+	potential_crossbreeding_chance = 0.25
+	cost = 4
+	icon = "gfx/interface/icons/traits/leader_traits/trait_ruler_fertility_preacher.dds"
+	allowed_archetypes = { BIOLOGICAL }
+	species_class = { PLANT }
+	modifier = {
+		leader_age = 300
+	}
+	opposites = { "trait_venerable" "trait_enduring" "trait_fleeting" "trait_seasonal" "trait_ageless" }
+	ai_weight = {
+		weight = 110
+		modifier = {
+			factor = 2
+			is_materialist = yes
+		}
+		modifier = {
+			factor = 0.5
+			has_ethic = ethic_spiritualist # look to the afterlife rather than prolonging this one
+		}
+		modifier = {
+			factor = 0.25
+			has_ethic = ethic_fanatic_spiritualist
+		}
+		modifier = {
+			factor = 0
+			has_valid_civic = civic_warrior_culture # what are you doing living to old age, you should be dying honourably in battle.
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery }
+			}
+		}
+		modifier = {
+			factor = 0
+			is_xenophile = no
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_limited }
+			}
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					has_citizenship_type = { country = prev type = citizenship_full }
+					has_military_service_type = { country = prev type = military_service_full }
+				}		
+			}
+			pop_percentage = {
+				percentage < 0.5
+				limit = {
+					OR = {
+						has_citizenship_type = { country = prev type = citizenship_full }
+						has_military_service_type = { country = prev type = military_service_full }
+					}	
+				}
+			}
+		}
+	}
+}
+
+trait_seasonal = {
+	potential_crossbreeding_chance = 0.25
+	cost = -2
+	icon = "gfx/interface/icons/traits/trait_fleeting.dds"
+	allowed_archetypes = { BIOLOGICAL }
+	species_class = { PLANT }
+	modifier = {
+		leader_age = -25
+	}
+	opposites = { "trait_venerable" "trait_enduring" "trait_fleeting" "trait_ancient" "trait_ageless" }
+	ai_weight = {
+		weight = 6000
+		modifier = {
+			factor = 0
+			root = {
+				NOT = {
+					has_species_flag = make_seasonal@prev
+				}
+			}
+		}
+	}
+}
+
+trait_deeply_rooted = {
+	potential_crossbreeding_chance = 0.25
+	cost = -2
+	modification = no
+	icon = "gfx/interface/icons/traits/trait_sedentary.dds"
+	allowed_archetypes = { BIOLOGICAL }
+	species_class = { PLANT }
+	modifier = {
+		pop_growth_from_immigration = -0.30
+		pop_resettlement_cost_mult = 0.50
+	}
+	opposites = { "trait_nomadic" "trait_sedentary" }
+	ai_weight = {
+		weight = 6000
+		modifier = {
+			factor = 0
+			root = {
+				NOT = {
+					has_species_flag = make_deeply_rooted@prev
+				}
+			}
+		}
+	}
+}
+
+trait_succulent = {
+	potential_crossbreeding_chance = 0.33
+	cost = 1
+	modification = no
+	icon = "gfx/interface/icons/traits/trait_desert_reptile.dds"
+	allowed_archetypes = { BIOLOGICAL }
+	species_class = { PLANT }
+	custom_tooltip = TRAIT_SUCCULENT_EFFECT
+	opposites = { "trait_coniferous" }
+	modifier = {
+		pc_desert_habitability = 0.3
+		pc_arid_habitability = 0.3
+		pc_savannah_habitability = 0.3
+		pc_tundra_habitability = -0.1
+		pc_arctic_habitability = -0.1
+		pc_alpine_habitability = -0.1
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				has_climate = dry
+				NOR = {
+					is_planet_class = pc_desert
+					is_planet_class = pc_arid
+					is_planet_class = pc_savannah
+				}
+			}
+		}
+		pop_environment_tolerance = 0.3
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				has_climate = cold
+				NOR = {
+					is_planet_class = pc_arctic
+					is_planet_class = pc_tundra
+					is_planet_class = pc_alpine
+				}
+			}
+		}
+		pop_environment_tolerance = -0.1
+	}
+	ai_weight = {
+		weight = 90
+		modifier = {
+			factor = 2
+			root = {
+				NOR = {
+					has_trait = trait_survivor
+					has_trait = trait_pc_nuked_preference
+				}	
+			}
+			any_owned_planet = { is_planet_class = pc_nuked }
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_ascension_perk = ap_voidborn
+				has_ascension_perk = ap_world_shaper
+				has_ascension_perk = ap_galactic_wonders_utopia
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality_behaviour = purger
+				has_ai_personality_behaviour = displacer
+			}
+			is_same_species = root
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					is_trait_rapid_breeders = yes
+					has_trait = trait_nomadic
+				}
+				root = {
+					has_citizenship_type = {
+						country = prev
+						type = citizenship_full
+					}	
+				}
+			}
+		}
+	}
+}
+
+trait_coniferous = {
+	potential_crossbreeding_chance = 0.33
+	cost = 1
+	modification = no
+	allowed_archetypes = { BIOLOGICAL }
+	species_class = { PLANT }
+	custom_tooltip = TRAIT_CONIFEROUS_EFFECT
+	opposites = { "trait_succulent" }
+	modifier = {
+		pc_desert_habitability = -0.1
+		pc_arid_habitability = -0.1
+		pc_savannah_habitability = -0.1
+		pc_tundra_habitability = 0.2
+		pc_arctic_habitability = 0.2
+		pc_alpine_habitability = 0.2
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				has_climate = dry
+				NOR = {
+					is_planet_class = pc_desert
+					is_planet_class = pc_arid
+					is_planet_class = pc_savannah
+				}
+			}
+		}
+		pop_environment_tolerance = -0.1
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				has_climate = cold
+				NOR = {
+					is_planet_class = pc_arctic
+					is_planet_class = pc_tundra
+					is_planet_class = pc_alpine
+				}
+			}
+		}
+		pop_environment_tolerance = 0.2
+	}
+	ai_weight = {
+		weight = 90
+		modifier = {
+			factor = 2
+			root = {
+				NOR = {
+					has_trait = trait_survivor
+					has_trait = trait_pc_nuked_preference
+				}	
+			}
+			any_owned_planet = { is_planet_class = pc_nuked }
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_ascension_perk = ap_voidborn
+				has_ascension_perk = ap_world_shaper
+				has_ascension_perk = ap_galactic_wonders_utopia
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality_behaviour = purger
+				has_ai_personality_behaviour = displacer
+			}
+			is_same_species = root
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					is_trait_rapid_breeders = yes
+					has_trait = trait_nomadic
+				}
+				root = {
+					has_citizenship_type = {
+						country = prev
+						type = citizenship_full
+					}	
+				}
+			}
+		}
+	}
+}
+
+trait_necroid_ancient = {
+	potential_crossbreeding_chance = 0.25
+	cost = 4
+	icon = "gfx/interface/icons/traits/leader_traits/trait_ruler_fertility_preacher.dds"
+	allowed_archetypes = { BIOLOGICAL }
+	species_class = { NECROID }
+	modifier = {
+		leader_age = 300
+	}
+	opposites = { "trait_venerable" "trait_enduring" "trait_fleeting" "trait_ageless" }
+	ai_weight = {
+		weight = 110
+		modifier = {
+			factor = 2
+			is_materialist = yes
+		}
+		modifier = {
+			factor = 0.5
+			has_ethic = ethic_spiritualist # look to the afterlife rather than prolonging this one
+		}
+		modifier = {
+			factor = 0.25
+			has_ethic = ethic_fanatic_spiritualist
+		}
+		modifier = {
+			factor = 0
+			has_valid_civic = civic_warrior_culture # what are you doing living to old age, you should be dying honourably in battle.
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery }
+			}
+		}
+		modifier = {
+			factor = 0
+			is_xenophile = no
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_limited }
+			}
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					has_citizenship_type = { country = prev type = citizenship_full }
+					has_military_service_type = { country = prev type = military_service_full }
+				}		
+			}
+			pop_percentage = {
+				percentage < 0.5
+				limit = {
+					OR = {
+						has_citizenship_type = { country = prev type = citizenship_full }
+						has_military_service_type = { country = prev type = military_service_full }
+					}	
+				}
+			}
+		}
+	}
+}
+
+trait_tormented = {
+	potential_crossbreeding_chance = 0.5
+	cost = -2
+	icon = "gfx/interface/icons/traits/trait_tormented.dds"
+	allowed_archetypes = { BIOLOGICAL }
+	species_class = { NECROID }
+	modifier = {
+		pop_happiness = -0.10
+		leader_age = -10
+	}
+	opposites = { "trait_carefree" "trait_skittish" "trait_hive_mind" }
+	ai_weight = {
+		weight = 6000
+		modifier = {
+			factor = 0
+			root = {
+				NOT = {
+					has_species_flag = make_tormented@prev
+				}
+			}
+		}
+	}
+}
+
+trait_gregarious = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/leader_traits/trait_ruler_champion_of_the_people.dds"
+	potential_crossbreeding_chance = 0.25
+	custom_tooltip_with_modifiers = TRAIT_GREGARIOUS_EFFECTS
+	opposites = { "trait_communal" "trait_solitary" }
+	allowed_archetypes = { BIOLOGICAL }
+	species_class = { MAM AVI ART AQUATIC }
+	modifier = {
+		pop_housing_usage_mult = -0.15
+		species_empire_size_mult = -0.05
+	}
+	triggered_pop_modifier = {
+		potential = {
+			NOT = { has_trait = trait_hive_mind }
+			exists = planet
+			planet = {
+				num_pops < 15
+			}
+		}
+		pop_happiness = -0.15
+	}
+	triggered_pop_modifier = {
+		potential = {
+			has_trait = trait_hive_mind
+			exists = planet
+			planet = {
+				num_pops < 15
+			}
+		}
+		pop_amenities_usage_mult = 0.1
+	}
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 4
+			is_civic_environmentalist = yes
+		}
+		modifier = {
+			factor = 4
+			is_civic_shared_burden = yes
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				is_pacifist = yes
+				is_xenophile = yes
+			}
+		}
+		modifier = {
+			factor = 2
+			has_origin = origin_void_dwellers
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					is_trait_rapid_breeders = yes
+					has_trait = trait_fertile
+				}
+			}
+		}
+	}
+}
+
+# lithoid specific traits
+trait_lithoid_armored = {
+	cost = 2
+	potential_crossbreeding_chance = 1.0
+
+	opposites = { "trait_lithoid_gaseous_byproducts" "trait_lithoid_scintillating" "trait_lithoid_volatile_excretions"}
+	allowed_archetypes = { LITHOID }
+	custom_tooltip = TRAIT_LITHOID_ARMORED_EFFECT
+
+	slave_cost = {
+		energy = 100
+	}
+	ai_weight = {
+		weight = 250
+		modifier = {
+			factor = 0
+			root = {
+				OR = {
+					has_citizenship_type = { country = prev type = citizenship_assimilation }
+					has_citizenship_type = { country = prev type = citizenship_purge }
+				}
+			}
+		}
+	}
+}
+
+trait_lithoid_crystal = {
+	cost = 1
+	potential_crossbreeding_chance = 1.0
+	opposites = { "trait_rapid_breeders_lithoid" "trait_clones" "trait_clone_soldier_infertile" "trait_clone_soldier_infertile_full_potential" }
+	allowed_archetypes = { LITHOID }
+	modifier = {
+		pop_growth_speed = 0.05
+		pop_assembly_speed = 0.05
+	}
+	slave_cost = {
+		energy = 50
+	}
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0
+			is_civic_environmentalist = yes
+		}
+		modifier = {
+			factor = 2
+			is_xenophobe = yes
+			is_same_species = root
+		}
+		modifier = {
+			factor = 4
+			has_ai_personality = hive_mind
+		}
+	}
+}
+
+trait_lithoid_eternal = {
+	cost = 5
+	icon = "gfx/interface/icons/traits/leader_traits/trait_ruler_world_shaper.dds"
+	potential_crossbreeding_chance = 1.0
+	modifier = { leader_age = 400 }
+	opposites = { "trait_venerable_lithoid" "trait_enduring_lithoid" "trait_fleeting_lithoid" "trait_ageless" }
+	allowed_archetypes = { LITHOID }
+	ai_weight = {
+		weight = 110
+		modifier = {
+			factor = 2
+			is_materialist = yes
+		}
+		modifier = {
+			factor = 0.5
+			has_ethic = ethic_spiritualist # look to the afterlife rather than prolonging this one
+		}
+		modifier = {
+			factor = 0.25
+			has_ethic = ethic_fanatic_spiritualist
+		}
+		modifier = {
+			factor = 0
+			has_valid_civic = civic_warrior_culture # what are you doing living to old age, you should be dying honourably in battle.
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery }
+			}
+		}
+		modifier = {
+			factor = 0
+			is_xenophile = no
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_limited }
+			}
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					has_citizenship_type = { country = prev type = citizenship_full }
+					has_military_service_type = { country = prev type = military_service_full }
+				}		
+			}
+			pop_percentage = {
+				percentage < 0.5
+				limit = {
+					OR = {
+						has_citizenship_type = { country = prev type = citizenship_full }
+						has_military_service_type = { country = prev type = military_service_full }
+					}	
+				}
+			}
+		}
+	}
+}
+
+trait_venerable_lithoid = {
+	cost = 3
+	icon = "gfx/interface/icons/traits/trait_venerable.dds"
+	potential_crossbreeding_chance = 1.0
+	modifier = { leader_age = 120 }
+	opposites = { "trait_lithoid_eternal" "trait_enduring_lithoid" "trait_fleeting_lithoid" "trait_ageless" }
+	allowed_archetypes = { LITHOID }
+	ai_weight = {
+		weight = 110
+		modifier = {
+			factor = 2
+			is_materialist = yes
+		}
+		modifier = {
+			factor = 0.5
+			has_ethic = ethic_spiritualist # look to the afterlife rather than prolonging this one
+		}
+		modifier = {
+			factor = 0.25
+			has_ethic = ethic_fanatic_spiritualist
+		}
+		modifier = {
+			factor = 0
+			has_valid_civic = civic_warrior_culture # what are you doing living to old age, you should be dying honourably in battle.
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery }
+			}
+		}
+		modifier = {
+			factor = 0
+			is_xenophile = no
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_limited }
+			}
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					has_citizenship_type = { country = prev type = citizenship_full }
+					has_military_service_type = { country = prev type = military_service_full }
+				}		
+			}
+			pop_percentage = {
+				percentage < 0.5
+				limit = {
+					OR = {
+						has_citizenship_type = { country = prev type = citizenship_full }
+						has_military_service_type = { country = prev type = military_service_full }
+					}	
+				}
+			}
+		}
+	}
+}
+
+trait_enduring_lithoid = {
+	cost = 1
+	icon = "gfx/interface/icons/traits/trait_enduring.dds"
+	potential_crossbreeding_chance = 1.0
+	modifier = { leader_age = 40 }
+	opposites = { "trait_lithoid_eternal" "trait_venerable_lithoid" "trait_fleeting_lithoid" "trait_ageless" }
+	allowed_archetypes = { LITHOID }
+	ai_weight = {
+		weight = 110
+		modifier = {
+			factor = 2
+			is_materialist = yes
+		}
+		modifier = {
+			factor = 0.5
+			has_ethic = ethic_spiritualist # look to the afterlife rather than prolonging this one
+		}
+		modifier = {
+			factor = 0.25
+			has_ethic = ethic_fanatic_spiritualist
+		}
+		modifier = {
+			factor = 0
+			has_valid_civic = civic_warrior_culture # what are you doing living to old age, you should be dying honourably in battle.
+		}
+		modifier = {
+			factor = 0
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_slavery }
+			}
+		}
+		modifier = {
+			factor = 0
+			is_xenophile = no
+			root = {
+				has_citizenship_type = { country = prev type = citizenship_limited }
+			}
+		}
+		modifier = {
+			factor = 2
+			root = {
+				OR = {
+					has_citizenship_type = { country = prev type = citizenship_full }
+					has_military_service_type = { country = prev type = military_service_full }
+				}		
+			}
+			pop_percentage = {
+				percentage < 0.5
+				limit = {
+					OR = {
+						has_citizenship_type = { country = prev type = citizenship_full }
+						has_military_service_type = { country = prev type = military_service_full }
+					}	
+				}
+			}
+		}
+	}
+}
+
+### NEW GOVERNMENT TRAITS ###
+
+trait_burrowing_origin = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/leader_traits/trait_ruler_industrialist.dds"
+	initial = no
+	modification = no
+	randomized = no
+	potential_crossbreeding_chance = 0.25
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	sorting_priority = 30
+	modifier = {
+		planet_jobs_minerals_produces_mult = 0.05
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				has_deposit = d_trait_burrow
+			}
+		}
+		pop_environment_tolerance = -0.05
+	}
+	opposites = { "trait_void_dweller_1" "trait_burrowing" "trait_flighted" }
+	custom_tooltip_with_modifiers = TRAIT_BURROWING_EFFECT
+}
+
+trait_robot_power_drills_origin = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/trait_robot_power_drills.dds"
+	initial = no
+	modification = no
+	randomized = no
+	potential_crossbreeding_chance = 0.25
+	allowed_archetypes = { ROBOT MACHINE }
+	sorting_priority = 30
+	modifier = {
+		planet_jobs_minerals_produces_mult = 0.15
+	}
+	opposites = { "trait_robot_power_drills" }
+}
+
+### NEW EVENT TRAITS ###
+
+trait_messanger_intelligent = {
+	potential_crossbreeding_chance = 0
+	cost = 0
+	
+	initial = no
+	modification = no
+	randomized = no
+	
+	modification = no
+	icon = "gfx/interface/icons/traits/trait_enigmatic_intelligence.dds"
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	modifier = {
+		planet_researchers_produces_mult = 0.15
+		leader_skill_levels = 1
+	}
+	opposites = { "trait_nerve_stapled" "trait_intelligent" }
+}
+
+trait_messanger_strong = {
+	potential_crossbreeding_chance = 0
+	cost = 0
+	
+	initial = no
+	modification = no
+	randomized = no
+	
+	modification = no
+	icon = "gfx/interface/icons/traits/trait_enigmatic_intelligence.dds"
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	modifier = {
+		army_defense_damage_mult = 0.5
+		army_damage_mult = 0.25
+		planet_jobs_worker_produces_mult = 0.025
+	}
+	opposites = { "trait_weak" "trait_strong" }
 }

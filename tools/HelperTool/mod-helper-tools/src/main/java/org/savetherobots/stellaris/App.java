@@ -3,25 +3,12 @@ package org.savetherobots.stellaris;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Optional;
+import java.util.Collection;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
 
-import org.antlr.v4.runtime.CharStreams;
-import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.RecognitionException;
-import org.antlr.v4.runtime.Token;
-import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.tree.ParseTreeWalker;
-import org.savetherobots.stellaris.ParadoxClausewitzParser.ElementContext;
-import org.savetherobots.stellaris.ParadoxClausewitzParser.IdentifierContext;
-import org.savetherobots.stellaris.ParadoxClausewitzParser.KeyContext;
-import org.savetherobots.stellaris.ParadoxClausewitzParser.PropertyContext;
-import org.savetherobots.stellaris.types.PlanetClass;
-import org.savetherobots.stellaris.types.clausewitz.BuildablePlanetClass;
+import org.savetherobots.stellaris.modules.clausewitz.PlanetClassModule;
+import org.savetherobots.stellaris.modules.clausewitz.TraitModule;
 
 /**
  * Hello world!
@@ -38,7 +25,13 @@ public final class App {
      */
     public static void main(String[] args) throws IOException {
 
-        // System.out.println(tree.toStringTree());
+        Path path = Paths.get("C:\\Program Files (x86)\\Steam\\steamapps\\common\\Stellaris\\common\\planet_classes");
+        // PlanetClassModule.parseFrom(path).stream().map(PlanetClassModule::planetClasses).map(Multimap::values).flatMap(Collection::stream).forEach(System.out::println);
+        
+        path = Paths.get("C:\\Program Files (x86)\\Steam\\steamapps\\common\\Stellaris\\common\\traits");
+        TraitModule.parseFrom(path).stream().map(TraitModule::traits).map(Multimap::values).flatMap(Collection::stream).forEach(System.out::println);
+        
+        
 
     }
 }

@@ -30,3 +30,26 @@ country_event = {
 	}
 }
 	
+######################################################################################
+# World Shaper Events
+# Source: RAA
+# Suppressed
+#
+######################################################################################
+country_event = {
+	id = eap_world_shaper.1
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		always = no
+	}  
+}
+
+country_event = {
+	id = eap_world_shaper.2
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		always = no
+	}  
+}

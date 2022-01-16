@@ -1,0 +1,87 @@
+######################################################################################
+# Scripted Triggers (Planetary Buildings)
+######################################################################################
+#
+#
+######################################################################################
+# tul_planet_can_build_branch_office
+#
+# Determine whether a branch office building can be built on the planet in general,
+# shared by all branch office buildings. For now, this just calls has_branch_office.
+# Potentially thinking of a new planetary decision to temporarily halt branch office
+# buildings on a planet if the planet's owner is mad about something.
+#
+# Scope: Planet
+#
+######################################################################################
+tul_planet_can_build_branch_office = {
+	if = {
+		limit = {
+			is_scope_type = planet
+		}
+		has_branch_office = yes
+	}
+	else = {
+		log = "invalid trigger scope"
+		print_scope_trigger = yes
+	}
+}
+
+######################################################################################
+# tul_planet_branch_office_owner_not_ai
+#
+# Ensures that the branch office owner on the current planet is not an AI controlled
+# empire.
+#
+######################################################################################
+tul_planet_branch_office_owner_not_ai = {
+	if = {
+		limit = {
+			has_branch_office = yes
+			is_scope_type = planet
+			exists = branch_office_owner
+		}
+		branch_office_owner = {
+			is_ai = no
+		}
+	}
+}
+
+######################################################################################
+# tul_planet_branch_office_owner_not_criminal
+#
+# Ensures that the branch office owner on the current planet is not a criminal 
+# syndicate. 
+#
+######################################################################################
+tul_planet_branch_office_owner_not_criminal = {
+	if = {
+		limit = {
+			has_branch_office = yes
+			is_scope_type = planet
+			exists = branch_office_owner
+		}
+		# TODO(tullisar): Also check some relations with the planet owner, to see
+		# if the planet owner specifically thinks that the branch office owner
+		# is a criminal empire (beyond what the hard-coded is_criminal_syndicate checks).
+		branch_office_owner = {
+			is_criminal_syndicate = no
+		}
+	}
+}
+
+######################################################################################
+# tul_planet_can_build_mining_branch_office
+#
+# Determine whether a mining related branch office building can be built on a planet
+# in general.
+#
+######################################################################################
+tul_planet_can_build_mining_branch_office = {
+	is_artificial = no
+	NOR = {
+		is_planet_class = pc_hive
+		is_planet_class = pc_machine
+		is_planet_class = pc_city
+	}
+}

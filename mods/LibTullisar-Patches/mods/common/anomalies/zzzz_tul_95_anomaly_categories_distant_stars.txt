@@ -1,0 +1,914 @@
+######################################################################################
+# Anomalies (Distant Stars)
+# Package: Patch
+######################################################################################
+######################################################################################
+# Rainbow in the Dark
+######################################################################################
+DISTAR_RAINBOW_CAT = {
+	desc = "DISTAR_RAINBOW_CAT_DESC"
+	picture = "GFX_evt_black_hole"
+	level = 4
+	# Note: This has a clear_deposit effect now, but only the Great Wound usually has empty black holes.
+	spawn_chance = {
+		modifier = {
+			add = 0.1
+			has_distar = yes
+			is_star = yes
+			tul_is_star_black_hole = yes
+		}
+		modifier = {
+			factor = 20
+			has_any_strategic_resource = no
+		}
+	}
+	on_success = distar.15
+}
+
+######################################################################################
+# Fleet Signatures
+######################################################################################
+DISTAR_HOLO_CAT = {
+	desc = "DISTAR_HOLO_CAT_DESC"
+	picture = "GFX_evt_black_hole"
+	level = 4
+	spawn_chance = {
+		modifier = {
+			add = 1
+			has_distar = yes
+			is_star = yes
+			tul_is_star_black_hole = yes
+			from.owner = {
+				num_communications > 0
+			}
+		}
+	}
+	on_success = distar.20
+}
+
+######################################################################################
+# Gray Goo
+######################################################################################
+DISTAR_NANO_CAT = {
+	desc = "DISTAR_NANO_CAT_DESC"
+	picture = "GFX_evt_ship_in_orbit"
+	level = 4
+	spawn_chance = {
+		modifier = {
+			add = 1
+			has_distar = yes
+			OR = {
+				tul_is_planet_cold_barren = yes
+				tul_is_planet_frozen = yes
+			}
+		}
+	}
+	max_once_global = no
+	max_once = yes
+	on_success = {
+		1 = {
+			anomaly_event = distar.40
+		}
+	}
+}
+
+######################################################################################
+# Movement in the Clouds
+######################################################################################
+DISTAR_LOST_CAT = {
+	desc = "DISTAR_LOST_CAT_DESC"
+	picture = "GFX_evt_gas_giant"
+	level = 2
+	spawn_chance = {
+		modifier = {
+			add = 1
+			tul_is_planet_gas_giant = yes
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_distar = no
+				solar_system = {
+					OR = {
+						has_star_flag = tiyanki_home_system
+						has_star_flag = amoeba_home_system
+					}
+				}
+			}
+		}
+	}
+	on_success = distar.50
+}
+
+######################################################################################
+# Ship Fragments
+######################################################################################
+DISTAR_TIME_CAT = {
+	desc = "DISTAR_TIME_CAT_DESC"
+	picture = "GFX_evt_space_debris"
+	level = 1
+	spawn_chance = {
+		modifier = {
+			add = 1
+			is_star = yes
+			tul_is_star_singularity = yes
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_distar = no
+				from.owner = {
+					species_portrait = mol4
+				}
+			}
+		}
+	}
+	max_once_global = yes
+	on_success = distar.60
+}
+
+######################################################################################
+# Webwork
+######################################################################################
+DISTAR_ELECTRO_CAT = {
+	desc = "DISTAR_ELECTRO_CAT_DESC"
+	picture = "GFX_evt_ship_in_orbit"
+	level = 2
+	spawn_chance = {
+		modifier = {
+			add = 1
+			has_distar = yes
+			NOT = {
+				has_deposit_for = shipclass_mining_station
+			}
+			OR = {
+				is_asteroid = yes
+				tul_is_planet_barren = yes
+				tul_is_planet_molten = yes
+				tul_is_planet_toxic = yes
+				tul_is_planet_frozen = yes
+			}
+		}
+	}
+	on_success = distar.85
+}
+
+######################################################################################
+# Familiar Compounds
+######################################################################################
+DISTAR_RUM_CAT = {
+	desc = "DISTAR_RUM_CAT_DESC"
+	picture = "GFX_evt_ship_in_orbit"
+	level = 2
+	spawn_chance = {
+		modifier = {
+			add = 1
+			has_distar = yes
+			tul_is_planet_gas_giant = yes
+			is_inside_nebula = yes
+			OR = {
+				from.owner = {
+					NOT = {
+						has_ethic = ethic_gestalt_consciousness
+					}
+				}
+				from.owner = {
+					has_authority = auth_machine_intelligence
+					NOR = {
+						has_civic = civic_machine_terminator
+						has_civic = civic_machine_assimilator
+					}
+					any_neighbor_country = {
+						is_ai = yes
+						is_country_type = default
+						has_communications = from.owner
+						NOR = {
+							has_ethic = ethic_gestalt_consciousness
+							is_at_war_with = from.owner
+							is_same_value = from.owner
+						}
+					}
+				}
+			}
+		}
+	}
+	on_success = {
+		1 = {
+			modifier = {
+				factor = 0
+				owner = {
+					has_authority = auth_machine_intelligence
+				}
+			}
+			anomaly_event = distar.90
+		}
+		0 = {
+			modifier = {
+				add = 1
+				owner = {
+					has_authority = auth_machine_intelligence
+				}
+			}
+			anomaly_event = distar.91
+		}
+	}
+}
+
+######################################################################################
+# Inconsistent Readings
+######################################################################################
+DISTAR_ICE_CAT = {
+	desc = "DISTAR_ICE_CAT_DESC"
+	picture = "GFX_evt_ship_in_orbit"
+	level = 1
+	spawn_chance = {
+		modifier = {
+			add = 1
+			has_distar = yes
+			tul_is_planet_frozen = yes
+			NOT = {
+				has_deposit_for = shipclass_mining_station
+			}
+		}
+	}
+	on_success = distar.110
+}
+
+######################################################################################
+# Impenetrable Clouds
+######################################################################################
+DISTAR_METAL_CAT = {
+	desc = "DISTAR_METAL_CAT_DESC"
+	picture = "GFX_evt_toxic"
+	level = 1
+	spawn_chance = {
+		modifier = {
+			add = 1
+			has_distar = yes
+			tul_is_planet_toxic = yes
+			NOT = {
+				has_deposit_for = shipclass_research_station
+			}
+		}
+	}
+	on_success = {
+		1 = {
+			anomaly_event = distar.115
+		}
+	}
+}
+
+######################################################################################
+# Deep Tunnels
+######################################################################################
+DISTAR_OCEAN_CAT = {
+	desc = "DISTAR_OCEAN_CAT_DESC"
+	picture = "GFX_evt_ship_in_orbit"
+	level = 1
+	spawn_chance = {
+		modifier = {
+			add = 1
+			has_distar = yes
+			tul_is_planet_ocean = yes
+		}
+	}
+	on_success = {
+		1 = {
+			anomaly_event = distar.120
+		}
+	}
+}
+
+######################################################################################
+# Volcani Vents
+######################################################################################
+DISTAR_MOLTEN_CAT = {
+	desc = "DISTAR_MOLTEN_CAT_DESC"
+	picture = "GFX_evt_molten"
+	level = 1
+	spawn_chance = {
+		modifier = {
+			add = 1
+			has_distar = yes
+			tul_is_planet_molten = yes
+			has_any_strategic_resource = no
+		}
+	}
+	null_spawn_chance = 0.5	# 50% chance to spawn
+	on_success = {
+		1 = {
+			anomaly_event = distar.145
+		}
+	}
+}
+
+######################################################################################
+# Deep Caverns
+######################################################################################
+DISTAR_MERCURY_CAT = {
+	desc = "DISTAR_MERCURY_CAT_DESC"
+	picture = "GFX_evt_ship_in_orbit"
+	level = 7
+	should_ai_and_humans_use = yes
+	spawn_chance = {
+		modifier = {
+			add = 0.1
+			has_distar = yes
+			OR = {
+				tul_is_planet_molten = yes
+				tul_is_planet_barren = yes
+				tul_is_planet_frozen = yes
+				tul_is_planet_toxic = yes
+			}
+			has_any_strategic_resource = no
+		}
+	}
+	on_success = {
+		1 = {
+			anomaly_event = distar.150
+		}
+	}
+}
+
+######################################################################################
+# Mysterious Construct
+######################################################################################
+DISTAR_WARFORM_CAT = {
+	desc = "DISTAR_WARFORM_CAT_DESC"
+	picture = "GFX_evt_toxic"
+	level = 5
+	spawn_chance = {
+		modifier = {
+			add = 1
+			has_distar = yes
+			tul_is_planet_toxic = yes
+		}
+	}
+	# This doesn't set anything in the global scope. It just gives a ~500 power ship.
+	max_once_global = no
+	on_success = {
+		1 = {
+			anomaly_event = distar.155
+		}
+	}
+}
+
+######################################################################################
+# Waterless Canyons
+######################################################################################
+DISTAR_THIRSTY_CAT = {
+	desc = "DISTAR_THIRSTY_CAT_DESC"
+	picture = "GFX_evt_warm_barren"
+	level = 1
+	spawn_chance = {
+		modifier = {
+			add = 1
+			has_distar = yes
+			tul_is_planet_barren = yes
+			NOT = {
+				has_deposit_for = shipclass_research_station
+			}
+		}
+	}
+	on_success = {
+		1 = {
+			anomaly_event = distar.180
+		}
+	}
+}
+
+######################################################################################
+# Megaflora
+######################################################################################
+DISTAR_FLYTRAP_CAT = {
+	desc = "DISTAR_FLYTRAP_CAT_DESC"
+	picture = "GFX_evt_alien_nature"
+	level = 1
+	spawn_chance = {
+		modifier = {
+			add = 10
+			habitable_planet = yes
+			NOR = {
+				tul_is_planet_desert = yes
+				tul_is_planet_arctic = yes
+			}
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_distar = no
+				from.owner = {
+					has_authority = auth_machine_intelligence
+				}
+			}
+		}
+	}
+	on_spawn = {
+		add_modifier = {
+			modifier = predatory_plants
+			days = -1
+		}
+	}
+	on_success = {
+		1 = {
+			anomaly_event = distar.185
+		}
+	}
+}
+
+######################################################################################
+# Overgrown Ruins
+######################################################################################
+DISTAR_SOY_CAT = {
+	desc = "DISTAR_SOY_CAT_DESC"
+	picture = "GFX_evt_ship_in_orbit"
+	level = 6
+	spawn_chance = {
+		modifier = {
+			add = 1
+			OR = {
+				tul_is_planet_tropical = yes
+				tul_is_planet_continental = yes
+				tul_is_planet_savannah = yes
+				tul_is_planet_alpine = yes
+				tul_is_planet_ocean = yes
+				tul_is_planet_gaia = yes
+			}
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_distar = no
+				AND = {
+					exists = owner
+					owner = {
+						is_primitive = yes
+					}
+				}
+			}
+		}
+	}
+	on_spawn = {
+		planet_event = {
+			id = distar.260
+		}
+	}
+	on_success = distar.261
+}
+
+######################################################################################
+# Metallic Crystal Formations
+######################################################################################
+DISTAR_NANOCITY_CAT = {
+	desc = "DISTAR_NANOCITY_CAT_DESC"
+	picture = "GFX_evt_ship_in_orbit_2"
+	level = 2
+	spawn_chance = {
+		modifier = {
+			add = 1
+			has_distar = yes
+			OR = {
+				tul_is_planet_cold_barren = yes
+				tul_is_planet_frozen = yes
+			}
+		}
+	}
+	max_once_global = no
+	max_once = yes
+	on_success = {
+		1 = {
+			anomaly_event = distar.275
+		}
+	}
+}
+
+######################################################################################
+# Metallic Sands
+######################################################################################
+DISTAR_NANOSAND_CAT = {
+	desc = "DISTAR_NANOSAND_CAT_DESC"
+	picture = "GFX_evt_ship_in_orbit_2"
+	level = 2
+	spawn_chance = {
+		modifier = {
+			add = 1
+			has_distar = yes
+			OR = {
+				tul_is_planet_desert = yes
+				tul_is_planet_gaia = yes
+				AND = {
+					tul_is_planet_barren = yes
+					has_any_strategic_resource = no
+				}
+			}
+		}
+	}
+	max_once_global = no
+	max_once = yes
+	on_success = {
+		1 = {
+			anomaly_event = distar.280
+		}
+	}
+}
+
+######################################################################################
+# Solid Core
+######################################################################################
+DISTAR_MEDGAS_CAT = {
+	desc = "DISTAR_MEDGAS_CAT_DESC"
+	picture = "GFX_evt_ship_in_orbit"
+	level = 3
+	spawn_chance = {
+		modifier = {
+			#Normal chance to spawn if player has completed chain
+			add = 1
+			tul_is_planet_gas_giant = yes
+			has_any_strategic_resource = no
+			from.owner = {
+				has_completed_event_chain_counter = {
+					event_chain = l_cluster_chain
+					counter = clues
+				}
+			}
+		}
+		modifier = {
+			#Higher chance to spawn if player has ongoing chain
+			add = 5
+			tul_is_planet_gas_giant = yes
+			has_any_strategic_resource = no
+			from.owner = {
+				has_event_chain = "l_cluster_chain"
+			}
+		}
+		modifier = {
+			#Will not spawn if the player has neither completed nor currently has the ongoing chain
+			factor = 0
+			has_distar = no
+			NOT = {
+				has_global_flag = l_cluster_opened
+			}
+			from.owner = {
+				NOR = {
+					has_event_chain = "l_cluster_chain"
+					has_completed_event_chain_counter = {
+						event_chain = l_cluster_chain
+						counter = clues
+					}
+				}
+			}
+		}
+	}
+	max_once_global = no
+	max_once = yes
+	on_success = {
+		1 = {
+			anomaly_event = distar.285
+		}
+	}
+}
+
+######################################################################################
+# Ancient Hulk
+######################################################################################
+debris_gasgiant_category_temp = {
+	desc = "debris_gasgiant_category_temp_desc"
+	picture = "GFX_evt_ship_in_orbit"
+	level = 8
+	max_once_global = yes
+	null_spawn_chance = 0.65	# 35% chance to spawn
+	spawn_chance = {
+		modifier = {
+			add = 0.35
+			has_distar = yes
+			tul_is_planet_gas_giant = yes
+		}
+		modifier = {
+			factor = 0
+			from.owner = {
+				OR = {
+					species_portrait = mam5
+					species_portrait = fun4
+					is_gestalt = yes
+				}
+			}
+		}
+	}
+	on_success = distar.1000
+}
+
+######################################################################################
+# Atomic Clock
+######################################################################################
+atomic_clock_cat = {
+	desc = "AST_DEBRIS_FIELD_1_DESC"
+	picture = "GFX_evt_space_debris"
+	level = 3
+	max_once = yes
+	spawn_chance = {
+		modifier = {
+			add = 3
+			NOR = {
+				has_deposit_for = shipclass_research_station
+				has_deposit_for = shipclass_mining_station
+			}
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						AND = {
+							exists = owner
+							owner = {
+								is_primitive = yes
+							}
+							tul_is_planet_ring_world = no
+						}
+						AND = {
+							habitable_planet = yes
+							is_colony = no
+							is_under_colonization = no
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOR = {
+				has_distar = yes
+			}
+		}
+	}
+	on_success = {
+		1 = distar.1045
+	}
+}
+
+######################################################################################
+# Alien Activity
+######################################################################################
+gaia_planet_cat = {
+	picture = "GFX_evt_alien_nature"
+	level = 3
+	# This has zero impact on the rest of the galaxy.
+	max_once_global = no
+	spawn_chance = {
+		modifier = {
+			add = 3
+			has_distar = yes
+			tul_is_planet_gaia = yes
+		}
+	}
+	on_success = distar.1060
+}
+
+######################################################################################
+# Corrupt Survey Data
+######################################################################################
+corrupt_data_cat = {
+	picture = "GFX_evt_ship_in_orbit_2"
+	level = 4
+	max_once_global = yes
+	spawn_chance = {
+		modifier = {
+			add = 3
+			has_distar = yes
+			habitable_planet = yes
+			is_under_colonization = no
+			NOR = {
+				solar_system = {
+					has_star_flag = empire_cluster
+				}
+				tul_is_planet_gaia = no
+				has_deposit = d_betharian_deposit
+				has_deposit = d_alien_pets_deposit
+				exists = archaeological_site
+			}
+		}
+	}
+	on_success = distar.1065
+}
+
+######################################################################################
+# 
+######################################################################################
+irregular_energy_cat = {
+	picture = "GFX_evt_ship_in_orbit"
+	level = 4
+	# Made global targets non-global.
+	max_once_global = no
+	spawn_chance = {
+		modifier = {
+			add = 0.1
+			has_distar = yes
+			is_star = yes
+		}
+		modifier = {
+			factor = 0
+			from.owner = {
+				OR = {
+					is_gestalt = yes
+					tul_is_mechanical_empire = yes
+				}
+			}
+		}
+	}
+	on_success = distar.1070
+}
+
+######################################################################################
+# Peculiar Patterns
+######################################################################################
+peculiar_patterns_cat = {
+	picture = "GFX_evt_ship_in_orbit_2"
+	level = 3
+	spawn_chance = {
+		modifier = {
+			add = 0.1
+			has_distar = yes
+			OR = {
+				tul_is_planet_gaia = yes
+				tul_is_planet_continental = yes
+				tul_is_planet_savannah = yes
+				tul_is_planet_tropical = yes
+				tul_is_planet_ocean = yes
+			}
+		}
+	}
+	on_success = {
+		0 = {
+			modifier = {
+				add = 1
+				from = {
+					OR = {
+						tul_is_planet_gaia = yes
+						tul_is_planet_continental = yes
+						tul_is_planet_savannah = yes
+						tul_is_planet_tropical = yes
+					}
+				}
+			}
+			anomaly_event = distar.1090
+		}
+		0 = {
+			modifier = {
+				add = 1
+				from = {
+					OR = {
+						tul_is_planet_gaia = yes
+						tul_is_planet_continental = yes
+						tul_is_planet_savannah = yes
+						tul_is_planet_tropical = yes
+					}
+				}
+			}
+			anomaly_event = distar.1095
+		}
+		0 = {
+			modifier = {
+				add = 1
+				from = {
+					tul_is_planet_ocean = yes
+				}
+			}
+			anomaly_event = distar.2010
+		}
+	}
+}
+
+######################################################################################
+# Tomb World
+######################################################################################
+tomb_world_cat = {
+	picture = "GFX_evt_ship_in_orbit_2"
+	level = 4
+	# This doesn't impact the rest of the galaxy.
+	max_once_global = no
+	spawn_chance = {
+		modifier = {
+			add = 3
+			has_distar = yes
+			OR = {
+				tul_is_planet_toxic = yes
+				tul_is_planet_nuked = yes
+				tul_is_planet_barren = yes
+			}
+			NOT = {
+				has_planet_flag = nuked_planet_anomalies_disabled
+			}
+		}
+	}
+	on_success = {
+		0 = {
+			modifier = {
+				add = 1
+				from = {
+					OR = {
+						tul_is_planet_toxic = yes
+						tul_is_planet_nuked = yes
+					}
+				}
+			}
+			anomaly_event = distar.2005
+		}
+		0 = {
+			modifier = {
+				add = 1
+				from = {
+					tul_is_planet_barren = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				from = {
+					OR = {
+						has_deposit_for = shipclass_research_station
+						has_deposit_for = shipclass_mining_station
+					}
+				}
+			}
+			anomaly_event = distar.2015
+		}
+	}
+}
+
+######################################################################################
+# Impossible Organism
+######################################################################################
+disco_impossible_organism_cat = {
+	desc = "disco_impossible_organism_cat_desc"
+	picture = "GFX_evt_toxic"
+	level = 6
+	max_once_global = yes
+	null_spawn_chance = 0.75	# 25% chance to spawn
+	spawn_chance = {
+		modifier = {
+			add = 2
+			tul_is_planet_toxic = yes
+			NOT = {
+				has_deposit_for = shipclass_mining_station
+			}
+		}
+		modifier = {
+			factor = 0
+			from.owner = {
+				OR = {
+					has_ethic = ethic_xenophobe
+					has_ethic = ethic_fanatic_xenophobe
+					has_civic = civic_machine_terminator
+					has_authority = auth_hive_mind
+				}
+			}
+		}
+	}
+	on_success = distar.3010
+}
+
+######################################################################################
+# Molluscoid Miners
+######################################################################################
+disco_molluscoid_miners_cat = {
+	desc = "disco_molluscoid_miners_cat_desc"
+	picture = "GFX_evt_warm_barren"
+	level = 3
+	spawn_chance = {
+		modifier = {
+			add = 2
+			OR = {
+				tul_is_planet_desert = yes
+				tul_is_planet_arid = yes
+				tul_is_planet_savannah = yes
+			}
+			has_any_strategic_resource = no
+		}
+		modifier = {
+			factor = 0
+			from.owner = {
+				NOR = {
+					has_ethic = ethic_gestalt_consciousness
+					has_ethic = ethic_fanatic_xenophobe
+					species_portrait = mol6
+				}
+			}
+		}
+	}
+	on_success = distar.3030
+}
+
+######################################################################################
+# Breathing Rift
+######################################################################################
+disco_breathing_rift_cat = {
+	desc = "disco_breathing_rift_cat_desc"
+	picture = "GFX_evt_ship_in_orbit_2"
+	level = 3
+
+	spawn_chance = {
+		modifier = {
+			add = 2
+			is_star = yes
+			tul_is_star_singularity = yes
+		}
+	}
+
+	on_success = distar.3060
+}

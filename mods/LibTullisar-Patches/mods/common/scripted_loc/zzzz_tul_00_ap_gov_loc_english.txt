@@ -94,8 +94,8 @@ defined_text = {
 	text = {
 		trigger = {
 			OR = {
-				tul_is_machine_empire = yes
-				tul_is_hive_empire = yes
+				tul_country_is_authority_machine = yes
+				tul_country_is_hive_authority = yes
 			}
 		}
 		localization_key = ap_tul_the_great_echo
@@ -110,13 +110,13 @@ defined_text = {
 	name = GetPerkBeautifulBureaucracyDesc
 	text = {
 		trigger = {
-			tul_is_hive_empire = yes
+			tul_country_is_hive_authority = yes
 		}
 		localization_key = ap_tul_the_great_echo_hive_desc
 	}
 	text = {
 		trigger = {
-			tul_is_machine_empire = yes
+			tul_country_is_authority_machine = yes
 		}
 		localization_key = ap_tul_the_great_echo_machines_desc
 	}

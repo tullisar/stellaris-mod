@@ -12,7 +12,7 @@ food_expenditure_campaigns = {
 	type = expenditure
 	category = campaigns
 	potential = {
-		tul_is_hive_empire = yes
+		tul_country_is_hive_authority = yes
 		is_lithoid_empire = no
 	}
 	fraction = {
@@ -28,7 +28,7 @@ food_expenditure_colonies_expand = {
 	type = expenditure
 	category = colonies
 	potential = {
-		tul_is_machine_empire = no
+		tul_country_is_authority_machine = no
 		is_lithoid_empire = no
 		tul_is_special_tree_origin = no
 		ai_colonize_plans > 0
@@ -57,17 +57,26 @@ food_expenditure_colonies_expand_tree = {
 	type = expenditure
 	category = colonies
 	potential = {
-		tul_is_machine_empire = no
-		is_lithoid_empire = no
-		tul_is_special_tree_origin = yes
-		ai_colonize_plans > 0
-		has_resource = {
-			type = food
-			amount > 400
+		if = {
+			limit = {
+				exists = this
+				is_scope_type = country
+			}
+			tul_country_is_authority_machine = no
+			is_lithoid_empire = no
+			tul_is_special_tree_origin = yes
+			ai_colonize_plans > 0
+			has_resource = {
+				type = food
+				amount > 400
+			}
+			has_monthly_income = {
+				resource = food
+				value > 0
+			}
 		}
-		has_monthly_income = {
-			resource = food
-			value > 0
+		else = {
+			always = no
 		}
 	}
 	fraction = {
@@ -86,7 +95,7 @@ food_expenditure_colonies_expand_rock_tree = {
 	type = expenditure
 	category = colonies
 	potential = {
-		tul_is_machine_empire = no
+		tul_country_is_authority_machine = no
 		is_lithoid_empire = yes
 		tul_is_special_tree_origin = yes
 		ai_colonize_plans > 0

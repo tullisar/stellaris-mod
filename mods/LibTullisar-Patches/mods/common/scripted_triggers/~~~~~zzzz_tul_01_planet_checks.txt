@@ -1,0 +1,1766 @@
+######################################################################################
+# Planet Scripted Triggers
+######################################################################################
+#
+#
+######################################################################################
+# tul_is_planet_delicate_ecosystem
+######################################################################################
+tul_is_planet_delicate_ecosystem = {
+	exists = this
+	is_scope_type = planet
+	this = {
+		OR = {
+			has_modifier = delicate_ecosystem 
+			# has_modifier = eco_fragile_ecosystem
+		}
+	}
+}
+
+######################################################################################
+# tul_uses_district_city
+######################################################################################
+tul_uses_district_city = {
+	exists = this
+	is_scope_type = planet
+	OR = {
+		AND = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+			}
+		}
+		AND = {
+			exists = from
+			from = {
+				is_scope_type = country
+				is_regular_empire = yes
+			}
+		}
+	}
+	OR = {
+		uses_district_set = standard
+		uses_district_set = hive_world
+		uses_district_set = machine_world
+		uses_district_set = shattered_ring_world
+	}
+}
+
+######################################################################################
+# tul_uses_district_hive
+######################################################################################
+tul_uses_district_hive = {
+	exists = this
+	is_scope_type = planet
+	OR = {
+		AND = {
+			exists = owner
+			owner = {
+				tul_country_is_authority_hive = yes
+			}
+		}
+		AND = {
+			exists = from
+			from = {
+				is_scope_type = country
+				tul_country_is_authority_hive = yes
+			}
+		}
+	}
+	OR = {
+		uses_district_set = standard
+		uses_district_set = hive_world
+		uses_district_set = machine_world
+		uses_district_set = shattered_ring_world
+	}
+}
+
+######################################################################################
+# tul_uses_district_nexus
+######################################################################################
+tul_uses_district_nexus = {
+	exists = this
+	is_scope_type = planet
+	OR = {
+		AND = {
+			exists = owner
+			owner = {
+				tul_country_is_authority_machine = yes
+			}
+		}
+		AND = {
+			exists = from
+			from = {
+				is_scope_type = country
+				tul_country_is_authority_machine = yes
+			}
+		}
+	}
+	OR = {
+		uses_district_set = standard
+		uses_district_set = hive_world
+		uses_district_set = machine_world
+		uses_district_set = shattered_ring_world
+	}
+}
+
+######################################################################################
+# tul_uses_district_industrial
+######################################################################################
+tul_uses_district_industrial = {
+	exists = this
+	is_scope_type = planet
+	OR = {
+		exists = owner
+		AND = {
+			exists = from
+			from = {
+				is_scope_type = country
+			}
+		}
+	}
+	uses_district_industrial = yes
+}
+
+######################################################################################
+# tul_can_build_planetary_habitat
+######################################################################################
+tul_can_build_planetary_habitat = {
+	exists = this
+	is_scope_type = planet
+	custom_tooltip = {
+		fail_text = "requires_surveyed_planet"
+		is_surveyed = {
+			# prevent leaking habitability information
+			who = prev.from
+			status = yes
+		}
+	}
+	custom_tooltip = {
+		fail_text = "requires_no_anomaly"
+		NOT = {
+			has_anomaly = yes
+		}
+	}
+	custom_tooltip = {
+		fail_text = "requires_no_existing_megastructure"
+		#can_build_megastructure_on_planet = yes
+		NOR = {
+			#has_planet_flag = megastructure
+			#has_planet_flag = has_megastructure
+			#solar_system = { has_star_flag = ring_world_built}
+			has_planet_flag = planetaryhabitatimpossible
+			has_modifier = planetary_hab_imposs
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_ringworld_habitable_damaged
+			is_planet_class = pc_ringworld_tech
+			is_planet_class = pc_ringworld_tech_damaged
+			is_planet_class = pc_ringworld_seam
+			is_planet_class = pc_ringworld_seam_damaged
+			is_planet_class = pc_habitat
+		}
+	}
+	custom_tooltip = {
+		fail_text = "requires_not_minor_planetary_body"
+		NOT = {
+			is_asteroid = yes
+		}
+	}
+	custom_tooltip = {
+		fail_text = "requires_not_star"
+		is_star = no
+	}
+	custom_tooltip = {
+		fail_text = "requires_different_size"
+		if = {
+			limit = {
+				tul_is_planet_gas_giant = yes
+			}
+			planet_size <= 35
+		}
+		ELSE = {
+			planet_size <= 25
+		}
+		planet_size >= 2
+	}
+}
+
+######################################################################################
+# tul_can_build_frozen_planet_habitat
+######################################################################################
+tul_can_build_frozen_planet_habitat = {
+	custom_tooltip = {
+		success_text = "tul_is_frozen_hab_planet_success"
+		fail_text = "tul_is_frozen_hab_planet_fail"
+		NOT = {
+			is_planet_class = pc_methane
+			is_planet_class = pc_ammonia
+		}
+		tul_is_planet_frozen = yes
+	}
+}
+
+######################################################################################
+# tul_can_build_toxic_habitat
+######################################################################################
+tul_can_build_toxic_habitat = {
+	custom_tooltip = {
+		success_text = "tul_is_toxic_hab_planet_pass"
+		fail_text = "tul_is_toxic_hab_planet_fail"
+		tul_is_planet_hothouse = no
+		tul_is_planet_toxic = yes
+	}
+}
+
+######################################################################################
+# is_barren
+# Source: ETCPM
+#
+# Overridden to use tul_is_planet_barren instead.
+#
+######################################################################################
+is_barren = {
+	tul_is_planet_barren = yes
+}
+
+######################################################################################
+# is_barren_planet
+# Source: ECC
+#
+# Overridden to use tul_is_planet_barren instead.
+#
+######################################################################################
+is_barren_planet = {
+	tul_is_planet_barren = yes
+}
+
+######################################################################################
+# tul_is_planet_barren
+# 
+# Determine whether a planet can be considered "Barren" for scripted effects.
+#
+######################################################################################
+tul_is_planet_barren = {
+	custom_tooltip = {
+		success_text = "tul_is_barren_planet_pass"
+		fail_text = "tul_is_barren_planet_fail"
+		OR = {
+			tul_is_planet_hot_barren = yes
+			tul_is_planet_cold_barren = yes
+		}
+	}
+}
+
+######################################################################################
+# tul_is_planet_hot_barren
+######################################################################################
+tul_is_planet_hot_barren = {
+	OR = {
+		is_planet_class = pc_barren
+		# Planetary Diversity
+		is_planet_class = pc_carbon
+		is_planet_class = pc_iron
+		is_planet_class = pc_diamond
+		is_planet_class = pc_chthonian
+	}
+}
+
+######################################################################################
+# tul_planet_has_uncolonized_barren_habitat
+######################################################################################
+tul_is_planet_cold_barren = {
+	OR = {
+		is_planet_class = pc_barren_cold
+		# Planetary Diversity
+		is_planet_class = pc_rogue_barren
+	}
+}
+
+######################################################################################
+# tul_planet_has_uncolonized_barren_habitat
+######################################################################################
+tul_planet_has_uncolonized_barren_habitat = {
+	exists = this
+	is_scope_type = planet
+	OR = {
+		is_planet_class = pc_pd_barren_hab
+		is_planet_class = pc_pd_barren_cold_hab
+	}
+	is_colony = no
+}
+
+######################################################################################
+# tul_planet_has_uncolonized_frozen_habitat
+######################################################################################
+tul_planet_has_uncolonized_frozen_habitat = {
+	exists = this
+	is_scope_type = planet
+	is_planet_class = pc_pd_frozen_hab
+	is_colony = no
+}
+
+######################################################################################
+# is_molten
+# Source: ETCPM
+#
+# Overridden to use tul_is_planet_molten
+#
+######################################################################################
+is_molten = {
+	tul_is_planet_molten = yes
+}
+
+######################################################################################
+# tul_is_planet_molten
+# 
+# Determine whether a planet can be considered "Molten" for scripted effects.
+#
+######################################################################################
+tul_is_planet_molten = {
+	custom_tooltip = {
+		success_text = "tul_is_molten_planet_pass"
+		fail_text = "tul_is_molten_planet_fail"
+		OR = {
+			is_planet_class = pc_molten
+			# Planetary Diversity
+			is_planet_class = pc_volcanic
+		}
+	}
+}
+
+######################################################################################
+# is_frozen
+# Source: ETCPM
+#
+# Overridden to use tul_is_planet_frozen
+#
+######################################################################################
+is_frozen = {
+	tul_is_planet_frozen = yes
+}
+
+######################################################################################
+# tul_is_planet_frozen
+# 
+# Determine whether a planet can be considered "Molten" for scripted effects.
+#
+######################################################################################
+tul_is_planet_frozen = {
+	custom_tooltip = {
+		success_text = "tul_is_frozen_planet_pass"
+		fail_text = "tul_is_frozen_planet_fail"
+		OR = {
+			is_planet_class = pc_frozen
+			# Planetary Diversity
+			is_planet_class = pc_methane
+			is_planet_class = pc_ammonia
+			is_planet_class = pc_subglacial
+			is_planet_class = pc_hydrocarbon
+		}
+	}
+}
+
+######################################################################################
+# is_toxic
+# Source: ETCPM
+#
+# Overridden to use tul_is_planet_toxic
+#
+######################################################################################
+is_toxic = {
+	tul_is_planet_toxic = yes
+}
+
+######################################################################################
+# is_barren_planet
+# Source: ECC
+#
+# Overridden to use tul_is_planet_toxic
+#
+######################################################################################
+is_toxic_planet = {
+	tul_is_planet_toxic = yes
+}
+
+######################################################################################
+# tul_is_planet_toxic
+# 
+# Determine whether a planet can be considered "Toxic" for scripted effects.
+#
+######################################################################################
+tul_is_planet_toxic = {
+	custom_tooltip = {
+		success_text = "tul_is_toxic_planet_pass"
+		fail_text = "tul_is_toxic_planet_fail"
+		OR = {
+			is_planet_class = pc_toxic
+			# Planetary Diversity
+			is_planet_class = pc_hothouse
+			is_planet_class = pc_ethane_ocean
+		}
+	}
+}
+
+######################################################################################
+# tul_is_planet_hothouse
+#
+# Determine whether a planet can be considered a "Hothouse" for scripted effects.
+#
+######################################################################################
+tul_is_planet_hothouse = {
+	custom_tooltip = {
+		success_text = "tul_is_hothouse_planet_pass"
+		fail_text = "tul_is_hothouse_planet_fail"
+		is_planet_class = pc_hothouse
+	}
+}
+
+######################################################################################
+# is_gas_giant
+# Source: ETCPM
+#
+# Overridden to use tul_is_planet_gas_giant
+#
+######################################################################################
+is_gas_giant = {
+	tul_is_planet_gas_giant = yes
+}
+
+######################################################################################
+# tul_is_planet_gas_giant
+# 
+# Determine whether a planet can be considered a Gas Giant for scripted effects.
+#
+######################################################################################
+tul_is_planet_gas_giant = {
+	custom_tooltip = {
+		success_text = "tul_is_gas_giant_pass"
+		fail_text = "tul_is_gas_giant_fail"
+	}
+	OR = {
+		is_planet_class = pc_gas_giant
+		# Planetary Diversity
+		# is_planet_class = pc_ice_giant
+		is_planet_class = pc_hot_gas_giant
+		is_planet_class = pc_cloudless_gas_giant
+		is_planet_class = pc_cold_gas_giant
+	}
+}
+
+######################################################################################
+# is_desert
+# Source: ETCPM
+#
+# Overridden to use tul_is_desert_planet
+#
+######################################################################################
+is_desert = {
+	tul_is_planet_desert = yes
+}
+
+######################################################################################
+# tul_is_planet_desert
+# 
+# Determine whether a planet can be considered "Desert" for scripted effects.
+#
+######################################################################################
+tul_is_planet_desert = {
+	OR = {
+		is_planet_class = pc_desert
+		is_planet_class = pc_oasis
+		is_planet_class = pc_sandsea
+		is_planet_class = pc_salt
+		is_planet_class = pc_ash
+		is_planet_class = pc_aquifer
+		# Real Space
+		# is_planet_class = pc_dune
+		# is_planet_class = pc_salt
+		# is_planet_class = pc_adiabatic
+	}
+}
+
+######################################################################################
+# is_arid
+# Source: ETCPM
+#
+# Overridden to use tul_is_planet_arid
+#
+######################################################################################
+is_arid = {
+	tul_is_planet_desert = yes
+}
+
+######################################################################################
+# tul_is_planet_arid
+# 
+# Determine whether a planet can be considered "Arid" for scripted effects.
+#
+######################################################################################
+tul_is_planet_arid = {
+	OR = {
+		is_planet_class = pc_arid
+		# Planetary Diversity
+		is_planet_class = pc_mesa
+		is_planet_class = pc_karst
+		is_planet_class = pc_outback
+		is_planet_class = pc_med
+		is_planet_class = pc_sulfur
+		# Real Space
+		# is_planet_class = pc_karstic
+		# is_planet_class = pc_dust
+		# is_planet_class = pc_mediterranean
+		# is_planet_class = pc_flaming
+	}
+}
+
+######################################################################################
+# is_savannah
+# Source: ETCPM
+#
+# Overridden to use tul_is_planet_savannah
+#
+######################################################################################
+is_savannah = {
+	tul_is_planet_savannah = yes
+}
+
+######################################################################################
+# tul_is_planet_savannah
+# 
+# Determine whether a planet can be considered "Savannah" for scripted effects.
+#
+######################################################################################
+tul_is_planet_savannah = {
+	OR = {
+		is_planet_class = pc_savannah
+		# Planetary Diversity
+		is_planet_class = pc_steppe
+		is_planet_class = pc_prairie
+		is_planet_class = pc_badlands
+		is_planet_class = pc_veld
+		is_planet_class = pc_semiarid
+		# Real Space
+		# is_planet_class = pc_coriolis
+	}
+}
+
+######################################################################################
+# is_tropical
+# Source: ETCPM
+#
+# Overridden to use tul_is_planet_tropical
+#
+######################################################################################
+is_tropical = {
+	tul_is_planet_tropical = yes
+}
+
+######################################################################################
+# tul_is_planet_tropical
+# 
+# Determine whether a planet can be considered "Tropical" for scripted effects.
+#
+######################################################################################
+tul_is_planet_tropical = {
+	OR = {
+		is_planet_class = pc_tropical
+		# Planetary Diversity
+		is_planet_class = pc_mangrove
+		is_planet_class = pc_hajungle
+		is_planet_class = pc_biolumen
+		is_planet_class = pc_forest
+		is_planet_class = pc_primal
+		is_planet_class = pc_superhabitable
+		is_planet_class = pc_fog
+		is_planet_class = pc_coastal
+		is_planet_class = pc_cenote
+		is_planet_class = pc_lake
+		is_planet_class = pc_megaflora
+		is_planet_class = pc_megafloratol
+		is_planet_class = pc_megafloraforge
+		is_planet_class = pc_megaflorafort
+		is_planet_class = pc_megaflorahive
+		is_planet_class = pc_megafloracapital
+		# Real Space
+		# is_planet_class = pc_swamp
+		# is_planet_class = pc_monsoon
+		# is_planet_class = pc_jungle
+	}
+}
+
+######################################################################################
+# is_continental
+# Source: ETCPM
+#
+# Overridden to use tul_is_planet_continental
+#
+######################################################################################
+is_continental = {
+	tul_is_planet_continental = yes
+}
+
+######################################################################################
+# tul_is_planet_continental
+# 
+# Determine whether a planet can be considered "Continental" for scripted effects.
+#
+######################################################################################
+tul_is_planet_continental = {
+	OR = {
+		is_planet_class = pc_continental
+		# Planetary Diversity
+		is_planet_class = pc_superhabitable
+		is_planet_class = pc_retinal
+		is_planet_class = pc_tidallylocked
+		is_planet_class = pc_tepid
+		is_planet_class = pc_supercon
+		# Real Space
+		# is_planet_class = pc_boreal
+		# is_planet_class = pc_pangea
+		# is_planet_class = pc_young
+		# is_planet_class = pc_primal
+		# is_planet_class = pc_meridiem
+	}
+}
+
+######################################################################################
+# is_ocean
+# Source: ETCPM
+#
+# Overridden to use tul_is_planet_ocean
+#
+######################################################################################
+is_ocean = {
+	tul_is_planet_ocean = yes
+}
+
+######################################################################################
+# tul_is_planet_ocean
+# 
+# Determine whether a planet can be considered "Ocean" for scripted effects.
+#
+######################################################################################
+tul_is_planet_ocean = {
+	OR = {
+		is_planet_class = pc_ocean
+		# Planetary Diversity
+		is_planet_class = pc_desertislands
+		is_planet_class = pc_mangrove
+		is_planet_class = pc_wetswamp
+		is_planet_class = pc_subarctic
+		is_planet_class = pc_aquatic
+		is_planet_class = pc_aquatichot
+		is_planet_class = pc_aquaticcold
+		is_planet_class = pc_tidallyaquatic
+		is_planet_class = pc_aquatic_surface
+		is_planet_class = pc_aquatic_uw
+		is_planet_class = pc_aquaticbio_uw
+		is_planet_class = pc_aquaticshroud_uw
+		is_planet_class = pc_aquaticcold_uw
+		is_planet_class = pc_aquatickarst_uw
+		is_planet_class = pc_fog
+		is_planet_class = pc_reef
+		# Real Space
+		# is_planet_class = pc_panthalassic
+		# is_planet_class = pc_atoll
+		# is_planet_class = pc_storm
+		# is_planet_class = pc_crag
+	}
+}
+
+######################################################################################
+# is_tundra
+# Source: ETCPM
+#
+# Overridden to use tul_is_planet_tundra
+#
+######################################################################################
+is_tundra = {
+	tul_is_planet_tundra = yes
+}
+
+######################################################################################
+# tul_is_planet_tundra
+# 
+# Determine whether a planet can be considered "Tundra" for scripted effects.
+#
+######################################################################################
+tul_is_planet_tundra = {
+	OR = {
+		is_planet_class = pc_tundra
+		# Planetary Diversity
+		is_planet_class = pc_swamp
+		is_planet_class = pc_mud
+		is_planet_class = pc_hadesert
+		is_planet_class = pc_mushroom
+		is_planet_class = pc_prairie
+		is_planet_class = pc_acid
+		is_planet_class = pc_basalt
+		is_planet_class = pc_aeolian
+		is_planet_class = pc_lichen
+		# Real Space
+		# is_planet_class = pc_taiga
+		# is_planet_class = pc_frigid
+		# is_planet_class = pc_bog
+		# is_planet_class = pc_awakened
+	}
+}
+
+######################################################################################
+# is_arctic
+# Source: ETCPM
+#
+# Overridden to use tul_is_planet_arctic
+#
+######################################################################################
+is_arctic = {
+	tul_is_planet_arctic = yes
+}
+
+######################################################################################
+# tul_is_planet_arctic
+# 
+# Determine whether a planet can be considered "Artcic" for scripted effects.
+#
+######################################################################################
+tul_is_planet_arctic = {
+	OR = {
+		is_planet_class = pc_arctic
+		# Planetary Diversity
+		is_planet_class = pc_frozen_desert
+		is_planet_class = pc_geothermal
+		is_planet_class = pc_glacial
+		is_planet_class = pc_subarctic
+		is_planet_class = pc_antarctic
+		is_planet_class = pc_snow
+		is_planet_class = pc_methane
+		is_planet_class = pc_ammonia
+		is_planet_class = pc_snowball
+		is_planet_class = pc_eyeball
+		is_planet_class = pc_glacio
+		is_planet_class = pc_rogue
+		# Real Space
+		# is_planet_class = pc_melting
+		# is_planet_class = pc_ice
+		# is_planet_class = pc_eyeball
+	}
+}
+
+######################################################################################
+# is_apline
+# Source: ETCPM
+#
+# Overridden to use tul_is_planet_alpine
+#
+######################################################################################
+is_alpine = {
+	tul_is_planet_alpine = yes
+}
+
+######################################################################################
+# tul_is_planet_arctic
+# 
+# Determine whether a planet can be considered "Alpine" for scripted effects.
+#
+######################################################################################
+tul_is_planet_alpine = {
+	OR = {
+		is_planet_class = pc_alpine
+		# Planetary Diversity
+		is_planet_class = pc_cascadian
+		is_planet_class = pc_boreal
+		is_planet_class = pc_duneforest
+		is_planet_class = pc_lanthanide
+		is_planet_class = pc_storm
+		# Real Space
+		# is_planet_class = pc_mineral
+		# is_planet_class = pc_snow
+		# is_planet_class = pc_plateau
+		# is_planet_class = pc_highland
+	}
+}
+
+######################################################################################
+# is_nuked
+# Source: ETCPM
+#
+# Overridden to use tul_is_planet_nuked
+#
+######################################################################################
+is_nuked = {
+	tul_is_planet_nuked = yes
+}
+
+######################################################################################
+# is_nuked_planet
+# Source: ECC
+#
+# Overridden to use tul_is_planet_nuked
+#
+######################################################################################
+is_nuked_planet = {
+	tul_is_planet_nuked = yes
+}
+
+######################################################################################
+# tul_is_planet_nuked
+# 
+# Determine whether a planet can be considered "Nuked" for scripted effects.
+#
+######################################################################################
+tul_is_planet_nuked = {
+	OR = {
+		is_planet_class = pc_nuked
+		# Planetary Diversity
+		is_planet_class = pc_irradiated
+		# Real Space
+		# is_planet_class = pc_depleted
+		# is_planet_class = pc_lava
+		# is_planet_class = pc_ash
+	}
+}
+
+######################################################################################
+# is_machine
+# Source: ETCPM
+#
+# Overridden to use tul_is_planet_machine
+#
+######################################################################################
+is_machine = {
+	tul_is_planet_machine = yes
+}
+
+######################################################################################
+# tul_is_planet_machine
+# 
+# Determine whether a planet can be considered "Machine" for scripted effects.
+#
+######################################################################################
+tul_is_planet_machine = {
+	OR = {
+		is_planet_class = pc_machine
+		is_planet_class = pc_ai
+		# Planetary Diversity
+		is_planet_class = pc_machine_factory
+		is_planet_class = pc_machine_fort
+		is_planet_class = pc_machine_necropolis
+		is_planet_class = pc_machine_capital
+		# TODO(tullisr): Add machine & robots expansion planet types
+	}
+}
+
+######################################################################################
+# is_gaia
+# Source: ETCPM
+#
+# Overridden to use tul_is_planet_gaia
+#
+######################################################################################
+is_gaia = {
+	tul_is_planet_gaia = yes
+}
+
+######################################################################################
+# tul_is_planet_gaia
+# 
+# Determine whether a planet can be considered "Gaia" for scripted effects.
+#
+######################################################################################
+tul_is_planet_gaia = {
+	OR = {
+		is_planet_class = pc_gaia
+		# Planetary Diversity
+		is_planet_class = pc_crystal
+		is_planet_class = pc_floating
+		is_planet_class = pc_graveyard
+		is_planet_class = pc_technoorganic
+		is_planet_class = pc_archive
+		is_planet_class = pc_pdshroud
+		is_planet_class = pc_superhabitable
+		is_planet_class = pc_tidallygaia
+		# Real Space
+		# is_planet_class = pc_ancient
+	}
+}
+
+######################################################################################
+# is_city
+# Source: ETCPM
+#
+# Overridden to use tul_is_planet_city
+#
+######################################################################################
+is_city = {
+	tul_is_planet_city = yes
+}
+
+######################################################################################
+# tul_is_planet_city
+# 
+# Determine whether a planet can be considered "City" for scripted effects.
+#
+######################################################################################
+tul_is_planet_city = {
+	OR = {
+		is_planet_class = pc_city
+		is_planet_class = pc_relic
+		# Planetary Diversity
+		is_planet_class = pc_milarc_relic
+		is_planet_class = pc_shroudcity
+		is_planet_class = pc_shroudecocity
+		is_planet_class = pc_shroudcapitalarc
+		is_planet_class = pc_shroudpalacearc
+		is_planet_class = pc_shroudmilarc
+		is_planet_class = pc_ecocity
+		is_planet_class = pc_aquaticcity
+		is_planet_class = pc_capitalarc
+		is_planet_class = pc_palacearc
+		is_planet_class = pc_necropolis
+		is_planet_class = pc_milarc
+		is_planet_class = pc_shroudcorpoarc
+		is_planet_class = pc_corpoarc
+		is_planet_class = pc_ammoniacity
+		is_planet_class = pc_sulfurcity
+		is_planet_class = pc_methanecity
+		is_planet_class = pc_ashcity
+	}
+}
+
+######################################################################################
+# tul_can_planet_be_urban_colony
+######################################################################################
+tul_can_planet_be_urban_colony = {
+	tul_can_planet_be_common_colony = yes
+	owner = {
+		is_regular_empire = yes
+	}
+	is_special_colony_type = no
+}
+
+######################################################################################
+# tul_can_planet_be_farming_colony
+######################################################################################
+tul_can_planet_be_farming_colony = {
+	tul_can_planet_be_common_colony = yes
+	owner = {
+		country_uses_food = yes
+	}
+}
+
+######################################################################################
+# tul_can_planet_be_common_colony
+######################################################################################
+tul_can_planet_be_common_colony = {
+	exists = owner
+	NOR = {
+		tul_is_planet_city = yes
+		uses_district_set = city_world
+		uses_district_set = ring_world
+		uses_district_set = habitat
+		uses_district_set = pdarchive
+		uses_district_set = pdecocity
+		uses_district_set = pdpalacearc
+		uses_district_set = pdplanethab
+		uses_district_set = pdbioforge
+		uses_district_set = pdbiocapital
+		uses_district_set = pdmachinefactory
+		uses_district_set = pdmachinecapital
+		uses_district_set = pdfloraforge
+		uses_district_set = pdmilarc
+		uses_district_set = pdbiofort
+		uses_district_set = pdmachinefort
+		uses_district_set = pdcorpoarc
+	}
+	is_special_colony_type = no
+}
+
+######################################################################################
+# tul_planet_can_be_hive_colony
+######################################################################################
+tul_can_planet_be_hive_colony = {
+	exists = owner
+	NOR = {
+		uses_district_set = ring_world
+		uses_district_set = habitat
+		uses_district_set = pdarchive
+		uses_district_set = pdecocity
+		uses_district_set = pdpalacearc
+		uses_district_set = pdplanethab
+		uses_district_set = pdbioforge
+		uses_district_set = pdbiocapital
+		uses_district_set = pdmachinefactory
+		uses_district_set = pdmachinecapital
+		uses_district_set = pdfloraforge
+		uses_district_set = pdmilarc
+		uses_district_set = pdbiofort
+		uses_district_set = pdmachinefort
+		uses_district_set = pdcorpoarc
+	}
+	owner = {
+		is_hive_empire = yes
+	}
+	is_special_colony_type = no
+}
+
+######################################################################################
+# tul_can_planet_be_nexus_colony
+######################################################################################
+tul_can_planet_be_nexus_colony = {
+	exists = owner
+	NOR = {
+		uses_district_set = machine_world
+		uses_district_set = ring_world
+		uses_district_set = habitat
+		uses_district_set = pdarchive
+		uses_district_set = pdecocity
+		uses_district_set = pdpalacearc
+		uses_district_set = pdplanethab
+		uses_district_set = pdbioforge
+		uses_district_set = pdbiocapital
+		uses_district_set = pdmachinefactory
+		uses_district_set = pdmachinecapital
+		uses_district_set = pdfloraforge
+		uses_district_set = pdmilarc
+		uses_district_set = pdbiofort
+		uses_district_set = pdmachinefort
+		uses_district_set = pdcorpoarc
+	}
+	owner = {
+		is_machine_empire = yes
+	}
+	is_special_colony_type = no
+}
+
+######################################################################################
+# tul_can_planet_be_industrial_colony
+######################################################################################
+tul_can_planet_be_industrial_colony = {
+	tul_can_planet_be_common_colony = yes
+	NOR = {
+		uses_district_set = machine_world
+		uses_district_set = hive_world
+	}
+	owner = {
+		country_uses_consumer_goods = yes
+	}
+}
+
+######################################################################################
+# tul_can_planet_be_foundry_colony
+######################################################################################
+tul_can_planet_be_foundry_colony = {
+	exists = owner
+	OR = {
+		uses_district_set = pdbioforge
+		uses_district_set = pdmachinefactory
+		uses_district_set = pdfloraforge
+		tul_can_planet_be_common_colony = yes
+	}
+	is_special_colony_type = no
+}
+
+######################################################################################
+# tul_can_planet_be_factory_colony
+######################################################################################
+tul_can_planet_be_factory_colony = {
+	tul_can_planet_be_industrial_colony = yes
+}
+
+######################################################################################
+# tul_can_planet_be_refinery_colony
+######################################################################################
+tul_can_planet_be_refinery_colony = {
+	tul_can_planet_be_common_colony = yes
+}
+
+######################################################################################
+# tul_can_planet_be_research_colony
+######################################################################################
+tul_can_planet_be_research_colony = {
+	exists = owner
+	NOR = {
+		uses_district_set = city_world
+		uses_district_set = ring_world
+		uses_district_set = habitat
+		uses_district_set = pdarchive
+		uses_district_set = pdecocity
+		uses_district_set = pdpalacearc
+		uses_district_set = pdplanethab
+		uses_district_set = pdbiocapital
+		uses_district_set = pdmachinefactory
+		uses_district_set = pdmachinecapital
+		uses_district_set = pdmilarc
+		uses_district_set = pdcorpoarc
+	}
+	is_special_colony_type = no
+}
+
+######################################################################################
+# tul_can_planet_be_fortress_colony
+######################################################################################
+tul_can_planet_be_fortress_colony = {
+	tul_can_planet_be_common_colony = yes
+	NOR = {
+		uses_district_set = machine_world
+		uses_district_set = hive_world
+	}
+}
+
+######################################################################################
+# tul_can_planet_be_habitat_colony
+######################################################################################
+tul_can_planet_be_habitat_colony = {
+	exists = owner
+	OR = {
+		uses_district_set = habitat
+		uses_district_set = pdarchive
+		uses_district_set = nsc_freeboter_habitat
+	}
+}
+
+######################################################################################
+# tul_can_planet_be_energy_habitat_colony
+######################################################################################
+tul_can_planet_be_energy_habitat_colony = {
+	tul_can_planet_be_habitat_colony = yes
+	OR = {
+		owner = {
+			is_gestalt = yes
+		}
+		has_planet_flag = energy_habitat
+	}
+}
+
+######################################################################################
+# tul_can_planet_be_leisure_habitat_colony
+######################################################################################
+tul_can_planet_be_leisure_habitat_colony = {
+	tul_can_planet_be_habitat_colony = yes
+	owner = {
+		OR = {
+			is_gestalt = no
+			has_valid_civic = civic_machine_servitor
+		}
+	}
+}
+
+######################################################################################
+# tul_can_planet_be_trade_habitat_colony
+######################################################################################
+tul_can_planet_be_trade_habitat_colony = {
+	tul_can_planet_be_habitat_colony = yes
+	owner = {
+		is_gestalt = no
+	}
+}
+
+######################################################################################
+# tul_can_planet_be_research_habitat_colony
+######################################################################################
+tul_can_planet_be_research_habitat_colony = {
+	tul_can_planet_be_habitat_colony = yes
+}
+
+######################################################################################
+# tul_can_planet_be_mining_habitat_colony
+######################################################################################
+tul_can_planet_be_mining_habitat_colony = {
+	tul_can_planet_be_habitat_colony = yes
+	has_planet_flag = mining_habitat
+}
+
+######################################################################################
+# tul_can_planet_be_fortress_habitat_colony
+######################################################################################
+tul_can_planet_be_fortress_habitat_colony = {
+	tul_can_planet_be_habitat_colony = yes
+}
+
+######################################################################################
+# tul_can_planet_be_industrial_habitat_colony
+######################################################################################
+tul_can_planet_be_industrial_habitat_colony = {
+	tul_can_planet_be_habitat_colony = yes
+	owner = {
+		country_uses_consumer_goods = yes
+	}
+}
+
+######################################################################################
+# tul_can_planet_be_foundry_habitat_colony
+######################################################################################
+tul_can_planet_be_foundry_habitat_colony = {
+	tul_can_planet_be_habitat_colony = yes
+}
+
+######################################################################################
+# tul_can_planet_be_factory_habitat_colony
+######################################################################################
+tul_can_planet_be_factory_habitat_colony = {
+	tul_can_planet_be_industrial_colony = yes
+}
+
+######################################################################################
+# tul_can_planet_be_refinery_habitat_colony
+######################################################################################
+tul_can_planet_be_refinery_habitat_colony = {
+	tul_can_planet_be_habitat_colony = yes
+}
+
+######################################################################################
+# tul_can_planet_be_rural_gestalt_colony
+######################################################################################
+tul_can_planet_be_rural_gestalt_colony = {
+	tul_can_planet_be_common_colony = yes
+	owner = {
+		is_gestalt = yes
+	}
+}
+
+######################################################################################
+# tul_can_planet_be_rural_colony
+######################################################################################
+tul_can_planet_be_rural_colony = {
+	tul_can_planet_be_common_colony = yes
+}
+
+######################################################################################
+# tul_can_planet_be_resort_colony
+######################################################################################
+tul_can_planet_be_resort_colony = {
+	exists = owner
+	has_modifier = resort_colony
+}
+
+######################################################################################
+# tul_can_planet_be_penal_colony
+######################################################################################
+tul_can_planet_be_penal_colony = {
+	exists = owner
+	has_modifier = penal_colony
+}
+
+######################################################################################
+# tul_can_planet_be_slave_colony
+######################################################################################
+tul_can_planet_be_slave_colony = {
+	exists = owner
+	has_modifier = slave_colony
+}
+
+######################################################################################
+# Ring World (Mix)
+######################################################################################
+tul_can_planet_be_ring_colony = {
+	exists = owner
+	uses_district_set = ring_world
+}
+
+######################################################################################
+# tul_can_planet_be_ring_research_colony
+######################################################################################
+tul_can_planet_be_ring_research_colony = {
+	tul_can_planet_be_ring_colony = yes
+}
+
+######################################################################################
+# tul_can_planet_be_ring_farming_colony
+######################################################################################
+tul_can_planet_be_ring_farming_colony = {
+	tul_can_planet_be_ring_colony = yes
+}
+
+######################################################################################
+# tul_can_planet_be_ring_trade_colony
+######################################################################################
+tul_can_planet_be_ring_trade_colony = {
+	tul_can_planet_be_ring_colony = yes
+	owner = {
+		is_gestalt = no
+	}
+}
+
+######################################################################################
+# tul_can_planet_be_ring_generator_colony
+######################################################################################
+tul_can_planet_be_ring_generator_colony = {
+	tul_can_planet_be_ring_colony = yes
+	owner = {
+		is_gestalt = yes
+	}
+}
+
+######################################################################################
+# tul_can_planet_be_ecu_mix_colony
+######################################################################################
+tul_can_planet_be_ecu_mix_colony = {
+	exists = owner
+	OR = {
+		uses_district_set = city_world
+		uses_district_set = pdecocity
+		uses_district_set = pdpalacearc
+		uses_district_set = pdmachinecapital
+		uses_district_set = pdmilarc
+		uses_district_set = pdmachinecapital
+		uses_district_set = pdcorpoarc
+	}
+}
+
+######################################################################################
+# tul_can_planet_be_ecu_industrial_colony
+######################################################################################
+tul_can_planet_be_ecu_industrial_colony = {
+	exists = owner
+	owner = {
+		country_uses_consumer_goods = yes
+	}
+	OR = {
+		uses_district_set = city_world
+		uses_district_set = pdcorpoarc
+	}
+}
+
+######################################################################################
+# tul_can_planet_be_ecu_refinery_colony
+######################################################################################
+tul_can_planet_be_ecu_refinery_colony = {
+	exists = owner
+	uses_district_set = city_world
+	is_special_colony_type = no
+}
+
+######################################################################################
+# tul_can_planet_be_ecu_foundry_colony
+######################################################################################
+tul_can_planet_be_ecu_foundry_colony = {
+	exists = owner
+	OR = {
+		uses_district_set = city_world
+		#uses_district_set = pdbioforge
+		#uses_district_set = pdfloraforge
+		#uses_district_set = pdmachinefactory
+		uses_district_set = pdcorpoarc
+		uses_district_set = pdmilarc
+	}
+}
+
+######################################################################################
+# tul_can_planet_be_ecu_factory_colony
+######################################################################################
+tul_can_planet_be_ecu_factory_colony = {
+	exists = owner
+	owner = {
+		country_uses_consumer_goods = yes
+	}
+	OR = {
+		uses_district_set = city_world
+		uses_district_set = pdcorpoarc
+	}
+}
+
+######################################################################################
+# tul_can_planet_be_ecu_research_colony
+######################################################################################
+tul_can_planet_be_ecu_research_colony = {
+	exists = owner
+	OR = {
+		uses_district_set = city_world
+		uses_district_set = pdecocity
+		uses_district_set = pdpalacearc
+		uses_district_set = pdmilarc
+		uses_district_set = pdcorpoarc
+	}
+}
+
+######################################################################################
+# tul_can_planet_be_ecu_trade
+######################################################################################
+tul_can_planet_be_ecu_trade = {
+	exists = owner
+	OR = {
+		uses_district_set = pdecocity
+		uses_district_set = pdcorpoarc
+	}
+}
+
+######################################################################################
+# tul_can_planet_be_mac
+######################################################################################
+tul_can_planet_be_mac_colony = {
+	exists = owner
+	uses_district_set = machine_world
+}
+
+######################################################################################
+# tul_can_planet_be_mac_foundry
+######################################################################################
+tul_can_planet_be_mac_foundry = {
+	tul_can_planet_be_mac_colony = yes
+}
+
+######################################################################################
+# tul_can_planet_be_hive_colony
+######################################################################################
+tul_can_planet_be_hive_colony = {
+	exists = owner
+	uses_district_set = hive_world
+}
+
+######################################################################################
+# tul_can_planet_be_hive_foundry
+######################################################################################
+tul_can_planet_be_hive_foundry_colony = {
+	tul_can_planet_be_hive_colony = yes
+}
+
+######################################################################################
+# tul_can_planet_be_bureau_colony
+######################################################################################
+tul_can_planet_be_bureau_colony = {
+	exists = owner
+	owner = {
+		is_regular_empire = yes
+	}
+	NOR = {
+		uses_district_set = hive_world
+		uses_district_set = habitat
+	}
+	is_special_colony_type = no
+}
+
+######################################################################################
+# tul_can_planet_be_habitat_colony
+######################################################################################
+tul_can_planet_be_bureau_habitat_colony = {
+	tul_can_planet_be_habitat_colony = yes
+	owner = {
+		is_regular_empire = yes
+	}
+	is_special_colony_type = no
+}
+
+######################################################################################
+# tul_can_planet_be_specialized_hive_colony
+######################################################################################
+tul_can_planet_be_specialized_hive_colony = {
+	OR = {
+		is_planet_class = pc_bioforge
+		is_planet_class = pc_megafloraforge
+		is_planet_class = pc_biofort
+		is_planet_class = pc_megaflorafort
+		uses_district_set = pdbiocapital
+		uses_district_set = pdfloracapital
+	}
+	exists = owner
+	owner = {
+		is_hive_empire = yes
+	}
+	is_special_colony_type = no
+}
+
+######################################################################################
+# tul_can_planet_be_specialized_nexus_colony
+######################################################################################
+tul_can_planet_be_specialized_nexus_colony = {
+	OR = {
+		uses_district_set = pdmachinefactory
+		uses_district_set = pdmachinefort
+		uses_district_set = pdmachinecapital
+	}
+	exists = owner
+	owner = {
+		is_machine_empire = yes
+	}
+	is_special_colony_type = no
+}
+
+######################################################################################
+# tul_can_planet_be_ecu_fortress
+######################################################################################
+tul_can_planet_be_ecu_fortress = {
+	OR = {
+		is_planet_class = pc_milarc
+		is_planet_class = pc_shroudmilarc
+		is_planet_class = pc_milarc_relic
+	}
+	exists = owner
+	is_special_colony_type = no
+}
+
+######################################################################################
+# tul_is_planet_mars
+######################################################################################
+tul_is_planet_mars = {
+	exists = this
+	is_scope_type = planet
+	has_planet_flag = pdluna
+}
+
+######################################################################################
+# tul_is_planet_luna
+######################################################################################
+tul_is_planet_luna = {
+	exists = this
+	is_scope_type = planet
+	has_planet_flag = pdluna
+}
+
+######################################################################################
+# tul_is_planet_jupiter
+######################################################################################
+tul_is_planet_jupiter = {
+	exists = this
+	is_scope_type = planet
+	has_planet_flag = pdjupiter
+}
+
+######################################################################################
+# tul_is_planet_saturn
+######################################################################################
+tul_is_planet_saturn = {
+	exists = this
+	is_scope_type = planet
+	has_planet_flag = pdsaturn
+}
+
+######################################################################################
+# tul_is_planet_neptune
+######################################################################################
+tul_is_planet_neptune = {
+	exists = this
+	is_scope_type = planet
+	has_planet_flag = pdneptune
+}
+
+######################################################################################
+# tul_is_planet_neptune 
+######################################################################################
+tul_is_planet_uranus = {
+	exists = this
+	is_scope_type = planet
+	has_planet_flag = pduranus
+}
+
+######################################################################################
+# tul_is_planet_ring_world
+######################################################################################
+tul_is_planet_ring_world = {
+	exists = this
+	is_scope_type = planet
+	OR = {
+		is_planet_class = pc_ringworld_habitable
+		is_planet_class = pc_shattered_ring_habitable
+	}
+}
+
+######################################################################################
+# tul_is_star_singularity
+######################################################################################
+tul_is_star_singularity = {
+	OR = {
+		is_star_class = sc_black_hole
+		is_star_class = sc_neutron_star
+		is_star_class = sc_pulsar
+	}
+}
+
+######################################################################################
+# tul_is_star_black_hole
+######################################################################################
+tul_is_star_black_hole = {
+	is_star_class = sc_black_hole
+}
+
+######################################################################################
+# tul_is_planet_black_hole
+######################################################################################
+tul_is_planet_black_hole = {
+	is_planet_class = pc_black_hole
+}
+
+######################################################################################
+# tul_is_planet_pulsar
+######################################################################################
+tul_is_planet_pulsar = {
+	is_planet_class = pc_pulsar
+}
+
+######################################################################################
+# tul_is_planet_common_star
+######################################################################################
+tul_is_planet_common_star = {
+	is_planet_class = pc_k_star
+	is_planet_class = pc_m_star
+}
+
+######################################################################################
+# gpm_is_planet_class_star
+#
+# Overridden to use tul_is_planet_star
+#
+######################################################################################
+gpm_is_planet_class_star = {
+	tul_is_planet_star = yes
+}
+
+######################################################################################
+# tul_is_planet_star
+######################################################################################
+tul_is_planet_star = {
+	OR = {
+		is_planet_class = pc_b_star
+		is_planet_class = pc_a_star
+		is_planet_class = pc_f_star
+		is_planet_class = pc_g_star
+		is_planet_class = pc_k_star
+		is_planet_class = pc_m_star
+		is_planet_class = pc_m_giant_star
+		is_planet_class = pc_t_star
+		# is_planet_class = pc_habitable_m_star		# GE
+		# is_planet_class = pc_habitable_k_star		# GE
+		# is_planet_class = pc_habitable_g_star		# GE
+		# is_planet_class = pc_ringworld_city			# GE
+		# Gigastructural Engineering
+		is_planet_class = pc_giga_o_star
+		# Real Space (TODO: Add stars)
+	}
+}
+
+######################################################################################
+# gpm_is_planet_class_normal_habitable
+#
+# Overridden to use tul_is_planet_normal_habitable
+#
+######################################################################################
+gpm_is_planet_class_normal_habitable = {
+	tul_is_planet_normal_habitable = yes
+}
+
+######################################################################################
+# tul_is_planet_normal_habitable
+######################################################################################
+tul_is_planet_normal_habitable = {
+	tul_is_planet_gaia = yes
+	tul_is_planet_continental = yes
+	tul_is_planet_alpine = yes
+	tul_is_planet_tropical = yes
+	tul_is_planet_ocean = yes
+	tul_is_planet_savannah = yes
+	tul_is_planet_arid = yes
+	tul_is_planet_desert = yes
+	tul_is_planet_arctic = yes
+	tul_is_planet_tundra = yes
+	is_planet_class = pc_flat_world
+	tul_is_planet_lifeless_habitable_world = yes
+}
+
+######################################################################################
+# tul_is_planet_lifeless_habitable_world
+######################################################################################
+tul_is_planet_lifeless_habitable_world = {
+	OR = {
+		is_planet_class = pc_ll_temperate
+		is_planet_class = pc_ll_foggy
+		is_planet_class = pc_ll_torrid
+		is_planet_class = pc_ll_ocean
+		is_planet_class = pc_ll_tidallylocked_cold
+		is_planet_class = pc_ll_tidallylocked
+		is_planet_class = pc_ll_rogue
+	}
+}
+
+######################################################################################
+# gpm_is_planet_class_normal_uninhabitable
+#
+# Overridden to use tul_is_planet_normal_uninhabitable
+#
+######################################################################################
+gpm_is_planet_class_normal_uninhabitable = {
+	tul_is_planet_normal_uninhabitable = yes
+}
+
+######################################################################################
+# tul_is_planet_normal_uninhabitable
+######################################################################################
+tul_is_planet_normal_uninhabitable = {
+	OR = {
+		tul_is_planet_molten = yes
+		tul_is_planet_frozen = yes
+		tul_is_planet_toxic = yes
+	}
+}
+
+######################################################################################
+# gpm_is_planet_class_asteroid
+#
+# Overridden to use tul_is_planet_asteroid
+#
+######################################################################################
+gpm_is_planet_class_asteroid = {
+	tul_is_planet_asteroid = yes
+}
+
+######################################################################################
+# tul_is_planet_asteroid
+# Determine whether a planet is a type that is an asteroid.
+#
+######################################################################################
+tul_is_planet_asteroid = {
+	OR = {
+		is_asteroid = yes
+		is_planet_class = pc_asteroid
+		is_planet_class = pc_pd_asteroid_hab
+		is_planet_class = pc_ice_asteroid
+		is_planet_class = pc_crystal_asteroid
+		is_planet_class = pc_rare_crystal_asteroid
+	}
+}
+
+######################################################################################
+# tul_is_planet_habitat
+######################################################################################
+tul_is_planet_habitat = {
+	OR = {
+		is_planet_class = pc_habitat
+		# Planetary Diversity (TODO)
+	}
+}
+
+######################################################################################
+# tul_is_planet_habitat_ai_disallowed
+######################################################################################
+tul_is_planet_habitat_ai_disallowed = {
+	OR = {
+		starbase = {
+			NOT = {
+				has_starbase_size > starbase_starhold
+			}
+		}
+		NOT = {
+			has_global_flag = habitataifix_installed
+		}
+		has_global_flag = habitataifix_pd_build_disabled
+		any_system_planet = {
+			OR = {
+				tul_planet_has_uncolonized_barren_habitat = yes
+				tul_planet_has_uncolonized_frozen_habitat = yes
+			}
+		}
+		owner = {
+			OR = {
+				resource_stockpile_compare = {
+					resource = alloys
+					value < 5000
+				}
+			}
+		}
+	}
+}
+
+######################################################################################
+# tul_is_planet_terraforming_candidate
+######################################################################################
+tul_is_planet_terraforming_candidate = {
+	has_modifier = terraforming_candidate
+}

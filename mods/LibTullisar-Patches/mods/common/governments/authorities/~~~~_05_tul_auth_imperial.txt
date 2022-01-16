@@ -1,0 +1,44 @@
+######################################################################################
+# Authority: Imperial
+######################################################################################
+auth_imperial = {
+	has_heir = yes
+	has_agendas = yes
+	possible = {
+
+		ethics = {
+
+			# Cannot be gestalt, egalitarian (libertarian), or socialist (cooperative)
+			NOR = {
+				value = ethic_gestalt_consciousness
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+				value = ethic_socialism
+				value = ethic_fanatic_socialism
+			}
+
+			# Must be some degree of authoritarian, or focused (fallen empire ethic)
+			OR = {
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+				value = ethic_focused
+			}
+		}
+	}
+
+	# Modifiers
+	country_modifier = {
+		country_edict_cap_add = 1
+		pop_cat_worker_political_power = 2
+		pop_cat_specialist_political_power = 3
+		pop_cat_ruler_political_power = 9
+		diplo_weight_mult = 0.05
+		empire_size_colonies_mult = -0.2
+		empire_size_pops_mult = 0.2
+	}
+
+	# Tags
+	tags = {
+		AUTHORITY_HAS_HEIR
+	}
+}

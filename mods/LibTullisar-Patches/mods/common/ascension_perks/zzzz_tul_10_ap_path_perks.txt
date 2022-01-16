@@ -124,7 +124,7 @@ ap_engineered_evolution = {
 		}
 		modifier = {
 			factor = 3
-			tul_is_hive_empire = yes
+			tul_country_is_hive_authority = yes
 		}
 		modifier = {
 			factor = 0
@@ -247,7 +247,7 @@ ap_esap_bio_bonus = {
 	}
 	potential = {
 		host_has_dlc = "Utopia"
-		tul_is_machine_empire = no
+		tul_country_is_authority_machine = no
 		NOT = {
 			has_ascension_perk = ap_esap_bio_bonus
 		}
@@ -297,7 +297,7 @@ ap_the_flesh_is_weak = {
 		}
 		custom_tooltip = {
 			fail_text = "hive_mind_biological_ascension_only2"
-			tul_is_hive_empire = no
+			tul_country_is_hive_authority = no
 		}
 		custom_tooltip = {
 			fail_text = "requires_ascension_perks_1"
@@ -428,7 +428,7 @@ ap_synthetic_evolution = {
 		}
 		custom_tooltip = {
 			fail_text = "hive_mind_biological_ascension_only2"
-			tul_is_hive_empire = no
+			tul_country_is_hive_authority = no
 		}
 		custom_tooltip = {
 			fail_text = "requires_ascension_perks_2"
@@ -512,7 +512,7 @@ ap_esap_cyber_bonus = {
 	}
 	potential = {
 		host_has_dlc = "Utopia"
-		tul_is_machine_empire = no
+		tul_country_is_authority_machine = no
 		NOT = {
 			has_ascension_perk = ap_esap_cyber_bonus
 		}
@@ -560,7 +560,7 @@ ap_mind_over_matter = {
 		}
 		custom_tooltip = {
 			fail_text = "hive_mind_biological_ascension_only1"
-			tul_is_hive_empire = no
+			tul_country_is_hive_authority = no
 		}
 		custom_tooltip = {
 			fail_text = "requires_ascension_perks_1"
@@ -614,7 +614,7 @@ ap_mind_over_matter = {
 	}
 	potential = {
 		host_has_dlc = "Utopia"
-		tul_is_machine_empire = no
+		tul_country_is_authority_machine = no
 		NOT = {
 			has_ascension_perk = ap_mind_over_matter
 		}
@@ -697,7 +697,7 @@ ap_transcendence = {
 	}
 	potential = {
 		host_has_dlc = "Utopia"
-		tul_is_machine_empire = no
+		tul_country_is_authority_machine = no
 		NOT = {
 			has_ascension_perk = ap_transcendence
 		}
@@ -766,7 +766,7 @@ ap_esap_psi_bonus = {
 	}
 	potential = {
 		host_has_dlc = "Utopia"
-		tul_is_machine_empire = no
+		tul_country_is_authority_machine = no
 		NOT = {
 			has_ascension_perk = ap_esap_psi_bonus
 		}
@@ -868,7 +868,7 @@ ap_esap_bio_cyber_psi_1 = {
 		}
 		custom_tooltip = {
 			fail_text = "hive_mind_biological_ascension_only2"
-			tul_is_hive_empire = no
+			tul_country_is_hive_authority = no
 		}
 	}
 	modifier = {
@@ -878,7 +878,7 @@ ap_esap_bio_cyber_psi_1 = {
 	potential = {
 		host_has_dlc = "Utopia"
 		esap_has_bio_cyber_psi_1 = no
-		tul_is_machine_empire = no
+		tul_country_is_authority_machine = no
 	}
 	ai_weight = {
 		factor = 0
@@ -930,8 +930,8 @@ ap_esap_bio_cyber_psi_1_plain = {
 	potential = {
 		host_has_dlc = "Utopia"
 		esap_has_bio_cyber_psi_1 = no
-		tul_is_machine_empire = no
-		tul_is_hive_empire = no
+		tul_country_is_authority_machine = no
+		tul_country_is_hive_authority = no
 		OR = {
 			has_ascension_perk = ap_evolutionary_mastery
 			has_ascension_perk = ap_synthetic_evolution
@@ -1001,7 +1001,7 @@ ap_esap_bio_cyber_psi_2 = {
 			has_ascension_perk = ap_transcendence
 			has_ascension_perk = ap_esap_bio_cyber_psi_2
 			has_ascension_perk = ap_esap_bio_cyber_psi_2_plain
-			tul_is_machine_empire = no
+			tul_country_is_authority_machine = no
 		}
 	}
 	ai_weight = {
@@ -1059,8 +1059,8 @@ ap_esap_bio_cyber_psi_2_plain = {
 		NOR = {
 			has_ascension_perk = ap_esap_bio_cyber_psi_1
 			has_ascension_perk = ap_esap_bio_cyber_psi_2_plain
-			tul_is_machine_empire = yes
-			tul_is_hive_empire = yes
+			tul_country_is_authority_machine = yes
+			tul_country_is_hive_authority = yes
 		}
 	}
 	ai_weight = {
